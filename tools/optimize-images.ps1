@@ -7,10 +7,12 @@
 #   • strips all metadata (including GPS location) by re-drawing the pixels
 #   • optional horizontal flip (for mirrored selfie-camera shots)
 #
-# Usage:  powershell -ExecutionPolicy Bypass -File tools\optimize-images.ps1
-# To add photos later, add a line to $map below and run it again.
+# Usage:  powershell -ExecutionPolicy Bypass -File tools\optimize-images.ps1 [-Only <output-name>]
+# To add photos later, add a line to $map below and run it again
+# (use -Only with the new output name to process just that photo).
 # HEIC is not supported by Windows without the HEVC codec — export as JPG first.
 # ------------------------------------------------------------------
+param([string]$Only)
 Add-Type -AssemblyName System.Drawing
 
 $root = Split-Path -Parent $PSScriptRoot
@@ -34,8 +36,11 @@ $map = @(
   @("$root\IMG_7993.JPG.jpeg",                    'retreat-hike-hilltop-view',                   $false),
   @("$root\IMG_7902.JPG.jpeg",                    'cultural-excursion-yoga-students-kerala',     $false),
   @("$root\IMG_8415.jpg.jpeg",                    'yoga-pavilion-garden-fort-kochi',             $false),
-  @("$root\IMG_7843.PNG",                         'waterfall-retreat-excursion-kerala',          $false)
+  @("$root\IMG_7843.PNG",                         'waterfall-retreat-excursion-kerala',          $false),
+  # Free Pexels photo by Mohammed Nasim (Pexels licence: free use, no attribution required)
+  @("$root\photos\pexels-nasimgs-12593493.jpg",   'chinese-fishing-nets-fort-kochi',             $false)
 )
+if ($Only) { $map = @($map | Where-Object { $_[1] -eq $Only }) }
 $widths = @(720, 1280)
 
 $jpeg = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object { $_.MimeType -eq 'image/jpeg' }
