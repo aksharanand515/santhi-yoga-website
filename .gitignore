@@ -1,0 +1,48 @@
+# ------------------------------------------------------------------
+# Santhi Yoga India website — Git ignore rules
+# ------------------------------------------------------------------
+
+# Raw original photos kept in the project root (not published).
+# They can contain GPS location data. Only the optimised, metadata-free
+# web copies in assets/img are part of the website.
+/*.jpg
+/*.jpeg
+/*.JPG
+/*.JPEG
+/*.png
+/*.PNG
+/*.heic
+/*.HEIC
+/*.webp
+
+# Drop folder for new originals (processed by tools/optimize-images.ps1)
+/photos/*
+!/photos/.gitkeep
+
+# Any HEIC/RAW files anywhere
+*.heic
+*.HEIC
+*.dng
+*.DNG
+
+# Secrets and local environment files
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+
+# OS / editor clutter
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.tmp
+~$*
+.vscode/
+.idea/
+
+# Local tooling
+node_modules/
+.claude/settings.local.json
