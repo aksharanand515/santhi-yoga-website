@@ -85,7 +85,11 @@
   <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 
   <!-- Flag JS early so reveal animations never hide content when JS is disabled -->
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    // Scroll-expansion hero layout; removed again if motion can't run
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('hx-motion');
+  </script>
 
   <style>
     /* Self-hosted Inter variable font (weights 100–900) */
@@ -205,101 +209,84 @@
     .zoom img { transition: transform 1.4s var(--ease); }
 
     /* ============================================================
-       HERO — full-screen editorial composition (no photograph)
-       Scene layers are decorative and animate with transform/opacity only.
-       Nesting: .hero-scene (fade mask) > .hero-drift (slow Ken Burns)
-                > .hero-layer (GSAP scroll + pointer parallax) > element (CSS breath/sway)
+       HERO — scroll-expansion
+       A small photo card sits on a light watercolour scene; as the
+       page scrolls (GSAP ScrollTrigger, pinned) the card opens to full
+       screen, the headline splits apart and the welcome panel appears.
+       Base styles = static layout (no JS / reduced motion / GSAP failed).
+       html.hx-motion = layered scroll layout (set in <head>, removed if
+       motion can't run).
        ============================================================ */
-    .hero { position: relative; isolation: isolate; display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; padding-top: var(--nav-h); overflow: hidden; }
+    .hx { position: relative; isolation: isolate; overflow: hidden; padding: calc(var(--nav-h) + 3rem) 1.25rem 4rem; text-align: center; background: #EEF6F2;
+      --ch: clamp(240px, 46svh, 420px); --cw: calc(var(--ch) * .78); --card-y: 54%; }
 
-    .hero-scene { position: absolute; inset: 0; z-index: -1; pointer-events: none;
-      -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); }
-    .hero-drift { position: absolute; inset: -4%; animation: heroKenBurns 40s ease-in-out infinite alternate; will-change: transform; }
-    @keyframes heroKenBurns { from { transform: scale(1) translate3d(0, 0, 0); } to { transform: scale(1.06) translate3d(-1.2%, -.8%, 0); } }
-    .hero-wash { position: absolute; inset: 0;
-      background:
-        radial-gradient(55% 60% at 80% 16%, rgba(244,216,172,.62), transparent 70%),
-        radial-gradient(45% 50% at 8% 92%, rgba(124,144,130,.22), transparent 70%),
-        radial-gradient(60% 45% at 50% 105%, rgba(226,210,186,.55), transparent 70%),
-        linear-gradient(180deg, #FCFAF6 0%, #F8F3EB 58%, #F4EDE2 100%); }
-    .hero-layer { position: absolute; inset: 0; will-change: transform; }
+    /* Watercolour scene */
+    .hx-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; will-change: transform, opacity; }
+    .hx-wash, .hx-figure, .hx-leaves, .hx-tree { position: absolute; }
+    .hx-wash { inset: -3%; width: 106%; height: 106%; animation: hxDrift 38s ease-in-out infinite alternate; }
+    @keyframes hxDrift { from { transform: scale(1) translate3d(0, 0, 0); } to { transform: scale(1.05) translate3d(-1%, -.6%, 0); } }
+    .hx-figure { left: 50%; top: 4.5svh; width: min(86svh, 62vw); translate: -50% 0; transform-origin: 50% 90%; animation: hxBreathe 7s ease-in-out infinite; }
+    @keyframes hxBreathe { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.025); } }
+    .hx-leaves { left: -3%; top: calc(var(--nav-h) - 1rem); width: clamp(220px, 26vw, 420px); color: #5E8C6E; opacity: .7; transform-origin: 8% 10%; animation: hxSway 11s ease-in-out infinite alternate; }
+    @keyframes hxSway { from { transform: rotate(-2deg); } to { transform: rotate(2.4deg); } }
+    .hx-tree { right: -4%; bottom: 8%; width: clamp(260px, 34vw, 560px); opacity: .85; transform-origin: 70% 100%; animation: hxSway 16s ease-in-out infinite alternate-reverse; }
 
-    /* Morning sun — breathes very slowly */
-    .hero-sun { position: absolute; top: 5%; right: 3%; width: clamp(280px, 40vw, 640px); aspect-ratio: 1; border-radius: 50%;
-      background: radial-gradient(closest-side, rgba(246,208,152,.6), rgba(246,208,152,.2) 55%, transparent 74%);
-      animation: heroBreath 9s ease-in-out infinite alternate; }
-    .hero-sun::after { content: ""; position: absolute; inset: 24%; border-radius: 50%; border: 1px solid rgba(194,125,102,.16); }
-    @keyframes heroBreath { from { transform: scale(.96); opacity: .78; } to { transform: scale(1.04); opacity: 1; } }
+    /* Headline */
+    .hx-top, .hx-bottom { display: block; }
+    .hx-label--right { display: none; }
+    .hx-motion .hx-label--right { display: block; }
+    .hx-kicker { display: block; font-size: .7rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: #4F6B5E; }
+    .hx-line { display: block; overflow: hidden; padding: 0 .06em .12em; margin-bottom: -.12em; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 400; font-size: clamp(2.7rem, min(7.2vw, 9svh), 6.6rem); line-height: 1; letter-spacing: -.02em; color: #1F2A25; }
+    .hx-line > span { display: block; }
+    .hx-line em { font-style: italic; color: #2F5446; }
+    .hx-top .hx-line { margin-top: .9rem; }
 
-    /* Concentric rings behind the headline */
-    .hero-rings { position: absolute; left: 50%; top: 50%; width: clamp(440px, 72vw, 1000px); aspect-ratio: 1; translate: -50% -50%; color: rgba(124,144,130,.2); overflow: visible; }
-    .hero-rings circle { fill: none; stroke: currentColor; vector-effect: non-scaling-stroke; }
-    .hero-rings .ring-breath { transform-box: fill-box; transform-origin: center; animation: heroBreath 11s ease-in-out infinite alternate; }
-    .hero-rings .ring-spin { transform-box: view-box; transform-origin: 50% 50%; animation: heroSpin 240s linear infinite; }
-    @keyframes heroSpin { to { transform: rotate(360deg); } }
+    /* Photo */
+    .hx-media { position: relative; margin: 2.5rem auto 0; width: min(100%, 56rem); aspect-ratio: 4 / 3; border-radius: 1.75rem; overflow: hidden; background: #D8E7DF; box-shadow: 0 40px 80px -40px rgba(31,42,37,.45); }
+    .hx-media-inner, .hx-media img { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hx-media img { object-fit: cover; object-position: 60% 42%; }
 
-    /* Palm fronds — line art that sways like a slow breath */
-    .hero-frond { position: absolute; color: #6F8575; overflow: visible; stroke-width: 1.1; }
-    .hero-frond--a { left: -9%; bottom: -9%; width: clamp(360px, 44vw, 720px); opacity: .5; transform-origin: 10% 83%; animation: heroSwayA 13s ease-in-out infinite alternate; }
-    .hero-frond--b { right: -6%; top: 4%; width: clamp(260px, 36vw, 580px); opacity: .34; transform-origin: 90% 17%; animation: heroSwayB 17s ease-in-out infinite alternate; }
-    @keyframes heroSwayA { from { transform: rotate(-1.6deg); } to { transform: rotate(1.4deg); } }
-    @keyframes heroSwayB { from { transform: rotate(1.2deg); } to { transform: rotate(-1.8deg); } }
+    /* Labels under the stage */
+    .hx-labels { display: flex; justify-content: center; flex-wrap: wrap; gap: .75rem 2.5rem; margin-top: 1.5rem; font-size: .68rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: rgba(31,42,37,.6); }
+    .hx-cue { display: inline-flex; align-items: center; gap: .75rem; }
+    .hx-cue-line { position: relative; width: 3rem; height: 1px; overflow: hidden; background: rgba(47,84,70,.2); }
+    .hx-cue-line::after { content: ""; position: absolute; inset: 0; width: 45%; background: #2F5446; animation: hxCue 2.6s cubic-bezier(.65,0,.35,1) infinite; }
+    @keyframes hxCue { from { transform: translateX(-100%); } to { transform: translateX(230%); } }
 
-    /* Flowing water lines (Kerala backwaters) — seamless slow drift */
-    .hero-waves { position: absolute; left: 0; width: 200%; height: 70px; color: rgba(59,82,73,.22); overflow: visible; }
-    .hero-waves path { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
-    .hero-waves--1 { bottom: 13%; animation: heroFlow 70s linear infinite; }
-    .hero-waves--2 { bottom: 9%; color: rgba(59,82,73,.14); animation: heroFlow 95s linear infinite reverse; }
-    @keyframes heroFlow { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+    /* Welcome panel */
+    .hx-panel { margin: 2.5rem auto 0; max-width: 34rem; padding: 1.75rem; border-radius: 1.75rem; text-align: left; }
+    .hx-lede { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.35rem, 1.1rem + .8vw, 1.7rem); line-height: 1.35; color: #1F2A25; }
+    .hx-actions { margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: .75rem; }
+    .hx-sign { margin-top: 1.25rem; font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-size: 1.1rem; color: rgba(31,42,37,.66); }
+    .hx-ttc { margin-top: 1rem; display: inline-flex; align-items: center; gap: .6rem; font-size: .8rem; color: rgba(31,42,37,.75); }
+    .hx-ttc:hover { color: #2F5446; }
+    .hx-ttc .dot { width: .42rem; height: .42rem; border-radius: 50%; background: #D9A05B; box-shadow: 0 0 0 4px rgba(217,160,91,.2); }
+    .hx-ttc strong { font-weight: 600; color: #2F5446; }
 
-    /* Content */
-    .hero-inner { position: relative; flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; padding: clamp(2.5rem, 7vh, 5rem) 1.25rem clamp(1.5rem, 4vh, 3rem); }
-    .hero-content { width: 100%; max-width: 64rem; text-align: center; }
-    .hero-kicker { display: inline-flex; align-items: center; gap: 1rem; font-family: Inter, system-ui, sans-serif; font-size: .7rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: #5A6E62; }
-    .hero-kicker::before, .hero-kicker::after { content: ""; width: 2.5rem; height: 1px; background: currentColor; opacity: .45; }
-    .hero-title { display: block; margin-top: clamp(1.5rem, 3.5vh, 2.25rem); font-family: "Cormorant Garamond", Georgia, serif; font-weight: 400; font-size: clamp(3rem, 8.4vw, 7.4rem); line-height: .98; letter-spacing: -.022em; color: #242B28; }
-    .hero-title em { font-style: italic; font-weight: 400; color: #3B5249; }
-    .hero-line { display: block; overflow: hidden; padding: 0 .06em .12em; margin-bottom: -.12em; }
-    .hero-line > span { display: block; }
-    .hero-lede { margin: clamp(1.5rem, 3.5vh, 2.25rem) auto 0; max-width: 34rem; font-size: clamp(1.02rem, .95rem + .35vw, 1.2rem); line-height: 1.7; color: rgba(36,43,40,.72); }
-    .hero-actions { margin-top: clamp(2rem, 4.5vh, 2.75rem); display: flex; flex-wrap: wrap; justify-content: center; gap: .85rem; }
-    .hero-actions .btn { min-width: 11.5rem; padding-top: 1.05rem; padding-bottom: 1.05rem; }
-    .hero-sign { margin-top: clamp(1.75rem, 4vh, 2.5rem); display: inline-flex; align-items: center; gap: .75rem; font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-size: 1.2rem; color: rgba(36,43,40,.64); }
-    .hero-sign::before { content: ""; width: 1.75rem; height: 1px; background: rgba(194,125,102,.6); }
+    /* ---------- Layered scroll layout ---------- */
+    .hx-motion .hx { height: 100vh; height: 100svh; padding: 0; }
+    .hx-motion .hx-top, .hx-motion .hx-bottom { position: absolute; left: 0; right: 0; padding: 0 1rem; will-change: transform, opacity; }
+    .hx-motion .hx-top { bottom: calc(100% - var(--card-y) + var(--ch) / 2 + 1.1rem); }
+    .hx-motion .hx-bottom { top: calc(var(--card-y) + var(--ch) / 2 + .9rem); }
+    .hx-motion .hx-media { position: absolute; inset: 0; margin: 0; width: auto; aspect-ratio: auto; border-radius: 0; box-shadow: none; background: transparent; z-index: 1;
+      clip-path: inset(calc(var(--card-y) - var(--ch) / 2) calc(50% - var(--cw) / 2) calc(100% - var(--card-y) - var(--ch) / 2) calc(50% - var(--cw) / 2) round 24px);
+      will-change: clip-path; }
+    .hx-motion .hx-media img { will-change: transform; }
+    .hx-motion .hx-top, .hx-motion .hx-bottom { z-index: 2; }
+    .hx-motion .hx-labels { position: absolute; left: 0; right: 0; bottom: 1.75rem; margin: 0; padding: 0 2rem; justify-content: space-between; z-index: 2; }
+    .hx-motion .hx-label { will-change: transform, opacity; }
+    .hx-motion .hx-panel { position: absolute; left: clamp(1.25rem, 5vw, 5rem); bottom: clamp(1.5rem, 7svh, 4.5rem); width: min(33rem, calc(100% - 2.5rem)); margin: 0; z-index: 3; visibility: hidden; opacity: 0; }
 
-    /* Bottom meta row: location · scroll cue · next TTC */
-    .hero-meta { position: relative; width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 2rem 2rem; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; }
-    .hero-location { font-size: .66rem; font-weight: 500; letter-spacing: .34em; text-transform: uppercase; color: rgba(36,43,40,.52); }
-    .hero-scroll { display: flex; flex-direction: column; align-items: center; gap: .75rem; font-size: .6rem; font-weight: 500; letter-spacing: .34em; text-transform: uppercase; color: rgba(36,43,40,.48); transition: color .6s var(--ease); }
-    .hero-scroll:hover { color: #3B5249; }
-    .hero-scroll-line { position: relative; width: 1px; height: 58px; overflow: hidden; background: rgba(59,82,73,.14); }
-    .hero-scroll-line::after { content: ""; position: absolute; left: 0; top: 0; width: 1px; height: 45%; background: #3B5249; animation: heroScrollCue 3.2s cubic-bezier(.65, 0, .35, 1) infinite; }
-    @keyframes heroScrollCue { 0% { transform: translateY(-100%); } 100% { transform: translateY(230%); } }
-    .hero-ttc { justify-self: end; display: inline-flex; align-items: center; gap: .6rem; border-radius: 999px; padding: .6rem 1.1rem; font-size: .78rem; color: rgba(36,43,40,.75); transition: background-color .6s var(--ease), box-shadow .6s var(--ease); }
-    .hero-ttc:hover { background-color: rgba(255,255,255,.9); }
-    .hero-ttc .dot { width: .4rem; height: .4rem; border-radius: 50%; background: #D9A05B; box-shadow: 0 0 0 4px rgba(217,160,91,.18); }
-    .hero-ttc strong { font-weight: 600; color: #3B5249; }
-
-    /* Mobile: lighter scene, stacked actions, simplified meta */
     @media (max-width: 767px) {
-      .hero-frond--a { width: 92vw; left: -30%; bottom: 10%; opacity: .32; }
-      .hero-frond--b { width: 62vw; right: -22%; top: 3%; opacity: .24; }
-      .hero-sun { width: 88vw; top: -4%; right: -30%; }
-      .hero-rings { width: 150vw; color: rgba(124,144,130,.14); }
-      .hero-waves--2 { display: none; }
-      .hero-kicker { font-size: .64rem; letter-spacing: .26em; line-height: 1.9; }
-      .hero-kicker::before, .hero-kicker::after { display: none; }
-      .hero-kicker-break { display: block; }
-      .hero-actions { flex-direction: column; align-items: stretch; max-width: 20rem; margin-left: auto; margin-right: auto; }
-      .hero-meta { grid-template-columns: 1fr; justify-items: center; gap: .9rem; padding: 0 1.25rem 1.75rem; }
-      .hero-scroll { display: none; }
-      .hero-ttc { justify-self: center; order: -1; font-size: .74rem; }
-      .hero-location { letter-spacing: .28em; }
-    }
-    /* Short laptop screens: tighten vertical rhythm */
-    @media (min-width: 768px) and (max-height: 760px) {
-      .hero-title { font-size: clamp(3rem, 7vw, 6rem); }
-      .hero-scroll-line { height: 40px; }
+      .hx { --ch: clamp(220px, 40svh, 340px); --cw: calc(var(--ch) * .72); }
+      .hx-kicker { font-size: .62rem; letter-spacing: .24em; line-height: 1.8; }
+      .hx-figure { width: 118vw; top: 22%; }
+      .hx-leaves { width: 52vw; left: -10%; opacity: .55; }
+      .hx-tree { width: 66vw; right: -18%; bottom: 14%; opacity: .6; }
+      .hx-actions .btn { flex: 1 1 100%; }
+      .hx-motion .hx-labels { justify-content: center; }
+      .hx-motion .hx-label--right { display: none; }
+      .hx-motion .hx-panel { left: 1rem; right: 1rem; width: auto; bottom: 1rem; padding: 1.35rem; }
     }
     .zoom:hover img, .group:hover .zoom img { transform: scale(1.045); }
 
@@ -375,8 +362,8 @@
       *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
       .js .reveal:not(.is-visible) { opacity: 1; }
       .js [data-hero], .reveal-io .reveal.is-visible, .ambient { animation: none !important; }
-      /* Hero scene holds still: no drift, breath, sway, flow or scroll cue */
-      .hero-drift, .hero-sun, .hero-rings .ring-breath, .hero-rings .ring-spin, .hero-frond, .hero-waves, .hero-scroll-line::after { animation: none !important; }
+      /* Hero scene holds still: no drift, breathing, swaying or scroll cue */
+      .hx-wash, .hx-figure, .hx-leaves, .hx-tree, .hx-cue-line::after { animation: none !important; }
       .card-lift:hover { transform: none; }
     }
   </style>
@@ -583,56 +570,131 @@
     <!-- ============================================================
          HERO
          ============================================================ -->
-    <section id="top" class="hero" aria-labelledby="hero-title">
-      <!-- Scene: light, sun, rings, palm fronds, water lines (decorative) -->
-      <div class="hero-scene" aria-hidden="true">
-        <div class="hero-drift">
-          <div class="hero-wash"></div>
-          <div class="hero-layer" data-depth="0.2"><div class="hero-sun"></div></div>
-          <div class="hero-layer" data-depth="0.35">
-            <svg class="hero-rings" viewBox="0 0 600 600">
-              <circle class="ring-breath" cx="300" cy="300" r="210" stroke-width="1"/>
-              <g class="ring-spin"><circle cx="300" cy="300" r="268" stroke-width="1" stroke-dasharray="2 9"/></g>
-              <circle cx="300" cy="300" r="296" stroke-width="1" opacity=".55"/>
-            </svg>
-          </div>
-          <div class="hero-layer" data-depth="0.5">
-            <svg class="hero-waves hero-waves--1" viewBox="0 0 2400 70" preserveAspectRatio="none"><path d="M0 35 C150 10 450 60 600 35 C750 10 1050 60 1200 35 C1350 10 1650 60 1800 35 C1950 10 2250 60 2400 35"/></svg>
-            <svg class="hero-waves hero-waves--2" viewBox="0 0 2400 70" preserveAspectRatio="none"><path d="M0 35 C200 20 400 50 600 35 C800 20 1000 50 1200 35 C1400 20 1600 50 1800 35 C2000 20 2200 50 2400 35"/></svg>
-          </div>
-          <div class="hero-layer" data-depth="0.9"><svg class="hero-frond hero-frond--b" viewBox="-40 -60 700 760"><use href="#palm-frond" transform="rotate(180 310 320)"/></svg></div>
-          <div class="hero-layer" data-depth="1.2"><svg class="hero-frond hero-frond--a" viewBox="-40 -60 700 760"><use href="#palm-frond"/></svg></div>
+    <section id="top" class="hx" aria-labelledby="hero-title">
+      <!-- Watercolour scene (original artwork drawn in SVG, decorative) -->
+      <div class="hx-bg" aria-hidden="true">
+        <svg class="hx-wash" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="hx-sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F8FBF7"/>
+              <stop offset=".55" stop-color="#E4F2EE"/>
+              <stop offset="1" stop-color="#DCEEE3"/>
+            </linearGradient>
+            <filter id="hx-wc" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.007" numOctaves="3" seed="7" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="110" xChannelSelector="R" yChannelSelector="G" result="d"/>
+              <feGaussianBlur in="d" stdDeviation="12"/>
+            </filter>
+            <filter id="hx-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="50"/></filter>
+          </defs>
+          <rect width="1600" height="1000" fill="url(#hx-sky)"/>
+          <g filter="url(#hx-wc)">
+            <ellipse cx="320" cy="250" rx="440" ry="250" fill="#9FD3CE" opacity=".55"/>
+            <ellipse cx="1260" cy="190" rx="500" ry="230" fill="#A6D6D2" opacity=".5"/>
+            <ellipse cx="810" cy="430" rx="400" ry="300" fill="#CBE8E1" opacity=".65"/>
+            <ellipse cx="1350" cy="630" rx="360" ry="250" fill="#B8DAB4" opacity=".45"/>
+            <ellipse cx="210" cy="700" rx="360" ry="230" fill="#A6D2C1" opacity=".45"/>
+            <ellipse cx="800" cy="940" rx="920" ry="170" fill="#A3CC9E" opacity=".55"/>
+            <ellipse cx="520" cy="880" rx="380" ry="90" fill="#86B889" opacity=".45"/>
+            <ellipse cx="1130" cy="905" rx="430" ry="100" fill="#8FBF8C" opacity=".42"/>
+          </g>
+          <ellipse cx="180" cy="110" rx="340" ry="220" fill="#FBF1D2" opacity=".75" filter="url(#hx-soft)"/>
+          <ellipse cx="1500" cy="880" rx="260" ry="180" fill="#FFFFFF" opacity=".55" filter="url(#hx-soft)"/>
+          <!-- Meadow flowers -->
+          <g fill="#FFFFFF" opacity=".9">
+            <circle cx="90" cy="905" r="5"/><circle cx="160" cy="948" r="4"/><circle cx="238" cy="880" r="5"/><circle cx="302" cy="930" r="6"/>
+            <circle cx="366" cy="968" r="4"/><circle cx="430" cy="895" r="5"/><circle cx="512" cy="945" r="4"/><circle cx="588" cy="878" r="5"/>
+            <circle cx="650" cy="962" r="6"/><circle cx="712" cy="900" r="4"/><circle cx="905" cy="955" r="5"/><circle cx="968" cy="890" r="4"/>
+            <circle cx="1030" cy="940" r="6"/><circle cx="1102" cy="880" r="5"/><circle cx="1170" cy="960" r="4"/><circle cx="1236" cy="905" r="5"/>
+            <circle cx="1300" cy="950" r="4"/><circle cx="1372" cy="885" r="6"/><circle cx="1440" cy="935" r="5"/><circle cx="1512" cy="900" r="4"/>
+            <circle cx="1560" cy="965" r="5"/><circle cx="820" cy="978" r="4"/><circle cx="46" cy="962" r="4"/><circle cx="1206" cy="990" r="4"/>
+          </g>
+          <g fill="#E9C66B" opacity=".8">
+            <circle cx="238" cy="880" r="1.6"/><circle cx="302" cy="930" r="2"/><circle cx="650" cy="962" r="2"/><circle cx="1030" cy="940" r="2"/><circle cx="1372" cy="885" r="2"/>
+          </g>
+        </svg>
+
+        <svg class="hx-tree" viewBox="0 0 500 600">
+          <defs>
+            <filter id="hx-canopy" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="4" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="38" xChannelSelector="R" yChannelSelector="G" result="d"/>
+              <feGaussianBlur in="d" stdDeviation="2"/>
+            </filter>
+          </defs>
+          <path fill="#5E7B66" opacity=".55" d="M280 600 C286 520 284 440 272 380 C262 335 236 300 196 268 L204 258 C246 288 274 320 288 358 C300 328 336 298 392 280 L397 291 C346 311 312 340 299 384 C309 440 313 520 320 600 Z"/>
+          <g filter="url(#hx-canopy)" fill="#7FAE84">
+            <circle cx="205" cy="232" r="118" opacity=".32"/>
+            <circle cx="325" cy="186" r="140" opacity=".34"/>
+            <circle cx="430" cy="250" r="104" opacity=".3"/>
+            <circle cx="140" cy="300" r="86" opacity=".26"/>
+            <circle cx="300" cy="300" r="118" opacity=".26"/>
+            <circle cx="404" cy="334" r="84" opacity=".24"/>
+          </g>
+        </svg>
+
+        <svg class="hx-figure" viewBox="0 0 400 400">
+          <defs>
+            <filter id="hx-fig" x="-10%" y="-10%" width="120%" height="120%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="2" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" result="d"/>
+              <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -1.3 1.22" result="m"/>
+              <feComposite in="d" in2="m" operator="in"/>
+            </filter>
+          </defs>
+          <g filter="url(#hx-fig)" fill="#FFFFFF">
+            <circle cx="200" cy="66" r="31"/>
+            <path fill-rule="evenodd" d="M200 98 C188 98 184 106 182 114 C160 120 140 128 132 150 C124 175 122 205 118 232 C114 258 96 282 74 300 C62 310 48 318 46 330 C44 346 70 360 110 366 C150 372 180 374 200 374 C220 374 250 372 290 366 C330 360 356 346 354 330 C352 318 338 310 326 300 C304 282 286 258 282 232 C278 205 276 175 268 150 C260 128 240 120 218 114 C216 106 212 98 200 98 Z M156 176 C150 205 150 232 156 262 C146 268 132 276 120 284 C134 262 142 222 156 176 Z M244 176 C250 205 250 232 244 262 C254 268 268 276 280 284 C266 262 258 222 244 176 Z"/>
+          </g>
+        </svg>
+
+        <svg class="hx-leaves" viewBox="-40 -60 700 760" style="stroke-width:1.3">
+          <use href="#palm-frond" transform="rotate(205 310 320)"/>
+          <g fill="#C9B25C" opacity=".75" stroke="none">
+            <path d="M300 250 C340 205 420 200 470 235 C430 280 350 290 300 250 Z"/>
+          </g>
+          <g fill="#7FB08A" opacity=".55" stroke="none">
+            <path d="M120 420 C150 360 230 340 290 360 C255 420 180 450 120 420 Z"/>
+            <path d="M380 120 C410 70 480 55 530 80 C500 130 430 145 380 120 Z"/>
+          </g>
+        </svg>
+      </div>
+
+      <h1 id="hero-title">
+        <span class="hx-top">
+          <span class="hx-kicker" data-hero="eyebrow">Santhi School of Yoga &amp; Vedanta Studies</span>
+          <span class="hx-line"><span>Return to the</span></span>
+        </span>
+        <span class="hx-bottom">
+          <span class="hx-line"><span>essence of <em>Yoga.</em></span></span>
+        </span>
+      </h1>
+
+      <!-- Photo: opens to full screen on scroll -->
+      <div class="hx-media">
+        <div class="hx-media-inner">
+          <img src="assets/img/hands-on-backbend-adjustment-garden-pavilion-900.jpg"
+               srcset="assets/img/hands-on-backbend-adjustment-garden-pavilion-900.jpg 900w,
+                       assets/img/hands-on-backbend-adjustment-garden-pavilion-1600.jpg 1600w"
+               sizes="100vw" width="900" height="863" fetchpriority="high" decoding="async"
+               alt="A teacher guiding a student into a deep backbend on the garden yoga pavilion at Santhi Yoga India">
         </div>
       </div>
 
-      <div class="hero-inner">
-        <div class="hero-content">
-          <h1 id="hero-title">
-            <span class="hero-kicker" data-hero="eyebrow"><span>Santhi School of Yoga <span class="hero-kicker-break">&amp; Vedanta Studies</span></span></span>
-            <span class="hero-title" data-hero="title">
-              <span class="hero-line"><span>Return to the</span></span>
-              <span class="hero-line"><span>essence of <em>Yoga.</em></span></span>
-            </span>
-          </h1>
-          <p class="hero-lede" data-hero="copy">Authentic Hatha Yoga, mindful practice and traditional teachings in the heart of Fort&nbsp;Kochi.</p>
-          <div class="hero-actions" data-hero="copy">
-            <a href="#classes" class="btn btn-primary">Explore Yoga <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a href="#about" class="btn btn-ghost">Discover Santhi</a>
-          </div>
-          <p class="hero-sign" data-hero="copy">Guided by Master Aksharanand A S</p>
-        </div>
+      <div class="hx-labels">
+        <p class="hx-label hx-label--left"><span data-hero="meta">Fort Kochi · Kerala · India</span></p>
+        <p class="hx-label hx-label--right"><span class="hx-cue" data-hero="meta"><span>Scroll to begin</span><span class="hx-cue-line" aria-hidden="true"></span></span></p>
       </div>
 
-      <div class="hero-meta">
-        <p class="hero-location" data-hero="meta">Fort Kochi · Kerala · India</p>
-        <a href="#about" class="hero-scroll" data-hero="meta" aria-label="Scroll to explore Santhi Yoga India">
-          <span aria-hidden="true">Scroll</span>
-          <span class="hero-scroll-line" aria-hidden="true"></span>
-        </a>
-        <a href="#ttc-2027" class="hero-ttc glass glass-strong" data-hero="meta">
-          <span class="dot" aria-hidden="true"></span>
-          <span>Teacher Training · 1–28 Jan 2027 · <strong>€899</strong></span>
-        </a>
+      <!-- Welcome panel: appears once the photo is full screen -->
+      <div class="hx-panel glass glass-strong">
+        <p class="hx-lede">Authentic Hatha Yoga, mindful practice and traditional teachings in the heart of Fort&nbsp;Kochi.</p>
+        <div class="hx-actions">
+          <a href="#classes" class="btn btn-primary">Explore Yoga <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a href="#about" class="btn btn-ghost">Discover Santhi</a>
+        </div>
+        <p class="hx-sign">Guided by Master Aksharanand A S</p>
+        <a href="#ttc-2027" class="hx-ttc"><span class="dot" aria-hidden="true"></span><span>Teacher Training · 1–28 Jan 2027 · <strong>€899</strong></span></a>
       </div>
     </section>
 
@@ -1515,7 +1577,9 @@
       var y = window.scrollY || window.pageYOffset;
       header.classList.toggle('shadow-[0_10px_30px_-24px_rgba(36,43,40,.35)]', y > 8);
       // Show after the hero; hide once the contact section (which has its own CTAs) is on screen
-      var pastHero = y > hero.offsetHeight * 0.8;
+      // The pinned hero sits inside a taller GSAP pin spacer; wait until it has scrolled away
+      var heroBox = hero.parentElement && hero.parentElement.classList.contains('pin-spacer') ? hero.parentElement : hero;
+      var pastHero = y > heroBox.offsetHeight - window.innerHeight * 0.2;
       var atContact = contactSection.getBoundingClientRect().top < window.innerHeight;
       floatWa.setAttribute('data-show', pastHero && !atContact ? 'true' : 'false');
     }
@@ -1610,18 +1674,48 @@
       });
     }
 
-    // Hero entrance — slow, like an exhale: light fills the scene, then the words arrive
+    // Hero: page-load entrance, then the pinned scroll expansion
     function initHero() {
-      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
-      tl.from('.hero-scene', { opacity: 0.4, duration: 2.6, ease: 'power2.out' }, 0)
-        .from('.hero-layer', { scale: 0.965, duration: 3.4, stagger: 0.12, ease: 'power3.out' }, 0)
-        .from('[data-hero="eyebrow"]', { autoAlpha: 0, y: 14, duration: 1.8 }, 0.45)
-        .from('.hero-line > span', { yPercent: 108, duration: 2, stagger: 0.18 }, 0.6)
-        .from('[data-hero="copy"]', { autoAlpha: 0, y: 22, duration: 1.8, stagger: 0.16 }, 1.2)
-        .from('[data-hero="meta"]', { autoAlpha: 0, y: 12, duration: 1.6, stagger: 0.12 }, 1.9);
-      tl.eventCallback('onComplete', function () {
-        gsap.set('[data-hero], .hero-line > span', { clearProps: 'opacity,visibility,transform' });
+      // Entrance: watercolour fades in, the photo card settles, headline lines rise
+      var intro = gsap.timeline({ defaults: { ease: 'expo.out' } });
+      intro.from('.hx-bg > *', { opacity: 0, duration: 1.8, stagger: 0.12, ease: 'power2.out' }, 0)
+        .from('.hx-media-inner', { scale: 1.25, opacity: 0, duration: 2 }, 0.2)
+        .from('[data-hero="eyebrow"]', { autoAlpha: 0, y: 14, duration: 1.4 }, 0.35)
+        .from('.hx-line > span', { yPercent: 108, duration: 1.6, stagger: 0.16 }, 0.45)
+        .from('[data-hero="meta"]', { autoAlpha: 0, y: 10, duration: 1.2, stagger: 0.1 }, 1.1);
+      intro.eventCallback('onComplete', function () {
+        gsap.set('[data-hero], .hx-line > span, .hx-media-inner, .hx-bg > *', { clearProps: 'opacity,visibility,transform' });
       });
+
+      // Scroll expansion (same card size as the CSS so nothing jumps)
+      var media = document.querySelector('.hx-media');
+      function card() {
+        var W = media.offsetWidth, H = media.offsetHeight, mobile = window.innerWidth < 768;
+        var ch = mobile ? gsap.utils.clamp(220, 340, H * 0.40) : gsap.utils.clamp(240, 420, H * 0.46);
+        return { W: W, H: H, ch: ch, cw: ch * (mobile ? 0.72 : 0.78) };
+      }
+      function cardClip() {
+        var c = card(), top = c.H * 0.54 - c.ch / 2, side = (c.W - c.cw) / 2, bottom = c.H - top - c.ch;
+        return 'inset(' + top + 'px ' + side + 'px ' + bottom + 'px ' + side + 'px round 24px)';
+      }
+      // The whole photo starts shrunk to fill just the card, then grows with it
+      function photoScale() { var c = card(); return Math.max(c.ch / c.H, c.cw / c.W); }
+      function photoShift() { return card().H * 0.04; }
+      var away = function (dir, amount) { return function () { return dir * window.innerWidth * amount; }; };
+
+      gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: { trigger: '#top', start: 'top top', end: '+=160%', pin: true, scrub: 0.9, anticipatePin: 1, invalidateOnRefresh: true }
+      })
+        .fromTo(media, { clipPath: cardClip }, { clipPath: 'inset(0px 0px 0px 0px round 0px)', duration: 1, ease: 'power2.inOut' }, 0)
+        .fromTo('.hx-media img', { scale: photoScale, y: photoShift }, { scale: 1, y: 0, duration: 1, ease: 'power2.inOut' }, 0)
+        .to('.hx-top', { x: away(-1, 0.55), autoAlpha: 0, duration: 0.62, ease: 'power2.in' }, 0.02)
+        .to('.hx-bottom', { x: away(1, 0.55), autoAlpha: 0, duration: 0.62, ease: 'power2.in' }, 0.02)
+        .to('.hx-label--left', { x: away(-1, 0.4), autoAlpha: 0, duration: 0.4, ease: 'power2.in' }, 0)
+        .to('.hx-label--right', { x: away(1, 0.4), autoAlpha: 0, duration: 0.4, ease: 'power2.in' }, 0)
+        .to('.hx-bg', { opacity: 0, scale: 1.06, duration: 0.8 }, 0.15)
+        .fromTo('.hx-panel', { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: 'power2.out' }, 0.92)
+        .to({}, { duration: 0.3 }); // short hold on the finished view before the page moves on
     }
 
     // Staggered fade-and-rise for headings, copy, cards and accordion items
@@ -1650,40 +1744,8 @@
       });
     }
 
-    // Gentle scroll-linked depth: hero layers, hero exit, and accent glows
+    // Gentle scroll-linked depth for accent glows
     function initParallax() {
-      var heroTrigger = { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true };
-
-      // Layers sink at different rates as the page scrolls (nearer = faster)
-      document.querySelectorAll('.hero-layer').forEach(function (layer) {
-        var depth = parseFloat(layer.getAttribute('data-depth')) || 0.3;
-        gsap.to(layer, { yPercent: depth * 14, ease: 'none', scrollTrigger: heroTrigger });
-      });
-
-      // Words drift up and dissolve, handing over softly to the next section
-      gsap.to('.hero-inner', { y: -70, autoAlpha: 0, ease: 'none',
-        scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom 25%', scrub: true } });
-      gsap.to('.hero-meta', { autoAlpha: 0, ease: 'none',
-        scrollTrigger: { trigger: '#top', start: 'top top', end: '+=240', scrub: true } });
-
-      // Pointer parallax on desktop: layers shift a few pixels with the cursor
-      if (finePointer && window.innerWidth >= 1024) {
-        var movers = Array.prototype.map.call(document.querySelectorAll('.hero-layer'), function (layer) {
-          return {
-            depth: parseFloat(layer.getAttribute('data-depth')) || 0.3,
-            x: gsap.quickTo(layer, 'x', { duration: 2.4, ease: 'power3.out' }),
-            y: gsap.quickTo(layer, 'y', { duration: 2.4, ease: 'power3.out' })
-          };
-        });
-        var heroEl = document.getElementById('top');
-        window.addEventListener('pointermove', function (e) {
-          if (window.scrollY > heroEl.offsetHeight) return;
-          var px = e.clientX / window.innerWidth - 0.5;
-          var py = e.clientY / window.innerHeight - 0.5;
-          movers.forEach(function (m) { m.x(px * m.depth * -28); m.y(py * m.depth * -18); });
-        }, { passive: true });
-      }
-
       document.querySelectorAll('[data-drift]').forEach(function (el) {
         gsap.to(el, {
           yPercent: parseFloat(el.getAttribute('data-drift')), ease: 'none',
@@ -1716,8 +1778,8 @@
     }
 
     function initMotion() {
-      if (prefersReduced) { showAll(); return; }
-      if (!(window.gsap && window.ScrollTrigger)) { revealFallback(); return; }
+      if (prefersReduced) { root.classList.remove('hx-motion'); showAll(); return; }
+      if (!(window.gsap && window.ScrollTrigger)) { root.classList.remove('hx-motion'); revealFallback(); return; }
 
       gsap.registerPlugin(ScrollTrigger);
       root.classList.add('has-gsap'); // disables CSS fallbacks in favour of GSAP

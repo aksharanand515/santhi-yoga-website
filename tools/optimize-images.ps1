@@ -38,10 +38,12 @@ $map = @(
   @("$root\IMG_8415.jpg.jpeg",                    'yoga-pavilion-garden-fort-kochi',             $false),
   @("$root\IMG_7843.PNG",                         'waterfall-retreat-excursion-kerala',          $false),
   # Free Pexels photo by Mohammed Nasim (Pexels licence: free use, no attribution required)
-  @("$root\photos\pexels-nasimgs-12593493.jpg",   'chinese-fishing-nets-fort-kochi',             $false)
+  @("$root\photos\pexels-nasimgs-12593493.jpg",   'chinese-fishing-nets-fort-kochi',             $false),
+  @("$dl\0e32fce6-d571-48db-82ee-dc801e9b72d0.jpg", 'hands-on-backbend-adjustment-garden-pavilion', $false)
 )
 if ($Only) { $map = @($map | Where-Object { $_[1] -eq $Only }) }
 $widths = @(720, 1280)
+if ($Only -eq 'hands-on-backbend-adjustment-garden-pavilion') { $widths = @(900, 1600) }  # hero photo expands to full screen
 
 $jpeg = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object { $_.MimeType -eq 'image/jpeg' }
 $params = New-Object System.Drawing.Imaging.EncoderParameters 1
