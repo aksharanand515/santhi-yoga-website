@@ -54,46 +54,42 @@
     window.matchMedia('(min-width: 1040px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
   }
 
-  /* ---------- Split headings into words (accessible) ---------- */
-  function splitWords(el) {
-    if (el.dataset.splitDone) return $$('.split-i', el);
-    el.setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
-    (function walk(node) {
-      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
-        if (child.nodeType === 3) {
-          var parts = child.textContent.split(/(\s+)/);
-          var frag = document.createDocumentFragment();
-          parts.forEach(function (part) {
-            if (!part) return;
-            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
-            var w = document.createElement('span'); w.className = 'split-w'; w.setAttribute('aria-hidden', 'true');
-            var i = document.createElement('span'); i.className = 'split-i'; i.textContent = part;
-            w.appendChild(i); frag.appendChild(w);
-          });
-          node.replaceChild(frag, child);
-        } else if (child.nodeType === 1 && child.tagName !== 'BR') {
-          child.setAttribute('aria-hidden', 'true');
-          walk(child);
-        }
-      });
-    })(el);
-    el.dataset.splitDone = '1';
-    return $$('.split-i', el);
-  }
-
-  /* ---------- Fallback reveals (no GSAP) ---------- */
-  function revealFallback() {
-    root.classList.add('reveal-io');
-    var items = $$('[data-reveal], [data-split]');
-    if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('is-in'); }); return; }
+  /* ---------- Scroll reveals ----------
+     Headings are split into words at build time (tools/build.js) and all
+     content starts visible, so the page reads the same before and after
+     scripts run. Only content still below the fold is held back here; it
+     plays in on arrival and the helper classes are removed afterwards. */
+  function initReveals() {
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+    var kinds = [
+      { sel: '[data-reveal]', wait: 'rv-wait', play: 'rv-in', ms: 1100 },
+      { sel: '[data-split]', wait: 'sp-wait', play: 'sp-in', ms: 1200 },
+      { sel: '[data-clip]', wait: 'cl-wait', play: 'cl-in', ms: 2000 }
+    ];
     var io = new IntersectionObserver(function (entries) {
+      var batch = 0;
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add('is-in'); io.unobserve(entry.target); }
+        if (!entry.isIntersecting) return;
+        var el = entry.target, k = el._reveal, extra = 0;
+        io.unobserve(el);
+        if (k.play === 'rv-in') { var d = Math.min(batch++, 4); if (d) { el.classList.add('rv-d' + d); extra = d * 80; } }
+        if (k.play === 'sp-in') extra = $$('.split-i', el).length * 45;
+        el.classList.remove(k.wait);
+        el.classList.add(k.play);
+        setTimeout(function () { el.classList.remove(k.play, 'rv-d1', 'rv-d2', 'rv-d3', 'rv-d4'); }, k.ms + extra + 150);
       });
-    }, { rootMargin: '0px 0px -8% 0px' });
-    items.forEach(function (el) { io.observe(el); });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    var fold = window.innerHeight;
+    kinds.forEach(function (k) {
+      $$(k.sel).forEach(function (el) {
+        // Already on screen (or inside closed/hidden content): leave it to the CSS load animation
+        if (el.getBoundingClientRect().top < fold) return;
+        el._reveal = k;
+        el.classList.add(k.wait);
+        io.observe(el);
+      });
+    });
   }
-  function showAll() { $$('[data-reveal], [data-split]').forEach(function (el) { el.classList.add('is-in'); }); }
 
   /* ---------- Motion (GSAP) ---------- */
   function initLenis() {
@@ -116,19 +112,9 @@
     window.addEventListener('pagehide', function () { if (lenis) lenis.destroy(); });
   }
 
+  // Home hero: the intro plays in CSS; GSAP adds scroll and pointer parallax
   function initHomeHero() {
     if (!$('.hero')) return;
-    var intro = gsap.timeline({ defaults: { ease: 'expo.out' } });
-    intro.from('.hero-scene', { opacity: 0.4, duration: 2.4, ease: 'power2.out' }, 0)
-      .from('.hero-layer', { scale: 0.965, duration: 3.2, stagger: 0.12, ease: 'power3.out' }, 0)
-      .from('[data-hero="eyebrow"]', { autoAlpha: 0, y: 14, duration: 1.6 }, 0.4)
-      .from('.hero-line > span', { yPercent: 108, duration: 1.8, stagger: 0.16 }, 0.55)
-      .from('[data-hero="copy"]', { autoAlpha: 0, y: 22, duration: 1.6, stagger: 0.14 }, 1.05)
-      .from('[data-hero="meta"]', { autoAlpha: 0, y: 12, duration: 1.4, stagger: 0.12 }, 1.7);
-    intro.eventCallback('onComplete', function () {
-      gsap.set('[data-hero], .hero-line > span', { clearProps: 'opacity,visibility,transform' });
-    });
-
     var trigger = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
     $$('.hero-layer').forEach(function (layer) {
       gsap.to(layer, { yPercent: (parseFloat(layer.dataset.depth) || 0.3) * 14, ease: 'none', scrollTrigger: trigger });
@@ -160,57 +146,11 @@
     }
   }
 
+  // Inner page hero: the clip reveal plays in CSS; the photo drifts as the hero scrolls away
   function initPageHero() {
-    var ph = $('.phero');
-    if (!ph) return;
-    var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
-    var media = $('.phero-media .frame', ph);
-    if (media) tl.fromTo(media, { clipPath: 'inset(100% 0% 0% 0% round 999px 999px 24px 24px)' }, { clipPath: 'inset(0% 0% 0% 0% round 999px 999px 24px 24px)', duration: 1.8, ease: 'power3.inOut', clearProps: 'clipPath' }, 0.1);
-    var img = $('.phero-media img', ph);
-    if (img) {
-      tl.from(img, { scale: 1.18, duration: 2.2, ease: 'power3.out' }, 0.1);
-      gsap.to(img, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: ph, start: 'top top', end: 'bottom top', scrub: true } });
-    }
-    var tag = $('.phero-tag', ph);
-    if (tag) tl.from(tag, { autoAlpha: 0, y: 20, duration: 1.2 }, 1.1);
-  }
-
-  function initReveals() {
-    // Headings: word by word
-    $$('[data-split]').forEach(function (el) {
-      var words = splitWords(el);
-      el.classList.add('is-in');
-      gsap.set(words, { yPercent: 110 });
-      var inHero = el.closest('.phero');
-      gsap.to(words, {
-        yPercent: 0, duration: 1.2, ease: 'expo.out', stagger: 0.045, delay: inHero ? 0.25 : 0,
-        scrollTrigger: inHero ? null : { trigger: el, start: 'top 88%', once: true }
-      });
-    });
-
-    // Supporting copy, cards and media: fade-rise in sequence
-    var items = $$('[data-reveal]');
-    items.forEach(function (el) { el.classList.add('is-in'); });
-    gsap.set(items, { autoAlpha: 0, y: 32 });
-    function play(batch) {
-      var fresh = batch.filter(function (el) { return !el._shown; });
-      if (!fresh.length) return;
-      fresh.forEach(function (el) { el._shown = true; });
-      gsap.to(fresh, { autoAlpha: 1, y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.08, overwrite: true,
-        onComplete: function () { gsap.set(fresh, { clearProps: 'opacity,visibility,transform' }); } });
-    }
-    // onLeave covers content skipped over by anchor links or fast scrolling
-    ScrollTrigger.batch(items, { start: 'top 90%', once: true, onEnter: play, onLeave: play, onEnterBack: play });
-
-    // Photos: soft wipe upwards
-    $$('[data-clip]').forEach(function (el) {
-      gsap.fromTo(el, { clipPath: 'inset(18% 6% 18% 6% round 24px)' }, {
-        clipPath: 'inset(0% 0% 0% 0% round 0px)', duration: 1.6, ease: 'power3.out', clearProps: 'clipPath',
-        scrollTrigger: { trigger: el, start: 'top 85%', once: true }
-      });
-      var img = $('img', el);
-      if (img) gsap.fromTo(img, { scale: 1.15 }, { scale: 1, duration: 2, ease: 'power3.out', clearProps: 'transform', scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
-    });
+    var img = $('.phero-media img');
+    if (!img) return;
+    gsap.fromTo(img, { '--py': '0%' }, { '--py': '8%', ease: 'none', scrollTrigger: { trigger: '.phero', start: 'top top', end: 'bottom top', scrub: true } });
   }
 
   // Home: photo journey pins and travels sideways on large screens
@@ -241,14 +181,13 @@
   }
 
   function initMotion() {
-    if (reduceMotion) { showAll(); return; }
-    if (!(window.gsap && window.ScrollTrigger)) { revealFallback(); return; }
+    initReveals();
+    if (reduceMotion || !(window.gsap && window.ScrollTrigger)) return;
     gsap.registerPlugin(ScrollTrigger);
     root.classList.add('has-gsap');
     initLenis();
     initHomeHero();
     initPageHero();
-    initReveals();
     initJourney();
     initCounters();
     window.addEventListener('load', function () { ScrollTrigger.refresh(); });
