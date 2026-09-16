@@ -27,6 +27,7 @@ const GA_ID = 'G-B04M93CEGM';
 
 const pages = [
   { file: 'index.html',                  base: '',    key: 'home',     cta: true },
+  { file: 'about/index.html',            base: '../', key: 'about',    cta: true },
   { file: 'services/index.html',         base: '../', key: 'services', cta: true },
   { file: 'teacher-training/index.html', base: '../', key: 'ttc',      cta: true },
   { file: 'gallery/index.html',          base: '../', key: 'gallery',  cta: true },
