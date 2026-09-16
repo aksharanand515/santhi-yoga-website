@@ -33,6 +33,23 @@ const pages = [
   { file: 'contact/index.html',          base: '../', key: 'contact',  cta: false },
 ];
 
+/* Journal pages are discovered, not listed: drop a folder with an index.html
+   under blog/ and it is built on the next run. blog/index.html is the hub,
+   blog/<slug>/index.html an article. */
+const blogDir = path.join(ROOT, 'blog');
+if (fs.existsSync(blogDir)) {
+  if (fs.existsSync(path.join(blogDir, 'index.html'))) {
+    pages.push({ file: 'blog/index.html', base: '../', key: 'blog', cta: true });
+  }
+  for (const entry of fs.readdirSync(blogDir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const file = `blog/${entry.name}/index.html`;
+    if (fs.existsSync(path.join(ROOT, file))) {
+      pages.push({ file, base: '../../', key: 'blog', cta: false });
+    }
+  }
+}
+
 /* ---------- Minified CSS + JS with content versions ---------- */
 function minifyCss(css) {
   const strings = [];

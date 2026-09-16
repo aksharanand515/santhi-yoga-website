@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /partials/
 Disallow: /tools/
+Disallow: /content/
 
 Sitemap: https://santhiyogaindia.com/sitemap.xml

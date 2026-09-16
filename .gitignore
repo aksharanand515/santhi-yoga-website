@@ -51,3 +51,7 @@ node_modules/
 
 # Downloaded site archives (not part of the site)
 *.zip
+
+# Internal content strategy and topic map — deliberately NOT published.
+# The GitHub repo is public and the site is public; this is competitive planning.
+/content/

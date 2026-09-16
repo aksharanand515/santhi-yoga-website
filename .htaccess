@@ -13,8 +13,8 @@ Options -Indexes
   RewriteCond %{HTTP_HOST} ^www\.santhiyogaindia\.com$ [NC]
   RewriteRule ^(.*)$ https://santhiyogaindia.com/$1 [R=301,L]
 
-  # Build templates and tools are not part of the public site
-  RewriteRule ^(partials|tools)(/|$) - [F,L]
+  # Build templates, tools and internal content planning are not part of the public site
+  RewriteRule ^(partials|tools|content)(/|$) - [F,L]
 </IfModule>
 
 <IfModule mod_mime.c>
