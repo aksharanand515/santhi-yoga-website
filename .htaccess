@@ -15,6 +15,30 @@ Options -Indexes
 
   # Build templates, tools and internal content planning are not part of the public site
   RewriteRule ^(partials|tools|content)(/|$) - [F,L]
+
+  # ----------------------------------------------------------------
+  # Addresses from the old WordPress site, kept alive so that links
+  # and search results still land somewhere useful. 301 = moved for
+  # good, which is what passes the old page's standing to the new one.
+  # ----------------------------------------------------------------
+  RewriteRule ^teacher-training-services/?$      /teacher-training/ [R=301,L]
+  RewriteRule ^yoga-teacher-training-kerala/?$   /teacher-training/ [R=301,L]
+  RewriteRule ^200-hour-yoga-teacher-training/?$ /teacher-training/ [R=301,L]
+  RewriteRule ^ttc/?$                            /teacher-training/ [R=301,L]
+  RewriteRule ^(yoga-)?classes(-kochi)?/?$       /services/ [R=301,L]
+  RewriteRule ^daily-yoga-classes/?$             /services/ [R=301,L]
+  RewriteRule ^online-classes/?$                 /services/ [R=301,L]
+  RewriteRule ^hatha-yoga/?$                     /services/ [R=301,L]
+  RewriteRule ^workshops/?$                      /services/ [R=301,L]
+  RewriteRule ^(yoga-)?retreats/?$               /services/ [R=301,L]
+  RewriteRule ^about-us/?$                       /about/ [R=301,L]
+  RewriteRule ^contact-us/?$                     /contact/ [R=301,L]
+
+  # WordPress leftovers: these will never exist again, so tell crawlers
+  # to drop them rather than keep retrying a soft 404.
+  RewriteRule ^(wp-content|wp-includes|wp-admin|wp-json)(/|$) - [G,L]
+  RewriteRule ^(cart|checkout|my-account|shop)/?$             - [G,L]
+
 </IfModule>
 
 <IfModule mod_mime.c>
@@ -37,3 +61,7 @@ Options -Indexes
     Header set Cache-Control "public, max-age=31536000"
   </FilesMatch>
 </IfModule>
+
+# A branded page for anything not found, instead of the host's default error page.
+ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html

@@ -31,6 +31,8 @@ const pages = [
   { file: 'teacher-training/index.html', base: '../', key: 'ttc',      cta: true },
   { file: 'gallery/index.html',          base: '../', key: 'gallery',  cta: true },
   { file: 'contact/index.html',          base: '../', key: 'contact',  cta: false },
+  // Served for any unknown address, so its links must be absolute, not relative.
+  { file: '404.html',                    base: '/',   key: 'none',     cta: false },
 ];
 
 /* Journal pages are discovered, not listed: drop a folder with an index.html
