@@ -23,7 +23,7 @@ const read = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8');
 const write = (p, s) => fs.writeFileSync(path.join(ROOT, p), s);
 
 // Google Analytics 4 Measurement ID, e.g. 'G-ABC123XYZ'. Leave empty for no analytics.
-const GA_ID = '';
+const GA_ID = 'G-B04M93CEGM';
 
 const pages = [
   { file: 'index.html',                  base: '',    key: 'home',     cta: true },
