@@ -93,7 +93,7 @@ function sprite(ids) {
 }
 
 /* ---------- Partials ---------- */
-const partials = { head: read('partials/head.html'), header: read('partials/header.html'), footer: read('partials/footer.html') };
+const partials = { consent: read('partials/consent.html'), head: read('partials/head.html'), header: read('partials/header.html'), footer: read('partials/footer.html') };
 const analytics = GA_ID ? `
   <!-- Google Analytics 4, loaded after the page has finished loading -->
   <script>
@@ -186,6 +186,7 @@ for (const page of pages) {
   const file = path.join(ROOT, page.file);
   if (!fs.existsSync(file)) { warn('missing page ' + page.file); continue; }
   let html = fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+  html = stamp(html, 'consent', render(partials.consent, page), page.file);
   html = stamp(html, 'head', render(partials.head, page), page.file);
   html = stamp(html, 'header', render(partials.header, page), page.file);
   html = stamp(html, 'footer', render(partials.footer, page), page.file);
