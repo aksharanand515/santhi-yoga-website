@@ -48,3 +48,6 @@ node_modules/
 .claude/settings.local.json
 .claude/launch.json
 .playwright-mcp/
+
+# Downloaded site archives (not part of the site)
+*.zip
