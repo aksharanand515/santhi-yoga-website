@@ -46,9 +46,21 @@
   {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "WebSite", "@id": "https://santhiyogaindia.com/#website", "url": "https://santhiyogaindia.com/", "name": "Santhi Yoga India", "inLanguage": "en", "publisher": { "@id": "https://santhiyogaindia.com/#organization" } },
       {
-        "@type": ["LocalBusiness", "EducationalOrganization"],
+        "@type": "WebSite",
+        "@id": "https://santhiyogaindia.com/#website",
+        "url": "https://santhiyogaindia.com/",
+        "name": "Santhi Yoga India",
+        "inLanguage": "en",
+        "publisher": {
+          "@id": "https://santhiyogaindia.com/#organization"
+        }
+      },
+      {
+        "@type": [
+          "LocalBusiness",
+          "EducationalOrganization"
+        ],
         "@id": "https://santhiyogaindia.com/#organization",
         "name": "Santhi Yoga India",
         "alternateName": "Santhi School of Yoga & Vedanta Studies",
@@ -58,10 +70,69 @@
         "url": "https://santhiyogaindia.com/",
         "telephone": "+91 7907714144",
         "email": "santhiyogacochin@gmail.com",
-        "address": { "@type": "PostalAddress", "streetAddress": "Chirattapalam", "addressLocality": "Fort Kochi", "addressRegion": "Kerala", "postalCode": "682001", "addressCountry": "IN" },
-        "areaServed": ["Fort Kochi", "Kochi", "Kerala", "India"],
-        "knowsAbout": ["Hatha Yoga", "Pranayama", "Meditation", "Vedanta Philosophy", "Yoga Teacher Training"],
-        "employee": { "@id": "https://santhiyogaindia.com/#aksharanand" }
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Chirattapalam",
+          "addressLocality": "Fort Kochi",
+          "addressRegion": "Kerala",
+          "postalCode": "682001",
+          "addressCountry": "IN"
+        },
+        "areaServed": [
+          "Fort Kochi",
+          "Kochi",
+          "Kerala",
+          "India"
+        ],
+        "knowsAbout": [
+          "Hatha Yoga",
+          "Pranayama",
+          "Meditation",
+          "Vedanta Philosophy",
+          "Yoga Teacher Training"
+        ],
+        "employee": {
+          "@id": "https://santhiyogaindia.com/#aksharanand"
+        },
+        "sameAs": [
+          "https://www.tripadvisor.com/Attraction_Review-g15180821-d24976740-Reviews-Santhi_School_Of_Yoga_And_Vedanta_Studies-Fort_Kochi_Kochi_Cochin_Ernakulam_Di.html",
+          "https://www.justdial.com/Ernakulam/Santhi-School-Of-Yoga-Vedanta-Studies-Kochi-Fort/0484PX484-X484-110202105356-F6X8_BZDET"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "07:30",
+            "closes": "09:30"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "15:30",
+            "closes": "17:30"
+          }
+        ],
+        "priceRange": "₹600–₹1,500",
+        "knowsLanguage": [
+          "en",
+          "ml"
+        ]
       },
       {
         "@type": "Person",
@@ -71,8 +142,15 @@
         "honorificPrefix": "Master",
         "jobTitle": "Yoga Teacher",
         "image": "https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-1280.jpg",
-        "knowsAbout": ["Hatha Yoga", "Pranayama", "Meditation", "Vedanta Philosophy"],
-        "worksFor": { "@id": "https://santhiyogaindia.com/#organization" }
+        "knowsAbout": [
+          "Hatha Yoga",
+          "Pranayama",
+          "Meditation",
+          "Vedanta Philosophy"
+        ],
+        "worksFor": {
+          "@id": "https://santhiyogaindia.com/#organization"
+        }
       }
     ]
   }
