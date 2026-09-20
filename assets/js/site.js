@@ -295,6 +295,120 @@
     });
   })();
 
+  /* ---------- Booking page: writes the WhatsApp message for the visitor ---------- */
+  (function () {
+    var form = $('#booking-form');
+    if (!form) return;
+    var WA = 'https://wa.me/917907714144', EMAIL = 'santhiyogacochin@gmail.com';
+    var preview = $('#wa-text'), waBtn = $('#wa-send'), mailBtn = $('#mail-send'), status = $('#booking-status');
+    var nameField = form.elements.name, whenField = $('#b-when'), whenLabel = $('label[for="b-when"]');
+
+    var offerings = {
+      'walk-in': {
+        want: 'I would like to join your daily walk-in Hatha Yoga classes in Fort Kochi',
+        ask: 'Could you let me know the class times and anything I should bring?',
+        when: 'For example: 12-15 March, or next week',
+        whenLabel: 'When are you coming?',
+        subject: 'Walk-in classes'
+      },
+      private: {
+        want: 'I would like to book a private one-to-one yoga session',
+        ask: 'Could you let me know which times are free and what a session costs?',
+        when: 'For example: any morning next week',
+        whenLabel: 'When would suit you?',
+        subject: 'Private class'
+      },
+      workshop: {
+        want: 'I am interested in your yoga workshops',
+        ask: 'Could you tell me which workshops are coming up?',
+        when: 'For example: while I am in Kochi in March',
+        whenLabel: 'When are you in Kochi?',
+        subject: 'Workshop'
+      },
+      retreat: {
+        want: 'I am interested in your yoga retreats in Kerala',
+        ask: 'Could you tell me when the next retreat is and what it includes?',
+        when: 'For example: sometime this winter',
+        whenLabel: 'When are you hoping to come?',
+        subject: 'Retreat'
+      },
+      ttc: {
+        want: 'I am interested in your 28-day 200-hour Yoga Teacher Training in Fort Kochi',
+        ask: 'Could you tell me how to reserve a place and what I should prepare?',
+        when: 'For example: the April 2027 batch',
+        whenLabel: 'Which 2027 batch?',
+        subject: '200-hour Teacher Training'
+      }
+    };
+    var levels = {
+      beginner: 'I am a complete beginner',
+      some: 'I have practised a little before',
+      regular: 'I practise regularly',
+      teacher: 'I teach yoga myself'
+    };
+    var groups = { '2': 'There will be two of us', '3': 'There will be three of us', '4': 'There will be four or more of us' };
+
+    function chosen() {
+      var picked = form.querySelector('input[name="offering"]:checked');
+      return offerings[picked ? picked.value : 'walk-in'] || offerings['walk-in'];
+    }
+
+    // One short paragraph, the way a person would actually write it
+    function message() {
+      var o = chosen();
+      var name = nameField.value.trim();
+      var when = whenField.value.trim();
+      var note = $('#b-note').value.trim();
+      var people = groups[form.elements.people.value];
+      var level = levels[form.elements.level.value];
+      var parts = [];
+      parts.push(name ? 'Hello Santhi Yoga India, my name is ' + name + '.' : 'Hello Santhi Yoga India.');
+      parts.push(o.want + '.');
+      if (when) parts.push('I am looking at ' + when + '.');
+      if (people) parts.push(people + '.');
+      if (level) parts.push(level + '.');
+      if (note) parts.push(note.replace(/\s+/g, ' ') + (/[.!?]$/.test(note) ? '' : '.'));
+      parts.push(o.ask);
+      parts.push('Thank you.');
+      return parts.join(' ');
+    }
+
+    function refresh() {
+      var o = chosen(), text = message();
+      preview.textContent = text;
+      waBtn.href = WA + '?text=' + encodeURIComponent(text);
+      mailBtn.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Booking enquiry - ' + o.subject) + '&body=' + encodeURIComponent(text);
+      whenField.placeholder = o.when;
+      if (whenLabel) whenLabel.firstChild.nodeValue = o.whenLabel + ' ';
+    }
+
+    // A name makes the reply personal, so ask for it before sending
+    function guard(e) {
+      if (nameField.value.trim()) { status.textContent = ''; status.className = 'form-status'; return; }
+      e.preventDefault();
+      nameField.setAttribute('aria-invalid', 'true');
+      nameField.focus();
+      status.textContent = 'Please add your name first, so Achu knows who he is replying to.';
+      status.className = 'form-status is-error';
+    }
+
+    form.addEventListener('input', refresh);
+    form.addEventListener('change', refresh);
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+    nameField.addEventListener('input', function () { nameField.removeAttribute('aria-invalid'); });
+    waBtn.addEventListener('click', guard);
+    mailBtn.addEventListener('click', guard);
+
+    // Links elsewhere on the site can preselect, e.g. /book/?for=ttc
+    var wanted = new URLSearchParams(window.location.search).get('for');
+    if (wanted && offerings[wanted]) {
+      var input = form.querySelector('input[name="offering"][value="' + wanted + '"]');
+      if (input) input.checked = true;
+    }
+    var month = new URLSearchParams(window.location.search).get('month');
+    if (month) whenField.value = month.replace(/[^A-Za-z0-9 ]/g, '') + ' 2027';
+    refresh();
+  })();
   /* ---------- Contact: enquiry form (mailto by default, endpoint-ready) ---------- */
   (function () {
     var form = $('#enquiry-form');
