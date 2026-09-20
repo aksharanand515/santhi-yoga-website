@@ -194,7 +194,7 @@ function responsiveImages(html, file, warn) {
       .replace(/\bsrc="[^"]*"/, `src="${url(fallback)}" srcset="${widths.map((w) => `${url(w)} ${w}w`).join(', ')}"`)
       .replace(/\bdata-large="[^"]*"/, `data-large="${url(widths[widths.length - 1])}"`);
     if (!/\bsizes="/.test(out)) warn(`${file}: image ${name} has no sizes attribute`);
-    if (!/\balt="[^"]+"/.test(out)) warn(`${file}: image ${name} has no alt text`);
+    if (!/\balt="/.test(out)) warn(`${file}: image ${name} has no alt attribute`);
     return out;
   });
 }

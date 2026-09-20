@@ -115,18 +115,18 @@
   // Home hero: the intro plays in CSS. GSAP only adds depth once it has loaded:
   // the photograph drifts as the hero scrolls away and leans towards the pointer.
   function initHomeHero() {
-    var photo = $('.hero-window img');
+    var photo = $('.hero-photo');
     if (!photo) return;
     gsap.fromTo(photo, { '--py': '0%' }, {
-      '--py': '7%', ease: 'none',
+      '--py': '9%', ease: 'none',
       scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
     });
-    gsap.to('.hero-inner', { y: -70, autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 25%', scrub: true } });
-    gsap.to('.hero-meta', { autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=240', scrub: true } });
+    gsap.to('.hero-inner', { y: -60, autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 30%', scrub: true } });
+    gsap.fromTo('.hero-scroll', { autoAlpha: 1 }, { autoAlpha: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=240', scrub: true } });
 
     if (finePointer) {
-      var moveX = gsap.quickTo(photo, '--mx', { duration: 1.8, ease: 'power3.out' });
-      var moveY = gsap.quickTo(photo, '--my', { duration: 1.8, ease: 'power3.out' });
+      var moveX = gsap.quickTo(photo, '--mx', { duration: 2, ease: 'power3.out' });
+      var moveY = gsap.quickTo(photo, '--my', { duration: 2, ease: 'power3.out' });
       var heroEl = $('.hero'), ticking = false, last = null;
       gsap.set(photo, { '--mx': '0px', '--my': '0px' });
       window.addEventListener('pointermove', function (e) {
@@ -135,7 +135,7 @@
           ticking = false;
           if (window.scrollY > heroEl.offsetHeight) return;
           var px = last.clientX / window.innerWidth - 0.5, py = last.clientY / window.innerHeight - 0.5;
-          moveX(px * -16 + 'px'); moveY(py * -12 + 'px');
+          moveX(px * -18 + 'px'); moveY(py * -14 + 'px');
         });
       }, { passive: true });
       var rest = function () { moveX('0px'); moveY('0px'); };
@@ -194,6 +194,16 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMotion);
   else initMotion();
 
+  /* ---------- Home hero: fade the photograph in once it has decoded ---------- */
+  (function () {
+    var heroEl = $('.hero'), img = $('.hero-photo img');
+    if (!heroEl || !img) return;
+    var show = function () { heroEl.classList.add('is-ready'); };
+    if (img.complete && img.naturalWidth) show();
+    else img.addEventListener('load', show);
+    img.addEventListener('error', show);
+    setTimeout(show, 3000);
+  })();
   /* ---------- Home: service list swaps the preview photo ---------- */
   (function () {
     var preview = $('.svc-preview');

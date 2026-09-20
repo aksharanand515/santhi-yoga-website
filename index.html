@@ -28,13 +28,13 @@
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.min.css?v=49a01c1c">
+  <link rel="stylesheet" href="assets/css/site.min.css?v=58bd24b5">
   <script>document.documentElement.classList.add('js');</script>
   <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved -->
   <script defer src="assets/js/vendor/gsap.min.js"></script>
   <script defer src="assets/js/vendor/ScrollTrigger.min.js"></script>
   <script defer src="assets/js/vendor/lenis.min.js"></script>
-  <script defer src="assets/js/site.min.js?v=a6caa50e"></script>
+  <script defer src="assets/js/site.min.js?v=ffe1428a"></script>
   <!-- Google Analytics 4, loaded after the page has finished loading -->
   <script>
     window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }
@@ -156,7 +156,7 @@
   }
   </script>
 </head>
-<body>
+<body class="page-home">
   <!-- build:sprite -->
   <!-- Icons: Solar by 480 Design (CC BY 4.0) via Iconify -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
@@ -229,10 +229,18 @@
 
   <main id="main">
     <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="hero-photo">
+        <img src="assets/img/hero-meditation-hall-960.webp" srcset="assets/img/hero-meditation-hall-960.webp 960w, assets/img/hero-meditation-hall-1440.webp 1440w, assets/img/hero-meditation-hall-1672.webp 1672w" sizes="100vw" width="1672" height="941" fetchpriority="high" decoding="async" alt="">
+      </div>
+      <div class="hero-veil" aria-hidden="true"></div>
+
+      <p class="hero-topline" data-hero="meta">Fort Kochi · Kerala · India</p>
+
       <div class="hero-inner">
         <div class="hero-content">
           <h1 id="hero-title">
-            <span class="hero-kicker" data-hero="eyebrow"><span>Santhi School of Yoga <span class="hero-kicker-break">&amp; Vedanta Studies</span></span></span>
+            <span class="hero-kicker" data-hero="eyebrow">Santhi School of Yoga <span class="hero-kicker-break">&amp; Vedanta Studies</span></span>
+            <span class="hero-rule" aria-hidden="true"></span>
             <span class="hero-title" data-hero="title">
               <span class="hero-line"><span>Return to the</span></span>
               <span class="hero-line"><span>essence of <em>Yoga.</em></span></span>
@@ -240,29 +248,22 @@
           </h1>
           <p class="hero-lede" data-hero="copy">Authentic Hatha Yoga, mindful practice and traditional teachings in the heart of Fort&nbsp;Kochi.</p>
           <div class="hero-actions" data-hero="copy">
-            <a href="services/" class="btn btn--primary btn--lg">Explore Yoga <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a href="#teacher" class="btn btn--frost btn--lg">Discover Santhi</a>
+            <a href="services/" class="btn btn--light btn--lg">Explore Yoga <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a href="#teacher" class="btn btn--outline btn--lg">Discover Santhi</a>
           </div>
           <p class="hero-sign" data-hero="copy">Guided by Master Aksharanand A S</p>
         </div>
-      </div>
 
-      <!-- The pavilion itself, framed in the arch the school is known by -->
-      <figure class="hero-window">
-        <img src="assets/img/meditation-class-garden-pavilion-fort-kochi-732.webp" srcset="assets/img/meditation-class-garden-pavilion-fort-kochi-96.webp 96w, assets/img/meditation-class-garden-pavilion-fort-kochi-480.webp 480w, assets/img/meditation-class-garden-pavilion-fort-kochi-732.webp 732w" sizes="(min-width: 1180px) 1080px, 94vw" width="732" height="451" fetchpriority="high" decoding="async" alt="Master Aksharanand A S leading a seated meditation class for students on mats in the garden pavilion in Fort Kochi">
-      </figure>
-
-      <div class="hero-meta">
-        <p class="hero-location" data-hero="meta">Fort Kochi · Kerala · India</p>
-        <a href="#teacher" class="hero-scroll" data-hero="meta" aria-label="Scroll to explore Santhi Yoga India">
-          <span aria-hidden="true">Scroll</span>
-          <span class="hero-scroll-line" aria-hidden="true"></span>
-        </a>
         <a href="teacher-training/" class="hero-ttc glass glass-strong" data-hero="meta">
           <span class="dot" aria-hidden="true"></span>
           <span>Teacher Training · 1–28 Jan 2027 · <strong>€899</strong></span>
         </a>
       </div>
+
+      <a href="#teacher" class="hero-scroll" data-hero="meta" aria-label="Scroll to explore Santhi Yoga India">
+        <span aria-hidden="true">Scroll</span>
+        <span class="hero-scroll-line" aria-hidden="true"></span>
+      </a>
     </section>
 
     <!-- Practices, drifting past -->
