@@ -295,49 +295,45 @@
     });
   })();
 
-  /* ---------- Booking page: writes the WhatsApp message for the visitor ---------- */
+  /* ---------- Booking page ----------
+     A calendar for the dates, the 2027 batches when it is the training, and
+     the whole thing written out as a paragraph the visitor can read before
+     it opens in WhatsApp. ---------- */
   (function () {
     var form = $('#booking-form');
     if (!form) return;
     var WA = 'https://wa.me/917907714144', EMAIL = 'santhiyogacochin@gmail.com';
     var preview = $('#wa-text'), waBtn = $('#wa-send'), mailBtn = $('#mail-send'), status = $('#booking-status');
-    var nameField = form.elements.name, whenField = $('#b-when'), whenLabel = $('label[for="b-when"]');
+    var nameField = form.elements.name;
+    var whenField = $('#when-field'), batchField = $('#batch-field'), whenLabel = $('#when-label');
+    var trigger = $('#b-when'), triggerText = $('#b-when-text');
+    var cal = $('#cal'), grid = $('#cal-grid'), calTitle = $('#cal-title');
 
     var offerings = {
       'walk-in': {
         want: 'I would like to join your daily walk-in Hatha Yoga classes in Fort Kochi',
         ask: 'Could you let me know the class times and anything I should bring?',
-        when: 'For example: 12-15 March, or next week',
-        whenLabel: 'When are you coming?',
-        subject: 'Walk-in classes'
+        label: 'When are you coming?', subject: 'Walk-in classes'
       },
       private: {
         want: 'I would like to book a private one-to-one yoga session',
         ask: 'Could you let me know which times are free and what a session costs?',
-        when: 'For example: any morning next week',
-        whenLabel: 'When would suit you?',
-        subject: 'Private class'
+        label: 'When would suit you?', subject: 'Private class'
       },
       workshop: {
         want: 'I am interested in your yoga workshops',
         ask: 'Could you tell me which workshops are coming up?',
-        when: 'For example: while I am in Kochi in March',
-        whenLabel: 'When are you in Kochi?',
-        subject: 'Workshop'
+        label: 'When are you in Kochi?', subject: 'Workshop'
       },
       retreat: {
         want: 'I am interested in your yoga retreats in Kerala',
         ask: 'Could you tell me when the next retreat is and what it includes?',
-        when: 'For example: sometime this winter',
-        whenLabel: 'When are you hoping to come?',
-        subject: 'Retreat'
+        label: 'When are you hoping to come?', subject: 'Retreat'
       },
       ttc: {
         want: 'I am interested in your 28-day 200-hour Yoga Teacher Training in Fort Kochi',
         ask: 'Could you tell me how to reserve a place and what I should prepare?',
-        when: 'For example: the April 2027 batch',
-        whenLabel: 'Which 2027 batch?',
-        subject: '200-hour Teacher Training'
+        label: 'Which 2027 batch?', subject: '200-hour Teacher Training'
       }
     };
     var levels = {
@@ -348,38 +344,145 @@
     };
     var groups = { '2': 'There will be two of us', '3': 'There will be three of us', '4': 'There will be four or more of us' };
 
-    function chosen() {
-      var picked = form.querySelector('input[name="offering"]:checked');
-      return offerings[picked ? picked.value : 'walk-in'] || offerings['walk-in'];
+    function pickedKey() {
+      var input = form.querySelector('input[name="offering"]:checked');
+      return input && offerings[input.value] ? input.value : 'walk-in';
     }
 
-    // One short paragraph, the way a person would actually write it
+    /* ---- the calendar ---- */
+    var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var view = new Date(today.getFullYear(), today.getMonth(), 1);
+    var from = null, to = null;
+
+    function same(a, b) { return !!a && !!b && a.getTime() === b.getTime(); }
+    function longDate(d) { return d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
+    // 12 to 15 March 2027, or 28 March to 2 April 2027
+    function shortDate(a, b) {
+      if (a.getFullYear() !== b.getFullYear()) return longDate(a);
+      if (a.getMonth() !== b.getMonth()) return a.getDate() + ' ' + MONTHS[a.getMonth()];
+      return String(a.getDate());
+    }
+    function readable() {
+      if (!from) return '';
+      if (!to || same(from, to)) return longDate(from);
+      return shortDate(from, to) + ' to ' + longDate(to);
+    }
+
+    function renderCal() {
+      calTitle.textContent = MONTHS[view.getMonth()] + ' ' + view.getFullYear();
+      grid.textContent = '';
+      var lead = (new Date(view.getFullYear(), view.getMonth(), 1).getDay() + 6) % 7;
+      var days = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+      var i;
+      for (i = 0; i < lead; i++) { var blank = document.createElement('span'); blank.className = 'cal-blank'; grid.appendChild(blank); }
+      for (i = 1; i <= days; i++) {
+        grid.appendChild(dayButton(new Date(view.getFullYear(), view.getMonth(), i)));
+      }
+    }
+
+    function dayButton(date) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cal-day';
+      btn.textContent = date.getDate();
+      btn.setAttribute('aria-label', longDate(date));
+      if (date < today) btn.disabled = true;
+      if (same(date, today)) btn.classList.add('is-today');
+      if (same(date, from)) { btn.classList.add('is-edge', 'is-start'); if (to) btn.classList.add('has-range'); }
+      if (same(date, to)) btn.classList.add('is-edge', 'is-end');
+      if (from && to && date > from && date < to) btn.classList.add('in-range');
+      if (same(date, from) || same(date, to)) btn.setAttribute('aria-current', 'date');
+      btn.addEventListener('click', function () { choose(date); });
+      return btn;
+    }
+
+    function choose(date) {
+      if (!from || to || date < from) { from = date; to = null; }
+      else if (same(date, from)) { to = null; }
+      else { to = date; }
+      renderCal();
+      triggerText.textContent = readable() || 'Choose your dates';
+      refresh();
+    }
+
+    function openCal(open) {
+      cal.hidden = !open;
+      trigger.setAttribute('aria-expanded', String(open));
+      if (!open) return;
+      renderCal();
+      var first = grid.querySelector('.cal-day:not(:disabled)');
+      if (first) first.focus();
+    }
+
+    if (cal) {
+      trigger.addEventListener('click', function () { openCal(cal.hidden); });
+      $('[data-cal-prev]', cal).addEventListener('click', function () { view.setMonth(view.getMonth() - 1); renderCal(); });
+      $('[data-cal-next]', cal).addEventListener('click', function () { view.setMonth(view.getMonth() + 1); renderCal(); });
+      $('[data-cal-clear]', cal).addEventListener('click', function () { from = to = null; renderCal(); triggerText.textContent = 'Choose your dates'; refresh(); });
+      $('[data-cal-done]', cal).addEventListener('click', function () { openCal(false); trigger.focus(); });
+      document.addEventListener('click', function (e) {
+        if (cal.hidden || cal.contains(e.target) || trigger.contains(e.target)) return;
+        openCal(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !cal.hidden) { openCal(false); trigger.focus(); }
+      });
+      // Arrow keys walk the month, and roll into the next one at its edge
+      grid.addEventListener('keydown', function (e) {
+        var step = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 }[e.key];
+        if (!step) return;
+        e.preventDefault();
+        var days = $$('.cal-day', grid), i = days.indexOf(document.activeElement);
+        if (i < 0) return;
+        var next = days[i + step];
+        if (next && !next.disabled) { next.focus(); return; }
+        view.setMonth(view.getMonth() + (step < 0 ? -1 : 1));
+        renderCal();
+        var open = $$('.cal-day:not(:disabled)', grid);
+        if (open.length) (step < 0 ? open[open.length - 1] : open[0]).focus();
+      });
+    }
+
+    /* ---- the message ---- */
+    function whenSentence() {
+      if (pickedKey() === 'ttc') {
+        var batch = form.querySelector('input[name="batch"]:checked');
+        return batch ? 'I am looking at the ' + batch.value + ' 2027 batch.' : '';
+      }
+      if (!from) return '';
+      if (!to || same(from, to)) return 'I am hoping to come on ' + longDate(from) + '.';
+      return 'I am in Fort Kochi from ' + readable() + '.';
+    }
+
     function message() {
-      var o = chosen();
+      var o = offerings[pickedKey()];
       var name = nameField.value.trim();
-      var when = whenField.value.trim();
       var note = $('#b-note').value.trim();
       var people = groups[form.elements.people.value];
       var level = levels[form.elements.level.value];
+      var when = whenSentence();
       var parts = [];
       parts.push(name ? 'Hello Santhi Yoga India, my name is ' + name + '.' : 'Hello Santhi Yoga India.');
       parts.push(o.want + '.');
-      if (when) parts.push('I am looking at ' + when + '.');
+      if (when) parts.push(when);
       if (people) parts.push(people + '.');
       if (level) parts.push(level + '.');
       if (note) parts.push(note.replace(/\s+/g, ' ') + (/[.!?]$/.test(note) ? '' : '.'));
       parts.push(o.ask);
       parts.push('Thank you.');
       return parts.join(' ');
-    }
+    }
 
     function refresh() {
-      var o = chosen(), text = message();
+      var key = pickedKey(), o = offerings[key], text = message();
       preview.textContent = text;
       waBtn.href = WA + '?text=' + encodeURIComponent(text);
       mailBtn.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Booking enquiry - ' + o.subject) + '&body=' + encodeURIComponent(text);
-      whenField.placeholder = o.when;
-      if (whenLabel) whenLabel.firstChild.nodeValue = o.whenLabel + ' ';
+      whenLabel.textContent = o.label;
+      whenField.hidden = key === 'ttc';
+      batchField.hidden = key !== 'ttc';
+      if (key === 'ttc' && !cal.hidden) openCal(false);
     }
 
     // A name makes the reply personal, so ask for it before sending
@@ -399,14 +502,19 @@
     waBtn.addEventListener('click', guard);
     mailBtn.addEventListener('click', guard);
 
-    // Links elsewhere on the site can preselect, e.g. /book/?for=ttc
-    var wanted = new URLSearchParams(window.location.search).get('for');
+    // Links elsewhere on the site can preselect, e.g. /book/?for=ttc&month=April
+    var params = new URLSearchParams(window.location.search);
+    var wanted = params.get('for');
     if (wanted && offerings[wanted]) {
       var input = form.querySelector('input[name="offering"][value="' + wanted + '"]');
       if (input) input.checked = true;
     }
-    var month = new URLSearchParams(window.location.search).get('month');
-    if (month) whenField.value = month.replace(/[^A-Za-z0-9 ]/g, '') + ' 2027';
+    var month = params.get('month');
+    if (month) {
+      var batch = form.querySelector('input[name="batch"][value="' + month.replace(/[^A-Za-z]/g, '') + '"]');
+      if (batch) batch.checked = true;
+    }
+    renderCal();
     refresh();
   })();
   /* ---------- Contact: enquiry form (mailto by default, endpoint-ready) ---------- */

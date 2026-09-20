@@ -589,6 +589,37 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 .booking-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem; }
 .booking-actions .btn--primary { min-width: 15rem; }
 .booking .form-status { margin-top: 0; }
+/* Date picker on the booking page */
+.datefield { position: relative; }
+.field-trigger { display: flex; align-items: center; justify-content: space-between; gap: .75rem; text-align: left; cursor: pointer; color: var(--ink); }
+.field-trigger .ic { color: var(--kasavu-deep); flex-shrink: 0; }
+.field-trigger[aria-expanded="true"] { border-color: var(--sage); box-shadow: 0 0 0 4px rgba(124, 144, 130, .18); }
+.cal { position: absolute; z-index: 40; top: calc(100% + .5rem); left: 0; width: min(21rem, calc(100vw - 2.5rem)); padding: 1rem; border-radius: var(--r-lg); background: var(--paper); }
+.cal[hidden] { display: none; }
+.cal-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.cal-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; }
+.cal-week { margin-top: .75rem; display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-55); text-align: center; }
+.cal-grid { margin-top: .35rem; display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.cal-day { aspect-ratio: 1; display: grid; place-items: center; border: 0; border-radius: 10px; background: transparent; font: 500 .92rem var(--sans); color: var(--ink); cursor: pointer; transition: background-color .25s var(--ease), color .25s var(--ease); }
+.cal-day:hover:not(:disabled) { background: var(--sand); }
+.cal-day:disabled { color: rgba(36, 43, 40, .28); cursor: default; }
+.cal-day.is-today { box-shadow: inset 0 0 0 1px var(--kasavu); }
+.cal-day.in-range { background: var(--mist); border-radius: 0; }
+.cal-day.is-edge { background: var(--forest); color: var(--paper); }
+.cal-day.is-start.has-range { border-radius: 10px 0 0 10px; }
+.cal-day.is-end { border-radius: 0 10px 10px 0; }
+.cal-day:focus-visible { outline: 2px solid var(--kasavu); outline-offset: 2px; }
+.cal-blank { aspect-ratio: 1; }
+.cal-foot { margin-top: .85rem; padding-top: .85rem; border-top: 1px solid var(--line-soft); display: grid; gap: .75rem; }
+.cal-hint { font-size: .8rem; color: var(--ink-55); }
+.cal-actions { display: flex; justify-content: flex-end; gap: .5rem; }
+.batch-choice { display: flex; flex-wrap: wrap; gap: .5rem; }
+.batch { position: relative; }
+.batch input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.batch span { display: inline-flex; align-items: center; min-height: 44px; padding: .5rem 1rem; border-radius: 999px; border: 1px solid var(--line); background: var(--paper); font-size: .9rem; transition: border-color .3s var(--ease), background-color .3s var(--ease), color .3s var(--ease); }
+.batch:hover span { border-color: var(--sage); }
+.batch input:focus-visible + span { outline: 2px solid var(--kasavu); outline-offset: 2px; }
+.batch input:checked + span { background: var(--forest); border-color: var(--forest); color: var(--paper); }
 /* ---------- CTA band ---------- */
 .cta-band { position: relative; overflow: hidden; text-align: center; padding-block: clamp(80px, 10vw, 140px); background:
   radial-gradient(50% 80% at 50% 0%, rgba(184, 145, 74, .18), transparent 70%),
