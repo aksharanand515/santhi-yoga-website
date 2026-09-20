@@ -112,37 +112,35 @@
     window.addEventListener('pagehide', function () { if (lenis) lenis.destroy(); });
   }
 
-  // Home hero: the intro plays in CSS; GSAP adds scroll and pointer parallax
+  // Home hero: the intro plays in CSS. GSAP only adds depth once it has loaded:
+  // the photograph drifts as the hero scrolls away and leans towards the pointer.
   function initHomeHero() {
-    if (!$('.hero')) return;
-    var trigger = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
-    $$('.hero-layer').forEach(function (layer) {
-      gsap.to(layer, { yPercent: (parseFloat(layer.dataset.depth) || 0.3) * 14, ease: 'none', scrollTrigger: trigger });
+    var photo = $('.hero-window img');
+    if (!photo) return;
+    gsap.fromTo(photo, { '--py': '0%' }, {
+      '--py': '7%', ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
     });
     gsap.to('.hero-inner', { y: -70, autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 25%', scrub: true } });
     gsap.to('.hero-meta', { autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=240', scrub: true } });
 
     if (finePointer) {
-      var movers = $$('.hero-layer').map(function (layer) {
-        return {
-          depth: parseFloat(layer.dataset.depth) || 0.3,
-          x: gsap.quickTo(layer, 'x', { duration: 2.4, ease: 'power3.out' }),
-          y: gsap.quickTo(layer, 'y', { duration: 2.4, ease: 'power3.out' })
-        };
-      });
-      var heroEl = $('.hero'); var ticking = false; var last = null;
+      var moveX = gsap.quickTo(photo, '--mx', { duration: 1.8, ease: 'power3.out' });
+      var moveY = gsap.quickTo(photo, '--my', { duration: 1.8, ease: 'power3.out' });
+      var heroEl = $('.hero'), ticking = false, last = null;
+      gsap.set(photo, { '--mx': '0px', '--my': '0px' });
       window.addEventListener('pointermove', function (e) {
         last = e; if (ticking) return; ticking = true;
         requestAnimationFrame(function () {
           ticking = false;
           if (window.scrollY > heroEl.offsetHeight) return;
           var px = last.clientX / window.innerWidth - 0.5, py = last.clientY / window.innerHeight - 0.5;
-          movers.forEach(function (m) { m.x(px * m.depth * -28); m.y(py * m.depth * -18); });
+          moveX(px * -16 + 'px'); moveY(py * -12 + 'px');
         });
       }, { passive: true });
-      var resetLayers = function () { movers.forEach(function (m) { m.x(0); m.y(0); }); };
-      window.addEventListener('blur', resetLayers);
-      document.addEventListener('visibilitychange', function () { if (document.hidden) resetLayers(); });
+      var rest = function () { moveX('0px'); moveY('0px'); };
+      window.addEventListener('blur', rest);
+      document.addEventListener('visibilitychange', function () { if (document.hidden) rest(); });
     }
   }
 
