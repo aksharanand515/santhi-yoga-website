@@ -98,6 +98,9 @@ const ICONS = {
   route: 'routing-2-linear', question: 'question-circle-linear',
 };
 const solar = JSON.parse(read('tools/icons/solar.json'));
+// Brand marks (Simple Icons, CC0) for the social links
+const brands = JSON.parse(read('tools/icons/brands.json'));
+const BRAND_ICONS = { instagram: 'instagram' };
 const lookup = (name) => {
   if (solar.icons[name]) return solar.icons[name];
   const alias = solar.aliases && solar.aliases[name];
@@ -105,6 +108,12 @@ const lookup = (name) => {
 };
 function sprite(ids) {
   const symbols = ids.map((id) => {
+    if (BRAND_ICONS[id]) {
+      const brand = brands.icons[BRAND_ICONS[id]];
+      if (!brand) throw new Error('Missing brand icon: ' + id);
+      const bw = brand.width || brands.width || 24, bh = brand.height || brands.height || 24;
+      return `    <symbol id="i-${id}" viewBox="0 0 ${bw} ${bh}">${brand.body}</symbol>`;
+    }
     const icon = lookup(ICONS[id]);
     if (!icon) throw new Error('Missing Solar icon: ' + ICONS[id]);
     const w = icon.width || solar.width || 24, h = icon.height || solar.height || 24;
@@ -215,9 +224,9 @@ for (const page of pages) {
   html = responsiveImages(html, page.file, warn);
   // Inline only the icons this page uses
   const used = [...new Set([...html.matchAll(/<use href="#i-([a-z-]+)"/g)].map((m) => m[1]))];
-  const unknown = used.filter((id) => !ICONS[id]);
+  const unknown = used.filter((id) => !ICONS[id] && !BRAND_ICONS[id]);
   if (unknown.length) warn(`${page.file}: unknown icons ${unknown.join(', ')}`);
-  html = stamp(html, 'sprite', sprite(Object.keys(ICONS).filter((id) => used.includes(id))), page.file);
+  html = stamp(html, 'sprite', sprite(Object.keys(ICONS).concat(Object.keys(BRAND_ICONS)).filter((id) => used.includes(id))), page.file);
   // Sanity checks
   if ((html.match(/<h1[\s>]/g) || []).length !== 1) warn(`${page.file}: expected exactly one <h1>`);
   const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
