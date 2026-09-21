@@ -39,6 +39,7 @@
     toggle.setAttribute('aria-expanded', String(open));
     $('.sr-only', toggle).textContent = open ? 'Close menu' : 'Open menu';
     menu.classList.toggle('is-open', open);
+    document.body.classList.toggle('nav-open', open);
     menu.inert = !open;
     document.body.style.overflow = open ? 'hidden' : '';
     if (lenis) { if (open) lenis.stop(); else lenis.start(); }

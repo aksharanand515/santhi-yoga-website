@@ -294,6 +294,14 @@ html.lenis, html.lenis body { height: auto; }
 .page-home .site-header:not(.is-scrolled) .menu-toggle { background: rgba(255, 253, 249, .16); border-color: rgba(255, 253, 249, .42); }
 .page-home .site-header:not(.is-scrolled) .menu-lines span { background: #FFFDF9; }
 
+/* Menu open: the light panel is behind the header, so the brand and the close button go back to ink */
+.page-home.nav-open .site-header:not(.is-scrolled) .brand-name, .page-home.nav-open .site-header:not(.is-scrolled) .nav-link { color: var(--ink); }
+.page-home.nav-open .site-header:not(.is-scrolled) .brand-sub { color: var(--sage-deep); }
+.page-home.nav-open .site-header:not(.is-scrolled) .menu-toggle { background: var(--paper); border-color: var(--line); }
+.page-home.nav-open .site-header:not(.is-scrolled) .menu-lines span { background: var(--ink); }
+.page-home.nav-open .site-header:not(.is-scrolled) .header-cta { --btn-bg: var(--forest); --btn-fg: #FAF8F5; --btn-hover-bg: var(--kasavu-deep); --btn-hover-fg: #FFFDF9; }
+.page-home.nav-open .site-header:not(.is-scrolled) .kasavu-line { opacity: 1; }
+
 @media (max-width: 767px) {
   .hero-inner { grid-template-columns: minmax(0, 1fr); padding-bottom: clamp(4.5rem, 11vh, 6rem); }
   .hero-photo, .hero-photo img { object-position: 54% 52%; }
