@@ -1,0 +1,87 @@
+{
+  "_comment": "Groups the Journal into sections for llms.txt. A slug left out of this file still appears, under the fallback heading below, and the build prints a warning naming it — so nothing is ever silently dropped.",
+  "_fallback": "More from the Journal",
+  "sections": {
+    "Classes in Fort Kochi": [
+      "yoga-fort-kochi-guide",
+      "best-yoga-in-fort-kochi",
+      "santhi-yoga-fort-kochi-questions",
+      "first-yoga-class-beginners-guide",
+      "best-yoga-classes-in-kochi",
+      "yoga-class-fees-kochi",
+      "types-of-yoga-classes",
+      "best-time-to-do-yoga",
+      "what-to-wear-yoga-class-india",
+      "private-yoga-classes-kochi",
+      "sivananda-yoga-kochi",
+      "meditation-fort-kochi",
+      "online-yoga-classes-kerala"
+    ],
+    "Fort Kochi and Kerala": [
+      "things-to-do-in-fort-kochi",
+      "yoga-holiday-fort-kochi",
+      "where-to-do-yoga-in-kerala",
+      "yoga-retreat-kerala-guide",
+      "best-time-to-visit-kerala-for-yoga",
+      "ayurveda-and-yoga-in-kerala",
+      "kochi-airport-to-fort-kochi",
+      "yoga-after-long-flight-jet-lag"
+    ],
+    "Practice": [
+      "hatha-yoga-explained",
+      "surya-namaskar-steps",
+      "pranayama-for-beginners",
+      "beginner-yoga-routine-at-home",
+      "yoga-for-back-pain",
+      "yoga-for-flexibility-how-long",
+      "yoga-nidra-explained",
+      "mudras-explained",
+      "bandhas-explained",
+      "sattvic-food-explained"
+    ],
+    "Philosophy": [
+      "eight-limbs-of-yoga",
+      "patanjali-yoga-sutras-explained",
+      "what-is-vedanta",
+      "chakras-explained"
+    ],
+    "Choosing a teacher training": [
+      "how-to-choose-yoga-teacher-training",
+      "how-to-become-a-yoga-teacher-in-india",
+      "200-vs-300-hour-yoga-teacher-training",
+      "yoga-teacher-training-india-cost",
+      "kerala-vs-rishikesh-yoga-teacher-training",
+      "what-to-pack-yoga-teacher-training-india"
+    ]
+  },
+  "mainPages": {
+    "home": "overview of the school",
+    "about": "the school and its teacher",
+    "services": "daily classes, private sessions, retreats, workshops, online classes",
+    "ttc": "dates, fees and what is included",
+    "contact": "directions, phone, WhatsApp and email",
+    "book": "choose a class, retreat or training and send the details by WhatsApp",
+    "gallery": "photographs of the school, classes and retreats",
+    "blog": "all guides"
+  },
+  "mainPageLabels": {
+    "home": "Home",
+    "about": "About",
+    "services": "Classes and services",
+    "ttc": "200-hour teacher training",
+    "contact": "Contact",
+    "book": "Book a class",
+    "gallery": "Gallery",
+    "blog": "Journal"
+  },
+  "mainPageOrder": [
+    "home",
+    "about",
+    "services",
+    "ttc",
+    "gallery",
+    "contact",
+    "book",
+    "blog"
+  ]
+}

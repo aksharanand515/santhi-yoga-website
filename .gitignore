@@ -54,4 +54,8 @@ node_modules/
 
 # Internal content strategy and topic map — deliberately NOT published.
 # The GitHub repo is public and the site is public; this is competitive planning.
-/content/
+/content/*
+# ...except the two files the build reads to write llms.txt. Their contents are
+# published at /llms.txt anyway, and without them a fresh clone cannot build.
+!/content/llms-intro.md
+!/content/llms-sections.json
