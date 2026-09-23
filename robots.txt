@@ -1,7 +1,11 @@
+# Everything public here is welcome to be read, by search engines and AI assistants alike.
 User-agent: *
 Allow: /
 Disallow: /partials/
 Disallow: /tools/
 Disallow: /content/
+
+# A plain-text summary of the school and every page, for AI assistants:
+# https://santhiyogaindia.com/llms.txt
 
 Sitemap: https://santhiyogaindia.com/sitemap.xml

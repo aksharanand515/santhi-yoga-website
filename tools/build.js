@@ -212,6 +212,7 @@ function responsiveImages(html, file, warn) {
 /* ---------- Build ---------- */
 let errors = 0;
 const warn = (msg) => { console.error(msg); errors++; };
+const built = [];
 for (const page of pages) {
   const file = path.join(ROOT, page.file);
   if (!fs.existsSync(file)) { warn('missing page ' + page.file); continue; }
@@ -234,7 +235,99 @@ for (const page of pages) {
   const decode = (s) => s.replace(/&amp;/g, '&');
   if (decode(title).length > 60) warn(`${page.file}: title is ${decode(title).length} characters (keep it to 60)`);
   if (decode(desc).length < 110 || decode(desc).length > 160) warn(`${page.file}: meta description is ${decode(desc).length} characters (aim for 110–160)`);
+  built.push({ ...page, title: decode(title), desc: decode(desc), html });
   fs.writeFileSync(file, html);
   console.log('built ' + page.file);
 }
+
+/* ---------- sitemap.xml and llms.txt, generated from what was just built ----------
+   Both were kept by hand, and llms.txt quietly fell fifteen articles behind the
+   site. Generating them here means publishing a page is enough: drop the folder
+   in, run the build, and both files catch up. Sections for llms.txt come from
+   content/llms-sections.json; an article missing from that file still appears,
+   under the fallback heading, and the build says which one to file. */
+const SITE = 'https://santhiyogaindia.com';
+const urlOf = (p) => SITE + '/' + p.file.replace(/index\.html$/, '');
+const today = new Date().toISOString().slice(0, 10);
+
+/* When each page last changed, from one walk of the git log. Anything with
+   uncommitted edits is dated today, because today is when it changed. */
+function lastChanged() {
+  const dates = new Map();
+  try {
+    const { execSync } = require('child_process');
+    const run = (cmd) => execSync(cmd, { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] });
+    let date = null;
+    for (const line of run('git log --format=%cs --name-only').split('\n')) {
+      const t = line.trim();
+      if (!t) continue;
+      if (/^\d{4}-\d{2}-\d{2}$/.test(t)) { date = t; continue; }
+      if (date && !dates.has(t)) dates.set(t, date);
+    }
+    for (const line of run('git status --porcelain').split('\n')) {
+      const f = line.slice(3).trim().split(' -> ').pop().replace(/^"|"$/g, '');
+      if (f) dates.set(f, today);
+    }
+  } catch { /* not a git checkout — everything falls back to today */ }
+  return (file) => dates.get(file) || today;
+}
+const dateOf = lastChanged();
+
+write('sitemap.xml',
+  '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  built.filter((p) => p.key !== 'none')
+    .map((p) => `  <url><loc>${urlOf(p)}</loc><lastmod>${dateOf(p.file)}</lastmod></url>`)
+    .join('\n') +
+  '\n</urlset>\n');
+console.log('wrote sitemap.xml');
+
+/* The visible heading of a page: the aria-label when the heading was split into
+   words for animation, otherwise the text itself. */
+const entities = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
+const plain = (s) => s
+  .replace(/<[^>]*>/g, '')
+  .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n))
+  .replace(/&([a-z]+);/g, (m, n) => (n in entities ? entities[n] : m))
+  .replace(/\s+/g, ' ').trim();
+const heading = (p) => {
+  const label = (p.html.match(/<h1[^>]*\saria-label="([^"]*)"/) || [])[1];
+  const inner = (p.html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1] || '';
+  return plain(label || inner);
+};
+const entry = (name, url, desc) => `- [${name}](${url}): ${desc}`;
+
+const cfg = JSON.parse(read('content/llms-sections.json'));
+const byKey = new Map(built.map((p) => [p.key, p]));
+const articles = new Map(built
+  .filter((p) => /^blog\/[^/]+\/index\.html$/.test(p.file))
+  .map((p) => [p.file.split('/')[1], p]));
+
+let doc = read('content/llms-intro.md').replace(/\{\{updated\}\}/g, dateOf('content/llms-intro.md'));
+if (!doc.endsWith('\n')) doc += '\n';
+
+doc += '\n## Main pages\n\n' + cfg.mainPageOrder
+  .filter((k) => byKey.has(k))
+  .map((k) => entry(cfg.mainPageLabels[k], urlOf(byKey.get(k)), cfg.mainPages[k]))
+  .join('\n') + '\n';
+
+const filed = new Set();
+for (const [section, slugs] of Object.entries(cfg.sections)) {
+  for (const slug of slugs) {
+    filed.add(slug);
+    if (!articles.has(slug)) console.warn(`note: llms-sections.json lists ${slug}, which is not an article any more`);
+  }
+  const rows = slugs.filter((s) => articles.has(s));
+  if (!rows.length) continue;
+  doc += `\n## ${section}\n\n` + rows.map((s) => entry(heading(articles.get(s)), urlOf(articles.get(s)), articles.get(s).desc)).join('\n') + '\n';
+}
+
+const unfiled = [...articles.keys()].filter((s) => !filed.has(s)).sort();
+if (unfiled.length) {
+  console.warn(`note: ${unfiled.join(', ')} ${unfiled.length === 1 ? 'is' : 'are'} not in content/llms-sections.json — listed under "${cfg._fallback}"`);
+  doc += `\n## ${cfg._fallback}\n\n` + unfiled.map((s) => entry(heading(articles.get(s)), urlOf(articles.get(s)), articles.get(s).desc)).join('\n') + '\n';
+}
+
+write('llms.txt', doc);
+console.log(`wrote llms.txt (${articles.size} journal pages)`);
+
 if (errors) { console.error(errors + ' problem(s)'); process.exit(1); }
