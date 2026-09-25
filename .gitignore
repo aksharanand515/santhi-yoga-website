@@ -59,3 +59,6 @@ node_modules/
 # published at /llms.txt anyway, and without them a fresh clone cannot build.
 !/content/llms-intro.md
 !/content/llms-sections.json
+
+# Model weights the hero-art script downloads on first run
+/tools/hero-art/*.pth

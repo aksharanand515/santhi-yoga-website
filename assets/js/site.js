@@ -113,36 +113,56 @@
     window.addEventListener('pagehide', function () { if (lenis) lenis.destroy(); });
   }
 
-  // Home hero: the intro plays in CSS. GSAP only adds depth once it has loaded:
-  // the photograph drifts as the hero scrolls away and leans towards the pointer.
+  // Home hero: the intro plays in CSS. GSAP adds depth once it has loaded: the
+  // painting's layers part as the hero scrolls away and lean towards the pointer,
+  // the islands (nearer to us) more than the sky behind them.
   function initHomeHero() {
-    var photo = $('.hero-photo');
-    if (!photo) return;
-    gsap.fromTo(photo, { '--py': '0%' }, {
-      '--py': '9%', ease: 'none',
-      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+    var heroEl = $('.hero'), stage = $('.hero-stage');
+    if (!heroEl || !stage) return;
+    var st = function (end) { return { trigger: heroEl, start: 'top top', end: end || 'bottom top', scrub: true }; };
+    // The stage itself is placed with CSS translate/scale, which GSAP would fold into its own
+    // transform, so only the layers inside it move: the sky sinks, the nearer islands rise
+    $$('.hero-depth[data-depth]', stage).forEach(function (layer) {
+      var d = parseFloat(layer.dataset.depth);
+      gsap.to(layer, { yPercent: 8 - (d - 1) * 9, ease: 'none', scrollTrigger: st() });
     });
-    gsap.to('.hero-inner', { y: -60, autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 30%', scrub: true } });
-    gsap.fromTo('.hero-scroll', { autoAlpha: 1 }, { autoAlpha: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=240', scrub: true } });
+    gsap.to('.hero-inner', { y: -70, autoAlpha: 0, ease: 'none', scrollTrigger: st('bottom 30%') });
+    gsap.fromTo('.hero-breath, .hero-ttc', { autoAlpha: 1 }, { autoAlpha: 0, ease: 'none', immediateRender: false, scrollTrigger: st('+=260') });
 
-    if (finePointer) {
-      var moveX = gsap.quickTo(photo, '--mx', { duration: 2, ease: 'power3.out' });
-      var moveY = gsap.quickTo(photo, '--my', { duration: 2, ease: 'power3.out' });
-      var heroEl = $('.hero'), ticking = false, last = null;
-      gsap.set(photo, { '--mx': '0px', '--my': '0px' });
-      window.addEventListener('pointermove', function (e) {
-        last = e; if (ticking) return; ticking = true;
-        requestAnimationFrame(function () {
-          ticking = false;
-          if (window.scrollY > heroEl.offsetHeight) return;
-          var px = last.clientX / window.innerWidth - 0.5, py = last.clientY / window.innerHeight - 0.5;
-          moveX(px * -18 + 'px'); moveY(py * -14 + 'px');
-        });
-      }, { passive: true });
-      var rest = function () { moveX('0px'); moveY('0px'); };
-      window.addEventListener('blur', rest);
-      document.addEventListener('visibilitychange', function () { if (document.hidden) rest(); });
-    }
+    if (!finePointer) return;
+    var layers = $$('.hero-art [data-depth]').map(function (el) {
+      return { d: parseFloat(el.dataset.depth), x: gsap.quickTo(el, 'x', { duration: 1.8, ease: 'power3.out' }), y: gsap.quickTo(el, 'y', { duration: 1.8, ease: 'power3.out' }) };
+    });
+    var ticking = false, last = null;
+    var lean = function (px, py) { layers.forEach(function (l) { l.x(px * -9 * l.d); l.y(py * -7 * l.d); }); };
+    window.addEventListener('pointermove', function (e) {
+      last = e; if (ticking) return; ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        if (window.scrollY > heroEl.offsetHeight) return;
+        lean(last.clientX / window.innerWidth - 0.5, last.clientY / window.innerHeight - 0.5);
+      });
+    }, { passive: true });
+    var rest = function () { lean(0, 0); };
+    document.documentElement.addEventListener('pointerleave', rest);
+    window.addEventListener('blur', rest);
+  }
+
+  // Hero buttons: a magnetic pull towards the pointer, the label trailing a little further
+  function initMagnetic() {
+    if (!finePointer) return;
+    $$('[data-magnetic]').forEach(function (btn) {
+      var label = $('.cta-label', btn);
+      var bx = gsap.quickTo(btn, 'x', { duration: 0.6, ease: 'power3.out' }), by = gsap.quickTo(btn, 'y', { duration: 0.6, ease: 'power3.out' });
+      var lx = label && gsap.quickTo(label, 'x', { duration: 0.6, ease: 'power3.out' }), ly = label && gsap.quickTo(label, 'y', { duration: 0.6, ease: 'power3.out' });
+      btn.addEventListener('pointermove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        bx(dx * 0.18); by(dy * 0.32);
+        if (label) { lx(dx * 0.08); ly(dy * 0.12); }
+      });
+      btn.addEventListener('pointerleave', function () { bx(0); by(0); if (label) { lx(0); ly(0); } });
+    });
   }
 
   // Inner page hero: the clip reveal plays in CSS; the photo drifts as the hero scrolls away
@@ -186,6 +206,7 @@
     root.classList.add('has-gsap');
     initLenis();
     initHomeHero();
+    initMagnetic();
     initPageHero();
     initJourney();
     initCounters();
@@ -195,16 +216,164 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMotion);
   else initMotion();
 
-  /* ---------- Home hero: fade the photograph in once it has decoded ---------- */
+  /* ---------- Home hero: reveal the painting once every layer has decoded ---------- */
   (function () {
-    var heroEl = $('.hero'), img = $('.hero-photo img');
-    if (!heroEl || !img) return;
-    var show = function () { heroEl.classList.add('is-ready'); };
-    if (img.complete && img.naturalWidth) show();
-    else img.addEventListener('load', show);
-    img.addEventListener('error', show);
-    setTimeout(show, 3000);
+    var heroEl = $('.hero'), imgs = $$('.hero-art img');
+    if (!heroEl || !imgs.length) return;
+    var done = false;
+    var show = function () { if (!done) { done = true; heroEl.classList.add('is-ready'); } };
+    var ready = imgs.map(function (img) {
+      return new Promise(function (resolve) {
+        var settle = function () { if (img.decode) img.decode().then(resolve, resolve); else resolve(); };
+        if (img.complete) settle();
+        else { img.addEventListener('load', settle, { once: true }); img.addEventListener('error', resolve, { once: true }); }
+      });
+    });
+    Promise.all(ready).then(show);
+    setTimeout(show, 3500);
   })();
+
+  /* ---------- Home hero: the living sky ----------
+     One canvas over the painting: stars that twinkle (fewer over the mist,
+     where the words are), motes of gold and turquoise light rising from the
+     meditating figure in a slow widening spiral, and now and then a shooting
+     star. Pre-rendered glow sprites keep it cheap; it only runs while the hero
+     is on screen and the tab is visible, and never for reduced motion. */
+  (function () {
+    var canvas = $('.hero-sky'), art = $('.hero-art'), yogi = $('.hero-yogi'), heroEl = $('.hero');
+    if (!canvas || !art || reduceMotion || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, finePointer ? 2 : 1.5);
+    var W = 0, H = 0, wide = false, src = { x: 0, y: 0, w: 0 };
+    var stars = [], motes = [], meteor = null, meteorIn = 2.5, spawn = 0;
+    var running = false, visible = true, raf = 0, prev = 0, time = 0;
+    function sprite(rgb) {
+      var s = document.createElement('canvas'); s.width = s.height = 64;
+      var c = s.getContext('2d'), g = c.createRadialGradient(32, 32, 0, 32, 32, 32);
+      g.addColorStop(0, 'rgba(' + rgb + ',1)'); g.addColorStop(0.18, 'rgba(' + rgb + ',.7)');
+      g.addColorStop(0.45, 'rgba(' + rgb + ',.16)'); g.addColorStop(1, 'rgba(' + rgb + ',0)');
+      c.fillStyle = g; c.fillRect(0, 0, 64, 64); return s;
+    }
+    var WHITE = sprite('255,252,244'), GOLD = sprite('255,224,160'), TEAL = sprite('150,244,236'), LILAC = sprite('226,204,255');
+    var pick = function (a) { return a[Math.floor(Math.random() * a.length)]; };
+    var rand = function (a, b) { return a + Math.random() * (b - a); };
+    function measure() {
+      var r = art.getBoundingClientRect();
+      W = r.width; H = r.height;
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      wide = getComputedStyle(art).position === 'absolute';
+      if (yogi) {
+        var y = yogi.getBoundingClientRect();
+        src = { x: y.left - r.left + y.width * 0.5, y: y.top - r.top + y.height * 0.62, w: y.width };
+      }
+      stars = [];
+      var n = Math.round(Math.min(220, W * H / 7000));
+      for (var i = 0; i < n; i++) {
+        var x = Math.random() * W, fade = wide ? Math.min(1, Math.max(0.12, (x / W - 0.3) / 0.3)) : 1;
+        stars.push({ x: x, y: Math.random() * H * 0.82, r: rand(1.4, 4.2), a: rand(0.35, 1) * fade, s: rand(0.5, 2.1), p: rand(0, 6.28),
+          img: Math.random() < 0.72 ? WHITE : pick([GOLD, TEAL, LILAC]) });
+      }
+    }
+    function addMote() {
+      var life = rand(5.5, 10);
+      motes.push({ x0: src.x + rand(-0.42, 0.42) * src.w, y: src.y + rand(-0.1, 0.25) * src.w, vy: rand(12, 30) * (H / 900 + 0.3),
+        amp: rand(6, 22), f: rand(0.35, 0.9), p: rand(0, 6.28), size: rand(4, 11), age: 0, life: life,
+        img: Math.random() < 0.55 ? GOLD : (Math.random() < 0.75 ? TEAL : LILAC) });
+    }
+    function frame(now) {
+      raf = 0;
+      var dt = Math.min(0.05, (now - prev) / 1000 || 0.016); prev = now; time += dt;
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      for (var i = 0; i < stars.length; i++) {
+        var s = stars[i], tw = 0.5 + 0.5 * Math.sin(time * s.s + s.p);
+        ctx.globalAlpha = s.a * (0.25 + 0.75 * tw * tw);
+        var d = s.r * (0.8 + 0.35 * tw);
+        ctx.drawImage(s.img, s.x - d, s.y - d, d * 2, d * 2);
+      }
+      spawn += dt * (wide ? 9 : 6);
+      while (spawn > 1) { spawn -= 1; if (motes.length < 90 && src.w) addMote(); }
+      for (var j = motes.length - 1; j >= 0; j--) {
+        var m = motes[j]; m.age += dt;
+        if (m.age > m.life) { motes.splice(j, 1); continue; }
+        var k = m.age / m.life, spread = 1 + k * 2.2;
+        var x = m.x0 + Math.sin(m.age * m.f * 2.4 + m.p) * m.amp * spread, y = m.y - m.vy * m.age;
+        ctx.globalAlpha = Math.sin(Math.PI * k) * 0.85;
+        var z = m.size * (1 - k * 0.45);
+        ctx.drawImage(m.img, x - z, y - z, z * 2, z * 2);
+      }
+      meteorIn -= dt;
+      if (!meteor && meteorIn <= 0) {
+        var ang = rand(2.55, 2.8);
+        meteor = { x: rand(wide ? 0.62 : 0.4, 1.02) * W, y: rand(0, 0.32) * H, vx: Math.cos(ang), vy: Math.sin(ang), v: rand(700, 1000) * (W / 1440 + 0.35), len: rand(90, 170), t: 0, life: rand(0.7, 1.05) };
+        meteorIn = rand(5, 11);
+      }
+      if (meteor) {
+        meteor.t += dt;
+        var q = meteor.t / meteor.life;
+        if (q >= 1) meteor = null;
+        else {
+          var hx = meteor.x + meteor.vx * meteor.v * meteor.t, hy = meteor.y + meteor.vy * meteor.v * meteor.t;
+          var tx = hx - meteor.vx * meteor.len, ty = hy - meteor.vy * meteor.len;
+          var fade = Math.sin(Math.PI * q), g = ctx.createLinearGradient(hx, hy, tx, ty);
+          g.addColorStop(0, 'rgba(255,248,230,' + (0.9 * fade) + ')'); g.addColorStop(1, 'rgba(255,248,230,0)');
+          ctx.globalAlpha = 1; ctx.strokeStyle = g; ctx.lineWidth = 1.3; ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(hx, hy); ctx.lineTo(tx, ty); ctx.stroke();
+          ctx.globalAlpha = fade; ctx.drawImage(WHITE, hx - 6, hy - 6, 12, 12);
+        }
+      }
+      ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+      if (running) raf = requestAnimationFrame(frame);
+    }
+    function start() { if (running || !visible || document.hidden) return; running = true; prev = performance.now(); raf = requestAnimationFrame(frame); }
+    function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
+    measure();
+    var resizeTimer;
+    window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(measure, 150); });
+    // The figure's box is only final once its image has loaded
+    if (yogi && !yogi.complete) yogi.addEventListener('load', measure, { once: true });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; if (visible) start(); else stop(); }).observe(heroEl);
+    }
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+    start();
+  })();
+
+  /* ---------- Hero buttons: rolling label, fill from the pointer, press ripple ----------
+     The label is split into letters here. Each letter is drawn twice by CSS
+     (::before and ::after from data-c), so the page text still holds the label
+     once, for screen readers and search engines alike. */
+  $$('.cta').forEach(function (btn) {
+    var label = $('.cta-label[data-roll]', btn);
+    if (label && !reduceMotion) {
+      var text = label.textContent.trim(), roll = document.createElement('span');
+      roll.className = 'cta-roll'; roll.setAttribute('aria-hidden', 'true');
+      text.split('').forEach(function (ch, i) {
+        var c = document.createElement('span');
+        c.className = 'cta-char'; c.setAttribute('data-c', ch); c.style.setProperty('--i', i);
+        roll.appendChild(c);
+      });
+      label.textContent = '';
+      var sr = document.createElement('span'); sr.className = 'sr-only'; sr.textContent = text;
+      label.appendChild(sr); label.appendChild(roll);
+    }
+    var origin = function (e) {
+      var r = btn.getBoundingClientRect();
+      btn.style.setProperty('--x', (e.clientX - r.left) + 'px');
+      btn.style.setProperty('--y', (e.clientY - r.top) + 'px');
+    };
+    btn.addEventListener('pointerenter', origin);
+    btn.addEventListener('pointerleave', origin);
+    btn.addEventListener('pointerdown', function (e) {
+      if (reduceMotion) return;
+      var r = btn.getBoundingClientRect(), dot = document.createElement('span');
+      dot.className = 'cta-ripple'; dot.setAttribute('aria-hidden', 'true');
+      dot.style.left = (e.clientX - r.left) + 'px'; dot.style.top = (e.clientY - r.top) + 'px';
+      btn.appendChild(dot);
+      dot.addEventListener('animationend', function () { dot.remove(); });
+    });
+  });
   /* ---------- Home: service list swaps the preview photo ---------- */
   (function () {
     var preview = $('.svc-preview');
