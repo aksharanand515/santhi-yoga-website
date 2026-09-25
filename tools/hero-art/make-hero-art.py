@@ -1,47 +1,55 @@
 #!/usr/bin/env python3
-"""Santhi Yoga India: build the layered home-hero painting.
+"""Santhi Yoga India: build the home hero's photograph and its motion map.
 
-Turns tools/hero-art/source.webp (1376x768 illustration) into the files the home
-hero uses in assets/img:
+Turns tools/hero-art/source.webp (a 1672x941 mock-up of a Kerala pavilion at
+sunset, with placeholder writing on it) into the files the home hero uses in
+assets/img:
 
-  hero-cosmos-{960,1376,1920,2752}.webp        clean plate (sky, planet, platform, figure)
-  hero-cosmos-yogi-{300,600}.webp              the meditating figure, with alpha
-  hero-cosmos-isle-left-*.webp / isle-right-*  the two floating islands, with alpha
+  hero-pavilion-{960,1440,1920,2560}.webp   the photograph, writing removed
+  hero-pavilion-maps.webp                   depth (red), sea (green), sway (blue)
 
 Steps
-  1. Clean   the dark dust trail out of the pastel sky on the left, where the words sit.
-  2. Upscale 4x with Real-ESRGAN (x4plus anime 6B), run through onnxruntime so no
-             PyTorch is needed, then settle at 2752px wide (2x) for sharp retina edges.
-  3. Cut     the figure and the islands out with rembg (isnet-general-use), before
-             grading, while the edges still have their full contrast.
-  4. Grade   slightly less saturation, highlights leaning to kasavu gold, and a
-             luminous morning mist rising from the left edge.
-  5. Plate   the islands are removed from the plate and the sky is filled in beneath
-             them, so they can drift and parallax without leaving a ghost behind.
+  1. Clean    paint out the mock-up's navigation, headline, subline, link, side
+              words and scroll icon. Each masked row is filled between its nearest
+              clean pixels: the sky's gradient runs top to bottom and the floor's
+              grain side to side, so rows carry both, then the grain is put back.
+  2. Upscale  4x with Real-ESRGAN (x4plus), run through onnxruntime so no PyTorch
+              is needed, blended with a little of the plain resize so the photo
+              keeps its grain, and settled at 2560 px wide.
+  3. Depth    Depth Anything V2 (small) on the whole frame and on two overlapping
+              squares, fitted together, so near and far are known everywhere.
+  4. Masks    the sea between the palms (for ripples and glints), and what may
+              sway: the sheer curtains, the near leaves (not the pillars behind
+              them) and, gently, the palms beyond. Packed with depth into one
+              lossless WebP that the WebGL shader in assets/js/site.js reads.
 
-It prints each layer's box as a percentage of the picture (the left/top/width in
-the .hero-yogi / .hero-isle rules in assets/css/site.css) and the tiny blurred
-placeholder used as the stage background. Paste those in if the layers move.
+It prints the sun's position (the data-sun attribute on .hero-gl in index.html)
+and the tiny blurred placeholder used as the stage background in site.css.
 
-Needs:  pip install pillow numpy scipy onnx onnxruntime "rembg[cpu]"
+Needs:  pip install pillow numpy scipy onnx onnxruntime
 Run:    python3 tools/hero-art/make-hero-art.py [--out assets/img]
-The first run downloads the Real-ESRGAN weights (18 MB, from GitHub) next to this
-script and the isnet model (180 MB) into ~/.u2net. Neither is committed.
+The first run downloads the Real-ESRGAN weights (64 MB) and the depth model
+(99 MB), both from GitHub, next to this script. Neither is committed.
 """
-import argparse, base64, collections, io, json, os, pickle, urllib.request, zipfile
+import argparse, base64, collections, io, os, pickle, urllib.request, zipfile
 import numpy as np
-import onnx
 import onnxruntime as ort
 from onnx import TensorProto, helper, numpy_helper
 from PIL import Image
 from scipy import ndimage as ndi
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ESRGAN_URL = 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.2.4/RealESRGAN_x4plus_anime_6B.pth'
-Image.MAX_IMAGE_PIXELS = None
+ESRGAN = ('RealESRGAN_x4plus.pth', 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth')
+DEPTH = ('depth_anything_v2_vits.onnx', 'https://github.com/fabio-sim/Depth-Anything-ONNX/releases/download/v2.0.0/depth_anything_v2_vits.onnx')
 LUMA = np.array([.2126, .7152, .0722], np.float32)
-# Where each layer sits, in pixels of the 2752x1536 master (a loose box around it for rembg)
-LAYERS = {'yogi': (1600, 560, 2440, 1300), 'isle-left': (1080, 600, 1520, 1200), 'isle-right': (2440, 380, 2752, 880)}
+Image.MAX_IMAGE_PIXELS = None
+
+
+def fetch(name, url):
+    path = os.path.join(HERE, name)
+    if not os.path.exists(path):
+        print('downloading', name); urllib.request.urlretrieve(url, path)
+    return path
 
 
 def smooth(a, b, t):
@@ -49,30 +57,29 @@ def smooth(a, b, t):
     return t * t * (3 - 2 * t)
 
 
-def normalized_fill(img, keep, sigmas):
-    """Fill the pixels where keep == 0 from their surroundings, finest scale first."""
-    fill = np.zeros_like(img); wsum = np.zeros(img.shape[:2] + (1,), np.float32)
-    for sigma in sigmas:
-        num = np.stack([ndi.gaussian_filter(img[..., c] * keep, sigma) for c in range(3)], -1)
-        den = ndi.gaussian_filter(keep, sigma)[..., None]
-        w = np.clip(den * 4, 0, 1) * (1 - wsum)
-        fill += num / np.maximum(den, 1e-5) * w; wsum += w
-    return fill / np.maximum(wsum, 1e-5)
-
-
 def clean(im):
-    """1. The dust trail: specks darker than the smooth sky around them."""
+    """1. The mock-up's writing, found as whatever differs from the sky behind it."""
     a = np.asarray(im).astype(np.float32)
     H, W, _ = a.shape
     L = a @ LUMA
-    dark = (ndi.median_filter(L, size=17) - L) > 5
+    bg = ndi.median_filter(L, size=25)
     yy, xx = np.mgrid[0:H, 0:W]
-    zone = (xx < 575) & (yy > 150) & (yy < 600) & ~((xx > 470) & (yy < 265))  # clear of island and planet ring
-    mask = ndi.binary_dilation(dark & zone, iterations=2)
-    fill = normalized_fill(a, (~mask).astype(np.float32), (4, 12))
-    fill += np.random.default_rng(7).normal(0, .6, fill.shape).astype(np.float32)
-    m = ndi.gaussian_filter(mask.astype(np.float32), .8)[..., None]
-    return Image.fromarray(np.clip(a * (1 - m) + fill * m, 0, 255).astype(np.uint8))
+    mask = np.zeros((H, W), bool)
+    for x0, y0, x1, y1 in [(250, 20, 1180, 82), (290, 186, 785, 334), (290, 352, 695, 408), (290, 442, 518, 488), (1298, 220, 1412, 314)]:
+        mask |= (xx >= x0) & (xx < x1) & (yy >= y0) & (yy < y1) & (np.abs(L - bg) > 5)
+    mask = ndi.binary_dilation(mask, iterations=3)
+    mask |= (xx >= 1272) & (xx <= 1424) & (yy >= 27) & (yy <= 78)   # the button, taken out whole
+    mask |= (xx >= 820) & (xx <= 854) & (yy >= 834) & (yy <= 904)   # the scroll icon on the floor
+    out = a.copy()
+    for y in np.nonzero(mask.any(1))[0]:
+        good, bad = np.nonzero(~mask[y])[0], np.nonzero(mask[y])[0]
+        for c in range(3): out[y, bad, c] = np.interp(bad, good, a[y, good, c])
+    soft = np.stack([ndi.gaussian_filter1d(out[..., c], 2.2, axis=0) for c in range(3)], -1)
+    m = ndi.gaussian_filter(mask.astype(np.float32), 1.2)[..., None]
+    out = out * (1 - m) + soft * m
+    grain = float(np.std((L - ndi.gaussian_filter(L, 2))[100:180, 300:700]))
+    out += np.random.default_rng(11).normal(0, grain, (H, W, 1)).astype(np.float32) * m
+    return Image.fromarray(np.clip(out, 0, 255).astype(np.uint8))
 
 
 def load_torch_zip(path):
@@ -104,10 +111,7 @@ def load_torch_zip(path):
 
 def esrgan_session():
     """Real-ESRGAN's RRDBNet, rebuilt as an ONNX graph from the published weights."""
-    pth = os.path.join(HERE, 'RealESRGAN_x4plus_anime_6B.pth')
-    if not os.path.exists(pth):
-        print('downloading Real-ESRGAN weights'); urllib.request.urlretrieve(ESRGAN_URL, pth)
-    W = load_torch_zip(pth)
+    W = load_torch_zip(fetch(*ESRGAN))
     nodes, inits, n = [], [], [0]
 
     def t():
@@ -124,6 +128,7 @@ def esrgan_session():
         return op('Conv', [x, f'{p}.weight', f'{p}.bias'], pads=[1, 1, 1, 1])
 
     lrelu = lambda x: op('LeakyRelu', [x], alpha=0.2)
+
     def rdb(x, p):
         feats = [x]
         for i in range(1, 5): feats.append(lrelu(conv(op('Concat', feats, axis=1) if len(feats) > 1 else x, f'{p}.conv{i}')))
@@ -144,8 +149,8 @@ def esrgan_session():
     return ort.InferenceSession(model.SerializeToString(), providers=['CPUExecutionProvider'])
 
 
-def upscale(im, tile=192, pad=16):
-    """2. 4x in overlapping tiles, then down to 2x."""
+def upscale(im, width, tile=192, pad=16):
+    """2. 4x in overlapping tiles, then down to the final width with a little of the plain resize."""
     sess = esrgan_session()
     a = np.asarray(im).astype(np.float32) / 255
     H, W, _ = a.shape
@@ -157,77 +162,73 @@ def upscale(im, tile=192, pad=16):
             th, tw = min(tile, H - y), min(tile, W - x)
             out[y * 4:(y + th) * 4, x * 4:(x + tw) * 4] = r[(y - y0) * 4:(y - y0 + th) * 4, (x - x0) * 4:(x - x0 + tw) * 4]
         print(f'  upscaled rows to {min(H, y + tile)}/{H}')
-    big = Image.fromarray((np.clip(out, 0, 1) * 255 + .5).astype(np.uint8))
-    return big.resize((W * 2, H * 2), Image.LANCZOS)
+    size = (width, round(width * H / W))
+    sharp = np.asarray(Image.fromarray((np.clip(out, 0, 1) * 255 + .5).astype(np.uint8)).resize(size, Image.LANCZOS)).astype(np.float32)
+    plain = np.asarray(im.resize(size, Image.LANCZOS)).astype(np.float32)
+    return Image.fromarray(np.clip(sharp * .82 + plain * .18, 0, 255).astype(np.uint8))
 
 
-def grade(im):
-    """4. Colour and the mist on the left."""
-    img = np.asarray(im).astype(np.float32) / 255
-    H, W, _ = img.shape
+def depth(im):
+    """3. Near is 1, far is 0."""
+    sess = ort.InferenceSession(fetch(*DEPTH), providers=['CPUExecutionProvider'])
+    name = sess.get_inputs()[0].name
+    mean, std = np.array([.485, .456, .406], np.float32), np.array([.229, .224, .225], np.float32)
+    W, H = im.size
+
+    def run(img, size):
+        a = (np.asarray(img.resize((518, 518), Image.BICUBIC)).astype(np.float32) / 255 - mean) / std
+        d = sess.run(None, {name: a.transpose(2, 0, 1)[None]})[0][0]
+        return np.asarray(Image.fromarray(d).resize(size, Image.BICUBIC))
+
+    norm = lambda d: (d - np.percentile(d, 1)) / (np.percentile(d, 99.5) - np.percentile(d, 1))
+    full = norm(run(im, (W, H)))
+    out, wsum = full * .35, np.full_like(full, .35)
+    for x0 in (0, W - H):
+        sq = norm(run(im.crop((x0, 0, x0 + H, H)), (H, H)))
+        k = np.linalg.lstsq(np.stack([sq.ravel(), np.ones(sq.size)], 1), full[:, x0:x0 + H].ravel(), rcond=None)[0]
+        w = np.minimum(1, np.minimum(np.arange(H), H - 1 - np.arange(H)) / 120 + .05)
+        out[:, x0:x0 + H] += (sq * k[0] + k[1]) * w; wsum[:, x0:x0 + H] += w
+    return np.clip(out / wsum, 0, 1)
+
+
+def maps(im, d):
+    """4. Depth, the sea and what may sway, in one picture; also where the sun is."""
+    a = np.asarray(im).astype(np.float32)
+    H, W, _ = a.shape
+    L = a @ LUMA
     v, u = [g.astype(np.float32) for g in np.mgrid[0:H, 0:W]]
     u, v = u / W, v / H
-    lum = (img @ LUMA)[..., None]
-    img = lum + (img - lum) * .9
-    img = img * (1 + (np.array([1.035, 1, .955], np.float32) - 1) * smooth(.45, 1, lum))
-    top, mid, bot = [np.array(c, np.float32) / 255 for c in ((242, 238, 244), (249, 241, 234), (250, 246, 238))]
-    tv = v[..., None]
-    mist = np.where(tv < .5, top + (mid - top) * (tv / .5), mid + (bot - mid) * ((tv - .5) / .5))
-    a = (.68 * (1 - smooth(.03, .52, u)))[..., None]
-    return np.clip(img * (1 - a) + mist * a, 0, 1)
+    far = d < .1
+    Lb = ndi.gaussian_filter(L, 6); Lb[v > .56] = 0
+    sy, sx = np.unravel_index(np.argmax(Lb), Lb.shape)
+    sea = ndi.binary_opening(far & (v > .615) & (v < .81) & (u > .1) & (u < .91) & (L > 150), iterations=1)
+    water = ndi.gaussian_filter(sea.astype(np.float32), 1.5) * smooth(.61, .64, v) * (1 - smooth(.785, .81, v))
+    pillar = ((u > .058) & (u < .119)) | ((u > .905) & (u < .958))
+    curtains = ((u < .058) & (v < .56)) | ((u > .945) & (v < .74))
+    leaves = (L < 120) & (d > .18) & ~pillar & (((u < .16) & (v > .13) & (v < .72)) | ((u > .87) & (v > .36) & (v < .7)))
+    palms = (L < 150) & far & (v > .42) & (v < .83) & (u > .1) & (u < .91)
+    sway = ndi.gaussian_filter(ndi.grey_dilation(np.maximum.reduce([curtains * 1., leaves * .75, palms * .3]), size=5), 2.5)
+    dep = np.where(d < .12, d + .09 * smooth(.45, .84, v) * (1 - d / .12), d)
+    dep = ndi.gaussian_filter(dep, 1.2)
+    pack = np.dstack([dep, np.clip(water, 0, 1), np.clip(sway, 0, 1)])
+    return Image.fromarray((pack * 255 + .5).astype(np.uint8)).resize((1024, 576), Image.LANCZOS), (sx / W, sy / H)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', default=os.path.join(HERE, '..', '..', 'assets', 'img'))
     args = ap.parse_args()
-    from rembg import new_session, remove
-
-    print('1. cleaning the sky'); src = clean(Image.open(os.path.join(HERE, 'source.webp')).convert('RGB'))
-    print('2. upscaling'); master = upscale(src)
-    print('3. cutting layers')
-    seg = new_session('isnet-general-use')
-    H, W = master.height, master.width
-    alpha = {}
-    for name, (x0, y0, x1, y1) in LAYERS.items():
-        m = np.asarray(remove(master.crop((x0, y0, x1, y1)), session=seg, only_mask=True)).astype(np.float32) / 255
-        full = np.zeros((H, W), np.float32); full[y0:y1, x0:x1] = np.where(m < .03, 0, m)
-        alpha[name] = full
-    print('4. grading'); img = grade(master)
-
-    print('5. plate')
-    hole = np.zeros((H, W), bool)
-    for name in ('isle-left', 'isle-right'): hole |= ndi.binary_dilation(alpha[name] > .02, iterations=5)
-    fill = normalized_fill(img, (~hole).astype(np.float32), (10, 24, 60))
-    rng = np.random.default_rng(3)
-    fill += rng.normal(0, .004, fill.shape).astype(np.float32)
-    ys, xs = np.nonzero(hole)
-    for _ in range(90):  # a few faint stars, so the patched sky is not suspiciously empty
-        i = rng.integers(len(ys)); cy, cx = ys[i], xs[i]; r = rng.uniform(.8, 2.2)
-        sl = np.s_[max(0, cy - 5):min(H, cy + 6), max(0, cx - 5):min(W, cx + 6)]
-        gy, gx = np.mgrid[sl]
-        g = np.exp(-((gy - cy) ** 2 + (gx - cx) ** 2) / (2 * r * r))[..., None]
-        fill[sl] += (1 - fill[sl]) * g * rng.uniform(.25, .7)
-    ha = ndi.gaussian_filter(hole.astype(np.float32), 3)[..., None]
-    plate = np.clip(img * (1 - ha) + fill * ha, 0, 1)
-
-    to8 = lambda x: (np.clip(x, 0, 1) * 255 + .5).astype(np.uint8)
     os.makedirs(args.out, exist_ok=True)
-    save = lambda im, name, q, **kw: im.save(os.path.join(args.out, name + '.webp'), 'WEBP', quality=q, method=6, **kw)
-    plate_im = Image.fromarray(to8(plate))
-    for w in (960, 1376, 1920, 2752):
-        save(plate_im if w == W else plate_im.resize((w, round(H * w / W)), Image.LANCZOS), f'hero-cosmos-{w}', 80 if w < W else 76)
-    layout = {}
-    for name, al in alpha.items():
-        ys, xs = np.nonzero(al > .01)
-        x0, x1, y0, y1 = max(0, xs.min() - 6), min(W, xs.max() + 7), max(0, ys.min() - 6), min(H, ys.max() + 7)
-        layer = Image.fromarray(np.dstack([to8(img[y0:y1, x0:x1]), to8(al[y0:y1, x0:x1])]), 'RGBA')
-        for f in (1, .5):
-            im = layer if f == 1 else layer.resize((round(layer.width * f), round(layer.height * f)), Image.LANCZOS)
-            save(im, f'hero-cosmos-{name}-{im.width}', 84, exact=True)
-        layout[name] = {'left': f'{x0 / W * 100:.3f}%', 'top': f'{y0 / H * 100:.3f}%', 'width': f'{(x1 - x0) / W * 100:.3f}%', 'px': f'{x1 - x0}x{y1 - y0}'}
-    buf = io.BytesIO(); Image.fromarray(to8(img)).resize((32, 18), Image.LANCZOS).save(buf, 'WEBP', quality=60)
-    print(json.dumps(layout, indent=1))
+    print('1. removing the mock-up writing'); src = clean(Image.open(os.path.join(HERE, 'source.webp')).convert('RGB'))
+    print('2. upscaling'); photo = upscale(src, 2560)
+    for w, q in ((960, 80), (1440, 78), (1920, 76), (2560, 72)):
+        im = photo if w == photo.width else photo.resize((w, round(photo.height * w / photo.width)), Image.LANCZOS)
+        im.save(os.path.join(args.out, f'hero-pavilion-{w}.webp'), 'WEBP', quality=q, method=6)
+    print('3. depth'); d = depth(src)
+    print('4. masks'); packed, sun = maps(src, d)
+    packed.save(os.path.join(args.out, 'hero-pavilion-maps.webp'), 'WEBP', lossless=True, method=6)
+    buf = io.BytesIO(); photo.resize((32, 18), Image.LANCZOS).save(buf, 'WEBP', quality=60)
+    print(f'sun: data-sun="{sun[0]:.3f} {sun[1]:.3f}"')
     print('placeholder: data:image/webp;base64,' + base64.b64encode(buf.getvalue()).decode())
 
 

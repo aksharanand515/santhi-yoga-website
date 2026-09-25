@@ -26,7 +26,8 @@ const write = (p, s) => fs.writeFileSync(path.join(ROOT, p), s);
 const GA_ID = 'G-B04M93CEGM';
 
 const pages = [
-  { file: 'index.html',                  base: '',    key: 'home',     cta: true },
+  // The home page ends on the booking letter instead of the call-to-action band
+  { file: 'index.html',                  base: '',    key: 'home',     cta: false },
   { file: 'about/index.html',            base: '../', key: 'about',    cta: true },
   { file: 'services/index.html',         base: '../', key: 'services', cta: true },
   { file: 'teacher-training/index.html', base: '../', key: 'ttc',      cta: true },
@@ -123,7 +124,7 @@ function sprite(ids) {
 }
 
 /* ---------- Partials ---------- */
-const partials = { consent: read('partials/consent.html'), head: read('partials/head.html'), header: read('partials/header.html'), footer: read('partials/footer.html') };
+const partials = { consent: read('partials/consent.html'), head: read('partials/head.html'), header: read('partials/header.html'), footer: read('partials/footer.html'), booking: read('partials/booking.html') };
 const analytics = GA_ID ? `
   <!-- Google Analytics 4, loaded after the page has finished loading -->
   <script>
@@ -221,6 +222,8 @@ for (const page of pages) {
   html = stamp(html, 'head', render(partials.head, page), page.file);
   html = stamp(html, 'header', render(partials.header, page), page.file);
   html = stamp(html, 'footer', render(partials.footer, page), page.file);
+  // Only the pages that carry the booking letter have its markers
+  if (html.includes('<!-- build:booking -->')) html = stamp(html, 'booking', render(partials.booking, page), page.file);
   html = splitHeadings(html);
   html = responsiveImages(html, page.file, warn);
   // Inline only the icons this page uses

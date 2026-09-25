@@ -62,3 +62,4 @@ node_modules/
 
 # Model weights the hero-art script downloads on first run
 /tools/hero-art/*.pth
+/tools/hero-art/*.onnx

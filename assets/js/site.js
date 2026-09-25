@@ -113,39 +113,14 @@
     window.addEventListener('pagehide', function () { if (lenis) lenis.destroy(); });
   }
 
-  // Home hero: the intro plays in CSS. GSAP adds depth once it has loaded: the
-  // painting's layers part as the hero scrolls away and lean towards the pointer,
-  // the islands (nearer to us) more than the sky behind them.
+  // Home hero: the words lift away as the page scrolls. The picture's own depth
+  // and motion live in WebGL (below), so GSAP never touches the stage.
   function initHomeHero() {
-    var heroEl = $('.hero'), stage = $('.hero-stage');
-    if (!heroEl || !stage) return;
+    var heroEl = $('.hero');
+    if (!heroEl || !$('.hero-stage')) return;
     var st = function (end) { return { trigger: heroEl, start: 'top top', end: end || 'bottom top', scrub: true }; };
-    // The stage itself is placed with CSS translate/scale, which GSAP would fold into its own
-    // transform, so only the layers inside it move: the sky sinks, the nearer islands rise
-    $$('.hero-depth[data-depth]', stage).forEach(function (layer) {
-      var d = parseFloat(layer.dataset.depth);
-      gsap.to(layer, { yPercent: 8 - (d - 1) * 9, ease: 'none', scrollTrigger: st() });
-    });
-    gsap.to('.hero-inner', { y: -70, autoAlpha: 0, ease: 'none', scrollTrigger: st('bottom 30%') });
-    gsap.fromTo('.hero-breath, .hero-ttc', { autoAlpha: 1 }, { autoAlpha: 0, ease: 'none', immediateRender: false, scrollTrigger: st('+=260') });
-
-    if (!finePointer) return;
-    var layers = $$('.hero-art [data-depth]').map(function (el) {
-      return { d: parseFloat(el.dataset.depth), x: gsap.quickTo(el, 'x', { duration: 1.8, ease: 'power3.out' }), y: gsap.quickTo(el, 'y', { duration: 1.8, ease: 'power3.out' }) };
-    });
-    var ticking = false, last = null;
-    var lean = function (px, py) { layers.forEach(function (l) { l.x(px * -9 * l.d); l.y(py * -7 * l.d); }); };
-    window.addEventListener('pointermove', function (e) {
-      last = e; if (ticking) return; ticking = true;
-      requestAnimationFrame(function () {
-        ticking = false;
-        if (window.scrollY > heroEl.offsetHeight) return;
-        lean(last.clientX / window.innerWidth - 0.5, last.clientY / window.innerHeight - 0.5);
-      });
-    }, { passive: true });
-    var rest = function () { lean(0, 0); };
-    document.documentElement.addEventListener('pointerleave', rest);
-    window.addEventListener('blur', rest);
+    gsap.to('.hero-inner', { y: -90, autoAlpha: 0, ease: 'none', scrollTrigger: st('bottom 35%') });
+    gsap.fromTo('.hero-foot', { autoAlpha: 1 }, { autoAlpha: 0, ease: 'none', immediateRender: false, scrollTrigger: st('+=260') });
   }
 
   // Hero buttons: a magnetic pull towards the pointer, the label trailing a little further
@@ -216,128 +191,314 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMotion);
   else initMotion();
 
-  /* ---------- Home hero: reveal the painting once every layer has decoded ---------- */
+  /* Resolves once the page has painted and loaded. The hero's canvases wait for
+     it: starting GPU work any earlier can hold back the very first frame. */
+  var settled = Promise.all([
+    new Promise(function (resolve) {
+      var types = window.PerformanceObserver && PerformanceObserver.supportedEntryTypes;
+      if (!types || types.indexOf('paint') < 0 || performance.getEntriesByName('first-contentful-paint').length) return resolve();
+      // the contentful paint, not merely the first one (which can be an empty background)
+      new PerformanceObserver(function (list, obs) {
+        if (list.getEntries().some(function (e) { return e.name === 'first-contentful-paint'; })) { obs.disconnect(); resolve(); }
+      }).observe({ type: 'paint', buffered: true });
+    }),
+    new Promise(function (resolve) { if (document.readyState === 'complete') resolve(); else window.addEventListener('load', resolve, { once: true }); }),
+    document.fonts && document.fonts.ready ? document.fonts.ready : null
+  ]).then(function () {
+    return new Promise(function (resolve) { requestAnimationFrame(function () { requestAnimationFrame(function () { setTimeout(resolve, 150); }); }); });
+  });
+
+  /* ---------- Home hero: the living photograph ----------
+     The <img> is what the visitor sees first, and what stays if WebGL is
+     missing. Once it and its map have decoded, a WebGL canvas takes over,
+     pixel for pixel. The map (tools/hero-art) packs depth into red, the sea
+     into green and whatever may sway into blue, so one small shader can:
+     turn the scene with the pointer (or a slow drift on touch screens) and
+     with scroll, near things moving more than far ones; stir the curtains,
+     leaves and palms; ripple the sea and scatter glints along the sun's path;
+     let the sun's bloom breathe and its rays turn slowly. */
   (function () {
-    var heroEl = $('.hero'), imgs = $$('.hero-art img');
-    if (!heroEl || !imgs.length) return;
-    var done = false;
-    var show = function () { if (!done) { done = true; heroEl.classList.add('is-ready'); } };
-    var ready = imgs.map(function (img) {
-      return new Promise(function (resolve) {
-        var settle = function () { if (img.decode) img.decode().then(resolve, resolve); else resolve(); };
-        if (img.complete) settle();
-        else { img.addEventListener('load', settle, { once: true }); img.addEventListener('error', resolve, { once: true }); }
-      });
-    });
-    Promise.all(ready).then(show);
-    setTimeout(show, 3500);
+    var heroEl = $('.hero'), img = $('.hero-plate'), art = $('.hero-art'), stage = $('.hero-stage'), canvas;
+    if (!heroEl || !img || !art || !art.getAttribute('data-maps') || reduceMotion) return;
+    // Nothing here runs until the page has painted: even creating a WebGL context takes a moment
+    settled.then(glStart);
+    function glStart() {
+    // made here rather than in the HTML: a canvas in the page from the start can hold back its first paint
+    canvas = document.createElement('canvas');
+    canvas.className = 'hero-gl';
+    art.insertBefore(canvas, $('.hero-veil', art));
+    var gl = null;
+    try { gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false }); } catch (e) { gl = null; }
+    if (!gl) return;
+
+    var VS = 'attribute vec2 p;varying vec2 vUv;void main(){vUv=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
+    var FS = [
+      '#ifdef GL_FRAGMENT_PRECISION_HIGH', 'precision highp float;', '#else', 'precision mediump float;', '#endif',
+      'varying vec2 vUv;',
+      'uniform sampler2D uImg, uMap;',
+      'uniform vec4 uStage;',
+      'uniform vec2 uPointer, uSun;',
+      'uniform float uTime, uScroll, uIntro, uFade, uAspect;',
+      'float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
+      'float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);',
+      '  return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),f.x),f.y);}',
+      'void main(){',
+      '  vec2 uv=(vUv-uStage.xy)/uStage.zw;',
+      '  if(uv.x<0.||uv.x>1.||uv.y<0.||uv.y>1.){gl_FragColor=vec4(0.);return;}',
+      '  float t=uTime, a=uIntro;',
+      // a slow breath of a push-in, and a deeper one as the page scrolls
+      '  vec2 focus=vec2(.5,.46);',
+      '  float zoom=1.+.014*(.5-.5*cos(t*.13))*a+uScroll*.06;',
+      '  vec2 p=focus+(uv-focus)/zoom;',
+      // depth parallax; a few fixed-point steps let near things cover far ones
+      '  vec2 dir=uPointer*vec2(.010,.007)*a-vec2(0.,uScroll*.03);',
+      '  vec2 q=p;',
+      '  for(int i=0;i<3;i++){q=p+dir*(texture2D(uMap,q).r-.45);}',
+      '  vec3 m=texture2D(uMap,q).rgb;',
+      '  float depth=m.r, water=m.g, sway=m.b, yT=1.-q.y;',
+      '  vec2 off=vec2(0.);',
+      '  if(sway>.004){',
+      '    float n=noise(q*vec2(3.,5.)+vec2(t*.15,0.));',
+      '    float curtain=step(q.x,.06)+step(.94,q.x);',
+      '    float amp=curtain>0.?.0055*smoothstep(0.,.6,yT):(depth<.2?.0024*(1.-smoothstep(.42,.8,yT)):.0026);',
+      '    off.x+=sway*amp*(sin(t*.85+yT*6.+n*4.)+.35*sin(t*1.9+q.x*30.));',
+      '    off.y+=sway*amp*.25*sin(t*.7+q.x*12.+n*3.);',
+      '  }',
+      '  if(water>.004){',
+      '    float w1=sin(yT*520.+t*1.4+sin(q.x*38.+t*.5)*2.4), w2=sin(yT*190.-t*.8+q.x*14.);',
+      '    off+=water*vec2(w1*.0007+w2*.0005,.00025*sin(q.x*160.+t*1.1));',
+      '  }',
+      '  float sky=(1.-smoothstep(.02,.07,depth))*(1.-smoothstep(.55,.6,yT));',
+      '  off+=sky*vec2(noise(q*2.5+vec2(t*.025,0.))-.5,(noise(q*3.+7.+t*.02)-.5)*.4)*.006;',
+      '  vec3 col=texture2D(uImg,q+off*a).rgb;',
+      // the sun: a bloom that breathes, rays that turn slowly
+      '  vec2 sd=(q-uSun)*vec2(uAspect,1.);',
+      '  float r=length(sd), far=1.-smoothstep(.1,.45,depth);',
+      '  float bloom=exp(-r*7.)*(.1+.045*sin(t*.55))+exp(-r*26.)*.1;',
+      '  float ang=atan(sd.y,sd.x);',
+      '  float rays=noise(vec2(ang*5.+t*.03,t*.05))*noise(vec2(ang*11.-t*.02,3.));',
+      '  rays*=smoothstep(1.1,.05,r)*smoothstep(0.,.07,r);',
+      '  col+=vec3(1.,.8,.55)*(bloom+rays*.09)*a*(.3+.7*far);',
+      // glitter on the water, thickest in the sun's path
+      // short, warm, horizontal flashes, gathered in the sun's path
+      '  vec2 g=q*vec2(290.,470.)+vec2(0.,floor(q.x*290.)*.37);',
+      '  float h=hash(floor(g));',
+      '  float tw=pow(max(0.,sin(t*(1.1+h*2.4)+h*60.)),9.);',
+      '  float path=exp(-pow((q.x-uSun.x)*10.,2.));',
+      '  vec2 fc=(fract(g)-.5)*vec2(1.,2.6);',
+      '  float spark=step(.992-path*.1,h)*tw*water*(.12+path*2.2)*smoothstep(.5,0.,length(fc));',
+      '  col+=vec3(1.,.9,.68)*spark*1.6*a;',
+      '  col=mix(col,col*vec3(1.04,.98,.9),uScroll*.45);',
+      '  float alpha=uFade>0.?1.-smoothstep(1.-uFade,1.,uv.y):1.;',
+      '  gl_FragColor=vec4(col*alpha,alpha);',
+      '}'
+    ].join('\n');
+
+    function shader(type, src) {
+      var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+      return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
+    }
+    var vs = shader(gl.VERTEX_SHADER, VS), fs = shader(gl.FRAGMENT_SHADER, FS);
+    if (!vs || !fs) return;
+    var prog = gl.createProgram();
+    gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+    gl.useProgram(prog);
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(prog, 'p');
+    gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    var U = {};
+    ['uImg', 'uMap', 'uStage', 'uPointer', 'uSun', 'uTime', 'uScroll', 'uIntro', 'uFade', 'uAspect'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
+
+    function texture(unit, source, raw) {
+      var tex = gl.createTexture();
+      gl.activeTexture(gl.TEXTURE0 + unit);
+      gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      // the map holds numbers, not colours: no colour management on the way in
+      gl.pixelStorei(gl.UNPACK_COLORSPACE_CONVERSION_WEBGL, raw ? gl.NONE : gl.BROWSER_DEFAULT_WEBGL);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      return tex;
+    }
+
+    var sun = (art.getAttribute('data-sun') || '.5 .5').split(' ').map(Number);
+    var maps = new Image();
+    maps.src = art.getAttribute('data-maps');
+    var loaded = function (im) {
+      return new Promise(function (resolve, reject) {
+        if (im.complete && im.naturalWidth) resolve();
+        else { im.addEventListener('load', resolve, { once: true }); im.addEventListener('error', reject, { once: true }); }
+      }).then(function () { return im.decode ? im.decode().catch(function () {}) : null; });
+    };
+
+    var stageRect = [0, 0, 1, 1], fade = 0, heroH = 1, t0 = 0, last = 0, intro = 0;
+    var px = 0, py = 0, tx = 0, ty = 0, running = false, visible = true, raf = 0, live = false;
+    function measure() {
+      var r = art.getBoundingClientRect(), s = img.getBoundingClientRect();
+      var dpr = Math.min(window.devicePixelRatio || 1, finePointer ? 1.75 : 1.5);
+      var scale = Math.min(dpr, Math.sqrt(2.8e6 / Math.max(1, r.width * r.height)));
+      canvas.width = Math.max(1, Math.round(r.width * scale));
+      canvas.height = Math.max(1, Math.round(r.height * scale));
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      stageRect = [(s.left - r.left) / r.width, 1 - (s.bottom - r.top) / r.height, s.width / r.width, s.height / r.height];
+      fade = parseFloat(getComputedStyle(stage).getPropertyValue('--fade')) || 0;
+      heroH = heroEl.offsetHeight || 1;
+    }
+    function frame(now) {
+      raf = 0;
+      if (!t0) { t0 = last = now; }
+      var dt = Math.min(0.05, (now - last) / 1000); last = now;
+      var t = (now - t0) / 1000;
+      intro = Math.min(1, intro + dt / 2.6);
+      var ease = 1 - Math.pow(1 - intro, 3);
+      if (finePointer) { px += (tx - px) * 0.045; py += (ty - py) * 0.045; }
+      else { px = Math.sin(t * 0.21) * 0.5; py = Math.cos(t * 0.17) * 0.32; }
+      var sc = Math.min(1, Math.max(0, (window.scrollY || window.pageYOffset) / heroH));
+      gl.uniform4f(U.uStage, stageRect[0], stageRect[1], stageRect[2], stageRect[3]);
+      gl.uniform2f(U.uPointer, px, py);
+      gl.uniform2f(U.uSun, sun[0], 1 - sun[1]);
+      gl.uniform1f(U.uTime, t);
+      gl.uniform1f(U.uScroll, sc);
+      gl.uniform1f(U.uIntro, ease);
+      gl.uniform1f(U.uFade, fade);
+      gl.uniform1f(U.uAspect, img.naturalWidth / img.naturalHeight || 1.7765);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      if (!live) { live = true; heroEl.classList.add('gl-live'); }
+      if (running) raf = requestAnimationFrame(frame);
+    }
+    function start() { if (running || !visible || document.hidden || !ready) return; running = true; raf = requestAnimationFrame(frame); }
+    function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
+    var ready = false;
+
+    Promise.all([loaded(img), loaded(maps)]).then(function () {
+      texture(0, img, false);
+      texture(1, maps, true);
+      gl.uniform1i(U.uImg, 0); gl.uniform1i(U.uMap, 1);
+      measure();
+      ready = true;
+      start();
+      // a sharper file may arrive when the window grows; use it
+      img.addEventListener('load', function () { texture(0, img, false); gl.uniform1i(U.uImg, 0); });
+    }).catch(function () {});
+
+    var resizeTimer;
+    window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(function () { if (ready) measure(); }, 120); });
+    if (finePointer) {
+      window.addEventListener('pointermove', function (e) {
+        tx = (e.clientX / window.innerWidth - 0.5) * 2;
+        ty = -(e.clientY / window.innerHeight - 0.5) * 2;
+      }, { passive: true });
+      document.documentElement.addEventListener('pointerleave', function () { tx = ty = 0; });
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; if (visible) start(); else stop(); }).observe(heroEl);
+    }
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+    canvas.addEventListener('webglcontextlost', function (e) { e.preventDefault(); stop(); ready = false; heroEl.classList.remove('gl-live'); });
+    }
   })();
 
-  /* ---------- Home hero: the living sky ----------
-     One canvas over the painting: stars that twinkle (fewer over the mist,
-     where the words are), motes of gold and turquoise light rising from the
-     meditating figure in a slow widening spiral, and now and then a shooting
-     star. Pre-rendered glow sprites keep it cheap; it only runs while the hero
-     is on screen and the tab is visible, and never for reduced motion. */
+  /* ---------- Home hero: gold dust in the light ----------
+     Motes drifting up through the evening light, brightest in the sun's
+     beam, a few soft out-of-focus orbs, and now and then a glint. They part
+     around the pointer as dust would around a hand. */
   (function () {
-    var canvas = $('.hero-sky'), art = $('.hero-art'), yogi = $('.hero-yogi'), heroEl = $('.hero');
-    if (!canvas || !art || reduceMotion || !canvas.getContext) return;
-    var ctx = canvas.getContext('2d');
+    var heroEl = $('.hero'), art = $('.hero-art'), img = $('.hero-plate'), canvas;
+    if (!heroEl || !art || !img || reduceMotion) return;
+    var ctx = null, GOLD, WHITE, ORB;
     var dpr = Math.min(window.devicePixelRatio || 1, finePointer ? 2 : 1.5);
-    var W = 0, H = 0, wide = false, src = { x: 0, y: 0, w: 0 };
-    var stars = [], motes = [], meteor = null, meteorIn = 2.5, spawn = 0;
-    var running = false, visible = true, raf = 0, prev = 0, time = 0;
-    function sprite(rgb) {
+    var sun = (art.getAttribute('data-sun') || '.65 .47').split(' ').map(Number);
+    var W = 0, H = 0, sx = 0, sy = 0, reach = 1, motes = [], orbs = [];
+    var mx = -9999, my = -9999, running = false, visible = true, raf = 0, prev = 0, time = 0;
+    function sprite(rgb, soft) {
       var s = document.createElement('canvas'); s.width = s.height = 64;
       var c = s.getContext('2d'), g = c.createRadialGradient(32, 32, 0, 32, 32, 32);
-      g.addColorStop(0, 'rgba(' + rgb + ',1)'); g.addColorStop(0.18, 'rgba(' + rgb + ',.7)');
-      g.addColorStop(0.45, 'rgba(' + rgb + ',.16)'); g.addColorStop(1, 'rgba(' + rgb + ',0)');
+      g.addColorStop(0, 'rgba(' + rgb + ',1)'); g.addColorStop(soft ? 0.45 : 0.2, 'rgba(' + rgb + ',' + (soft ? 0.5 : 0.65) + ')');
+      g.addColorStop(soft ? 0.75 : 0.5, 'rgba(' + rgb + ',' + (soft ? 0.18 : 0.12) + ')'); g.addColorStop(1, 'rgba(' + rgb + ',0)');
       c.fillStyle = g; c.fillRect(0, 0, 64, 64); return s;
     }
-    var WHITE = sprite('255,252,244'), GOLD = sprite('255,224,160'), TEAL = sprite('150,244,236'), LILAC = sprite('226,204,255');
-    var pick = function (a) { return a[Math.floor(Math.random() * a.length)]; };
     var rand = function (a, b) { return a + Math.random() * (b - a); };
+    function mote(anywhere) {
+      // most dust is found where the light is
+      var x, y;
+      if (Math.random() < 0.6) { x = sx + rand(-0.35, 0.35) * W; y = rand(0.08, 0.9) * H; }
+      else { x = rand(0, W); y = rand(0.05, 0.95) * H; }
+      if (!anywhere) y = H * rand(0.92, 1.02);
+      return { x: x, y: y, vx: rand(-3, 9), vy: rand(-12, -3), r: rand(0.8, 2.6), p: rand(0, 6.28), s: rand(0.6, 2.2), glint: Math.random() < 0.18, img: Math.random() < 0.7 ? GOLD : WHITE };
+    }
     function measure() {
-      var r = art.getBoundingClientRect();
+      var r = art.getBoundingClientRect(), s = img.getBoundingClientRect();
       W = r.width; H = r.height;
       canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      wide = getComputedStyle(art).position === 'absolute';
-      if (yogi) {
-        var y = yogi.getBoundingClientRect();
-        src = { x: y.left - r.left + y.width * 0.5, y: y.top - r.top + y.height * 0.62, w: y.width };
-      }
-      stars = [];
-      var n = Math.round(Math.min(220, W * H / 7000));
-      for (var i = 0; i < n; i++) {
-        var x = Math.random() * W, fade = wide ? Math.min(1, Math.max(0.12, (x / W - 0.3) / 0.3)) : 1;
-        stars.push({ x: x, y: Math.random() * H * 0.82, r: rand(1.4, 4.2), a: rand(0.35, 1) * fade, s: rand(0.5, 2.1), p: rand(0, 6.28),
-          img: Math.random() < 0.72 ? WHITE : pick([GOLD, TEAL, LILAC]) });
-      }
-    }
-    function addMote() {
-      var life = rand(5.5, 10);
-      motes.push({ x0: src.x + rand(-0.42, 0.42) * src.w, y: src.y + rand(-0.1, 0.25) * src.w, vy: rand(12, 30) * (H / 900 + 0.3),
-        amp: rand(6, 22), f: rand(0.35, 0.9), p: rand(0, 6.28), size: rand(4, 11), age: 0, life: life,
-        img: Math.random() < 0.55 ? GOLD : (Math.random() < 0.75 ? TEAL : LILAC) });
+      sx = s.left - r.left + sun[0] * s.width; sy = s.top - r.top + sun[1] * s.height;
+      reach = Math.max(W, H) * 0.55;
+      var n = Math.round(Math.min(150, W * H / 9000));
+      motes = []; for (var i = 0; i < n; i++) motes.push(mote(true));
+      orbs = []; for (var j = 0; j < 7; j++) orbs.push({ x: sx + rand(-0.4, 0.4) * W, y: rand(0.15, 0.85) * H, r: rand(10, 26), vx: rand(-3, 3), vy: rand(-4, -1), a: rand(0.05, 0.13), p: rand(0, 6.28) });
     }
     function frame(now) {
       raf = 0;
       var dt = Math.min(0.05, (now - prev) / 1000 || 0.016); prev = now; time += dt;
       ctx.clearRect(0, 0, W, H);
       ctx.globalCompositeOperation = 'lighter';
-      for (var i = 0; i < stars.length; i++) {
-        var s = stars[i], tw = 0.5 + 0.5 * Math.sin(time * s.s + s.p);
-        ctx.globalAlpha = s.a * (0.25 + 0.75 * tw * tw);
-        var d = s.r * (0.8 + 0.35 * tw);
-        ctx.drawImage(s.img, s.x - d, s.y - d, d * 2, d * 2);
+      var i, m;
+      for (i = 0; i < orbs.length; i++) {
+        m = orbs[i];
+        m.x += (m.vx + Math.sin(time * 0.2 + m.p) * 3) * dt; m.y += m.vy * dt;
+        if (m.y < -40) { m.y = H + 40; m.x = sx + rand(-0.4, 0.4) * W; }
+        ctx.globalAlpha = m.a * (0.7 + 0.3 * Math.sin(time * 0.5 + m.p));
+        ctx.drawImage(ORB, m.x - m.r, m.y - m.r, m.r * 2, m.r * 2);
       }
-      spawn += dt * (wide ? 9 : 6);
-      while (spawn > 1) { spawn -= 1; if (motes.length < 90 && src.w) addMote(); }
-      for (var j = motes.length - 1; j >= 0; j--) {
-        var m = motes[j]; m.age += dt;
-        if (m.age > m.life) { motes.splice(j, 1); continue; }
-        var k = m.age / m.life, spread = 1 + k * 2.2;
-        var x = m.x0 + Math.sin(m.age * m.f * 2.4 + m.p) * m.amp * spread, y = m.y - m.vy * m.age;
-        ctx.globalAlpha = Math.sin(Math.PI * k) * 0.85;
-        var z = m.size * (1 - k * 0.45);
-        ctx.drawImage(m.img, x - z, y - z, z * 2, z * 2);
-      }
-      meteorIn -= dt;
-      if (!meteor && meteorIn <= 0) {
-        var ang = rand(2.55, 2.8);
-        meteor = { x: rand(wide ? 0.62 : 0.4, 1.02) * W, y: rand(0, 0.32) * H, vx: Math.cos(ang), vy: Math.sin(ang), v: rand(700, 1000) * (W / 1440 + 0.35), len: rand(90, 170), t: 0, life: rand(0.7, 1.05) };
-        meteorIn = rand(5, 11);
-      }
-      if (meteor) {
-        meteor.t += dt;
-        var q = meteor.t / meteor.life;
-        if (q >= 1) meteor = null;
-        else {
-          var hx = meteor.x + meteor.vx * meteor.v * meteor.t, hy = meteor.y + meteor.vy * meteor.v * meteor.t;
-          var tx = hx - meteor.vx * meteor.len, ty = hy - meteor.vy * meteor.len;
-          var fade = Math.sin(Math.PI * q), g = ctx.createLinearGradient(hx, hy, tx, ty);
-          g.addColorStop(0, 'rgba(255,248,230,' + (0.9 * fade) + ')'); g.addColorStop(1, 'rgba(255,248,230,0)');
-          ctx.globalAlpha = 1; ctx.strokeStyle = g; ctx.lineWidth = 1.3; ctx.lineCap = 'round';
-          ctx.beginPath(); ctx.moveTo(hx, hy); ctx.lineTo(tx, ty); ctx.stroke();
-          ctx.globalAlpha = fade; ctx.drawImage(WHITE, hx - 6, hy - 6, 12, 12);
-        }
+      for (i = 0; i < motes.length; i++) {
+        m = motes[i];
+        var wob = Math.sin(time * 0.6 + m.p) * 6 + Math.sin(time * 1.7 + m.p * 2) * 2.5;
+        var dx = m.x - mx, dy = m.y - my, d2 = dx * dx + dy * dy;
+        if (d2 < 14400) { var d = Math.sqrt(d2) || 1, f = (1 - d / 120) * 60; m.vx += dx / d * f * dt; m.vy += dy / d * f * dt; }
+        m.vx += ((m.vx > 12 ? -1 : 0) + (m.vx < -6 ? 1 : 0)) * dt * 8;
+        m.vy += ((m.vy > -2 ? -1 : 0) + (m.vy < -16 ? 1 : 0)) * dt * 8;
+        m.x += (m.vx + wob * 0.4) * dt; m.y += m.vy * dt;
+        if (m.y < -10 || m.x < -20 || m.x > W + 20) { motes[i] = mote(false); continue; }
+        var ddx = m.x - sx, ddy = m.y - sy, light = 0.3 + 0.7 * Math.exp(-(ddx * ddx + ddy * ddy) / (reach * reach));
+        var tw = 0.55 + 0.45 * Math.sin(time * m.s + m.p);
+        var flash = m.glint ? Math.pow(Math.max(0, Math.sin(time * 0.9 + m.p * 3)), 24) * 1.6 : 0;
+        ctx.globalAlpha = Math.min(1, (0.28 + 0.5 * tw) * light + flash);
+        var z = m.r * (2.6 + flash * 2.2);
+        ctx.drawImage(m.img, m.x - z, m.y - z, z * 2, z * 2);
       }
       ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
       if (running) raf = requestAnimationFrame(frame);
     }
-    function start() { if (running || !visible || document.hidden) return; running = true; prev = performance.now(); raf = requestAnimationFrame(frame); }
+    var booted = false;
+    function start() { if (!booted || running || !visible || document.hidden) return; running = true; prev = performance.now(); raf = requestAnimationFrame(frame); }
     function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
-    measure();
     var resizeTimer;
-    window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(measure, 150); });
-    // The figure's box is only final once its image has loaded
-    if (yogi && !yogi.complete) yogi.addEventListener('load', measure, { once: true });
+    window.addEventListener('resize', function () { if (!booted) return; clearTimeout(resizeTimer); resizeTimer = setTimeout(measure, 150); });
+    if (finePointer) {
+      art.parentNode.addEventListener('pointermove', function (e) { var r = art.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; }, { passive: true });
+      art.parentNode.addEventListener('pointerleave', function () { mx = my = -9999; });
+    }
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; if (visible) start(); else stop(); }).observe(heroEl);
     }
     document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
-    start();
+    settled.then(function () {
+      canvas = document.createElement('canvas');
+      canvas.className = 'hero-dust';
+      art.insertBefore(canvas, $('.hero-veil', art));
+      ctx = canvas.getContext && canvas.getContext('2d');
+      if (!ctx) return;
+      GOLD = sprite('255,222,160'); WHITE = sprite('255,248,232'); ORB = sprite('255,226,178', true);
+      measure(); booted = true;
+      void canvas.offsetWidth; // let the new canvas start transparent, so it fades in
+      heroEl.classList.add('is-ready'); start();
+    });
   })();
 
   /* ---------- Hero buttons: rolling label, fill from the pointer, press ripple ----------
@@ -465,140 +626,168 @@
     });
   })();
 
-  /* ---------- Booking page ----------
-     A calendar for the dates, the 2027 batches when it is the training, and
-     the whole thing written out as a paragraph the visitor can read before
-     it opens in WhatsApp. ---------- */
+  /* ---------- Booking: a letter with blanks ----------
+     The letter is the form and the message at once. The name is typed into
+     its line, the choices open as small cards (arrow keys, Enter and Escape
+     work), the dates as a calendar. Whatever the letter says is what opens
+     in WhatsApp or the email app. Old links such as /book/?for=ttc&month=April
+     still preselect. */
   (function () {
     var form = $('#booking-form');
-    if (!form) return;
+    if (!form || !$('.letter-paper', form)) return;
     var WA = 'https://wa.me/917907714144', EMAIL = 'santhiyogacochin@gmail.com';
-    var preview = $('#wa-text'), waBtn = $('#wa-send'), mailBtn = $('#mail-send'), status = $('#booking-status');
-    var nameField = form.elements.name;
-    var whenField = $('#when-field'), batchField = $('#batch-field'), whenLabel = $('#when-label');
-    var trigger = $('#b-when'), triggerText = $('#b-when-text');
-    var cal = $('#cal'), grid = $('#cal-grid'), calTitle = $('#cal-title');
+    var waBtn = $('#wa-send'), mailBtn = $('#mail-send'), status = $('#booking-status');
+    var nameInput = $('#lb-name'), noteInput = $('#lb-note'), nameBlank = nameInput.closest('.blank'), mirror = $('.blank-mirror', form);
+    var signature = $('[data-signature]', form), askEl = $('[data-ask]', form);
+    var datesClause = $('[data-when="dates"]', form), batchClause = $('[data-when="batch"]', form);
 
-    var offerings = {
-      'walk-in': {
-        want: 'I would like to join your daily walk-in Hatha Yoga classes in Fort Kochi',
-        ask: 'Could you let me know the class times and anything I should bring?',
-        label: 'When are you coming?', subject: 'Walk-in classes'
-      },
-      private: {
-        want: 'I would like to book a private one-to-one yoga session',
-        ask: 'Could you let me know which times are free and what a session costs?',
-        label: 'When would suit you?', subject: 'Private class'
-      },
-      workshop: {
-        want: 'I am interested in your yoga workshops',
-        ask: 'Could you tell me which workshops are coming up?',
-        label: 'When are you in Kochi?', subject: 'Workshop'
-      },
-      retreat: {
-        want: 'I am interested in your yoga retreats in Kerala',
-        ask: 'Could you tell me when the next retreat is and what it includes?',
-        label: 'When are you hoping to come?', subject: 'Retreat'
-      },
-      ttc: {
-        want: 'I am interested in your 28-day 200-hour Yoga Teacher Training in Fort Kochi',
-        ask: 'Could you tell me how to reserve a place and what I should prepare?',
-        label: 'Which 2027 batch?', subject: '200-hour Teacher Training'
-      }
+    var LISTS = {
+      offering: [
+        { v: 'walk-in', text: 'a daily Hatha Yoga class', note: 'Two hours, every day at 7:30 am and 3:30 pm. ₹500 a class.', ask: 'Could you let me know the class times and anything I should bring?', subject: 'Walk-in class' },
+        { v: 'private', text: 'a private one-to-one session', note: 'Shaped around your body, your goals and your pace.', ask: 'Could you let me know which times are free and what a session costs?', subject: 'Private class' },
+        { v: 'workshop', text: 'one of your workshops', note: 'Pranayama, mudras, alignment and traditional practices.', ask: 'Could you tell me which workshops are coming up?', subject: 'Workshop' },
+        { v: 'retreat', text: 'a yoga retreat in Kerala', note: 'Yoga, meditation and Kerala culture over unhurried days.', ask: 'Could you tell me when the next retreat is and what it includes?', subject: 'Retreat' },
+        { v: 'ttc', text: 'the 200-hour Teacher Training', note: '28 days in Fort Kochi, €899 all-inclusive.', ask: 'Could you tell me how to reserve a place and what I should prepare?', subject: '200-hour Teacher Training' }
+      ],
+      batch: [
+        { v: 'January', text: 'January 2027', note: '1–28 January' },
+        { v: 'February', text: 'February 2027', note: '1–28 February' },
+        { v: 'April', text: 'April 2027', note: '1–28 April' },
+        { v: 'June', text: 'June 2027', note: '1–28 June' }
+      ],
+      people: [
+        { v: '1', text: 'one person' }, { v: '2', text: 'two people' }, { v: '3', text: 'three people' }, { v: '4', text: 'four or more people' }
+      ]
     };
-    var levels = {
-      beginner: 'I am a complete beginner',
-      some: 'I have practised a little before',
-      regular: 'I practise regularly',
-      teacher: 'I teach yoga myself'
-    };
-    var groups = { '2': 'There will be two of us', '3': 'There will be three of us', '4': 'There will be four or more of us' };
+    var state = { offering: 'walk-in', batch: 'January', people: '1' };
+    var find = function (key, v) { var l = LISTS[key]; for (var i = 0; i < l.length; i++) if (l[i].v === v) return l[i]; return l[0]; };
 
-    function pickedKey() {
-      var input = form.querySelector('input[name="offering"]:checked');
-      return input && offerings[input.value] ? input.value : 'walk-in';
+    function swapText(el, text) {
+      if (!el || el.textContent === text) return;
+      el.textContent = text;
+      if (reduceMotion) return;
+      el.classList.remove('is-new'); void el.offsetWidth; el.classList.add('is-new');
+    }
+
+    /* ---- popovers: one open at a time ---- */
+    var open = null;
+    function place(pop) {
+      pop.style.setProperty('--nudge', '0px');
+      var r = pop.getBoundingClientRect(), pad = 12, dx = 0;
+      if (r.left < pad) dx = pad - r.left;
+      else if (r.right > window.innerWidth - pad) dx = window.innerWidth - pad - r.right;
+      pop.style.setProperty('--nudge', dx + 'px');
+    }
+    function close(focusBack) {
+      if (!open) return;
+      var o = open; open = null;
+      o.pop.hidden = true; o.btn.setAttribute('aria-expanded', 'false');
+      if (focusBack) o.btn.focus();
+    }
+    function show(btn, pop, focusEl) {
+      if (open && open.pop === pop) { close(true); return; }
+      close(false);
+      pop.hidden = false; btn.setAttribute('aria-expanded', 'true');
+      open = { btn: btn, pop: pop };
+      place(pop);
+      if (focusEl) focusEl.focus({ preventScroll: true });
+    }
+    document.addEventListener('click', function (e) { if (open && !open.pop.contains(e.target) && !open.btn.contains(e.target)) close(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) { e.preventDefault(); close(true); } });
+
+    Object.keys(LISTS).forEach(function (key) {
+      var blank = $('[data-pick="' + key + '"]', form);
+      if (!blank) return;
+      var btn = $('.blank-btn', blank), list = document.createElement('span');
+      list.className = 'pop'; list.setAttribute('role', 'listbox'); list.id = 'pop-' + key; list.hidden = true;
+      list.setAttribute('aria-label', btn.textContent.replace(/:.*/, '').trim() || key);
+      btn.setAttribute('aria-controls', list.id);
+      LISTS[key].forEach(function (item, k) {
+        var opt = document.createElement('span');
+        opt.className = 'pop-option'; opt.setAttribute('role', 'option'); opt.tabIndex = -1; opt.dataset.value = item.v; opt.style.setProperty('--k', k);
+        var b = document.createElement('b'); b.textContent = item.text; opt.appendChild(b);
+        if (item.note) { var sm = document.createElement('small'); sm.textContent = item.note; opt.appendChild(sm); }
+        opt.addEventListener('click', function () { pick(key, item.v); close(true); });
+        list.appendChild(opt);
+      });
+      list.addEventListener('keydown', function (e) {
+        var opts = $$('.pop-option', list), i = opts.indexOf(document.activeElement);
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); opts[(i + (e.key === 'ArrowDown' ? 1 : -1) + opts.length) % opts.length].focus(); }
+        else if (e.key === 'Home' || e.key === 'End') { e.preventDefault(); opts[e.key === 'Home' ? 0 : opts.length - 1].focus(); }
+        else if ((e.key === 'Enter' || e.key === ' ') && i > -1) { e.preventDefault(); pick(key, opts[i].dataset.value); close(true); }
+        else if (e.key === 'Tab') close(false);
+      });
+      blank.appendChild(list);
+      btn.addEventListener('click', function () { show(btn, list, $('[aria-selected="true"]', list) || $('.pop-option', list)); });
+      btn.addEventListener('keydown', function (e) { if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (!open || open.pop !== list) show(btn, list, $('[aria-selected="true"]', list) || $('.pop-option', list)); } });
+      mark(key);
+    });
+    function mark(key) {
+      var blank = $('[data-pick="' + key + '"]', form);
+      $$('.pop-option', blank).forEach(function (o) { o.setAttribute('aria-selected', String(o.dataset.value === state[key])); });
+      swapText($('.blank-value', blank), find(key, state[key]).text);
+    }
+    function pick(key, v) {
+      state[key] = v;
+      $('[data-pick="' + key + '"]', form).classList.add('is-set');
+      mark(key);
+      refresh();
     }
 
     /* ---- the calendar ---- */
     var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var today = new Date(); today.setHours(0, 0, 0, 0);
-    var view = new Date(today.getFullYear(), today.getMonth(), 1);
-    var from = null, to = null;
-
-    function same(a, b) { return !!a && !!b && a.getTime() === b.getTime(); }
-    function longDate(d) { return d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
-    // 12 to 15 March 2027, or 28 March to 2 April 2027
-    function shortDate(a, b) {
-      if (a.getFullYear() !== b.getFullYear()) return longDate(a);
-      if (a.getMonth() !== b.getMonth()) return a.getDate() + ' ' + MONTHS[a.getMonth()];
-      return String(a.getDate());
-    }
-    function readable() {
+    var view = new Date(today.getFullYear(), today.getMonth(), 1), from = null, to = null;
+    var cal = $('#cal', form), grid = $('#cal-grid', form), calTitle = $('#cal-title', form), dateBtn = $('#b-when', form), dateText = $('#b-when-text', form);
+    var dateBlank = dateBtn && dateBtn.closest('.blank'), datePlaceholder = dateText ? dateText.textContent : '';
+    var same = function (a, b) { return !!a && !!b && a.getTime() === b.getTime(); };
+    var longDate = function (d) { return d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); };
+    function range() {
       if (!from) return '';
       if (!to || same(from, to)) return longDate(from);
-      return shortDate(from, to) + ' to ' + longDate(to);
+      var head = from.getFullYear() !== to.getFullYear() ? longDate(from) : from.getMonth() !== to.getMonth() ? from.getDate() + ' ' + MONTHS[from.getMonth()] : String(from.getDate());
+      return head + ' to ' + longDate(to);
     }
-
     function renderCal() {
       calTitle.textContent = MONTHS[view.getMonth()] + ' ' + view.getFullYear();
       grid.textContent = '';
-      var lead = (new Date(view.getFullYear(), view.getMonth(), 1).getDay() + 6) % 7;
-      var days = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
-      var i;
+      var lead = (new Date(view.getFullYear(), view.getMonth(), 1).getDay() + 6) % 7, days = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate(), i;
       for (i = 0; i < lead; i++) { var blank = document.createElement('span'); blank.className = 'cal-blank'; grid.appendChild(blank); }
-      for (i = 1; i <= days; i++) {
-        grid.appendChild(dayButton(new Date(view.getFullYear(), view.getMonth(), i)));
-      }
+      for (i = 1; i <= days; i++) grid.appendChild(dayButton(new Date(view.getFullYear(), view.getMonth(), i)));
     }
-
     function dayButton(date) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'cal-day';
-      btn.textContent = date.getDate();
-      btn.setAttribute('aria-label', longDate(date));
-      if (date < today) btn.disabled = true;
-      if (same(date, today)) btn.classList.add('is-today');
-      if (same(date, from)) { btn.classList.add('is-edge', 'is-start'); if (to) btn.classList.add('has-range'); }
-      if (same(date, to)) btn.classList.add('is-edge', 'is-end');
-      if (from && to && date > from && date < to) btn.classList.add('in-range');
-      if (same(date, from) || same(date, to)) btn.setAttribute('aria-current', 'date');
-      btn.addEventListener('click', function () { choose(date); });
-      return btn;
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'cal-day'; b.textContent = date.getDate(); b.setAttribute('aria-label', longDate(date));
+      if (date < today) b.disabled = true;
+      if (same(date, today)) b.classList.add('is-today');
+      if (same(date, from)) { b.classList.add('is-edge', 'is-start'); if (to) b.classList.add('has-range'); }
+      if (same(date, to)) b.classList.add('is-edge', 'is-end');
+      if (from && to && date > from && date < to) b.classList.add('in-range');
+      if (same(date, from) || same(date, to)) b.setAttribute('aria-current', 'date');
+      b.addEventListener('click', function (e) { e.stopPropagation(); choose(date); });
+      return b;
     }
-
     function choose(date) {
       if (!from || to || date < from) { from = date; to = null; }
-      else if (same(date, from)) { to = null; }
-      else { to = date; }
-      renderCal();
-      triggerText.textContent = readable() || 'Choose your dates';
-      refresh();
+      else if (same(date, from)) to = null;
+      else to = date;
+      renderCal(); showDate(); refresh();
+      var again = grid.querySelector('[aria-label="' + longDate(date) + '"]'); if (again) again.focus();
     }
-
-    function openCal(open) {
-      cal.hidden = !open;
-      trigger.setAttribute('aria-expanded', String(open));
-      if (!open) return;
-      renderCal();
-      var first = grid.querySelector('.cal-day:not(:disabled)');
-      if (first) first.focus();
+    var whenWord = $('[data-when-word]', form);
+    function showDate() {
+      swapText(dateText, range() || datePlaceholder);
+      whenWord.textContent = to && !same(from, to) ? 'from' : 'on';
+      dateBlank.classList.toggle('is-set', !!from);
+      dateBlank.classList.toggle('is-empty', !from);
     }
-
     if (cal) {
-      trigger.addEventListener('click', function () { openCal(cal.hidden); });
-      $('[data-cal-prev]', cal).addEventListener('click', function () { view.setMonth(view.getMonth() - 1); renderCal(); });
-      $('[data-cal-next]', cal).addEventListener('click', function () { view.setMonth(view.getMonth() + 1); renderCal(); });
-      $('[data-cal-clear]', cal).addEventListener('click', function () { from = to = null; renderCal(); triggerText.textContent = 'Choose your dates'; refresh(); });
-      $('[data-cal-done]', cal).addEventListener('click', function () { openCal(false); trigger.focus(); });
-      document.addEventListener('click', function (e) {
-        if (cal.hidden || cal.contains(e.target) || trigger.contains(e.target)) return;
-        openCal(false);
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !cal.hidden) { openCal(false); trigger.focus(); }
-      });
-      // Arrow keys walk the month, and roll into the next one at its edge
+      dateBlank.classList.add('is-empty');
+      dateBtn.addEventListener('click', function () { renderCal(); show(dateBtn, cal, grid.querySelector('.cal-day[aria-current]') || grid.querySelector('.cal-day:not(:disabled)')); });
+      $('[data-cal-prev]', cal).addEventListener('click', function (e) { e.stopPropagation(); view.setMonth(view.getMonth() - 1); renderCal(); });
+      $('[data-cal-next]', cal).addEventListener('click', function (e) { e.stopPropagation(); view.setMonth(view.getMonth() + 1); renderCal(); });
+      $('[data-cal-clear]', cal).addEventListener('click', function (e) { e.stopPropagation(); from = to = null; renderCal(); showDate(); refresh(); });
+      $('[data-cal-done]', cal).addEventListener('click', function () { close(true); });
       grid.addEventListener('keydown', function (e) {
         var step = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 }[e.key];
         if (!step) return;
@@ -607,84 +796,77 @@
         if (i < 0) return;
         var next = days[i + step];
         if (next && !next.disabled) { next.focus(); return; }
-        view.setMonth(view.getMonth() + (step < 0 ? -1 : 1));
-        renderCal();
-        var open = $$('.cal-day:not(:disabled)', grid);
-        if (open.length) (step < 0 ? open[open.length - 1] : open[0]).focus();
+        view.setMonth(view.getMonth() + (step < 0 ? -1 : 1)); renderCal();
+        var avail = $$('.cal-day:not(:disabled)', grid);
+        if (avail.length) (step < 0 ? avail[avail.length - 1] : avail[0]).focus();
       });
     }
 
-    /* ---- the message ---- */
-    function whenSentence() {
-      if (pickedKey() === 'ttc') {
-        var batch = form.querySelector('input[name="batch"]:checked');
-        return batch ? 'I am looking at the ' + batch.value + ' 2027 batch.' : '';
-      }
+    /* ---- the letter becomes the message ---- */
+    function when() {
+      if (state.offering === 'ttc') return 'in the ' + find('batch', state.batch).text + ' batch';
       if (!from) return '';
-      if (!to || same(from, to)) return 'I am hoping to come on ' + longDate(from) + '.';
-      return 'I am in Fort Kochi from ' + readable() + '.';
+      return (to && !same(from, to) ? 'from ' : 'on ') + range();
     }
-
     function message() {
-      var o = offerings[pickedKey()];
-      var name = nameField.value.trim();
-      var note = $('#b-note').value.trim();
-      var people = groups[form.elements.people.value];
-      var level = levels[form.elements.level.value];
-      var when = whenSentence();
-      var parts = [];
-      parts.push(name ? 'Hello Santhi Yoga India, my name is ' + name + '.' : 'Hello Santhi Yoga India.');
-      parts.push(o.want + '.');
-      if (when) parts.push(when);
-      if (people) parts.push(people + '.');
-      if (level) parts.push(level + '.');
-      if (note) parts.push(note.replace(/\s+/g, ' ') + (/[.!?]$/.test(note) ? '' : '.'));
-      parts.push(o.ask);
-      parts.push('Thank you.');
-      return parts.join(' ');
+      var o = find('offering', state.offering), name = nameInput.value.trim().replace(/\s+/g, ' ');
+      var note = noteInput.value.trim().replace(/\s+/g, ' '), w = when();
+      var body = 'My name is ' + name + ', and I would love to join ' + o.text + (w ? ' ' + w : '') + ' for ' + find('people', state.people).text + '. ' + o.ask;
+      if (note) body += '\n\n' + note + (/[.!?]$/.test(note) ? '' : '.');
+      return 'Namaste Achu,\n\n' + body + '\n\nWith thanks,\n' + name;
     }
-
+    var signTimer;
     function refresh() {
-      var key = pickedKey(), o = offerings[key], text = message();
-      preview.textContent = text;
+      var o = find('offering', state.offering), ttc = state.offering === 'ttc';
+      datesClause.hidden = ttc; batchClause.hidden = !ttc;
+      if (ttc && open && open.pop === cal) close(false);
+      swapText(askEl, o.ask);
+      var text = message();
       waBtn.href = WA + '?text=' + encodeURIComponent(text);
-      mailBtn.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Booking enquiry - ' + o.subject) + '&body=' + encodeURIComponent(text);
-      whenLabel.textContent = o.label;
-      whenField.hidden = key === 'ttc';
-      batchField.hidden = key !== 'ttc';
-      if (key === 'ttc' && !cal.hidden) openCal(false);
+      mailBtn.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Booking enquiry: ' + o.subject) + '&body=' + encodeURIComponent(text);
     }
-
-    // A name makes the reply personal, so ask for it before sending
-    function guard(e) {
-      if (nameField.value.trim()) { status.textContent = ''; status.className = 'form-status'; return; }
-      e.preventDefault();
-      nameField.setAttribute('aria-invalid', 'true');
-      nameField.focus();
-      status.textContent = 'Please add your name first, so Achu knows who he is replying to.';
-      status.className = 'form-status is-error';
+    function nameChanged() {
+      var v = nameInput.value;
+      mirror.textContent = v || nameInput.placeholder;
+      nameBlank.classList.toggle('is-set', !!v.trim());
+      nameBlank.classList.remove('is-wrong');
+      status.textContent = ''; status.className = 'form-status';
+      clearTimeout(signTimer);
+      signTimer = setTimeout(function () {
+        var name = v.trim().replace(/\s+/g, ' ');
+        if (signature.textContent === name) return;
+        signature.textContent = name;
+        if (!reduceMotion && name) { signature.classList.remove('is-writing'); void signature.offsetWidth; signature.classList.add('is-writing'); }
+      }, 450);
+      refresh();
     }
-
-    form.addEventListener('input', refresh);
-    form.addEventListener('change', refresh);
+    nameInput.addEventListener('input', nameChanged);
+    nameInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); nameInput.blur(); } });
+    var grow = function () { noteInput.style.height = 'auto'; noteInput.style.height = noteInput.scrollHeight + 'px'; };
+    noteInput.addEventListener('input', function () { grow(); refresh(); });
     form.addEventListener('submit', function (e) { e.preventDefault(); });
-    nameField.addEventListener('input', function () { nameField.removeAttribute('aria-invalid'); });
-    waBtn.addEventListener('click', guard);
-    mailBtn.addEventListener('click', guard);
 
-    // Links elsewhere on the site can preselect, e.g. /book/?for=ttc&month=April
-    var params = new URLSearchParams(window.location.search);
-    var wanted = params.get('for');
-    if (wanted && offerings[wanted]) {
-      var input = form.querySelector('input[name="offering"][value="' + wanted + '"]');
-      if (input) input.checked = true;
+    // A letter needs a name at the bottom; ask for it kindly, and seal the letter once it goes
+    function send(e) {
+      if (!nameInput.value.trim()) {
+        e.preventDefault();
+        nameBlank.classList.remove('is-wrong'); void nameBlank.offsetWidth; nameBlank.classList.add('is-wrong');
+        nameInput.focus();
+        status.textContent = 'Add your name to the letter first, so Achu knows who he is replying to.';
+        status.className = 'form-status is-error';
+        return;
+      }
+      status.textContent = e.currentTarget === waBtn ? 'Opening WhatsApp with your letter…' : 'Opening your email with your letter…';
+      status.className = 'form-status is-ok';
+      form.classList.remove('is-sent'); void form.offsetWidth; form.classList.add('is-sent');
     }
-    var month = params.get('month');
-    if (month) {
-      var batch = form.querySelector('input[name="batch"][value="' + month.replace(/[^A-Za-z]/g, '') + '"]');
-      if (batch) batch.checked = true;
-    }
-    renderCal();
+    waBtn.addEventListener('click', send);
+    mailBtn.addEventListener('click', send);
+
+    var params = new URLSearchParams(window.location.search), wanted = params.get('for'), month = params.get('month');
+    if (wanted && LISTS.offering.some(function (o) { return o.v === wanted; })) pick('offering', wanted);
+    if (month && LISTS.batch.some(function (b) { return b.v === month; })) pick('batch', month);
+    mirror.textContent = nameInput.value || nameInput.placeholder;
     refresh();
   })();
   /* ---------- Contact: enquiry form (mailto by default, endpoint-ready) ---------- */

@@ -1,0 +1,45 @@
+      <!-- Booking as a letter: the blanks are the form, the letter is the message.
+           site.js fills the choices in and writes the WhatsApp and email links. -->
+      <form class="letter" id="booking-form" novalidate>
+        <div class="letter-paper">
+          <span class="letter-mark" aria-hidden="true">ശാന്തി</span>
+          <p class="letter-hello">Namaste Achu,</p>
+          <p class="letter-text" id="letter-text">
+            <span class="lt">My name is</span>
+            <label class="blank blank--name"><input id="lb-name" name="name" type="text" size="1" aria-label="Your name" autocomplete="name" autocapitalize="words" spellcheck="false" enterkeyhint="done" placeholder="your name" required><span class="blank-mirror" aria-hidden="true">your name</span></label><span class="lt">, and I would love to join</span>
+            <span class="blank blank--pick" data-pick="offering"><button class="blank-btn" type="button" aria-haspopup="listbox" aria-expanded="false"><span class="sr-only">What would you like to join: </span><span class="blank-value">a daily Hatha Yoga class</span></button></span>
+            <span data-when="dates"><span class="lt" data-when-word>on</span> <span class="blank blank--pick blank--date" data-pick="date"><button class="blank-btn" type="button" id="b-when" aria-haspopup="dialog" aria-expanded="false"><span class="sr-only">When: </span><span class="blank-value" id="b-when-text">a date of your choice</span><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg></button>
+              <span class="pop cal" id="cal" role="dialog" aria-label="Choose your dates" hidden>
+                <span class="cal-head">
+                  <button class="icon-btn" type="button" data-cal-prev aria-label="Previous month"><svg class="ic" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+                  <span class="cal-title" id="cal-title" aria-live="polite"></span>
+                  <button class="icon-btn" type="button" data-cal-next aria-label="Next month"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+                </span>
+                <span class="cal-week" aria-hidden="true"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></span>
+                <span class="cal-grid" id="cal-grid"></span>
+                <span class="cal-foot">
+                  <span class="cal-hint">Tap the day you arrive, and a second day if you are staying a while.</span>
+                  <span class="cal-actions">
+                    <button class="cal-btn" type="button" data-cal-clear>Clear</button>
+                    <button class="cal-btn cal-btn--done" type="button" data-cal-done>Done</button>
+                  </span>
+                </span>
+              </span></span></span>
+            <span data-when="batch" hidden><span class="lt">in the</span> <span class="blank blank--pick" data-pick="batch"><button class="blank-btn" type="button" aria-haspopup="listbox" aria-expanded="false"><span class="sr-only">Which batch: </span><span class="blank-value">January 2027</span></button></span> <span class="lt">batch</span></span>
+            <span class="lt">for</span> <span class="blank blank--pick" data-pick="people"><button class="blank-btn" type="button" aria-haspopup="listbox" aria-expanded="false"><span class="sr-only">How many of you: </span><span class="blank-value">one person</span></button></span><span class="lt">.</span>
+            <span class="lt letter-ask" data-ask>Could you let me know the class times and anything I should bring?</span>
+          </p>
+          <label class="letter-note"><span class="sr-only">Anything else Achu should know (optional)</span><textarea id="lb-note" name="note" rows="1" placeholder="Add a note, if you like: an injury, where you are staying, a question…"></textarea></label>
+          <p class="letter-sign"><span>With thanks,</span> <span class="letter-signature" data-signature aria-hidden="true"></span></p>
+          <span class="letter-seal" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></span>
+        </div>
+        <div class="letter-send">
+          <a class="cta cta--primary" id="wa-send" href="https://wa.me/917907714144" target="_blank" rel="noopener" data-magnetic>
+            <span class="cta-label" data-roll>Send on WhatsApp</span>
+            <span class="cta-icon" aria-hidden="true"><svg class="ic"><use href="#i-send"/></svg><svg class="ic"><use href="#i-send"/></svg></span>
+          </a>
+          <a class="text-link" id="mail-send" href="mailto:santhiyogacochin@gmail.com"><span class="text-link-text">or send it by email</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <p class="form-status" id="booking-status" role="status" aria-live="polite"></p>
+        <p class="letter-fine">Nothing is sent from this page. WhatsApp or your email opens with this letter written out, and you press send.</p>
+      </form>
