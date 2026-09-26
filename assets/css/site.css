@@ -960,7 +960,13 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 .cta-band .kicker { color: #F6E3B4; justify-content: center; }
 .cta-band .kicker::before { background: linear-gradient(90deg, transparent, #F6E3B4); }
 .cta-band .h2 { position: relative; max-width: 15ch; margin: 1rem auto 0; color: #FFFBF3; text-shadow: 0 4px 40px rgba(58, 38, 23, .45); font-size: clamp(2.6rem, 6vw, 5.4rem); }
-.cta-band .h2 em, .cta-band .h2 em .split-i { background-image: linear-gradient(100deg, #F6E3B4 0%, #FFF4DA 30%, #E7C27A 50%, #FFF4DA 70%, #F6E3B4 100%); }
+/* the brass turns to sunlight on the photograph; only the letters are painted */
+.cta-band { --sun-grad: linear-gradient(100deg, #F6E3B4 0%, #FFF4DA 30%, #E7C27A 50%, #FFF4DA 70%, #F6E3B4 100%); }
+.cta-band .h2 em { color: #F6E3B4; }
+.cta-band .h2 em .split-i { background-image: var(--sun-grad); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) and selector(:has(a)) {
+  .cta-band .h2 em:not(:has(.split-w)) { background-image: var(--sun-grad); }
+}
 .cta-band .lede { position: relative; margin: 1.5rem auto 0; color: rgba(255, 249, 238, .9); text-shadow: 0 2px 20px rgba(58, 38, 23, .5); }
 .cta-band .btn-row { position: relative; justify-content: center; margin-top: 2.6rem; }
 .cta-band .btn--ghost { --btn-bg: rgba(255, 251, 243, .14); --btn-fg: #FFFBF3; --btn-border: rgba(255, 246, 228, .55); --btn-fill: rgba(255, 251, 243, .96); --btn-fill-fg: var(--forest); }
