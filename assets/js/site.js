@@ -407,7 +407,7 @@
     canvas.className = 'hero-gl';
     art.insertBefore(canvas, $('.hero-veil', art));
     var gl = null;
-    try { gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false }); } catch (e) { gl = null; }
+    try { gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false, preserveDrawingBuffer: true }); } catch (e) { gl = null; }
     if (!gl) return;
 
     var VS = 'attribute vec2 p;varying vec2 vUv;void main(){vUv=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
@@ -517,6 +517,8 @@
     };
 
     var stageRect = [0, 0, 1, 1], fade = 0, heroH = 1, t0 = 0, last = 0, intro = 0;
+    // The entrance eases in over 2.6s; a little longer lets the light breathe.
+    var HOLD = 7, done = false;
     var px = 0, py = 0, tx = 0, ty = 0, running = false, visible = true, raf = 0, live = false;
     function measure() {
       var r = art.getBoundingClientRect(), s = img.getBoundingClientRect();
@@ -549,9 +551,11 @@
       gl.uniform1f(U.uAspect, img.naturalWidth / img.naturalHeight || 1.7765);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       if (!live) { live = true; heroEl.classList.add('gl-live'); }
+      // Entrance over: leave this frame on screen and stop asking for more.
+      if (t > HOLD) { done = true; running = false; return; }
       if (running) raf = requestAnimationFrame(frame);
     }
-    function start() { if (running || !visible || document.hidden || !ready) return; running = true; raf = requestAnimationFrame(frame); }
+    function start() { if (done || running || !visible || document.hidden || !ready) return; running = true; raf = requestAnimationFrame(frame); }
     function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
     var ready = false;
 
@@ -591,6 +595,7 @@
     var heroEl = $('.hero'), art = $('.hero-art'), img = $('.hero-plate'), canvas;
     if (!heroEl || !art || !img || reduceMotion) return;
     var ctx = null, GOLD, WHITE, ORB;
+    var HOLD = 7, done = false;
     var dpr = Math.min(window.devicePixelRatio || 1, finePointer ? 2 : 1.5);
     var sun = (art.getAttribute('data-sun') || '.65 .47').split(' ').map(Number);
     var W = 0, H = 0, sx = 0, sy = 0, reach = 1, motes = [], orbs = [];
@@ -652,10 +657,12 @@
         ctx.drawImage(m.img, m.x - z, m.y - z, z * 2, z * 2);
       }
       ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+      // The dust comes to rest where it is.
+      if (time > HOLD) { done = true; running = false; return; }
       if (running) raf = requestAnimationFrame(frame);
     }
     var booted = false;
-    function start() { if (!booted || running || !visible || document.hidden) return; running = true; prev = performance.now(); raf = requestAnimationFrame(frame); }
+    function start() { if (done || !booted || running || !visible || document.hidden) return; running = true; prev = performance.now(); raf = requestAnimationFrame(frame); }
     function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
     var resizeTimer;
     window.addEventListener('resize', function () { if (!booted) return; clearTimeout(resizeTimer); resizeTimer = setTimeout(measure, 150); });
