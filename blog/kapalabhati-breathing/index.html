@@ -95,19 +95,19 @@
   }
   </script>
   <!-- build:head -->
-  <meta name="theme-color" content="#FAF8F5">
+  <meta name="theme-color" content="#FCF6EE">
   <link rel="icon" type="image/png" sizes="48x48" href="../../assets/brand/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../../assets/brand/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../../assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.min.css?v=4e959ca8">
+  <link rel="stylesheet" href="../../assets/css/site.min.css?v=2001aa88">
   <script>document.documentElement.classList.add('js');</script>
   <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved -->
   <script defer src="../../assets/js/vendor/gsap.min.js"></script>
   <script defer src="../../assets/js/vendor/ScrollTrigger.min.js"></script>
   <script defer src="../../assets/js/vendor/lenis.min.js"></script>
-  <script defer src="../../assets/js/site.min.js?v=7ca78922"></script>
+  <script defer src="../../assets/js/site.min.js?v=49dc3971"></script>
   <!-- Google Analytics 4, loaded after the page has finished loading -->
   <script>
     window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }
@@ -132,6 +132,20 @@
   <!-- build:header -->
   <a class="skip" href="#main">Skip to main content</a>
 
+  <!-- The light every page is lit by: a low sun, haze, motes of gold and a fine grain -->
+  <div class="atmos" aria-hidden="true">
+    <div class="atmos-sun"></div>
+    <div class="atmos-haze"></div>
+    <span class="atmos-mote" style="--x:12%;--y:28%;--s:5px;--d:19s;--tx:40px;--ty:-70px"></span>
+    <span class="atmos-mote" style="--x:78%;--y:18%;--s:7px;--d:23s;--dl:-6s;--tx:-50px;--ty:-40px"></span>
+    <span class="atmos-mote" style="--x:64%;--y:62%;--s:4px;--d:17s;--dl:-3s;--tx:30px;--ty:-90px"></span>
+    <span class="atmos-mote" style="--x:30%;--y:74%;--s:6px;--d:26s;--dl:-11s;--tx:-30px;--ty:-60px"></span>
+    <span class="atmos-mote" style="--x:90%;--y:48%;--s:5px;--d:21s;--dl:-8s;--tx:-40px;--ty:-80px"></span>
+    <span class="atmos-mote" style="--x:46%;--y:12%;--s:4px;--d:24s;--dl:-14s;--tx:20px;--ty:50px"></span>
+    <div class="atmos-grain"></div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a class="brand" href="../../" aria-label="Santhi Yoga India, home">
@@ -155,14 +169,13 @@
       </nav>
 
       <div class="header-actions">
-        <a class="btn btn--primary btn--sm header-cta" href="../../book/">Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--primary btn--sm header-cta" href="../../book/" data-magnetic>Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="menu" aria-expanded="false">
           <span class="sr-only">Open menu</span>
           <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
         </button>
       </div>
     </div>
-    <div class="kasavu-line" aria-hidden="true"></div>
   </header>
 
   <div class="menu" id="menu" data-lenis-prevent>
@@ -385,6 +398,7 @@
           </address>
         </div>
       </div>
+      <p class="footer-word" aria-hidden="true">Santhi</p>
       <div class="footer-base">
         <p>© 2027 Santhi Yoga India. All rights reserved.</p>
         <p>Fort Kochi photo by <a href="https://www.pexels.com/photo/the-chinese-fishing-nets-at-fort-kochi-in-kerala-india-12593493/" target="_blank" rel="noopener">Mohammed Nasim on Pexels</a> · Icons: <a href="https://www.figma.com/community/file/1166831539721848736" target="_blank" rel="noopener">Solar by 480 Design</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
