@@ -1124,4 +1124,42 @@
       mapBtn.closest('.map-cta').remove();
     });
   })();
+
+  /* ---------- Conversion tracking -------------------------------------
+     Sends a GA4 event when someone takes an action that could turn into a
+     booking. These names are registered as key events in GA4, so the
+     "Key events" figure stops reading zero. Analytics is optional: if the
+     tag is blocked or absent, gtag() is simply undefined and nothing here
+     runs. Clicks are captured on the document so links added later (the
+     floating WhatsApp button, the booking preview) are covered too. */
+  (function () {
+    function track(name, params) {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', name, params || {});
+    }
+
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest ? e.target.closest('a[href]') : null;
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      var where = link.id === 'wa-send' ? 'booking_form'
+        : link.id === 'float-wa' ? 'floating_button'
+        : link.closest('.site-footer') ? 'footer'
+        : link.closest('.site-header') ? 'header'
+        : 'page';
+
+      if (href.indexOf('wa.me') > -1) {
+        // The booking form's send button carries the whole enquiry, so it is
+        // the strongest signal of intent on the site.
+        track(link.id === 'wa-send' ? 'booking_send' : 'whatsapp_click', {
+          link_location: where,
+          page_path: location.pathname
+        });
+      } else if (href.indexOf('tel:') === 0) {
+        track('phone_click', { link_location: where, page_path: location.pathname });
+      } else if (href.indexOf('mailto:') === 0) {
+        track('email_click', { link_location: where, page_path: location.pathname });
+      }
+    }, true);
+  })();
 })();
