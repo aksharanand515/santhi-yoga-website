@@ -22,19 +22,19 @@
   <meta property="og:image:alt" content="Students practising in the open-air yoga pavilion at Santhi Yoga India, Fort Kochi">
   <meta name="twitter:card" content="summary_large_image">
   <!-- build:head -->
-  <meta name="theme-color" content="#FAF8F5">
+  <meta name="theme-color" content="#FCF6EE">
   <link rel="icon" type="image/png" sizes="48x48" href="assets/brand/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.min.css?v=4e959ca8">
+  <link rel="stylesheet" href="assets/css/site.min.css?v=6625b6a6">
   <script>document.documentElement.classList.add('js');</script>
   <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved -->
   <script defer src="assets/js/vendor/gsap.min.js"></script>
   <script defer src="assets/js/vendor/ScrollTrigger.min.js"></script>
   <script defer src="assets/js/vendor/lenis.min.js"></script>
-  <script defer src="assets/js/site.min.js?v=7ca78922"></script>
+  <script defer src="assets/js/site.min.js?v=49dc3971"></script>
   <!-- Google Analytics 4, loaded after the page has finished loading -->
   <script>
     window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }
@@ -174,6 +174,20 @@
   <!-- build:header -->
   <a class="skip" href="#main">Skip to main content</a>
 
+  <!-- The light every page is lit by: a low sun, haze, motes of gold and a fine grain -->
+  <div class="atmos" aria-hidden="true">
+    <div class="atmos-sun"></div>
+    <div class="atmos-haze"></div>
+    <span class="atmos-mote" style="--x:12%;--y:28%;--s:5px;--d:19s;--tx:40px;--ty:-70px"></span>
+    <span class="atmos-mote" style="--x:78%;--y:18%;--s:7px;--d:23s;--dl:-6s;--tx:-50px;--ty:-40px"></span>
+    <span class="atmos-mote" style="--x:64%;--y:62%;--s:4px;--d:17s;--dl:-3s;--tx:30px;--ty:-90px"></span>
+    <span class="atmos-mote" style="--x:30%;--y:74%;--s:6px;--d:26s;--dl:-11s;--tx:-30px;--ty:-60px"></span>
+    <span class="atmos-mote" style="--x:90%;--y:48%;--s:5px;--d:21s;--dl:-8s;--tx:-40px;--ty:-80px"></span>
+    <span class="atmos-mote" style="--x:46%;--y:12%;--s:4px;--d:24s;--dl:-14s;--tx:20px;--ty:50px"></span>
+    <div class="atmos-grain"></div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a class="brand" href="./" aria-label="Santhi Yoga India, home">
@@ -197,14 +211,13 @@
       </nav>
 
       <div class="header-actions">
-        <a class="btn btn--primary btn--sm header-cta" href="book/">Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--primary btn--sm header-cta" href="book/" data-magnetic>Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="menu" aria-expanded="false">
           <span class="sr-only">Open menu</span>
           <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
         </button>
       </div>
     </div>
-    <div class="kasavu-line" aria-hidden="true"></div>
   </header>
 
   <div class="menu" id="menu" data-lenis-prevent>
@@ -289,15 +302,33 @@
       </div>
     </div>
 
+    <!-- What Santhi means: the words fill with light as they are read, and
+         three photographs float past at their own depths -->
+    <section class="section manifesto" aria-labelledby="manifesto-title">
+      <div class="manifesto-float" aria-hidden="true">
+        <figure class="mf mf--a frame arch" data-speed="0.9"><img src="assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp" srcset="assets/img/santhi-yoga-pavilion-class-fort-kochi-480.webp 480w, assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp 800w, assets/img/santhi-yoga-pavilion-class-fort-kochi-1200.webp 1200w" sizes="200px" width="720" height="960" loading="lazy" decoding="async" alt=""></figure>
+        <figure class="mf mf--b frame" data-speed="-0.6"><img src="assets/img/chinese-fishing-nets-fort-kochi-800.webp" srcset="assets/img/chinese-fishing-nets-fort-kochi-480.webp 480w, assets/img/chinese-fishing-nets-fort-kochi-800.webp 800w, assets/img/chinese-fishing-nets-fort-kochi-1200.webp 1200w" sizes="170px" width="720" height="960" loading="lazy" decoding="async" alt=""></figure>
+        <figure class="mf mf--c frame arch" data-speed="1.4"><img src="assets/img/savasana-rest-yoga-pavilion-800.webp" srcset="assets/img/savasana-rest-yoga-pavilion-240.webp 240w, assets/img/savasana-rest-yoga-pavilion-480.webp 480w, assets/img/savasana-rest-yoga-pavilion-800.webp 800w, assets/img/savasana-rest-yoga-pavilion-1200.webp 1200w" sizes="150px" width="720" height="960" loading="lazy" decoding="async" alt=""></figure>
+        <span class="mf-ring" data-speed="0.4"></span>
+      </div>
+      <div class="container manifesto-inner">
+        <p class="kicker" data-reveal>ശാന്തി · Santhi</p>
+        <h2 class="manifesto-title" id="manifesto-title" data-reveal>Santhi means <em>peace</em>.</h2>
+        <p class="manifesto-text" data-light>For more than fifteen years, in a quiet lane of Fort Kochi, we have taught yoga the slow way: postures held rather than hurried, corrections given by hand, rest woven through every class, and the philosophy behind the practice taught in plain words.</p>
+        <p class="manifesto-sign" data-reveal><span>Master Aksharanand A S</span> Founder &amp; teacher</p>
+      </div>
+    </section>
+
     <!-- Teacher -->
     <section class="section teacher" id="teacher" aria-labelledby="teacher-title">
       <span class="mal-mark" aria-hidden="true">ശാന്തി</span>
       <div class="container grid-2 grid-2--wide-right">
         <figure class="teacher-portrait" data-reveal>
+          <span class="portrait-sun" aria-hidden="true" data-speed="0.5"></span>
           <div class="frame arch">
             <img src="assets/img/master-aksharanand-hands-on-backbend-assist-648.webp" srcset="assets/img/master-aksharanand-hands-on-backbend-assist-480.webp 480w, assets/img/master-aksharanand-hands-on-backbend-assist-648.webp 648w" sizes="(min-width: 960px) 440px, 90vw" width="648" height="810" loading="lazy" decoding="async" alt="Master Aksharanand A S guiding a student into a deep backbend in the garden pavilion">
           </div>
-          <figcaption class="teacher-note glass glass-strong">
+          <figcaption class="teacher-note glass glass-strong" data-speed="-0.35">
             <p>Known to his students simply as Achu</p>
             <span>Master Aksharanand A S</span>
           </figcaption>
@@ -316,6 +347,28 @@
           <div class="btn-row mt-l" data-reveal>
             <a class="btn btn--primary" href="services/">Explore classes <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             <a class="btn btn--ghost" href="contact/">Plan your visit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The practice hall: a window that opens to fill the screen -->
+    <section class="hall" aria-labelledby="hall-title">
+      <div class="hall-stage">
+        <figure class="hall-window">
+          <img src="assets/img/hero-meditation-hall-960.webp" srcset="assets/img/hero-meditation-hall-960.webp 960w, assets/img/hero-meditation-hall-1440.webp 1440w, assets/img/hero-meditation-hall-1672.webp 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="Meditating alone in a sunlit practice hall with a terracotta floor, a thatched roof and tall windows onto the garden">
+        </figure>
+        <div class="container hall-inner">
+          <div class="hall-copy glass">
+            <p class="kicker">Daily classes</p>
+            <h2 class="h2 mt-s" id="hall-title">Two hours, <em>twice a day</em></h2>
+            <p class="body mt-s">Traditional Hatha Yoga every day of the week: relaxation and breath, sun salutations, postures held with real rest between them, and deep relaxation to close. All levels share the same room, and no booking is needed.</p>
+            <dl class="hall-times">
+              <div><dt>Morning</dt><dd>7:30<small>am</small></dd></div>
+              <div><dt>Afternoon</dt><dd>3:30<small>pm</small></dd></div>
+              <div><dt>A class</dt><dd>₹500</dd></div>
+            </dl>
+            <p class="mt-m"><a class="link-arrow" href="services/#daily-classes">About the daily classes <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
           </div>
         </div>
       </div>
@@ -570,6 +623,7 @@
           </address>
         </div>
       </div>
+      <p class="footer-word" aria-hidden="true">Santhi</p>
       <div class="footer-base">
         <p>© 2027 Santhi Yoga India. All rights reserved.</p>
         <p>Fort Kochi photo by <a href="https://www.pexels.com/photo/the-chinese-fishing-nets-at-fort-kochi-in-kerala-india-12593493/" target="_blank" rel="noopener">Mohammed Nasim on Pexels</a> · Icons: <a href="https://www.figma.com/community/file/1166831539721848736" target="_blank" rel="noopener">Solar by 480 Design</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>

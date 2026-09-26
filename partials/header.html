@@ -1,5 +1,19 @@
   <a class="skip" href="#main">Skip to main content</a>
 
+  <!-- The light every page is lit by: a low sun, haze, motes of gold and a fine grain -->
+  <div class="atmos" aria-hidden="true">
+    <div class="atmos-sun"></div>
+    <div class="atmos-haze"></div>
+    <span class="atmos-mote" style="--x:12%;--y:28%;--s:5px;--d:19s;--tx:40px;--ty:-70px"></span>
+    <span class="atmos-mote" style="--x:78%;--y:18%;--s:7px;--d:23s;--dl:-6s;--tx:-50px;--ty:-40px"></span>
+    <span class="atmos-mote" style="--x:64%;--y:62%;--s:4px;--d:17s;--dl:-3s;--tx:30px;--ty:-90px"></span>
+    <span class="atmos-mote" style="--x:30%;--y:74%;--s:6px;--d:26s;--dl:-11s;--tx:-30px;--ty:-60px"></span>
+    <span class="atmos-mote" style="--x:90%;--y:48%;--s:5px;--d:21s;--dl:-8s;--tx:-40px;--ty:-80px"></span>
+    <span class="atmos-mote" style="--x:46%;--y:12%;--s:4px;--d:24s;--dl:-14s;--tx:20px;--ty:50px"></span>
+    <div class="atmos-grain"></div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+
   <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a class="brand" href="{{home}}" aria-label="Santhi Yoga India, home">
@@ -23,14 +37,13 @@
       </nav>
 
       <div class="header-actions">
-        <a class="btn btn--primary btn--sm header-cta" href="{{base}}book/">Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--primary btn--sm header-cta" href="{{base}}book/" data-magnetic>Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="menu" aria-expanded="false">
           <span class="sr-only">Open menu</span>
           <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
         </button>
       </div>
     </div>
-    <div class="kasavu-line" aria-hidden="true"></div>
   </header>
 
   <div class="menu" id="menu" data-lenis-prevent>
