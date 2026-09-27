@@ -16,6 +16,11 @@ Options -Indexes
   # Build templates, tools and internal content planning are not part of the public site
   RewriteRule ^(partials|tools|content)(/|$) - [F,L]
 
+  # The repository itself is not part of the public site. Without this, anyone
+  # can read /.git/config and pull down the whole history of the site.
+  RewriteRule ^\.git(/|$)   - [F,L]
+  RewriteRule ^\.gitignore$ - [F,L]
+
   # ----------------------------------------------------------------
   # Addresses from the old WordPress site, kept alive so that links
   # and search results still land somewhere useful. 301 = moved for
