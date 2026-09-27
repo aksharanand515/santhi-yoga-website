@@ -33,6 +33,14 @@ Options -Indexes
   RewriteRule ^(yoga-)?retreats/?$               /services/ [R=301,L]
   RewriteRule ^about-us/?$                       /about/ [R=301,L]
   RewriteRule ^contact-us/?$                     /contact/ [R=301,L]
+  RewriteRule ^contacts/?$                       /contact/ [R=301,L]
+
+  # An old post address that still earns search impressions. Guarded by the two
+  # conditions below so that it only redirects if nothing is really there: if the
+  # old page is still sitting in public_html it keeps serving as before.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^top-10-beginner-yoga-poses-for-flexibility-and-strength/?$ /blog/beginner-yoga-routine-at-home/ [R=301,L]
 
   # WordPress leftovers: these will never exist again, so tell crawlers
   # to drop them rather than keep retrying a soft 404.
