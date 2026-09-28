@@ -1114,7 +1114,7 @@
           .catch(function () { setStatus('Your enquiry could not be sent. Email ' + EMAIL + ' or message us on WhatsApp.', false); });
         return;
       }
-      var subject = 'Booking Inquiry - Santhi Yoga India' + (d.interest ? ' (' + d.interest + ')' : '');
+      var subject = 'Booking Inquiry - Santhi School of Yoga & Vedanta Studies' + (d.interest ? ' (' + d.interest + ')' : '');
       var body = ['Name: ' + d.name, 'Email: ' + d.email, 'WhatsApp / Phone: ' + (d.phone || '-'), 'Interested in: ' + d.interest, 'Preferred dates: ' + (d.dates || '-'), '', 'Message:', d.message || '-'].join('\r\n');
       window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       setStatus('Your email app should open with the enquiry ready to send. If it doesn’t, write to ' + EMAIL + '.', true);
