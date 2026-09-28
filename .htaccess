@@ -9,6 +9,35 @@ Options -Indexes
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # ----------------------------------------------------------------
+  # The school's old domain, santhiyoga.in. While it still answers with
+  # its own pages, search engines and AI assistants treat it as a second
+  # school with its own tagline, times and prices, and the two sites split
+  # the school's standing between them. Every address there moves here
+  # for good, page to page where there is an equivalent.
+  #
+  # These rules only act on requests for santhiyoga.in, so they are inert
+  # on santhiyogaindia.com. They work as they are if santhiyoga.in is added
+  # to this hosting as a parked or alias domain. If it stays on its own
+  # hosting, copy this block into the .htaccess there instead.
+  # ----------------------------------------------------------------
+  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
+  RewriteRule ^(index\.(php|html?))?$            https://santhiyogaindia.com/ [R=301,L,NC]
+  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
+  RewriteRule ^schedule\.php$                    https://santhiyogaindia.com/services/ [R=301,L,NC]
+  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
+  RewriteRule ^(teacher-training|ttc)[^/]*\.php$ https://santhiyogaindia.com/teacher-training/ [R=301,L,NC]
+  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
+  RewriteRule ^(about[^/]*|philosophy)\.php$     https://santhiyogaindia.com/about/ [R=301,L,NC]
+  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
+  RewriteRule ^contact[^/]*\.php$                https://santhiyogaindia.com/contact/ [R=301,L,NC]
+  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
+  RewriteRule ^gallery[^/]*\.php$                https://santhiyogaindia.com/gallery/ [R=301,L,NC]
+  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
+  RewriteRule ^blog                              https://santhiyogaindia.com/blog/ [R=301,L,NC]
+  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
+  RewriteRule ^                                  https://santhiyogaindia.com/ [R=301,L]
+
   # One address for the whole site: https://santhiyogaindia.com (matches the canonical tags)
   RewriteCond %{HTTP_HOST} ^www\.santhiyogaindia\.com$ [NC]
   RewriteRule ^(.*)$ https://santhiyogaindia.com/$1 [R=301,L]
