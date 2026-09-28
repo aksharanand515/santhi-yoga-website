@@ -14,7 +14,7 @@ Options -Indexes
   RewriteRule ^(.*)$ https://santhiyogaindia.com/$1 [R=301,L]
 
   # Build templates, tools and internal content planning are not part of the public site
-  RewriteRule ^(partials|tools|content)(/|$) - [F,L]
+  RewriteRule ^(partials|tools|content|manual)(/|$) - [F,L]
 
   # The repository itself is not part of the public site. Without this, anyone
   # can read /.git/config and pull down the whole history of the site.

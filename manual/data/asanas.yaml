@@ -1,0 +1,1133 @@
+# The Sivananda twelve basic postures — monograph data. Rendered by render_data.render_asana.
+# Every entry has the same fields; the build checks nothing is missing by rendering every field.
+
+- id: sirsasana
+  number: 1
+  sanskrit: Śīrṣāsana
+  devanagari: शीर्षासन
+  english: Headstand
+  pronunciation: "*sheer-SHAH-sa-na* (approximate English guide)"
+  fig: sirsasana
+  caption: "Śīrṣāsana, side view. Weight is carried mainly through the forearms and shoulders; the crown of the head rests lightly on the floor."
+  overlay:
+    - {from: [ut, 0.8, post, 0.6], to: [ua1, 0.35, mid], w: 2.4, kind: active}
+    - {from: [lt, 0.1, ant], to: [ut, 0.8, ant], w: 1.8, kind: active}
+    - {from: [lt, 0.1, post], to: [ut, 0.9, post], w: 1.8, kind: active}
+  facts:
+    Family: "Inversion; balance"
+    Level: "Intermediate (preparations suit beginners)"
+    Traditional hold: "Build from 10 seconds to 3 minutes or more"
+    Main planes: "Vertical alignment; balance in the sagittal and frontal planes"
+    Counterpose: "Bālāsana (child’s pose), then śavāsana"
+  meaning: "*Śīrṣa* means “head”. The Sivananda tradition calls headstand the “king of āsanas” and places it first in the sequence [@vishnudevananda1960]. Although inverted practice is described in the Haṭha texts as the mudrā *viparītakaraṇī*, the headstand as taught today is largely a modern development of that idea [@mallinson2017]."
+  purpose: "To build strength, balance and concentration in an inverted position; to reverse the habitual relationship of the body to gravity; and, in the traditional view, to calm and focus the mind. It is the most demanding of the twelve and is taught progressively."
+  preparation:
+    - "Regular practice of dolphin, downward dog and plank to build shoulder and trunk strength."
+    - "Sufficient shoulder flexion to bring the arms beside the head without arching the back."
+    - "Child’s pose (bālāsana) before and after to accustom the head to lower positions."
+    - "A folded blanket or firm mat under the head and forearms; a clear space or a wall behind for beginners."
+    - "Practise on an empty stomach, after the sun salutation and leg raises, while fresh."
+  technique:
+    - "Kneel and sit back on the heels. Hold the elbows with the opposite hands and place them on the floor under the shoulders; this sets the distance between the elbows."
+    - "Keeping the elbows where they are, release the hands and interlock the fingers, forming a triangle with the forearms. Tuck the lower little finger in so that the wrists stand upright."
+    - "Place the crown of the head on the floor with the back of the head cupped in the hands."
+    - "Straighten the knees and lift the hips, forming an inverted V. Press the forearms down and lift the shoulders away from the floor."
+    - "Walk the feet slowly towards the face until the hips are above the shoulders and the back is nearly vertical."
+    - "Bend the knees and draw them towards the chest, lifting the feet off the floor with control, not a jump. Pause here."
+    - "Raise the bent knees towards the ceiling, then straighten the legs. The body forms one vertical line; the feet are relaxed or gently flexed."
+    - "Hold, breathing slowly through the nose. To come down, reverse the steps: bend the knees, lower them to the chest, lower the feet to the floor, and rest in child’s pose for several breaths before sitting up."
+  breathing: "Breathe slowly and evenly through the nose throughout. Never hold the breath to get up. A steady breath is the best sign that the student is ready; a held or strained breath means come down."
+  alignment:
+    - "Forearms and shoulders carry most of the weight; the head rests lightly. A student should be able to lift the head slightly off the floor at any time."
+    - "Elbows no wider than the shoulders; wrists vertical; forearms pressing firmly."
+    - "Shoulders lifted away from the ears (active serratus anterior and trapezius); the neck long, neither flexed nor arched."
+    - "Hips stacked over shoulders; ribs drawn in so that the lower back does not arch (a “banana” shape)."
+    - "Legs together, active; weight evenly on both forearms."
+  joints:
+    - ["Cervical spine", "Near neutral, under axial load; must not flex, extend or turn"]
+    - ["Shoulders (glenohumeral)", "Flexed (arms beside the head); scapulae upwardly rotated and elevated"]
+    - ["Elbows", "Flexed about 90°; forearms on the floor"]
+    - ["Spine", "Neutral, vertical"]
+    - ["Hips and knees", "Extended (neutral); flexed during entry and exit"]
+    - ["Ankles", "Neutral or gently plantarflexed"]
+  muscles:
+    - ["Serratus anterior, trapezius (upper and lower)", "Isometric", "Rotate the scapulae upward and lift the shoulders away from the floor, protecting the neck"]
+    - ["Deltoids, rotator cuff, triceps", "Isometric", "Stabilise the shoulders; press the forearms down"]
+    - ["Abdominals and back extensors", "Isometric, continuously adjusting", "Keep the trunk vertical; prevent the lower back from arching"]
+    - ["Hip flexors", "Concentric then eccentric", "Lift and lower the legs during entry and exit"]
+    - ["Gluteals and adductors", "Isometric", "Keep the legs together and extended"]
+  spine: "The spine is held in neutral, vertical and inverted. Load travels down through the forearms and shoulder girdle and — partly — through the head into the cervical spine. The critical skill is keeping the neck in neutral while it is loaded."
+  planes: "Movement into and out of the pose occurs in the sagittal plane (hip flexion and extension). Holding is a balancing task in the sagittal and frontal planes, controlled from the forearms and trunk."
+  biomechanics: "The base of support is the triangle of forearms and head; the centre of mass must stay over it. A wider elbow position reduces the triangle and increases load on the head. A laboratory study of experienced practitioners found that entry and holding technique altered head and neck loading [@hector2015], consistent with the traditional emphasis on slow, controlled entry. Kicking or jumping into the pose applies sudden loads to the neck."
+  mistakes:
+    - "Elbows sliding wider than the shoulders."
+    - "Most of the weight on the head, with shoulders collapsing towards the floor."
+    - "Kicking or jumping up; coming down suddenly."
+    - "Arching the lower back (“banana” shape)."
+    - "Turning the head or looking around while inverted."
+    - "Staying up with a held breath or a red, strained face."
+  limitations:
+    - "**Weak shoulders or trunk:** remain in the preparation (dolphin, walking in) until it is steady for a minute."
+    - "**Limited shoulder flexion:** the back arches to compensate; work on shoulder mobility and practise at a wall."
+    - "**Fear:** normal; build confidence at a wall and in the tuck position before straightening the legs."
+    - "**Tight hamstrings:** make walking in difficult; bend the knees."
+  contraindications:
+    - "Neck injury, cervical disc problems or neck pain; cervical instability"
+    - "Uncontrolled high blood pressure, heart disease, history of stroke"
+    - "Glaucoma, retinal detachment or other serious eye conditions; recent eye surgery [@baskaran2006]"
+    - "Osteoporosis affecting the spine"
+    - "Pregnancy, unless the student has an established practice and medical approval; never learn it while pregnant"
+    - "Recent head injury; migraine or headache at the time; vertigo or inner-ear problems"
+    - "Acute sinus infection or ear infection"
+  precautions:
+    - "Learn with a teacher, near a wall, on a soft but firm surface."
+    - "Build time gradually; come down at the first sign of strain, pressure in the head or eyes, or dizziness."
+    - "Many traditional teachers advise avoiding inversions during menstruation; there is no clear medical evidence of harm, and the choice can be left to the student."
+    - "Rest in child’s pose afterwards, and sit up slowly."
+  variation_figs:
+    - {fig: dolphin, caption: "Preparation: dolphin — forearms down, hips lifted"}
+    - {fig: sirsasana_prep, caption: "Walking in: crown down, feet stepping towards the face"}
+    - {fig: sirsasana_tuck, caption: "Tuck: knees to chest, balanced before straightening"}
+  modifications:
+    - "Practise with the back a few centimetres from a wall; use the wall only for security, not to lean on."
+    - "Stay at the walking-in stage or in the tuck, with the feet close to the floor."
+    - "Substitute dolphin or supported half shoulderstand for students who should not load the head."
+  beginner: "Dolphin and walking in (shown above), held for 5–10 breaths, then child’s pose. When these are steady for a minute, try lifting one foot, then both knees into the tuck, at a wall."
+  advanced: "Variations with the legs (splits, lotus in headstand, legs lowered to horizontal with control) and the tripod headstand (hands flat, śīrṣāsana II), taught only when the classic pose is held steadily for several minutes."
+  props_use:
+    - "Folded blanket or firm mat under head and forearms."
+    - "A wall for security."
+    - "A strap around the upper arms just above the elbows to keep them shoulder-width."
+  cues:
+    - "Press the forearms down and lift the shoulders away from the floor."
+    - "The head rests; the arms carry you."
+    - "Walk in until the hips are over the shoulders — no jumping."
+    - "Draw the ribs in and lengthen up through the legs."
+    - "If the breath becomes strained, come down slowly."
+  adjustments: "Hands-on help, when used, is for **safety and confidence**, not for lifting a student into the pose. With consent, stand beside the student and place a hand lightly at the hips or thighs as they lift, or steady the legs once they are up. Never pull or lift a student’s legs, never stand in front of them, and never adjust the neck or head. Teach the exit before the entry."
+  transition_in: "From kneeling (after leg raises and a brief rest) or from child’s pose."
+  transition_out: "Reverse the entry with control; rest in child’s pose for at least 5–10 breaths before sitting up."
+  counterpose: "Child’s pose, then śavāsana. In the Sivananda sequence, shoulderstand follows after rest."
+  traditional: "In the Sivananda tradition headstand is said to reverse the effects of gravity on the body, increase circulation to the brain, improve memory and concentration, and bring the mind to calmness and balance; it is called the king of postures [@vishnudevananda1960; @lidell1983] [[T]]."
+  evidence: "There are no controlled trials of headstand’s long-term effects. Physiology does not support the idea that headstand substantially increases blood flow to the brain: cerebral blood flow is closely autoregulated and kept relatively constant across a wide range of blood pressures [@hall2021]. Headstand roughly doubles intraocular pressure while held [@baskaran2006], which is why it is avoided in glaucoma. Case reports describe neck injuries and rare vascular events associated with headstand [@cramer2013ae]. The pose is an effective way to train strength, balance and focus; claims about memory or “rejuvenation” are traditional, not demonstrated."
+
+- id: sarvangasana
+  number: 2
+  sanskrit: Sarvāṅgāsana
+  devanagari: सर्वाङ्गासन
+  english: Shoulderstand
+  pronunciation: "*sar-vahn-GAH-sa-na*"
+  fig: sarvangasana
+  caption: "Sarvāṅgāsana. In the version shown the trunk is close to vertical and supported by the hands; the neck is strongly flexed, which is why blankets under the shoulders are recommended."
+  overlay:
+    - {from: [ut, 0.85, post], to: [nk, 1.0, post], w: 1.4, kind: stretch}
+    - {from: [lt, 0.3, post], to: [th1, 0.25, post], w: 2.4, kind: active}
+    - {from: [lt, 0.1, post], to: [ut, 0.8, post], w: 1.6, kind: active}
+  props:
+    - [blanket, -16, 0, 60, 5]
+  facts:
+    Family: "Inversion"
+    Level: "Beginner (supported half shoulderstand) to intermediate"
+    Traditional hold: "Build from 30 seconds to 3–5 minutes"
+    Main planes: "Sagittal (neck flexion, hip extension)"
+    Counterpose: "Matsyāsana (fish), after halāsana"
+  meaning: "*Sarva* means “all” and *aṅga* “limb” — the posture of the whole body. The tradition calls it the “queen of āsanas”. Its textual ancestor is *viparītakaraṇī*, “the reversing action”, described in the Haṭha Yoga Pradīpikā as a mudrā (HYP 3.78–82) [@akers2002]."
+  purpose: "To invert the body with the weight on the shoulders rather than the head; to strengthen the back and legs; and, traditionally, to calm the mind and prepare for the plough and fish that follow."
+  preparation:
+    - "Two or three firmly folded blankets, stacked neatly, under the shoulders with the head on the floor beyond them. The shoulders rest near the edge of the blankets."
+    - "Bridge pose and legs-up-the-wall to prepare the back, legs and shoulders."
+    - "Leg raises to strengthen the abdomen for the lift."
+    - "Empty stomach; no tight clothing around the neck."
+  technique:
+    - "Lie on the back on the blankets, shoulders near the edge, head on the floor, arms by the sides, palms down."
+    - "Inhale and raise the legs to vertical (as in double leg raise)."
+    - "Exhale, press the hands down and lift the hips, bringing the legs over the head."
+    - "Bend the elbows and place the hands on the back, fingers pointing towards the spine and up towards the hips; bring the elbows as close together as comfortable."
+    - "Walk the hands higher up the back towards the shoulder blades and straighten the body, bringing the legs vertical. The chest moves towards the chin — the chin does not press into the chest."
+    - "Hold, breathing slowly. The weight is on the shoulders and upper arms, not on the neck."
+    - "To come down, lower the legs slightly over the head, place the hands on the floor, and roll down vertebra by vertebra, using the abdominal muscles, keeping the head on the floor. In the Sivananda sequence, move from here into plough."
+  breathing: "Slow, quiet abdominal breathing. The chest is compressed towards the chin, so breathing will feel restricted; if it becomes laboured or the face flushes strongly, come down."
+  alignment:
+    - "Shoulders on the folded blankets, head on the floor: the cervical spine is not pressed flat into the floor."
+    - "Elbows shoulder-width, hands supporting the back as high as possible."
+    - "Hips over shoulders, legs over hips (full pose); or hips supported by the hands at an angle (half pose)."
+    - "Head and eyes still, gaze towards the chest or feet; never turn the head."
+  joints:
+    - ["Cervical spine", "Strongly flexed (reduced by blankets)"]
+    - ["Upper thoracic spine", "Flexed"]
+    - ["Shoulders", "Extended, with scapulae retracted; elbows flexed"]
+    - ["Hips", "Extended (full pose) or flexed (half pose)"]
+    - ["Knees and ankles", "Extended; ankles relaxed"]
+  muscles:
+    - ["Neck extensors, upper trapezius", "Lengthening under load", "Accommodate cervical flexion; the most vulnerable tissues in the pose"]
+    - ["Back extensors, gluteals, hamstrings", "Isometric", "Keep the trunk and legs lifted and vertical"]
+    - ["Triceps, posterior deltoid, rhomboids", "Isometric", "Press the upper arms down and support the back"]
+    - ["Abdominals", "Concentric then eccentric", "Lift into and lower out of the pose"]
+  spine: "Strong flexion of the lower cervical and upper thoracic spine, with the rest of the spine near neutral. The blankets allow the neck to flex less than it would with the shoulders flat on the floor."
+  planes: "Sagittal plane: cervical flexion, shoulder extension, hip extension."
+  biomechanics: "Body weight rests on the shoulders, upper arms and the back of the head, while the neck approaches the end of its flexion range. The load on the neck depends on how vertical the body is, how much weight the arms take, and how much the blankets reduce flexion. Pushing the trunk further towards vertical by forcing the chin down transfers load to the cervical spine."
+  mistakes:
+    - "Practising flat on the floor, with the neck pressed into full flexion."
+    - "Elbows splaying wide, dropping the weight onto the neck."
+    - "Turning the head to look around or to talk."
+    - "Forcing the body vertical by pushing the chin into the chest."
+    - "Rolling down fast, or lifting the head to come down."
+  limitations:
+    - "**Stiff neck or upper back:** use more blanket height; stay in half shoulderstand."
+    - "**Weak abdominals:** difficulty lifting; bend the knees to come up, or start from the wall."
+    - "**Tight shoulders:** elbows splay; use a strap around the upper arms."
+    - "**Large chest or abdomen:** breathing restricted; practise half shoulderstand or legs up the wall."
+  contraindications:
+    - "Neck injury or neck pain; cervical disc problems"
+    - "Uncontrolled high blood pressure; heart disease"
+    - "Glaucoma and serious eye conditions [@jasien2015]"
+    - "Osteoporosis of the spine"
+    - "Pregnancy (except experienced practitioners with medical approval); hiatus hernia or reflux"
+    - "Ear or sinus infection; headache at the time"
+  precautions:
+    - "Always use folded blankets; never use pillows or soft cushions."
+    - "Build time gradually; never hold through neck discomfort."
+    - "Many traditional teachers advise avoiding inversions during menstruation; the choice can be left to the student."
+  variation_figs:
+    - {fig: viparita_karani, caption: "Half shoulderstand (viparīta karaṇī): hips supported, less neck flexion"}
+    - {fig: legs_up_wall, caption: "Legs up the wall: a restorative alternative with no neck load", props: [[wall, -16]]}
+  modifications:
+    - "Half shoulderstand (viparīta karaṇī), hips supported by the hands, body at an angle."
+    - "Legs up the wall, for those who should not invert the trunk."
+    - "Shoulderstand with the feet against a wall for support."
+  beginner: "Half shoulderstand on blankets, hips in the hands, legs angled over the head, held for 30 seconds to 1 minute. When this is comfortable and the breath steady, begin to straighten the body towards vertical."
+  advanced: "Unsupported shoulderstand (*nirālamba sarvāṅgāsana*, arms alongside the body or overhead); leg variations such as *eka pāda* (one leg to the floor) and lotus in shoulderstand — only after years of stable practice."
+  props_use:
+    - "Two or three firmly folded blankets under the shoulders (head off the blankets)."
+    - "A strap around the upper arms."
+    - "A wall for the feet or for legs up the wall."
+  cues:
+    - "Shoulders on the blankets, head on the floor, eyes looking up."
+    - "Walk your hands higher up the back."
+    - "Bring the chest to the chin, not the chin to the chest."
+    - "Keep your head still — no turning."
+    - "Roll down slowly, one vertebra at a time."
+  adjustments: "Setting the blankets precisely is the most important “adjustment”. With consent, a teacher can kneel behind the student and steady the legs once they are up, or support the back of the pelvis with a knee or hands while the student walks the hands higher. Never press down on the feet or legs, which drives load into the neck."
+  transition_in: "From lying on the back after rest; lift through double leg raise."
+  transition_out: "In the Sivananda sequence, lower the legs directly into plough; otherwise roll down and rest."
+  counterpose: "Matsyāsana (fish), after plough, for about half the time spent in shoulderstand."
+  traditional: "The tradition teaches that shoulderstand benefits the whole body, stimulates and regulates the thyroid gland through pressure on the throat, rests the heart, and calms the nervous system [@vishnudevananda1960; @lidell1983] [[T]]."
+  evidence: "No controlled trials have examined shoulderstand’s effects. There is no evidence that it regulates thyroid function. Inverted positions raise intraocular pressure; in a study of four common positions, pressure rose within minutes in legs-up-the-wall and plough as well as other poses [@jasien2015]. Neck injuries associated with shoulderstand are described in case reports [@cramer2013ae]. The posture’s value lies in strength, body awareness and — for many practitioners — its calming effect; the specific health claims remain traditional."
+
+- id: halasana
+  number: 3
+  sanskrit: Halāsana
+  devanagari: हलासन
+  english: Plough
+  pronunciation: "*ha-LAH-sa-na*"
+  fig: halasana
+  caption: "Halāsana: legs over the head with the toes on the floor. The back of the legs and the whole back are lengthened; the neck remains strongly flexed."
+  overlay:
+    - {from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 2.6, kind: stretch}
+    - {from: [lt, 0.2, post], to: [ut, 0.9, post], w: 2.0, kind: stretch}
+  props:
+    - [blanket, -16, 0, 60, 5]
+  facts:
+    Family: "Inversion; forward bend"
+    Level: "Beginner (supported) to intermediate"
+    Traditional hold: "Build from 20 seconds to 1–3 minutes"
+    Main planes: "Sagittal (spinal and hip flexion)"
+    Counterpose: "Matsyāsana (fish)"
+  meaning: "*Hala* means “plough”: the body takes the shape of the traditional Indian plough."
+  purpose: "To flex the whole spine and lengthen the back of the body; in the Sivananda sequence it continues from shoulderstand and prepares the spine for the forward bend."
+  preparation:
+    - "Folded blankets under the shoulders, as for shoulderstand."
+    - "Sufficient hamstring flexibility to bring the feet towards the floor, or a chair/blocks behind the head."
+    - "Practice of shoulderstand."
+  technique:
+    - "From shoulderstand, exhale and slowly lower the legs over the head, keeping them straight."
+    - "Rest the toes on the floor (or on a chair or blocks) behind the head. The hands may stay supporting the back or be placed on the floor behind the back, palms down or with fingers interlaced."
+    - "Lift the hips and lengthen the spine; keep the head still and the throat soft."
+    - "Hold, breathing slowly."
+    - "To come out, place the hands on the floor and roll down slowly, keeping the legs straight or bending the knees, and the head on the floor."
+  breathing: "Slow, shallow breathing — the abdomen is compressed. If breathing becomes difficult, bend the knees or support the feet higher."
+  alignment:
+    - "Weight on the shoulders and upper arms, never on the neck."
+    - "Hips high, spine lengthened rather than collapsed."
+    - "Toes resting on the floor; the feet may be flexed (toes tucked) or pointed."
+    - "Head still, gaze towards the chest."
+  joints:
+    - ["Cervical spine", "Strongly flexed"]
+    - ["Thoracic and lumbar spine", "Flexed"]
+    - ["Hips", "Strongly flexed"]
+    - ["Knees", "Extended (or flexed in modification)"]
+    - ["Shoulders", "Extended; hands on back or floor"]
+  muscles:
+    - ["Hamstrings, gastrocnemius", "Lengthening", "The main limit to bringing the feet to the floor"]
+    - ["Back extensors, neck extensors", "Lengthening", "Accommodate spinal flexion"]
+    - ["Abdominals, hip flexors", "Eccentric then isometric", "Lower the legs with control and hold"]
+    - ["Triceps, posterior deltoids", "Isometric", "Press the arms into the floor for stability"]
+  spine: "The whole spine is flexed, most strongly at the neck and upper back. If the hamstrings are short, the feet are pulled away from the floor and more flexion is demanded of the spine."
+  planes: "Sagittal plane: flexion of spine and hips."
+  biomechanics: "Plough combines the neck flexion of shoulderstand with a strong forward bend. When the feet cannot reach the floor, gravity pulls the legs down and drags the spine into more flexion — especially the neck. Supporting the feet on a chair or blocks removes this pull."
+  mistakes:
+    - "Dropping the legs quickly, jolting the neck."
+    - "Collapsing the hips so that the weight rolls onto the neck."
+    - "Forcing the feet to the floor with rounded back and strained breath."
+    - "Turning the head."
+  limitations:
+    - "**Short hamstrings:** feet do not reach; support the feet or bend the knees."
+    - "**Stiff upper back or neck:** more blanket height; half plough."
+    - "**Large abdomen or chest:** breathing restricted; support feet higher, keep time short."
+  contraindications:
+    - "Neck injury or pain; cervical disc problems"
+    - "Osteoporosis (loaded spinal flexion) [@sinaki2013]"
+    - "Glaucoma and serious eye conditions [@jasien2015]"
+    - "Uncontrolled high blood pressure; heart disease"
+    - "Pregnancy; hiatus hernia or reflux"
+    - "Acute low-back pain with sensitivity to flexion; sciatica"
+  precautions:
+    - "Always use blankets under the shoulders."
+    - "Lower the legs slowly; support them if they do not reach the floor."
+    - "Come out at once if there is pain or tingling in the neck, arms or legs."
+  variation_figs:
+    - {fig: halasana_chair, caption: "Feet supported on a chair: less spinal and neck flexion", props: [[chair, -100, 30]]}
+  modifications:
+    - "Feet on a chair, a sofa edge or stacked blocks."
+    - "Knees bent, resting near the forehead."
+    - "Half plough: legs parallel to the floor, hands supporting the back."
+  beginner: "Feet on a chair placed behind the head; hands supporting the back; 5–10 breaths."
+  advanced: "*Karṇapīḍāsana* (ear-pressure pose): knees bend to rest beside the ears, arms wrapped around the backs of the knees — only for students with a very comfortable, pain-free plough."
+  props_use:
+    - "Blankets under the shoulders."
+    - "A chair, blocks or bolster for the feet."
+  cues:
+    - "Lower the legs slowly — let the feet find the support."
+    - "Lift the hips; let the spine lengthen."
+    - "Breathe softly into the back."
+    - "Head still; weight on the shoulders."
+  adjustments: "Place a chair or blocks for the feet. With consent, a teacher may steady the hips from behind. Never press the legs down or push the feet towards the floor."
+  transition_in: "From shoulderstand, lowering the legs over the head."
+  transition_out: "Roll down slowly, head on the floor; rest in śavāsana for a few breaths."
+  counterpose: "Matsyāsana (fish), which extends the neck and upper back."
+  traditional: "Plough is said to make the spine supple, stimulate the spinal nerves, massage the abdominal organs and relieve constipation, and to strengthen the back, shoulders and arms [@vishnudevananda1960; @lidell1983] [[T]]."
+  evidence: "No controlled trials address plough specifically. Plough raises intraocular pressure while held [@jasien2015]. Loaded spinal flexion has been associated with vertebral compression fractures in people with osteoporosis [@sinaki2013]. Claims about spinal nerves and digestion are traditional and untested."
+
+- id: matsyasana
+  number: 4
+  sanskrit: Matsyāsana
+  devanagari: मत्स्यासन
+  english: Fish
+  pronunciation: "*mat-SYAH-sa-na*"
+  fig: matsyasana
+  caption: "Matsyāsana as taught in the Sivananda tradition: legs extended, elbows on the floor under the body, chest lifted and the crown of the head resting lightly on the floor."
+  overlay:
+    - {from: [lt, 0.1, ant], to: [ut, 0.85, ant], w: 1.8, kind: stretch}
+    - {from: [lt, 0.4, post], to: [ut, 0.9, post], w: 1.8, kind: active}
+  facts:
+    Family: "Backbend; counterpose"
+    Level: "Beginner (supported) to intermediate"
+    Traditional hold: "About half the time spent in shoulderstand"
+    Main planes: "Sagittal (spinal extension)"
+    Counterpose: "Rest in śavāsana; gentle knees-to-chest"
+  meaning: "*Matsya* means “fish”. A traditional explanation is that with the legs in lotus one could float in water in this position [[T]]."
+  purpose: "To extend the neck and upper back after the flexion of shoulderstand and plough; to open the chest and encourage full breathing."
+  preparation:
+    - "Shoulderstand and plough completed."
+    - "Comfortable neck extension; if not, use a supported version."
+    - "Blocks or a bolster for supported fish."
+  technique:
+    - "Lie on the back, legs together and straight, arms beside the body."
+    - "Slide the hands, palms down, under the thighs or buttocks, bringing the elbows as close to each other under the back as comfortable."
+    - "Press the elbows and forearms down and, inhaling, lift the chest high, arching the upper back."
+    - "Tilt the head back and rest the crown lightly on the floor. Most of the weight remains on the elbows — the head carries very little."
+    - "Hold, breathing deeply into the chest."
+    - "To come out, press the elbows down, lift the head slightly, lower the back of the head and then the back to the floor; release the arms and rest."
+  breathing: "Deep, full breathing into the expanded chest; the tradition regards this as one of the best postures for full breathing."
+  alignment:
+    - "Weight mainly on the elbows and forearms."
+    - "The arch comes mostly from the upper back; the chest lifts."
+    - "Crown of the head touches lightly; the neck is not compressed."
+    - "Legs relaxed and together (or in lotus in the classical form)."
+  joints:
+    - ["Cervical spine", "Extended (moderately, with little load)"]
+    - ["Thoracic spine", "Extended"]
+    - ["Lumbar spine", "Mildly extended"]
+    - ["Shoulders", "Extended, scapulae retracted; elbows flexed on the floor"]
+    - ["Hips and knees", "Extended"]
+  muscles:
+    - ["Back extensors, rhomboids, middle trapezius", "Concentric then isometric", "Lift and hold the arch of the upper back"]
+    - ["Triceps, posterior deltoids", "Isometric", "Press the elbows into the floor"]
+    - ["Pectorals, intercostals, rectus abdominis", "Lengthening", "Open the front of the chest and trunk"]
+    - ["Neck flexors (sternocleidomastoid, deep flexors)", "Lengthening / eccentric", "Control the tilting back of the head"]
+  spine: "Extension of the thoracic spine (and to a lesser extent the lumbar and cervical spines) — the opposite of the flexion of shoulderstand and plough."
+  planes: "Sagittal plane: spinal extension."
+  biomechanics: "The elbows and forearms form the base of support. If they do not bear the weight, the head does, and the neck is loaded in extension — the principal risk of the pose. The thoracic spine, often stiff in extension, benefits most."
+  mistakes:
+    - "Placing weight on the head."
+    - "Arching mainly from the lower back while the chest stays flat."
+    - "Dropping the head back quickly."
+    - "Holding the breath."
+  limitations:
+    - "**Stiff upper back:** the arch comes from the lower back; use a block under the upper back."
+    - "**Neck discomfort in extension:** keep the head on a block or cushion, or keep the chin slightly towards the chest."
+    - "**Shoulder stiffness:** the elbows cannot come under the back; keep the arms beside the body."
+  contraindications:
+    - "Neck injury or neck pain; cervical instability"
+    - "History of vertebral artery problems or dizziness with neck extension"
+    - "Acute low-back pain aggravated by extension"
+    - "Uncontrolled high blood pressure (head below heart is not an issue here, but strain is)"
+  precautions:
+    - "Keep the weight on the elbows; the head rests lightly."
+    - "Enter and exit slowly; come out if there is dizziness, pain or tingling."
+    - "Prefer the supported fish for beginners and older students."
+  variation_figs:
+    - {fig: matsyasana_supported, caption: "Supported fish: blocks or bolster under the upper back and head", props: [[bolster, -52, 0, 26, 9]]}
+    - {fig: uttana_padasana, caption: "Advanced: uttāna pādāsana — legs and arms lifted"}
+  modifications:
+    - "Supported fish on a bolster or two blocks (one under the shoulder blades, one under the head)."
+    - "Head on the floor with a cushion, without the crown touching."
+    - "Arms beside the body instead of under it."
+  beginner: "Supported fish: lie back over a bolster or blocks placed under the upper back, head supported, arms relaxed; breathe into the chest for 1–3 minutes."
+  advanced: "Classical fish with the legs in lotus (*padma matsyāsana*), hands holding the feet; or *uttāna pādāsana*, with legs and arms lifted at about 45° — both demand strong control of the neck and trunk."
+  props_use:
+    - "Bolster, blocks or a rolled blanket under the upper back."
+    - "Cushion or block under the head."
+  cues:
+    - "Press the elbows down and lift the chest to the sky."
+    - "Let the crown of the head just kiss the floor."
+    - "Breathe into the whole chest."
+    - "To come out, lift the head a little first, then lower down."
+  adjustments: "Mostly verbal. With consent, a teacher may slide a block or bolster under the upper back. Never press on the chest or pull the head back."
+  transition_in: "From plough, roll down, rest briefly, then enter fish."
+  transition_out: "Lift the head slightly, lower the head and back, release the arms and rest in śavāsana."
+  counterpose: "Rest in śavāsana; knees-to-chest if the back feels tight."
+  traditional: "Fish is the counterpose to shoulderstand; it is said to relieve stiffness of the neck and shoulders, to expand the chest and aid deep breathing, and to tone the nerves of the neck and back [@vishnudevananda1960; @lidell1983] [[T]]."
+  evidence: "No trials specifically study fish. Case reports link extreme or loaded neck extension in yoga with rare vascular and cervical injuries [@cramer2013ae], supporting the practice of keeping the weight on the elbows and the head lightly supported. The role of fish as a counter-movement to sustained neck flexion is biomechanically sensible; its specific effects are untested."
+
+- id: paschimottanasana
+  number: 5
+  sanskrit: Paścimottānāsana
+  devanagari: पश्चिमोत्तानासन
+  english: Seated Forward Bend
+  pronunciation: "*PASH-chee-moh-tah-NAH-sa-na*"
+  fig: paschimottanasana
+  caption: "Paścimottānāsana: the fold comes first from the hips; the spine then rounds gently over the legs."
+  overlay:
+    - {from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 2.6, kind: stretch}
+    - {from: [sh1, 0.1, post], to: [sh1, 0.8, post], w: 1.8, kind: stretch}
+    - {from: [lt, 0.25, post], to: [ut, 0.85, post], w: 1.8, kind: stretch}
+  facts:
+    Family: "Seated forward bend"
+    Level: "Beginner (with modifications)"
+    Traditional hold: "1–3 minutes, or longer in a gentle class"
+    Main planes: "Sagittal (hip and spinal flexion)"
+    Counterpose: "Cobra (next in the sequence); gentle backbend or tabletop"
+  meaning: "*Paścima* means “west” and, by extension, the back of the body (the traditional practitioner faces east, towards the sunrise); *uttāna* means “intense stretch”. It is one of the fifteen postures of the Haṭha Yoga Pradīpikā, which praises it highly (HYP 1.28–29) [@akers2002]."
+  purpose: "To lengthen the whole back of the body — calves, hamstrings and back — and to cultivate patience and inward attention; in the Sivananda sequence it follows the inversions and precedes the backbends."
+  preparation:
+    - "Warm hamstrings (sun salutations, leg raises)."
+    - "A folded blanket or cushion under the sitting bones if the lower back rounds when sitting upright."
+    - "A strap for students who cannot comfortably reach the feet."
+  technique:
+    - "Sit with the legs together and extended, feet flexed (toes towards the shins). Sit on a blanket if needed."
+    - "Inhale and raise the arms overhead, lengthening the spine."
+    - "Exhale and fold forward from the hips, keeping the spine long, leading with the chest."
+    - "Take hold of whatever you can reach comfortably — thighs, shins, ankles or feet — or use a strap around the feet."
+    - "With each inhalation, lengthen the spine a little; with each exhalation, relax a little further forward. Let the head and neck relax."
+    - "Hold for several breaths or minutes, softening rather than pulling."
+    - "To come out, inhale and lift the chest and arms with a long spine; exhale and lower the arms."
+  breathing: "Inhale to lengthen; exhale to release. The breath should be slow and unforced; many students find the abdomen presses against the thighs, so breathing moves into the back of the ribs."
+  alignment:
+    - "The pelvis tilts forward over the thighs — the fold begins at the hips."
+    - "Legs active but not locked; kneecaps drawn up gently; no hyperextension at the knees."
+    - "Feet flexed or relaxed; knees bent as much as needed."
+    - "Shoulders relaxed away from the ears; elbows soft; no pulling with the arms."
+  joints:
+    - ["Hips", "Flexed"]
+    - ["Lumbar and thoracic spine", "Flexed (moderately in a well-organised fold)"]
+    - ["Cervical spine", "Relaxed flexion"]
+    - ["Knees", "Extended (or flexed in modification)"]
+    - ["Ankles", "Dorsiflexed or relaxed"]
+  muscles:
+    - ["Hamstrings", "Lengthening", "The main limit; tension felt at the back of the thighs"]
+    - ["Gastrocnemius", "Lengthening", "Tension behind the knees and calves when the feet are flexed"]
+    - ["Erector spinae, gluteus maximus", "Lengthening", "Allow the spine and pelvis to fold"]
+    - ["Quadriceps", "Light isometric", "Straighten the knees; reciprocal inhibition of the hamstrings"]
+    - ["Hip flexors, abdominals", "Concentric early, then relaxed", "Draw the trunk forward at the start of the fold"]
+  spine: "Flexion of the whole spine after the hips have flexed. If the hamstrings hold the pelvis back (posterior tilt), the lumbar spine flexes more to compensate."
+  planes: "Sagittal plane: hip flexion and spinal flexion."
+  biomechanics: "The two-joint hamstrings limit the pose when the knees are straight (passive insufficiency). Bending the knees immediately allows more hip flexion. Pulling with the arms adds force at end range — load that the hamstring attachment at the sitting bones and the lumbar discs may not tolerate. Gravity assists only slightly in a seated fold, so the pose is gentle when practised passively."
+  mistakes:
+    - "Rounding the back from the start instead of folding from the hips."
+    - "Pulling with the arms to go deeper."
+    - "Locking or hyperextending the knees."
+    - "Holding the breath; straining the neck to bring the head to the knees."
+    - "Bouncing."
+  limitations:
+    - "**Short hamstrings:** pelvis tilts back and the lower back rounds; sit on a blanket, bend the knees, use a strap."
+    - "**Stiff lower back:** fold less, emphasise length."
+    - "**Nerve sensitivity:** tingling down the leg; bend the knees and reduce the stretch."
+    - "**Large abdomen:** separate the legs slightly to make room."
+  contraindications:
+    - "Acute low-back pain or disc problems aggravated by flexion; sciatica with leg symptoms"
+    - "Osteoporosis of the spine (avoid loaded rounding of the spine) [@sinaki2013]"
+    - "Proximal hamstring tendinopathy (pain at the sitting bone) [@goom2016]"
+    - "Later pregnancy (fold with legs apart instead)"
+  precautions:
+    - "Never pull or bounce; move by breath and time."
+    - "Bend the knees at the first sign of strain behind the knees or at the sitting bones."
+    - "Move slowly out of the pose."
+  variation_figs:
+    - {fig: paschimottanasana_strap, caption: "Beginner: sitting tall with a strap around the feet, knees soft", props: [[strap, [fa1, 0.9, mid], [ft1, 0.9, mid]]]}
+    - {fig: paschimottanasana_deep, caption: "Advanced: long spine, chest resting on the thighs"}
+  modifications:
+    - "Sit on a folded blanket or cushion."
+    - "Bend the knees generously; rest the chest on the thighs with bent knees for a restorative version."
+    - "Use a strap around the feet; keep the spine long rather than folding deeply."
+    - "Bolster across the thighs to support the chest and head (restorative)."
+  beginner: "Sitting on a blanket, knees bent, strap around the feet, spine long; stay upright or fold a few degrees from the hips for 5–10 breaths."
+  advanced: "Holding the big toes or wrapping the hands around the soles of the feet, chest resting on the thighs, elbows on the floor; long holds of 3–5 minutes in stillness."
+  props_use:
+    - "Folded blanket under the sitting bones."
+    - "Strap around the feet."
+    - "Bolster or cushion on the thighs to support the chest."
+  cues:
+    - "Sit on the front of your sitting bones."
+    - "Inhale, grow tall; exhale, fold from the hips."
+    - "Let the breath, not the arms, take you forward."
+    - "Bend your knees as much as you need."
+    - "Soften the face, the shoulders and the belly."
+  adjustments: "Most adjustment is verbal and with props. With consent, a light hand on the lower back can encourage the pelvis to tilt forward, or a hand between the shoulder blades can invite length. **Never push a student down into a forward bend** — this is one of the most common causes of hamstring and back injury in yoga."
+  transition_in: "From sitting (daṇḍāsana), after rest following fish."
+  transition_out: "Inhale and rise with a long spine; rest in śavāsana, then turn onto the front for cobra."
+  counterpose: "The backbends that follow (cobra); or tabletop and a gentle cow."
+  traditional: "The Haṭha Yoga Pradīpikā says paścimottānāsana makes the breath flow through the central channel, stokes the digestive fire, slims the waist and removes disease (HYP 1.29) [@akers2002]. The Sivananda tradition adds that it stretches the whole back, massages the abdominal organs and calms the mind [@lidell1983] [[T]]."
+  evidence: "Regular stretching increases hamstring range of motion, mostly through increased stretch tolerance in the short term [@weppler2010]. No trials test the digestive or metabolic claims. Loaded spinal flexion has been associated with vertebral fractures in people with osteoporosis [@sinaki2013], and aggressive stretching can irritate the proximal hamstring tendon [@goom2016]. As a calming, gentle forward bend practised without force, it is low-risk for most healthy students."
+
+- id: bhujangasana
+  number: 6
+  sanskrit: Bhujaṅgāsana
+  devanagari: भुजङ्गासन
+  english: Cobra
+  pronunciation: "*boo-jahn-GAH-sa-na*"
+  fig: bhujangasana
+  caption: "Bhujaṅgāsana as taught in the Sivananda tradition: elbows bent and close to the body, the chest lifted mainly by the back muscles."
+  overlay:
+    - {from: [lt, 0.1, post], to: [ut, 0.85, post], w: 1.8, kind: active}
+    - {from: [lt, 0.1, ant], to: [ut, 0.8, ant], w: 1.7, kind: stretch}
+  facts:
+    Family: "Prone backbend"
+    Level: "Beginner"
+    Traditional hold: "3 rounds of 5–10 breaths, or one longer hold"
+    Main planes: "Sagittal (spinal extension)"
+    Counterpose: "Child’s pose; rest in makarāsana between backbends"
+  meaning: "*Bhujaṅga* means “serpent”, particularly the cobra, which lifts its head and hood while the body remains on the ground."
+  purpose: "To extend the spine gently and strengthen the back muscles; the first of the three prone backbends, preparing for locust and bow."
+  preparation:
+    - "Sun salutation (position 7 is a cobra)."
+    - "Rest in makarāsana (crocodile) before and after."
+  technique:
+    - "Lie on the front, legs together, tops of the feet on the floor, forehead down."
+    - "Place the hands under the shoulders, fingers pointing forward, elbows bent and close to the sides."
+    - "Inhale and slowly lift the forehead, nose, chin and then the chest, as if the spine were rolling up one vertebra at a time. Use mainly the back muscles; the hands guide and support."
+    - "Keep the elbows bent and drawn in, the shoulders down and back, and the lower ribs and navel near or on the floor."
+    - "Hold, breathing evenly."
+    - "Exhale and roll down slowly — chest, chin, nose, forehead. Rest with the cheek on the hands."
+  breathing: "Inhale to rise, breathe steadily in the pose, exhale to lower. In the Sivananda method the pose may be repeated three times, holding a little longer each time."
+  alignment:
+    - "Pubic bone and legs remain on the floor; the legs relaxed or gently active."
+    - "Extension distributed along the whole spine, especially the upper back — not concentrated in the lower back."
+    - "Shoulders away from the ears; shoulder blades drawn gently back."
+    - "Neck long, continuing the curve of the spine; gaze forward or slightly up."
+  joints:
+    - ["Thoracic and lumbar spine", "Extended"]
+    - ["Cervical spine", "Mildly extended"]
+    - ["Hips", "Extended (neutral to slight extension)"]
+    - ["Shoulders", "Extended, scapulae retracted and depressed"]
+    - ["Elbows", "Flexed"]
+  muscles:
+    - ["Erector spinae, multifidus", "Concentric then isometric", "Lift and hold the trunk"]
+    - ["Rhomboids, middle and lower trapezius", "Isometric", "Draw the shoulder blades back and down"]
+    - ["Triceps", "Light isometric", "Support without pushing into the lower back"]
+    - ["Rectus abdominis, hip flexors", "Lengthening", "Front of the trunk opens"]
+    - ["Gluteals, hamstrings", "Light isometric", "Stabilise the pelvis and legs"]
+  spine: "Extension of the thoracic and lumbar spine, with gentle cervical extension. The lumbar spine is the most mobile region in extension, so cues aim to spread the movement upward."
+  planes: "Sagittal plane: spinal extension."
+  biomechanics: "When the lift comes from the back muscles, the height is limited to what the muscles can produce — a self-limiting and safe range. When the arms push hard, they lever the spine into extension beyond its active range, compressing the posterior lumbar structures."
+  mistakes:
+    - "Pushing up with straight arms and hanging into the lower back."
+    - "Shrugging the shoulders to the ears."
+    - "Throwing the head back."
+    - "Lifting the pelvis off the floor."
+  limitations:
+    - "**Stiff upper back:** extension concentrates in the lower back; lift less, lengthen more."
+    - "**Low-back sensitivity to extension:** practise sphinx or a very low cobra."
+    - "**Weak back muscles:** lift less and hold for fewer breaths."
+  contraindications:
+    - "Acute low-back pain aggravated by extension; spondylolisthesis or facet irritation aggravated by extension"
+    - "Pregnancy (after the first trimester, lying on the abdomen is uncomfortable and generally avoided)"
+    - "Recent abdominal surgery; hernia"
+  precautions:
+    - "Keep the elbows bent; lift only as high as the back muscles allow."
+    - "Stop if there is pinching or pain in the lower back."
+  variation_figs:
+    - {fig: sphinx, caption: "Beginner: sphinx — forearms on the floor, gentle extension"}
+  modifications:
+    - "Sphinx: forearms on the floor under the shoulders."
+    - "Baby cobra: lift only the chest a few centimetres, hands barely pressing."
+    - "Legs slightly apart to reduce compression in the lower back."
+  beginner: "Sphinx or baby cobra, 5 breaths, repeated 2–3 times with rest."
+  advanced: "Cobra with the hands lifted briefly off the floor (strength), or *rāja kapotāsana* preparations with the knees bent and feet reaching towards the head — only with a very supple, pain-free spine."
+  props_use:
+    - "Folded blanket under the pelvis if the pubic bone is sensitive."
+  cues:
+    - "Peel the chest up, as if drawn forward and up by the sternum."
+    - "Elbows in; shoulders away from the ears."
+    - "Let the back muscles do the work — the hands just rest."
+    - "Lengthen the tailbone towards the heels."
+    - "Roll down slowly, one vertebra at a time."
+  adjustments: "Verbal and demonstration first. With consent, a teacher may place a hand lightly between the shoulder blades to invite the upper back to lift, or on the lower back to encourage length. Never press a student’s pelvis down while they push up."
+  transition_in: "From makarāsana (crocodile), after the forward bend and a brief rest."
+  transition_out: "Roll down, turn the cheek to one side, rest in makarāsana."
+  counterpose: "Child’s pose after the series of backbends."
+  traditional: "Cobra is said to make the spine supple and strong, tone the back muscles and spinal nerves, massage the abdominal organs and relieve menstrual irregularities and constipation [@vishnudevananda1960; @lidell1983] [[T]]."
+  evidence: "There are no trials of cobra alone. Yoga programmes that include gentle backbends improve pain and function in chronic low back pain overall [@wieland2022], but the contribution of individual postures is unknown. Claims about menstruation and digestion are traditional and untested."
+
+- id: salabhasana
+  number: 7
+  sanskrit: Śalabhāsana
+  devanagari: शलभासन
+  english: Locust
+  pronunciation: "*sha-la-BAH-sa-na*"
+  fig: salabhasana
+  caption: "Śalabhāsana (full locust): chin on the floor, arms under the body, both legs lifted by the back and hip extensors."
+  overlay:
+    - {from: [lt, 0.3, post], to: [th1, 0.25, post], w: 2.6, kind: active}
+    - {from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 2.2, kind: active}
+    - {from: [lt, 0.2, post], to: [ut, 0.8, post], w: 1.6, kind: active}
+  facts:
+    Family: "Prone backbend; strength"
+    Level: "Beginner (half locust) to intermediate (full)"
+    Traditional hold: "Half locust 3–5 breaths each side; full locust 3–5 breaths, repeated"
+    Main planes: "Sagittal (hip and spinal extension)"
+    Counterpose: "Rest in makarāsana; child’s pose after bow"
+  meaning: "*Śalabha* means “locust” or “grasshopper”, whose tail lifts when it rests."
+  purpose: "To strengthen the back muscles, gluteals and hamstrings; the most strengthening of the three prone backbends."
+  preparation:
+    - "Cobra and rest."
+    - "Half locust before full locust."
+  technique:
+    - "Lie on the front with the chin on the floor. Place the arms under the body, palms down or hands in fists, the arms close together and the elbows as straight as comfortable."
+    - "Half locust: inhale and lift one leg, keeping it straight and the hips on the floor; hold a few breaths; exhale and lower. Repeat with the other leg."
+    - "Full locust: inhale and, pressing the arms into the floor, lift both legs together as high as possible, keeping them straight."
+    - "Hold for a few breaths, then exhale and lower slowly."
+    - "Release the arms and rest with the cheek on the hands."
+  breathing: "In the traditional form the breath is held briefly during the lift of full locust; beginners and anyone with high blood pressure should instead breathe steadily throughout."
+  alignment:
+    - "Chin (or forehead) on the floor; the neck long, not strained."
+    - "Legs straight and together (or hip-width in modification); lift from the hips rather than bending the knees."
+    - "Hips stay as level as possible in half locust."
+  joints:
+    - ["Hips", "Extended"]
+    - ["Lumbar spine", "Extended"]
+    - ["Knees", "Extended"]
+    - ["Shoulders", "Extended; arms beneath the body"]
+    - ["Cervical spine", "Slightly extended (chin on floor)"]
+  muscles:
+    - ["Gluteus maximus, hamstrings", "Concentric then isometric", "Extend the hips to lift the legs"]
+    - ["Erector spinae, multifidus, quadratus lumborum", "Isometric", "Extend and stabilise the lumbar spine"]
+    - ["Triceps, latissimus dorsi, posterior deltoid", "Isometric", "Press the arms down to lever the pelvis up (full locust)"]
+    - ["Hip flexors", "Lengthening", "Front of the hips opens"]
+  spine: "Extension of the lumbar spine as the legs rise; the thoracic spine remains relatively neutral."
+  planes: "Sagittal plane: hip and spinal extension."
+  biomechanics: "The legs are long levers lifted against gravity; the hip extensors and lower back muscles work hard. Compression of the posterior lumbar spine increases with height. Holding the breath raises intra-abdominal and blood pressure (a Valsalva-type effect), which helps lift but is inappropriate for some students."
+  mistakes:
+    - "Bending the knees to lift higher."
+    - "Straining the neck or lifting the chin."
+    - "Twisting the pelvis in half locust."
+    - "Holding the breath with a red, strained face."
+  limitations:
+    - "**Weak hip extensors or back:** practise half locust only."
+    - "**Arm discomfort under the body:** place the arms beside the body instead."
+    - "**Low-back sensitivity:** lift less; keep the legs slightly apart."
+  contraindications:
+    - "Uncontrolled high blood pressure or heart disease (for the breath-holding version)"
+    - "Pregnancy"
+    - "Acute low-back pain aggravated by extension"
+    - "Recent abdominal surgery; hernia"
+  precautions:
+    - "Teach half locust first."
+    - "Breathe freely unless the student is experienced and healthy."
+    - "Lower slowly, controlling the descent."
+  variation_figs:
+    - {fig: ardha_salabhasana, caption: "Beginner: half locust — one leg at a time"}
+  modifications:
+    - "Half locust, one leg at a time."
+    - "Arms beside the body, palms up or down."
+    - "Lift the chest and arms instead of the legs (a form of locust with arms forward) for variety."
+  beginner: "Half locust, each leg three times for 3–5 breaths, breathing freely."
+  advanced: "Full locust held longer, and locust with arms extended forward and chest lifted together; the very advanced “full locust” with the legs rising over the head is a specialist practice not taught in general classes."
+  props_use:
+    - "Folded blanket under the pelvis."
+  cues:
+    - "Reach the leg long, then lift it."
+    - "Keep both hips heavy on the floor."
+    - "Lengthen the back of the neck."
+    - "Lower slowly — feel the muscles lengthen as you come down."
+  adjustments: "Verbal: most students need permission to lift less and reach more. With consent, a teacher may place a hand on the sacrum to help keep the pelvis level in half locust. Do not lift a student’s legs."
+  transition_in: "From makarāsana, after cobra."
+  transition_out: "Lower slowly; rest in makarāsana."
+  counterpose: "Rest; after bow, child’s pose."
+  traditional: "Locust is said to strengthen the lower back, abdomen and legs, massage the abdominal organs, and improve digestion; with breath retention it is said to strengthen the lungs [@vishnudevananda1960; @lidell1983] [[T]]."
+  evidence: "No trials test locust alone. It is a well-recognised back-extensor and hip-extensor strengthening exercise. Breath-holding during effort raises blood pressure transiently, which is the reason for the precautions. Digestive claims are traditional."
+
+- id: dhanurasana
+  number: 8
+  sanskrit: Dhanurāsana
+  devanagari: धनुरासन
+  english: Bow
+  pronunciation: "*dha-noo-RAH-sa-na*"
+  fig: dhanurasana
+  caption: "Dhanurāsana: the hands hold the ankles; the legs pressing back into the hands lift the chest and thighs, making the body a bow and the arms its string."
+  overlay:
+    - {from: [th1, 0.1, ant], to: [sh1, 0.05, ant], w: 2.4, kind: stretch}
+    - {from: [lt, 0.1, ant], to: [ut, 0.8, ant], w: 1.7, kind: stretch}
+    - {from: [lt, 0.3, post], to: [th1, 0.25, post], w: 2.2, kind: active}
+  facts:
+    Family: "Prone backbend"
+    Level: "Intermediate"
+    Traditional hold: "3–5 breaths, repeated 2–3 times"
+    Main planes: "Sagittal (spinal and hip extension)"
+    Counterpose: "Child’s pose"
+  meaning: "*Dhanus* means “bow”: the trunk and legs form the bow, the arms the bowstring. Dhanurāsana is one of the fifteen postures of the Haṭha Yoga Pradīpikā (HYP 1.25) [@akers2002]."
+  purpose: "To extend the whole spine and open the front of the body while the back and legs work; the deepest of the three prone backbends in the sequence."
+  preparation:
+    - "Cobra and locust."
+    - "Quadriceps and hip-flexor mobility (lunge, half bow)."
+  technique:
+    - "Lie on the front, forehead down. Bend the knees and take hold of the ankles (outside of the ankles) with the hands."
+    - "Inhale and press the feet back and up into the hands; this lifts the thighs and the chest at the same time."
+    - "Keep the arms straight — they act like ropes, not levers. Lift the chest and gaze forward."
+    - "Hold, breathing steadily; the body may rock slightly with the breath."
+    - "Exhale and lower slowly — thighs, chest, forehead — then release the ankles and rest."
+  breathing: "Inhale to lift; steady, often shallow breathing in the pose (the abdomen is compressed); exhale to lower."
+  alignment:
+    - "Knees no wider than the hips (hip-width apart is fine for beginners)."
+    - "The lift comes from the legs pressing back, not from pulling with the arms."
+    - "Extension spread along the spine; chest broad."
+    - "Neck long, not thrown back."
+  joints:
+    - ["Spine", "Extended (thoracic and lumbar)"]
+    - ["Hips", "Extended"]
+    - ["Knees", "Flexed"]
+    - ["Shoulders", "Extended; arms straight behind"]
+    - ["Ankles", "Plantarflexed (held)"]
+  muscles:
+    - ["Hamstrings, gluteus maximus", "Isometric", "Press the feet back into the hands; extend the hips"]
+    - ["Erector spinae, rhomboids", "Isometric", "Support spinal extension and open the chest"]
+    - ["Quadriceps, hip flexors", "Lengthening", "The main limit at the front of the thighs"]
+    - ["Rectus abdominis, pectorals, anterior deltoids", "Lengthening", "Front of the trunk and shoulders opens"]
+  spine: "Extension of the whole spine, typically greatest in the lower lumbar and thoracolumbar region; cues aim to lift the chest to share the movement."
+  planes: "Sagittal plane."
+  biomechanics: "Bow is a closed loop: the legs pushing against the hands generate the extension. This means the student can easily move beyond the range their back muscles could hold on their own, because the legs supply force. Compression of the lower lumbar spine and stretch on the knees (deep flexion with the ankles held) are the main loads."
+  mistakes:
+    - "Pulling with bent arms instead of pressing with the legs."
+    - "Knees splaying wide, turning the thighs out."
+    - "Throwing the head back."
+    - "Compressing into the lower back with pain."
+  limitations:
+    - "**Tight quadriceps or hip flexors:** cannot reach the ankles; use a strap."
+    - "**Knee discomfort:** hold a strap around the ankles to reduce knee flexion."
+    - "**Stiff upper back:** extension concentrates low; practise half bow."
+  contraindications:
+    - "Acute low-back pain or conditions aggravated by extension"
+    - "Pregnancy"
+    - "Recent abdominal surgery, hernia"
+    - "Uncontrolled high blood pressure (if straining)"
+    - "Knee injury limiting deep flexion"
+  precautions:
+    - "Practise cobra and locust first."
+    - "Stop at any pinching in the lower back or pain in the knees."
+  variation_figs:
+    - {fig: ardha_dhanurasana, caption: "Beginner: half bow — one side at a time, supported on the forearm"}
+  modifications:
+    - "Half bow, one leg at a time, supported on the opposite forearm."
+    - "Strap around the ankles, holding the strap."
+    - "Lift only the legs or only the chest, keeping the other half down."
+  beginner: "Half bow, each side 3–5 breaths, or bow with a strap and minimal lift."
+  advanced: "Rocking bow (rocking forward and back with the breath) and *pūrṇa dhanurāsana* (full bow, holding the toes with the elbows pointing up) — only with a supple, pain-free spine."
+  props_use:
+    - "Strap around the ankles."
+    - "Folded blanket under the pelvis."
+  cues:
+    - "Kick the feet back into the hands."
+    - "Let the arms be long, like the string of a bow."
+    - "Lift the chest forward and up."
+    - "Breathe — let the breath rock you gently."
+  adjustments: "With consent, a teacher may help a student find the ankles or place a strap. Hands-on lifting of the legs or chest is not recommended."
+  transition_in: "From rest after locust."
+  transition_out: "Lower slowly; release; rest in makarāsana, then child’s pose."
+  counterpose: "Child’s pose; then the twist."
+  traditional: "Bow is said to combine the benefits of cobra and locust, keep the spine elastic, massage the abdominal organs, and improve digestion and appetite [@vishnudevananda1960; @lidell1983] [[T]]."
+  evidence: "No trials study bow alone. Its demands — deep lumbar extension driven by the legs — are the reason for its place late in the backbend sequence and the modifications above. Traditional claims about digestion are untested."
+
+- id: ardha_matsyendrasana
+  number: 9
+  sanskrit: Ardha Matsyendrāsana
+  devanagari: अर्धमत्स्येन्द्रासन
+  english: Half Spinal Twist
+  pronunciation: "*AR-dha mat-syen-DRAH-sa-na*"
+  fig: ardha_matsyendrasana
+  caption: "Ardha Matsyendrāsana, front view (schematic): the right knee is raised with the foot outside the left knee; the left arm presses against the right knee; the trunk turns to the right from the rib cage."
+  facts:
+    Family: "Seated twist"
+    Level: "Beginner (easy twist) to intermediate"
+    Traditional hold: "30 seconds to 1 minute each side"
+    Main planes: "Transverse (spinal rotation)"
+    Counterpose: "Twist to the other side; a gentle forward bend"
+  meaning: "*Ardha* means “half”; *Matsyendra*, “lord of the fishes”, is the legendary founder of Haṭha Yoga, to whom the Haṭha Yoga Pradīpikā attributes the full twist, *matsyendrāsana* (HYP 1.26–27) [@akers2002]."
+  purpose: "To rotate the spine in both directions after the backbends; to cultivate a lengthened, upright spine; and, in the traditional view, to tone the spinal nerves and abdominal organs."
+  preparation:
+    - "Seated forward bend and backbends completed."
+    - "A cushion under the sitting bones if the spine cannot remain upright."
+    - "Simple seated twists (sukhāsana twist)."
+  technique:
+    - "Sit on the heels (or with legs extended). Move the hips to the floor to the right of the feet, so that the left leg is folded with the left heel beside the right hip (or keep it straight)."
+    - "Bring the right foot over the left knee and place it flat on the floor outside the left knee; the right knee points up."
+    - "Inhale and raise the left arm; exhale and bring it to the outside of the right knee, taking hold of the right foot or ankle, or simply pressing the upper arm against the knee."
+    - "Place the right hand on the floor behind the back, close to the spine, fingers pointing away."
+    - "Inhale and lengthen the spine upward; exhale and turn the trunk to the right, from the waist and rib cage; turn the head last to look over the right shoulder."
+    - "Hold, lengthening with each inhalation and turning a little with each exhalation."
+    - "Exhale and unwind slowly, head first. Repeat on the other side."
+  breathing: "Inhale to lengthen, exhale to rotate. Breathing into the lower ribs is restricted on one side and expanded on the other."
+  alignment:
+    - "Both sitting bones grounded; spine upright and lengthened before rotating."
+    - "Rotation from the thoracic spine and rib cage; the lower back turns only a little."
+    - "The back hand supports the spine upright; it does not lever the twist."
+    - "Head turns last and moderately; shoulders level and relaxed."
+  joints:
+    - ["Thoracic spine", "Rotated (most of the twist)"]
+    - ["Lumbar spine", "Slightly rotated; neutral to slightly extended"]
+    - ["Cervical spine", "Rotated"]
+    - ["Top hip", "Flexed, adducted, internally rotated"]
+    - ["Bottom hip and knee", "Flexed (or extended)"]
+  muscles:
+    - ["External oblique (opposite side) and internal oblique (same side)", "Concentric then isometric", "Rotate the trunk towards the raised knee"]
+    - ["Erector spinae, multifidus", "Isometric", "Keep the spine upright"]
+    - ["Obliques of the other side, back muscles", "Lengthening", "Allow rotation"]
+    - ["Gluteus medius/minimus and deep rotators (top leg)", "Lengthening", "The top hip is drawn across the body"]
+  spine: "Rotation, mainly thoracic, with the cervical spine completing the turn. The lumbar spine, whose facet joints limit rotation, contributes only a few degrees; forcing further rotation there should be avoided."
+  planes: "Transverse plane: spinal rotation; hip adduction occurs in the frontal plane."
+  biomechanics: "The arm pressing against the knee provides a lever. Used gently, it helps the trunk rotate; used forcefully, it can push the spine past its active range. Combining rotation with a slumped, flexed spine increases load on the discs [@mcgill2016]; sitting tall reduces it."
+  mistakes:
+    - "Slumping the lower back (often because the hips are too tight — sit on a cushion)."
+    - "Levering hard with the arms to force the twist."
+    - "Turning the head first and furthest."
+    - "Lifting one sitting bone high off the floor."
+  limitations:
+    - "**Tight hips:** the top knee cannot be crossed comfortably; keep the bottom leg straight or sit on a cushion."
+    - "**Rounding of the lower back:** sit higher."
+    - "**Shoulder stiffness:** hug the knee with the arm instead of binding."
+  contraindications:
+    - "Acute disc problems or low-back pain aggravated by rotation"
+    - "Osteoporosis of the spine (avoid forced or deep twisting with flexion) [@sinaki2013]"
+    - "Later pregnancy (closed twists compress the abdomen; open twists turning away from the bent knee are used instead)"
+    - "Recent abdominal or spinal surgery"
+  precautions:
+    - "Lengthen first, twist second."
+    - "Unwind slowly and evenly; always twist both sides."
+  variation_figs:
+    - {fig: easy_twist, caption: "Beginner: easy seated twist in a cross-legged position"}
+  modifications:
+    - "Easy twist sitting cross-legged or on a chair."
+    - "Keep the bottom leg straight."
+    - "Hug the raised knee with the arm rather than hooking the elbow outside it."
+    - "Sit on a cushion or folded blanket."
+  beginner: "Easy seated twist in sukhāsana or on a chair, 5 breaths each side, turning from the rib cage with a tall spine."
+  advanced: "Bind (the lower arm wrapping under the raised knee to clasp the hand behind the back) or the full *matsyendrāsana* with the bottom foot in half-lotus — only with open hips and a relaxed, upright spine."
+  props_use:
+    - "Cushion or folded blanket under the sitting bones."
+    - "Chair for a seated twist."
+  cues:
+    - "Inhale, grow tall; exhale, turn."
+    - "Turn from the ribs, not the hands."
+    - "Both sitting bones heavy."
+    - "Let the head follow last, softly."
+  adjustments: "With consent: one hand on the shoulder in front and one behind can invite the rib cage to turn, but the student leads the movement and the teacher never adds force at the end of the range. Alternatively, a hand on the crown can invite the spine to lengthen."
+  transition_in: "From kneeling or daṇḍāsana after the backbends."
+  transition_out: "Unwind on an exhalation, head first; change sides; rest."
+  counterpose: "The same twist to the other side; then a short forward bend or rest."
+  traditional: "The twist is said to keep the spine elastic and the spinal nerves toned, massage the abdominal organs, relieve digestive problems and help to balance the nervous system [@vishnudevananda1960; @lidell1983]. The Haṭha Yoga Pradīpikā says the full matsyendrāsana kindles the digestive fire and awakens kuṇḍalinī (HYP 1.27) [@akers2002] [[T]]."
+  evidence: "No trials study the half spinal twist alone. There is no evidence that twisting “detoxifies” or “wrings out” the organs. Twisting and flexion under load are associated with vertebral fractures in people with osteoporosis [@sinaki2013]. For healthy students, gentle, upright twisting is a normal spinal movement practised through a comfortable range."
+
+- id: kakasana
+  number: 10
+  sanskrit: Kākāsana
+  devanagari: काकासन
+  english: Crow
+  pronunciation: "*kah-KAH-sa-na*"
+  fig: kakasana
+  caption: "Kākāsana: hands on the floor, elbows bent, knees resting on the backs of the upper arms, the body tilted forward until the feet lift."
+  overlay:
+    - {from: [ua1, 0.05, post], to: [fa1, 0.04, post], w: 1.8, kind: active}
+    - {from: [ut, 0.4, ant], to: [ut, 0.85, post], w: 1.8, kind: active}
+  props:
+    - [bolster, 70, 0, 26, 7]
+  facts:
+    Family: "Arm balance"
+    Level: "Intermediate"
+    Traditional hold: "Build from a few seconds to 30 seconds or more"
+    Main planes: "Balance over the hands (sagittal)"
+    Counterpose: "Wrist release; standing forward bend follows"
+  meaning: "*Kāka* means “crow”. The Sivananda tradition offers the peacock (*mayūrāsana*, one of the Haṭha Yoga Pradīpikā’s fifteen postures) as an alternative for advanced students."
+  purpose: "To build strength in the arms, shoulders, wrists and trunk; to develop balance, concentration and confidence."
+  preparation:
+    - "Plank, downward dog and wrist-strengthening to prepare the hands."
+    - "A squat (malāsana) to find the hip position."
+    - "A cushion in front of the hands."
+  technique:
+    - "Squat with the feet together or hip-width, heels lifted if needed. Place the hands flat on the floor shoulder-width apart, fingers spread and pointing forward."
+    - "Bend the elbows slightly back (not outward) to make a shelf of the upper arms."
+    - "Lift the hips and place the knees on the backs of the upper arms, as close to the armpits as possible."
+    - "Look forward, not down, and slowly shift the weight forward into the hands until one foot, then the other, lifts."
+    - "Balance, drawing the feet towards the buttocks and the abdomen in."
+    - "To come out, lower the feet slowly to the floor and rest back into a squat or child’s pose; release the wrists."
+  breathing: "Steady breathing; the breath often wants to stop at the moment of lifting — keep it moving."
+  alignment:
+    - "Hands firmly pressing, especially through the knuckles of the index finger and thumb; fingers gripping lightly."
+    - "Elbows pointing back and in, over the wrists."
+    - "Shoulder blades protracted (“push the floor away”)."
+    - "Gaze forward at a point on the floor ahead."
+  joints:
+    - ["Wrists", "Strongly extended under load"]
+    - ["Elbows", "Flexed (bent-arm crow)"]
+    - ["Shoulders", "Flexed, scapulae protracted"]
+    - ["Spine", "Flexed (rounded)"]
+    - ["Hips and knees", "Strongly flexed"]
+  muscles:
+    - ["Serratus anterior, pectorals", "Isometric", "Protract the scapulae and support the trunk"]
+    - ["Triceps, anterior deltoid, rotator cuff", "Isometric", "Hold the bent-elbow shelf"]
+    - ["Forearm flexors", "Isometric", "Grip the floor and take load off the wrist"]
+    - ["Abdominals, hip flexors", "Isometric", "Draw the knees up and the feet in"]
+  spine: "The spine is flexed, drawing the knees high onto the arms; the neck is in slight extension to look forward."
+  planes: "Balance is controlled mainly in the sagittal plane — forward and back over the hands."
+  biomechanics: "The base of support is the two hands; the centre of mass must be brought forward over them, which requires the courage to lean. The wrists carry almost the whole body weight near their end range of extension (@fig:hand), so wrist preparation and gradual progression are essential."
+  mistakes:
+    - "Elbows splaying outward."
+    - "Looking down at the hands (the head drops and the body tips forward)."
+    - "Knees too low on the arms."
+    - "Jumping into the pose; collapsing out of it."
+  limitations:
+    - "**Wrist discomfort:** build tolerance gradually; practise on fists or blocks, or substitute plank and squat work."
+    - "**Weak upper body:** practise with one foot at a time or with the feet on a block."
+    - "**Fear of falling forward:** cushion in front; practise lifting one foot only."
+  contraindications:
+    - "Wrist injury, carpal tunnel syndrome, or acute wrist pain"
+    - "Shoulder or elbow injury"
+    - "Pregnancy"
+    - "Uncontrolled high blood pressure (if straining)"
+  precautions:
+    - "Place a cushion in front of the head."
+    - "Warm the wrists; limit repetitions for beginners."
+  variation_figs:
+    - {fig: malasana, caption: "Preparation: squat (malāsana) to find the hip position"}
+    - {fig: bakasana, caption: "Advanced: straight-arm crane (bakāsana)"}
+    - {fig: mayurasana, caption: "Advanced alternative: peacock (mayūrāsana)"}
+  modifications:
+    - "Feet on a block, making the lift easier."
+    - "One foot lifted at a time."
+    - "Forehead resting on a block as a “third point” of support."
+  beginner: "From a squat with feet on a block, place the knees on the arms and lean forward until the weight is in the hands; lift one foot, then the other, for a breath or two."
+  advanced: "Straight-arm crane (*bakāsana*); side crow; peacock (*mayūrāsana*), in which the elbows press into the abdomen and the body is held horizontal."
+  props_use:
+    - "Cushion or bolster in front of the hands."
+    - "Block under the feet or forehead."
+  cues:
+    - "Spread the fingers and grip the floor."
+    - "Knees high on the arms, close to the armpits."
+    - "Look forward, not down."
+    - "Lean — the feet lift by themselves."
+    - "Push the floor away and round the back."
+  adjustments: "Spotting from the side, with consent, a hand ready near the shoulder or upper back to prevent a forward fall. Do not lift the student’s hips or feet."
+  transition_in: "From a squat."
+  transition_out: "Lower the feet slowly into a squat; release the wrists; rest."
+  counterpose: "Wrist circles and gentle wrist flexion; then the standing forward bend."
+  traditional: "Crow is said to strengthen the arms, wrists and shoulders, increase concentration and balance, and develop mental poise and confidence [@vishnudevananda1960; @lidell1983] [[T]]."
+  evidence: "No specific trials. Crow is a demanding closed-chain strength and balance exercise for the upper body. The main documented risk area for arm-balancing practice is the wrist; gradual loading reflects general principles of tissue adaptation [@soligard2016]."
+
+- id: padahastasana
+  number: 11
+  sanskrit: Pāda Hastāsana
+  devanagari: पादहस्तासन
+  english: Standing Forward Bend
+  pronunciation: "*PAH-da has-TAH-sa-na*"
+  fig: padahastasana
+  caption: "Pāda Hastāsana: folding from the hips with the hands holding the backs of the ankles; the spine and neck hang relaxed."
+  overlay:
+    - {from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 2.6, kind: stretch}
+    - {from: [sh1, 0.1, post], to: [sh1, 0.8, post], w: 1.8, kind: stretch}
+  facts:
+    Family: "Standing forward bend; mild inversion"
+    Level: "Beginner (with bent knees)"
+    Traditional hold: "30 seconds to 2 minutes"
+    Main planes: "Sagittal (hip and spinal flexion)"
+    Counterpose: "Standing upright; triangle follows"
+  meaning: "*Pāda* means “foot” and *hasta* “hand”: in the classical form the hands are placed flat under the feet, palms up."
+  purpose: "To lengthen the back of the legs and the spine with the help of gravity; to bring the head below the heart in a gentle inversion."
+  preparation:
+    - "Sun salutation (positions 3 and 10)."
+    - "Seated forward bend earlier in the sequence."
+  technique:
+    - "Stand with the feet together (or hip-width), weight even."
+    - "Inhale and raise the arms overhead, lengthening the spine."
+    - "Exhale and fold forward from the hips, keeping the spine long at first."
+    - "Bring the hands to the floor beside the feet, hold the backs of the ankles, or slide the hands under the feet, palms up — bending the knees as needed."
+    - "Let the head and neck hang; relax the shoulders."
+    - "Hold, breathing slowly; with each exhalation release a little further."
+    - "To come up, bend the knees, place the hands on the thighs if needed, and inhale to rise with a long spine, head coming up last."
+  breathing: "Exhale to fold; slow breathing into the back; inhale to rise."
+  alignment:
+    - "Weight slightly forward over the balls of the feet, hips over (not behind) the heels."
+    - "The fold begins at the hips."
+    - "Knees soft or bent; never locked."
+    - "Neck relaxed."
+  joints:
+    - ["Hips", "Strongly flexed"]
+    - ["Spine", "Flexed (hanging)"]
+    - ["Knees", "Extended or flexed"]
+    - ["Ankles", "Slightly dorsiflexed"]
+    - ["Elbows", "Flexed (holding ankles)"]
+  muscles:
+    - ["Hamstrings, gastrocnemius", "Eccentric during descent, then lengthening", "Control the fold; the main limit"]
+    - ["Erector spinae, gluteus maximus", "Eccentric during descent, then relaxed", "Lower the trunk under gravity"]
+    - ["Quadriceps", "Light isometric", "Keep the knees extended if straight"]
+    - ["Back extensors, hip extensors", "Concentric", "Lift the trunk back to standing"]
+  spine: "Flexion under the pull of gravity. When hanging relaxed, the back extensors may go quiet (the flexion–relaxation phenomenon), leaving the passive tissues of the back to carry the load; rising requires them to work again."
+  planes: "Sagittal plane."
+  biomechanics: "Unlike the seated forward bend, gravity pulls the trunk down, so the hamstrings work eccentrically to control the descent and the lower back is loaded in flexion. Coming up is the moment of greatest load on the back; bending the knees reduces it. The head below the heart raises pressure in the head and eyes [@jasien2015]."
+  mistakes:
+    - "Locking the knees and hanging from the lower back."
+    - "Coming up quickly with straight legs and rounded back."
+    - "Pulling on the ankles to force the head to the knees."
+    - "Weight falling back into the heels."
+  limitations:
+    - "**Short hamstrings:** bend the knees; hands on blocks or shins."
+    - "**Low-back sensitivity:** half forward bend (ardha uttānāsana) with hands on thighs."
+    - "**Dizziness with head below heart:** come up slowly; keep the head higher."
+  contraindications:
+    - "Acute low-back pain or disc problems aggravated by flexion"
+    - "Osteoporosis (loaded flexion) [@sinaki2013]"
+    - "Glaucoma or serious eye conditions [@jasien2015]; uncontrolled high blood pressure; vertigo"
+    - "Later pregnancy (legs apart, hands on a chair)"
+  precautions:
+    - "Always bend the knees to come up."
+    - "Rise slowly to avoid light-headedness."
+  variation_figs:
+    - {fig: padahasta_beginner, caption: "Beginner: knees bent, hands to the floor"}
+    - {fig: ardha_uttanasana, caption: "Half forward bend: flat back, hands on the shins"}
+  modifications:
+    - "Knees generously bent."
+    - "Hands on blocks, a chair or the thighs."
+    - "Feet hip-width apart."
+  beginner: "Knees bent, hands to the floor or blocks, head relaxed, 5–8 breaths; rise with bent knees."
+  advanced: "The classical form: palms under the feet, legs straight, forehead to the shins; and *pādāṅguṣṭhāsana* (holding the big toes)."
+  props_use:
+    - "Blocks under the hands."
+    - "Chair for the hands in later pregnancy or with low-back sensitivity."
+  cues:
+    - "Fold from the hips like a hinge."
+    - "Bend your knees as much as you like."
+    - "Let the head hang heavy."
+    - "Bend the knees, then roll or rise slowly, head last."
+  adjustments: "With consent, a light hand on the sacrum can encourage the weight forward over the feet. Never press down on the back."
+  transition_in: "From standing, after crow and rest."
+  transition_out: "Bend the knees and rise slowly; pause standing."
+  counterpose: "Standing upright with a gentle lift of the chest; triangle follows."
+  traditional: "Standing forward bend is said to stretch the whole back of the body, increase blood supply to the brain, relieve digestive complaints and make the spine elastic [@vishnudevananda1960; @lidell1983] [[T]]."
+  evidence: "No trials of pāda hastāsana alone. Head-below-heart positions raise intraocular pressure within minutes; standing forward bend was one of the four positions shown to do so [@jasien2015]. The claim of increased brain blood supply is not supported by physiology (cerebral blood flow is autoregulated) [@hall2021]. As a hamstring stretch with a mild inversion, it is suitable for most healthy students when knees are bent freely."
+
+- id: trikonasana
+  number: 12
+  sanskrit: Trikoṇāsana
+  devanagari: त्रिकोणासन
+  english: Triangle
+  pronunciation: "*tri-ko-NAH-sa-na*"
+  fig: trikonasana
+  caption: "Trikoṇāsana, front view: legs wide and straight, the trunk bending laterally over the front leg, the lower hand on the shin and the upper arm vertical."
+  facts:
+    Family: "Standing lateral bend"
+    Level: "Beginner"
+    Traditional hold: "30 seconds to 1 minute each side"
+    Main planes: "Frontal (lateral flexion, hip abduction)"
+    Counterpose: "Standing; final relaxation follows"
+  meaning: "*Tri* means “three” and *koṇa* “angle”: the legs and floor, the trunk and legs, and the arms form triangles."
+  purpose: "To bend the spine laterally, stretch the sides of the trunk and legs, strengthen the legs and improve balance; the last posture of the twelve before final relaxation."
+  preparation:
+    - "Standing postures in the sun salutation."
+    - "Wide-legged stance practice; side bends."
+  technique:
+    - "Stand with the feet about one leg-length apart (roughly 1 metre, adjusted to proportions)."
+    - "Turn the right foot out 90° and the left foot in slightly; align the right heel with the arch of the left foot."
+    - "Inhale and raise the arms to shoulder height, palms down."
+    - "Exhale and bend sideways to the right from the hip and waist, sliding the right hand down the right leg to the shin, ankle or a block; the left arm rises vertically."
+    - "Keep both legs straight but not locked, the trunk in the same plane as the legs; turn the head to look up at the left hand if the neck is comfortable."
+    - "Hold, breathing evenly."
+    - "Inhale to come up with the arms extended; repeat on the other side."
+  breathing: "Exhale to bend; breathe freely — the upper side of the rib cage expands with each inhalation; inhale to return."
+  alignment:
+    - "Front knee in line with the second and third toes; knee cap lifted, not hyperextended."
+    - "Trunk in the frontal plane (not collapsing forward); both sides of the waist long."
+    - "Lower hand rests lightly — the legs and trunk hold the pose."
+    - "Neck in line; looking down or forward if turning up strains it."
+  joints:
+    - ["Spine", "Laterally flexed towards the front leg (with some rotation)"]
+    - ["Front hip", "Flexed, abducted and externally rotated"]
+    - ["Back hip", "Abducted, relatively neutral"]
+    - ["Knees", "Extended"]
+    - ["Shoulders", "Abducted about 90° (lower arm) and 180° (upper arm)"]
+    - ["Cervical spine", "Rotated to look up"]
+  muscles:
+    - ["Obliques, quadratus lumborum (lower side)", "Eccentric then isometric", "Control the side bend against gravity"]
+    - ["Obliques, quadratus lumborum, latissimus (upper side)", "Lengthening", "Side of the trunk opens"]
+    - ["Hamstrings and adductors (front leg)", "Lengthening", "Back and inner thigh of the front leg open"]
+    - ["Quadriceps, gluteus medius", "Isometric", "Keep the legs straight and the pelvis stable"]
+    - ["Deltoids, trapezius", "Isometric", "Hold the arms"]
+  spine: "Lateral flexion of the lumbar and thoracic spine towards the front leg, usually with some rotation of the chest upward."
+  planes: "Mainly the frontal plane (lateral flexion, hip abduction); the front hip also flexes (sagittal) and the chest rotates (transverse)."
+  biomechanics: "The wide base makes triangle stable. The trunk is a lever held out sideways, controlled eccentrically by the muscles of the lower side of the waist. Hamstring length of the front leg determines how far the pelvis can tilt; forcing the hand to the floor causes the trunk to rotate forward or the front knee to hyperextend."
+  mistakes:
+    - "Collapsing the trunk forward to reach the floor."
+    - "Hyperextending (locking) the front knee."
+    - "Leaning on the lower hand."
+    - "Straining the neck to look up."
+  limitations:
+    - "**Short hamstrings or adductors:** hand higher on the leg or on a block."
+    - "**Neck discomfort:** look forward or down."
+    - "**Balance difficulty:** back against a wall; shorter stance."
+  contraindications:
+    - "Acute low-back pain or sacroiliac pain aggravated by the stance"
+    - "Recent hip or knee injury"
+    - "Severe dizziness or balance disorders (practise at a wall)"
+  precautions:
+    - "Keep a micro-bend in the front knee if it tends to hyperextend."
+    - "Come up on an inhalation with the arms extended, using the legs."
+  variation_figs:
+    - {fig: trikonasana_block, caption: "Beginner: lower hand on a block, trunk higher", props: [[block, 38, 0, 9, 18]]}
+    - {fig: trikonasana_floor, caption: "Advanced: hand on the floor behind the front foot, trunk parallel to the floor"}
+  modifications:
+    - "Lower hand on a block or higher on the shin."
+    - "Back against a wall for balance and alignment."
+    - "Upper hand on the hip."
+  beginner: "Shorter stance, lower hand on the shin or a block, upper hand on the hip, gaze forward; 5 breaths each side."
+  advanced: "Hand on the floor behind the front foot with the trunk parallel to the floor; revolved triangle (*parivṛtta trikoṇāsana*), which combines a twist with the forward-bending stance."
+  props_use:
+    - "Block for the lower hand."
+    - "Wall behind the back."
+  cues:
+    - "Reach out long before you tip."
+    - "Keep both sides of the waist long."
+    - "Stand firmly on both feet."
+    - "Let the hand rest; the legs hold you."
+    - "Open the chest to the side wall."
+  adjustments: "With consent, a teacher standing behind can place a hand on the back of the pelvis and one on the upper shoulder to help the student feel the trunk in the frontal plane. Avoid pulling the upper arm."
+  transition_in: "From standing after the standing forward bend."
+  transition_out: "Inhale up; turn the feet parallel; step the feet together; stand quietly, then lie down for final relaxation."
+  counterpose: "Standing, then final relaxation."
+  traditional: "Triangle is said to make the spine flexible, tone the spinal nerves and abdominal organs, improve the appetite and help with constipation, and to reduce fat at the waist [@vishnudevananda1960; @lidell1983] [[T]]."
+  evidence: "No trials of triangle alone. Standing yoga postures challenge balance and leg strength, and yoga-based exercise improves balance and mobility in older adults [@youkhana2016]. Claims about digestion and waist fat are traditional and untested."

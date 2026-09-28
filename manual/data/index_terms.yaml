@@ -1,0 +1,103 @@
+# General index terms. `match` gives regex alternatives (case-insensitive); default is the term itself.
+- {term: abhyāsa, match: ["abhy[aā]sa"]}
+- {term: ahiṃsā, match: ["ahi[mṃ]s[aā]"]}
+- {term: Advaita Vedānta, match: ["advaita"]}
+- {term: annamaya kośa, match: ["annamaya"]}
+- {term: apāna, match: ["ap[aā]na"]}
+- {term: aparigraha}
+- {term: asmitā, match: ["asmit[aā]"]}
+- {term: asteya}
+- {term: autonomic nervous system}
+- {term: avidyā, match: ["avidy[aā]"]}
+- {term: bandha, match: ["bandhas?"]}
+- {term: baroreflex}
+- {term: Bhagavad Gītā, match: ["Bhagavad G[iī]t[aā]"]}
+- {term: bhakti, match: ["bhakti"]}
+- {term: brahmacarya, match: ["brahmacar[iy]a", "brahmacharya"]}
+- {term: Brahman}
+- {term: carbon dioxide, match: ["carbon dioxide", "CO2", "CO₂"]}
+- {term: cakra, match: ["[cč]h?akras?"]}
+- {term: concentric contraction, match: ["concentric"]}
+- {term: consent}
+- {term: contraindication, match: ["contraindications?"]}
+- {term: counterpose, match: ["counterposes?", "counter-poses?"]}
+- {term: diaphragm}
+- {term: dhāraṇā, match: ["dh[aā]ra[nṇ][aā]"]}
+- {term: dhyāna, match: ["dhy[aā]na"]}
+- {term: Divine Life Society}
+- {term: eccentric contraction, match: ["eccentric"]}
+- {term: erector spinae}
+- {term: evidence, match: ["evidence base"]}
+- {term: fascia}
+- {term: flexibility}
+- {term: guṇa, match: ["gu[nṇ]as?"]}
+- {term: guru}
+- {term: hamstrings}
+- {term: Haṭha Yoga Pradīpikā, match: ["Ha[tṭ]ha Yoga Prad[iī]pik[aā]"]}
+- {term: heart rate variability, match: ["heart rate variability", "HRV"]}
+- {term: hypermobility, match: ["hypermobil\\w*"]}
+- {term: iḍā, match: ["i[dḍ][aā]"]}
+- {term: interoception}
+- {term: intra-abdominal pressure}
+- {term: intraocular pressure}
+- {term: Īśvara praṇidhāna, match: ["[iī][sś]vara pra[nṇ]idh[aā]na"]}
+- {term: isometric contraction, match: ["isometric"]}
+- {term: jālandhara bandha, match: ["j[aā]landhara"]}
+- {term: jñāna, match: ["j[nñ][aā]na"]}
+- {term: karma yoga}
+- {term: kleśa, match: ["kle[sś]as?"]}
+- {term: kośa, match: ["ko[sś]as?"]}
+- {term: kumbhaka}
+- {term: Kuṇḍalinī, match: ["ku[nṇ][dḍ]alin[iī]"]}
+- {term: load management}
+- {term: lordosis}
+- {term: kyphosis}
+- {term: mantra}
+- {term: mindfulness}
+- {term: motor learning}
+- {term: mudrā, match: ["mudr[aā]s?"]}
+- {term: mūla bandha, match: ["m[uū]la bandha"]}
+- {term: nāḍī, match: ["n[aā][dḍ][iī]s?"]}
+- {term: Neyyar Dam}
+- {term: niyama, match: ["niyamas?"]}
+- {term: osteoporosis}
+- {term: pain science, match: ["pain science", "nociception"]}
+- {term: Patañjali, match: ["Pata[nñ]jali"]}
+- {term: pelvic floor}
+- {term: piṅgalā, match: ["pi[nṅ]gal[aā]"]}
+- {term: polyvagal theory, match: ["polyvagal"]}
+- {term: prāṇa, match: ["pr[aā][nṇ]a(?!y)"]}
+- {term: pratyāhāra, match: ["praty[aā]h[aā]ra"]}
+- {term: pregnancy}
+- {term: proprioception}
+- {term: psoas}
+- {term: Puruṣa, match: ["puru[sṣ]a"]}
+- {term: Prakṛti, match: ["prak[rṛ]ti"]}
+- {term: rajas}
+- {term: reciprocal inhibition}
+- {term: sacroiliac joint, match: ["sacroiliac"]}
+- {term: samādhi, match: ["sam[aā]dhi"]}
+- {term: Sāṃkhya, match: ["s[aā][mṃ]khya"]}
+- {term: saṃskāra, match: ["sa[mṃ]sk[aā]ras?"]}
+- {term: santoṣa, match: ["santo[sṣ]a"]}
+- {term: sattva}
+- {term: satya}
+- {term: śauca, match: ["[sś]auca", "saucha"]}
+- {term: scope of practice}
+- {term: Sivananda, Swami, match: ["Swami Sivananda"]}
+- {term: slow breathing}
+- {term: Surya Namaskar, match: ["S[uū]rya Namask[aā]r"]}
+- {term: suṣumṇā, match: ["su[sṣ]um[nṇ][aā]"]}
+- {term: svādhyāya, match: ["sv[aā]dhy[aā]ya"]}
+- {term: tamas}
+- {term: tapas}
+- {term: trauma-aware teaching, match: ["trauma-aware", "trauma-informed"]}
+- {term: uḍḍīyāna bandha, match: ["u[dḍ][dḍ][iī]y[aā]na"]}
+- {term: Upaniṣads, match: ["Upani[sṣ]ads?"]}
+- {term: vagus nerve, match: ["vagus", "vagal"]}
+- {term: vairāgya, match: ["vair[aā]gya"]}
+- {term: Vedānta, match: ["Ved[aā]nta"]}
+- {term: Vishnudevananda, Swami, match: ["Vishnudevananda"]}
+- {term: vṛtti, match: ["v[rṛ]ttis?"]}
+- {term: yama, match: ["yamas?"]}
+- {term: Yoga Sūtra, match: ["Yoga S[uū]tras?"]}
