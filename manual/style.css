@@ -385,6 +385,7 @@ a.pgref::after { content: "p. " target-counter(attr(href), page); }
 .muscle-row { display: flex; gap: 4mm; }
 .muscle-row .mfig { width: 34mm; flex: none; }
 .muscle-row .mfig svg { width: 100%; height: auto; }
+.muscle-row .mfig .mnote { font: italic 5.8pt/1.25 "Inter"; color: var(--ink-2); text-align: center; margin-top: 1mm; }
 .muscle-row .mtab { flex: 1; }
 
 /* ---------------------------------------------------------------- landscape mapping */
@@ -433,6 +434,9 @@ h2.refs-group { font-size: 14pt; }
 .seq { display: flex; flex-wrap: wrap; gap: 2.2mm 2mm; margin: 2mm 0 4mm; }
 .seq .step { width: 22.5mm; text-align: center; break-inside: avoid; }
 .seq .step svg { width: 22mm; height: 17mm; background: #FAF6EE; border-radius: 1.4mm; }
+.seq .step .ph { background: #FAF6EE; border-radius: 1.4mm; text-align: center; margin: 0 auto; overflow: hidden; }
+.seq .step .ph img { display: inline-block; }
+img.fig3d { display: block; margin: 0 auto; }
 .seq .step .sn { font: 700 6pt "Inter"; color: var(--gold-deep); display: block; margin-top: .6mm; }
 .seq .step .sl { font: 400 6.2pt/1.25 "Inter"; color: var(--ink-2); display: block; }
 .plan-table td:first-child { width: 14%; font-weight: 600; white-space: nowrap; }

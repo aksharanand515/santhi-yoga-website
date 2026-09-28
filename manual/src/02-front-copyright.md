@@ -22,7 +22,7 @@ santhiyogaindia.com · santhiyogacochin@gmail.com · +91 79077 14144
 
 **Lineage and certification.** Santhi Yoga School teaches classical Haṭha Yoga. The school is independent and is not affiliated with any other yoga organisation. The school is not a Yoga Alliance Registered Yoga School; graduates receive the school’s own 200-hour certificate.
 
-**Illustrations and photographs.** All diagrams and posture illustrations were drawn specifically for this manual. Anatomical drawings are schematic teaching illustrations, simplified for clarity; they are not to scale. Photographs are of Santhi Yoga School classes and trainings in Fort Kochi and are © Santhi Yoga School.
+**Illustrations and photographs.** All diagrams and posture illustrations were made specifically for this manual. Posture figures are 3D renders of a human body model posed joint by joint within normal ranges of motion; the body model is derived from MakeHuman (CC0). Anatomical figures are rendered from the bone geometry and muscle paths of the OpenSim full-body model of @rajagopal2016, with bone geometry from @delp1990 and @holzbaur2005 (CC BY 3.0); cartilage, ligaments, menisci and the diaphragm were modelled on those bones for teaching, and muscle regions painted on the figures follow standard surface anatomy. Diagrams labelled schematic are simplified for clarity. Photographs are of Santhi Yoga School classes and trainings in Fort Kochi and are © Santhi Yoga School.
 
 **Typography.** Set in Cormorant Garamond, Source Serif 4, Inter, Noto Serif Devanagari and Noto Serif Malayalam, all under the SIL Open Font License.
 

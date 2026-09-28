@@ -8,6 +8,7 @@
   english: Headstand
   pronunciation: "*sheer-SHAH-sa-na* (approximate English guide)"
   fig: sirsasana
+  muscles3d: {work: [deltoid, triceps, trapezius, serratus, abdominals, erector_spinae, gluteus_maximus, adductors], stretch: []}
   caption: "Śīrṣāsana, side view. Weight is carried mainly through the forearms and shoulders; the crown of the head rests lightly on the floor."
   overlay:
     - {from: [ut, 0.8, post, 0.6], to: [ua1, 0.35, mid], w: 2.4, kind: active}
@@ -118,6 +119,7 @@
   english: Shoulderstand
   pronunciation: "*sar-vahn-GAH-sa-na*"
   fig: sarvangasana
+  muscles3d: {work: [erector_spinae, gluteus_maximus, hamstrings, triceps, abdominals], stretch: [neck_extensors]}
   caption: "Sarvāṅgāsana. In the version shown the trunk is close to vertical and supported by the hands; the neck is strongly flexed, which is why blankets under the shoulders are recommended."
   overlay:
     - {from: [ut, 0.85, post], to: [nk, 1.0, post], w: 1.4, kind: stretch}
@@ -221,6 +223,7 @@
   english: Plough
   pronunciation: "*ha-LAH-sa-na*"
   fig: halasana
+  muscles3d: {work: [abdominals, triceps], stretch: [hamstrings, gastrocnemius, erector_spinae, neck_extensors]}
   caption: "Halāsana: legs over the head with the toes on the floor. The back of the legs and the whole back are lengthened; the neck remains strongly flexed."
   overlay:
     - {from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 2.6, kind: stretch}
@@ -315,6 +318,7 @@
   english: Fish
   pronunciation: "*mat-SYAH-sa-na*"
   fig: matsyasana
+  muscles3d: {work: [erector_spinae, rhomboids, trapezius, triceps], stretch: [intercostals, pectorals, rectus_abdominis, scm]}
   caption: "Matsyāsana as taught in this course: legs extended, elbows on the floor under the body, chest lifted and the crown of the head resting lightly on the floor."
   overlay:
     - {from: [lt, 0.1, ant], to: [ut, 0.85, ant], w: 1.8, kind: stretch}
@@ -407,6 +411,7 @@
   english: Seated Forward Bend
   pronunciation: "*PASH-chee-moh-tah-NAH-sa-na*"
   fig: paschimottanasana
+  muscles3d: {work: [quadriceps], stretch: [hamstrings, gastrocnemius, erector_spinae, gluteus_maximus]}
   caption: "Paścimottānāsana: the fold comes first from the hips; the spine then rounds gently over the legs."
   overlay:
     - {from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 2.6, kind: stretch}
@@ -507,6 +512,7 @@
   english: Cobra
   pronunciation: "*boo-jahn-GAH-sa-na*"
   fig: bhujangasana
+  muscles3d: {work: [erector_spinae, trapezius, rhomboids, triceps, gluteus_maximus], stretch: [rectus_abdominis, hip_flexors]}
   caption: "Bhujaṅgāsana as taught in this course: elbows bent and close to the body, the chest lifted mainly by the back muscles."
   overlay:
     - {from: [lt, 0.1, post], to: [ut, 0.85, post], w: 1.8, kind: active}
@@ -596,6 +602,7 @@
   english: Locust
   pronunciation: "*sha-la-BAH-sa-na*"
   fig: salabhasana
+  muscles3d: {work: [gluteus_maximus, hamstrings, erector_spinae, latissimus, triceps, deltoid], stretch: [hip_flexors]}
   caption: "Śalabhāsana (full locust): chin on the floor, arms under the body, both legs lifted by the back and hip extensors."
   overlay:
     - {from: [lt, 0.3, post], to: [th1, 0.25, post], w: 2.6, kind: active}
@@ -684,6 +691,7 @@
   english: Bow
   pronunciation: "*dha-noo-RAH-sa-na*"
   fig: dhanurasana
+  muscles3d: {work: [hamstrings, gluteus_maximus, erector_spinae, rhomboids], stretch: [quadriceps, iliopsoas, rectus_abdominis, pectorals, deltoid]}
   caption: "Dhanurāsana: the hands hold the ankles; the legs pressing back into the hands lift the chest and thighs, making the body a bow and the arms its string."
   overlay:
     - {from: [th1, 0.1, ant], to: [sh1, 0.05, ant], w: 2.4, kind: stretch}
@@ -774,6 +782,7 @@
   english: Half Spinal Twist
   pronunciation: "*AR-dha mat-syen-DRAH-sa-na*"
   fig: ardha_matsyendrasana
+  muscles3d: {work: [obliques, erector_spinae], stretch: [gluteus_medius:R, gluteus_maximus:R]}
   caption: "Ardha Matsyendrāsana, front view (schematic): the right knee is raised with the foot outside the left knee; the left arm presses against the right knee; the trunk turns to the right from the rib cage."
   facts:
     Family: "Seated twist"
@@ -863,6 +872,7 @@
   english: Crow
   pronunciation: "*kah-KAH-sa-na*"
   fig: kakasana
+  muscles3d: {work: [serratus, pectorals, deltoid, triceps, forearm_flexors, abdominals, hip_flexors], stretch: []}
   caption: "Kākāsana: hands on the floor, elbows bent, knees resting on the backs of the upper arms, the body tilted forward until the feet lift."
   overlay:
     - {from: [ua1, 0.05, post], to: [fa1, 0.04, post], w: 1.8, kind: active}
@@ -958,6 +968,7 @@
   english: Standing Forward Bend
   pronunciation: "*PAH-da has-TAH-sa-na*"
   fig: padahastasana
+  muscles3d: {work: [quadriceps], stretch: [hamstrings, gastrocnemius, erector_spinae, gluteus_maximus]}
   caption: "Pāda Hastāsana: folding from the hips with the hands holding the backs of the ankles; the spine and neck hang relaxed."
   overlay:
     - {from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 2.6, kind: stretch}
@@ -1049,6 +1060,7 @@
   english: Triangle
   pronunciation: "*tri-ko-NAH-sa-na*"
   fig: trikonasana
+  muscles3d: {work: [obliques:R, quadriceps, gluteus_medius, deltoid, trapezius], stretch: [obliques:L, latissimus:L, hamstrings:R, adductors:R]}
   caption: "Trikoṇāsana, front view: legs wide and straight, the trunk bending laterally over the front leg, the lower hand on the shin and the upper arm vertical."
   facts:
     Family: "Standing lateral bend"

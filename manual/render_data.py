@@ -14,9 +14,9 @@ import unicodedata
 import markdown
 import yaml
 
-from posefig import draw, ghost
 from poses import P
 import figures
+import fig3dhtml as F3
 
 DATA = pathlib.Path(__file__).parent / "data"
 _cache = {}
@@ -53,47 +53,11 @@ def slug(s):
 
 
 # ------------------------------------------------------------------------------ asanas
-def pose_svg(spec, muscles=None, labels=None, props=None):
-    if isinstance(spec, dict):
-        return draw(spec, muscles=muscles or [], labels=labels or [], props=props or [])
-    return draw(P[spec], muscles=muscles or [], labels=labels or [], props=props or [])
-
-
-def sized(svg, max_w, max_h):
-    """Give an inline SVG an explicit size in mm that fits inside max_w × max_h."""
-    vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', svg).group(1).split()]
-    w = min(max_w, max_h * vb[2] / vb[3])
-    h = w * vb[3] / vb[2]
-    return svg.replace("<svg ", f'<svg style="width:{w:.1f}mm;height:{h:.1f}mm" ', 1)
-
-
-def anchors(lst):
-    out = []
-    for m in lst or []:
-        a, b_, w, kind = m["from"], m["to"], m.get("w", 3), m["kind"]
-        out.append((tuple(a), tuple(b_), w, kind))
-    return out
-
-
-def labels_of(lst):
-    return [(tuple(l["at"]), l["text"], l.get("dx", 12), l.get("dy", 0)) for l in (lst or [])]
-
-
-def props_of(lst):
-    out = []
-    for p in lst or []:
-        if p[0] == "strap":
-            out.append(("strap", tuple(p[1]), tuple(p[2])))
-        else:
-            out.append(tuple(p))
-    return out
-
-
 def render_asana(arg, ch, numbered, xref):
     data = {a["id"]: a for a in load("asanas")}
     a = data[arg.strip()]
     n = a.get("number", "")
-    main = sized(pose_svg(a["fig"], anchors(a.get("overlay")), labels_of(a.get("labels")), props_of(a.get("props"))), 92, 80)
+    main = F3.img(a["fig"], 92, 80, px=1100, muscles=a.get("muscles3d"))
     label = numbered(ch, "fig")
     xref[f"fig:asana-{a['id']}"] = f"Figure {label}"
     facts = "".join(f"<dt>{k}</dt><dd>{md(v, True)}</dd>" for k, v in a["facts"].items())
@@ -106,9 +70,9 @@ def render_asana(arg, ch, numbered, xref):
              f'<div><div class="asana-dev">{a.get("devanagari", "")}</div>'
              f'<div class="asana-pron">{md(a.get("pronunciation", ""), True)}</div></div></div>')
     legend = ""
-    if a.get("overlay"):
-        legend = (' <span style="color:#C2795C">■</span> lengthening under load '
-                  '<span style="color:#3D6475">■</span> working (contracting)')
+    if a.get("muscles3d"):
+        legend = (f' <span style="color:{F3.WORK}">■</span> working (contracting) '
+                  f'<span style="color:{F3.STRETCH}">■</span> lengthening')
     H.append('<div class="asana-hero"><figure class="fig-main" id="fig-asana-' + a["id"] + '">' + main +
              f'<figcaption><span class="fignum">Figure {label}</span> {md(a.get("caption", a["english"]), True)}{legend}</figcaption></figure>'
              f'<dl class="asana-facts">{facts}</dl></div>')
@@ -144,7 +108,7 @@ def render_asana(arg, ch, numbered, xref):
     # variations with figures
     vf = []
     for v in a.get("variation_figs", []):
-        s = sized(pose_svg(v["fig"], anchors(v.get("overlay")), labels_of(v.get("labels")), props_of(v.get("props"))), 50, 44)
+        s = F3.img(v["fig"], 50, 40, px=640)
         vf.append(f"<figure>{s}<figcaption>{md(v['caption'], True)}</figcaption></figure>")
     sec("10", "Modifications, variations and props",
         (f'<div class="var-figs">{"".join(vf)}</div>' if vf else "") +
@@ -176,12 +140,8 @@ def render_muscles(arg, ch, numbered, xref):
     out = [f'<p class="small muted">{md(g.get("intro", ""), True)}</p>' if g.get("intro") else ""]
     for m in g["muscles"]:
         mid = "muscle-" + slug(m["name"])
-        sketch = ""
-        if m.get("sketch"):
-            sk = m["sketch"]
-            pose = P[sk.get("pose", "tadasana")]
-            musc = [(tuple(x["from"]), tuple(x["to"]), x.get("w", 3), x.get("kind", "active")) for x in sk["spindles"]]
-            sketch = ghost(draw(pose, muscles=musc, floor=False, mat=False, pad=4))
+        import atlas3d
+        sketch = atlas3d.image(m["name"], g["id"])
         rows = [("Origin", m["origin"]), ("Insertion", m["insertion"]), ("Primary actions", m["actions"]),
                 ("Role in yoga", m["role"]), ("Stretch or strengthen?", m["train"]), ("Key asanas", m["asanas"]),
                 ("Common misconception", m.get("myth", "—"))]
@@ -208,7 +168,7 @@ def render_mapping(arg, ch, numbered, xref):
     for r in g["rows"]:
         fig = ""
         if r.get("fig") and r["fig"] in P:
-            fig = draw(P[r["fig"]], floor=True, pad=4)
+            fig = F3.img(r["fig"], 15, 13, px=260)
         aid = "map-" + slug(r["asana"])
         rows.append(f'<tr id="{aid}"><td>{md(r["asana"], True)}</td><td class="mapfig">{fig}</td>'
                     + "".join(f"<td>{md(r[k], True)}</td>" for k in
@@ -310,7 +270,7 @@ def render_sequence(arg, ch, numbered, xref):
             items.append((k.strip(), v.strip()))
     cells = []
     for i, (k, lab) in enumerate(items):
-        s = draw(P[k], floor=True, pad=4)
+        s = F3.box(k, 22, 17, px=300)
         main, _, sub = lab.partition("/")
         cells.append(f'<div class="step">{s}<span class="sn">{i+1}</span><span class="sl"><b>{html.escape(main)}</b>'
                      f'{"<br>" + html.escape(sub) if sub else ""}</span></div>')

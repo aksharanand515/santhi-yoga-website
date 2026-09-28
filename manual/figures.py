@@ -2,13 +2,13 @@
 Figures for the manual.  Every figure is drawn in code as SVG so that labels are always
 legible, colours match the book, and anatomy can be checked against the text.
 
-Anatomical drawings are *schematic*: proportions are simplified for teaching and every
-caption says so.  Nothing here is traced from a copyrighted source.
+Anatomical figures are rendered from real bone geometry (anatfigs.py); diagrams that remain
+schematic say so in their captions.  Nothing here is traced from a copyrighted source.
 """
 import math
 
-from posefig import draw, Figure, INK, STRETCH, ACTIVE, ghost
-from poses import P
+from posefig import ACTIVE
+import fig3dhtml as F3
 
 FIG = {}
 
@@ -76,16 +76,6 @@ def arrow(x1, y1, x2, y2, col=None, sw=1, m="arr", dash=""):
 def curve_arrow(d, col=None, sw=1, m="arr"):
     col = col or C["golddeep"]
     return f'<path d="{d}" fill="none" stroke="{col}" stroke-width="{sw}" marker-end="url(#{m})"/>'
-
-
-def embed(pose_svg, x, y, w):
-    """Place a posefig SVG inside another SVG at (x,y) with width w."""
-    import re
-    vb = re.search(r'viewBox="([^"]+)"', pose_svg).group(1).split()
-    vw, vh = float(vb[2]), float(vb[3])
-    h = w * vh / vw
-    inner = re.sub(r'^<svg[^>]*>', f'<svg x="{f(x)}" y="{f(y)}" width="{f(w)}" height="{f(h)}" viewBox="{" ".join(vb)}">', pose_svg)
-    return inner, h
 
 
 # =====================================================================================
@@ -301,35 +291,30 @@ reg("koshas", fig_koshas(), "The five sheaths (*pañca-kośa*) of the *Taittirī
     "self-enquiry and for teaching; it describes levels of experience, not anatomical structures.")
 
 
-def seated_outline(x, y, w):
-    """A front-view meditating figure in soft outline for subtle-body diagrams."""
-    s = draw(P["meditation_front"], floor=False, mat=False)
-    s = s.replace('fill="#4E5A3A"', 'fill="#E9E1CF"').replace('fill="#5B6845"', 'fill="#E9E1CF"')
-    s = s.replace('stroke="#FFFEFA"', 'stroke="#FFFEFA"')
-    return embed(s, x, y, w)
+# centre-line points of the subtle-body diagrams, on the neutral body, attached to spine bones
+SUBTLE = {"base": ("spine05", [0, -0.02, 0.855]), "sacral": ("spine05", [0, -0.035, 0.935]),
+          "navel": ("spine03", [0, -0.05, 1.03]), "heart": ("spine01", [0, -0.04, 1.255]),
+          "throat": ("neck02", [0, -0.06, 1.445]), "brow": ("head", [0, -0.10, 1.595]),
+          "crown": ("head", [0, -0.05, 1.690]), "chest": ("spine01", [0, -0.04, 1.20]),
+          "pelvis": ("spine05", [0, -0.03, 0.90]), "head": ("head", [0, -0.05, 1.56])}
+
+
+def seated_figure(x, y, h, key="meditation_front", palette="light"):
+    """Seated 3D figure of height h at (x, y); returns (svg <image>, width, M) where M maps a SUBTLE
+    point name to SVG coordinates."""
+    info = F3.render(key, 900, palette=palette)
+    w = h * info["w"] / info["h"]
+    el, _, proj = F3.svg_image(info, x, y, w)
+    P3 = F3.fig3d.points(key, SUBTLE)
+    return el, w, (lambda name: proj(P3[name]))
 
 
 def fig_chakras():
     W, H = 470, 330
     b = []
-    fig_svg, h = seated_outline(120, 20, 200)
-    b.append(fig_svg)
-    # figure coordinates: compute from pose
-    fig = Figure(P["meditation_front"])
-    J = fig.J
-    import re
-    vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', draw(P["meditation_front"], floor=False, mat=False)).group(1).split()]
-    sc = 200 / vb[2]
-
-    def M(pt):
-        return (120 + (pt[0] - vb[0]) * sc, 20 + (pt[1] - vb[1]) * sc)
-    spine = [M(J["hip"]), M(J["waist"]), M(J["neckb"]), M(J["headc"])]
-    base = M((0, 8))
-    navel = M((0, -14))
-    heart = M((0, -36))
-    throat = M((0, -54))
-    brow = M((J["headc"][0], J["headc"][1] - 1))
-    crown = M((J["crown"][0], J["crown"][1] - 1))
+    el, w, M = seated_figure(80, 24, 290)
+    b.append(el)
+    base, navel, heart, throat, brow, crown = (M(k) for k in ("base", "navel", "heart", "throat", "brow", "crown"))
     # nadis: ida and pingala spiralling around sushumna
     sx = base[0]
     top = brow[1]
@@ -343,7 +328,7 @@ def fig_chakras():
         ph = t * 5 * math.pi
         pts_i.append((sx - amp * math.cos(ph), yy))
         pts_p.append((sx + amp * math.cos(ph), yy))
-    b.append(f'<line x1="{f(sx)}" y1="{f(bot)}" x2="{f(sx)}" y2="{f(crown[1])}" stroke="{C["gold"]}" stroke-width="2.4" stroke-linecap="round"/>')
+    b.append(f'<line x1="{f(sx)}" y1="{f(bot)}" x2="{f(sx)}" y2="{f(crown[1])}" stroke="{C["gold"]}" stroke-width="2.4" stroke-linecap="round" stroke-opacity=".9"/>')
     b.append('<polyline points="' + " ".join(f"{f(x)},{f(y)}" for x, y in pts_i) + f'" fill="none" stroke="{C["blue"]}" stroke-width="1.1"/>')
     b.append('<polyline points="' + " ".join(f"{f(x)},{f(y)}" for x, y in pts_p) + f'" fill="none" stroke="{C["terra"]}" stroke-width="1.1"/>')
     ch = [("Sahasrāra", "crown · “thousand-petalled”", crown, "#9C7BB0"),
@@ -351,20 +336,20 @@ def fig_chakras():
           ("Viśuddha", "throat · 16 petals · space", throat, "#4F8BB0"),
           ("Anāhata", "heart · 12 petals · air", heart, "#6E9A5B"),
           ("Maṇipūra", "navel · 10 petals · fire", navel, "#D9A93E"),
-          ("Svādhiṣṭhāna", "sacral · 6 petals · water", M((0, 0)), "#D98A4E"),
+          ("Svādhiṣṭhāna", "sacral · 6 petals · water", M("sacral"), "#D98A4E"),
           ("Mūlādhāra", "base of spine · 4 petals · earth", base, "#B8574A")]
     for i, (n_, d, pt, col) in enumerate(ch):
         b.append(f'<circle cx="{f(pt[0])}" cy="{f(pt[1])}" r="5.2" fill="{col}" stroke="#FFFEFA" stroke-width="1.2"/>')
         ty = 36 + i * 40
-        b.append(f'<line x1="{f(pt[0]+6)}" y1="{f(pt[1])}" x2="{338}" y2="{f(ty-3)}" stroke="{C["line"]}" stroke-width=".6"/>')
-        b.append(T(342, ty, n_, 10, C["forest"], "start", 600, family="Cormorant"))
-        b.append(T(342, ty + 10, d, 6, C["ink2"]))
+        b.append(f'<line x1="{f(pt[0]+6)}" y1="{f(pt[1])}" x2="{350}" y2="{f(ty-3)}" stroke="{C["golddeep"]}" stroke-width=".45" stroke-opacity=".7"/>')
+        b.append(T(354, ty, n_, 10, C["forest"], "start", 600, family="Cormorant"))
+        b.append(T(354, ty + 10, d, 6, C["ink2"]))
     # nadi legend
-    b.append(T(20, 40, "Nāḍīs", 10, C["forest"], "start", 600, family="Cormorant"))
-    b.append(f'<line x1="20" y1="54" x2="36" y2="54" stroke="{C["gold"]}" stroke-width="2.4"/>' + T(40, 56, "Suṣumṇā · central channel", 6))
-    b.append(f'<line x1="20" y1="66" x2="36" y2="66" stroke="{C["blue"]}" stroke-width="1.2"/>' + T(40, 68, "Iḍā · “lunar”, left nostril", 6))
-    b.append(f'<line x1="20" y1="78" x2="36" y2="78" stroke="{C["terra"]}" stroke-width="1.2"/>' + T(40, 80, "Piṅgalā · “solar”, right nostril", 6))
-    b.append(T(20, 100, "The crossing, spiral\nform is a common\nmodern rendering;\nmany texts simply\nplace iḍā and\npiṅgalā to the left\nand right of the\ncentral channel.", 5.8, C["ink2"], italic=True))
+    b.append(T(10, 40, "Nāḍīs", 10, C["forest"], "start", 600, family="Cormorant"))
+    b.append(f'<line x1="10" y1="54" x2="26" y2="54" stroke="{C["gold"]}" stroke-width="2.4"/>' + T(30, 56, "Suṣumṇā · central", 6))
+    b.append(f'<line x1="10" y1="66" x2="26" y2="66" stroke="{C["blue"]}" stroke-width="1.2"/>' + T(30, 68, "Iḍā · “lunar”", 6))
+    b.append(f'<line x1="10" y1="78" x2="26" y2="78" stroke="{C["terra"]}" stroke-width="1.2"/>' + T(30, 80, "Piṅgalā · “solar”", 6))
+    b.append(T(10, 250, "The crossing, spiral\nform is a common\nmodern rendering;\nmany texts simply\nplace iḍā and\npiṅgalā to the left\nand right of the\ncentral channel.", 5.8, C["ink2"], italic=True))
     return svg(W, H, "".join(b))
 
 
@@ -375,26 +360,28 @@ reg("chakras", fig_chakras(),
 
 
 def fig_vayus():
-    W, H = 440, 300
+    W, H = 460, 300
     b = []
-    fig_svg, h = seated_outline(110, 18, 200)
-    b.append(fig_svg)
-    regions = [("Udāna", "throat & head · upward movement;\nspeech, effort, “rising” at death", 172, 60, 30, 26, "#4F8BB0"),
-               ("Prāṇa", "chest · inward movement;\nbreathing in, taking in", 172, 112, 36, 26, "#6E9A5B"),
-               ("Samāna", "navel region · balancing, “equalising”;\ndigestion and assimilation", 172, 158, 36, 18, "#D9A93E"),
-               ("Apāna", "pelvis · downward & outward;\nelimination, exhalation, birth", 172, 196, 40, 20, "#B8574A")]
+    el, w, M = seated_figure(60, 14, 272)
+    b.append(el)
+    cx = M("heart")[0]
+    regions = [("Udāna", "throat & head · upward movement;\nspeech, effort, “rising” at death", M("throat"), 16, 14, "#4F8BB0"),
+               ("Prāṇa", "chest · inward movement;\nbreathing in, taking in", M("chest"), 34, 26, "#6E9A5B"),
+               ("Samāna", "navel region · balancing, “equalising”;\ndigestion and assimilation", M("navel"), 30, 16, "#D9A93E"),
+               ("Apāna", "pelvis · downward & outward;\nelimination, exhalation, birth", M("pelvis"), 36, 18, "#B8574A")]
     ys = [40, 96, 152, 208]
-    for (n, d, cx, cy, rx, ry, col), ty in zip(regions, ys):
-        b.append(f'<ellipse cx="{cx+38}" cy="{cy}" rx="{rx}" ry="{ry}" fill="{col}" fill-opacity=".28" stroke="{col}" stroke-width=".8"/>')
-        b.append(f'<line x1="{cx+38+rx}" y1="{cy}" x2="318" y2="{ty-3}" stroke="{C["line"]}" stroke-width=".6"/>')
-        b.append(T(322, ty, n, 11, C["forest"], "start", 600, family="Cormorant"))
-        b.append(T(322, ty + 10, d, 5.9, C["ink2"]))
-    b.append(T(322, 262, "Vyāna", 11, C["forest"], "start", 600, family="Cormorant"))
-    b.append(T(322, 272, "pervades the whole body; circulation,\nco-ordination, outward distribution", 5.9, C["ink2"]))
-    b.append(f'<rect x="120" y="22" width="180" height="258" rx="30" fill="none" stroke="#9C7BB0" stroke-width=".8" stroke-dasharray="3 2"/>')
-    b.append(arrow(210, 70, 210, 50, "#4F8BB0", 1))
-    b.append(arrow(200, 104, 206, 116, "#6E9A5B", 1))
-    b.append(arrow(210, 200, 210, 218, "#B8574A", 1))
+    for (n, d, (px, py), rx, ry, col), ty in zip(regions, ys):
+        b.append(f'<ellipse cx="{f(cx)}" cy="{f(py)}" rx="{rx}" ry="{ry}" fill="{col}" fill-opacity=".30" stroke="{col}" stroke-width=".8"/>')
+        b.append(f'<line x1="{f(cx+rx)}" y1="{f(py)}" x2="338" y2="{ty-3}" stroke="{C["golddeep"]}" stroke-width=".45" stroke-opacity=".7"/>')
+        b.append(T(342, ty, n, 11, C["forest"], "start", 600, family="Cormorant"))
+        b.append(T(342, ty + 10, d, 5.9, C["ink2"]))
+    b.append(T(342, 262, "Vyāna", 11, C["forest"], "start", 600, family="Cormorant"))
+    b.append(T(342, 272, "pervades the whole body; circulation,\nco-ordination, outward distribution", 5.9, C["ink2"]))
+    b.append(f'<rect x="{f(60 + 4)}" y="10" width="{f(w - 8)}" height="280" rx="34" fill="none" stroke="#9C7BB0" stroke-width=".8" stroke-dasharray="3 2"/>')
+    up_ = M("throat")
+    b.append(arrow(cx + 14, up_[1] - 2, cx + 14, up_[1] - 26, "#4F8BB0", 1))
+    lo = M("pelvis")
+    b.append(arrow(cx + 16, lo[1] + 4, cx + 16, lo[1] + 26, "#B8574A", 1))
     return svg(W, H, "".join(b))
 
 
@@ -404,38 +391,27 @@ reg("vayus", fig_vayus(), "The five *vāyu*s (“winds”) of *prāṇa* as usua
 
 
 def fig_bandhas():
-    W, H = 420, 250
+    W, H = 440, 250
     b = []
-    s = draw(P["sukhasana_side"], floor=True, mat=True)
-    s = s.replace('fill="#4E5A3A"', 'fill="#E4DBC6"').replace('fill="#5B6845"', 'fill="#E4DBC6"').replace('fill="#A7AC8C"', 'fill="#EFE9DA"')
-    inner, h = embed(s, 70, 20, 170)
-    b.append(inner)
-    import re
-    vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', s).group(1).split()]
-    sc = 170 / vb[2]
-    fig = Figure(P["sukhasana_side"])
-    J = fig.J
-    # the svg translated body by -low; replicate: low = max y of points
-    low = max(p[1] for p in fig.points())
-
-    def M(pt):
-        return (70 + (pt[0] - vb[0]) * sc, 20 + (pt[1] - low - vb[1]) * sc)
-    jal = M(J["neckt"])
-    udd = M((J["waist"][0] + 6, J["waist"][1] + 2))
-    mul = M((J["hip"][0] + 2, J["hip"][1] + 7))
-    items = [("Jālandhara bandha", "chin lock: chin drawn towards the\nsternum, back of neck lengthened", jal, 40),
-             ("Uḍḍīyāna bandha", "abdominal lock: after exhalation, the\nabdomen is drawn in and up", udd, 108),
-             ("Mūla bandha", "root lock: gentle contraction and lift\nof the pelvic floor / perineum", mul, 176)]
+    el, w, M = seated_figure(40, 12, 226, key="sukhasana_side")
+    b.append(el)
+    P3 = F3.fig3d.points("sukhasana_side", {"jal": ("neck02", [0, -0.075, 1.445]), "udd": ("spine02", [0, -0.10, 1.10]),
+                                           "mul": ("spine05", [0, -0.015, 0.86])})
+    info = F3.render("sukhasana_side", 900, palette="light")
+    _, _, proj = F3.svg_image(info, 40, 12, w)
+    items = [("Jālandhara bandha", "chin lock: chin drawn towards the\nsternum, back of neck lengthened", proj(P3["jal"]), 40),
+             ("Uḍḍīyāna bandha", "abdominal lock: after exhalation, the\nabdomen is drawn in and up", proj(P3["udd"]), 108),
+             ("Mūla bandha", "root lock: gentle contraction and lift\nof the pelvic floor / perineum", proj(P3["mul"]), 176)]
     for n, d, pt, ty in items:
-        b.append(f'<circle cx="{f(pt[0])}" cy="{f(pt[1])}" r="7" fill="{C["gold"]}" fill-opacity=".35" stroke="{C["golddeep"]}" stroke-width="1"/>')
-        b.append(f'<line x1="{f(pt[0]+7)}" y1="{f(pt[1])}" x2="262" y2="{ty-3}" stroke="{C["golddeep"]}" stroke-width=".5"/>')
-        b.append(T(266, ty, n, 10.5, C["forest"], "start", 600, family="Cormorant"))
-        b.append(T(266, ty + 10, d, 5.9, C["ink2"]))
-    b.append(T(266, 232, "Mahā bandha = all three held together\n(Haṭha Yoga Pradīpikā 3.19–25)", 5.9, C["golddeep"], italic=True))
+        b.append(f'<circle cx="{f(pt[0])}" cy="{f(pt[1])}" r="7" fill="{C["gold"]}" fill-opacity=".45" stroke="{C["golddeep"]}" stroke-width="1"/>')
+        b.append(f'<line x1="{f(pt[0]+7)}" y1="{f(pt[1])}" x2="282" y2="{ty-3}" stroke="{C["golddeep"]}" stroke-width=".5"/>')
+        b.append(T(286, ty, n, 10.5, C["forest"], "start", 600, family="Cormorant"))
+        b.append(T(286, ty + 10, d, 5.9, C["ink2"]))
+    b.append(T(286, 232, "Mahā bandha = all three held together\n(Haṭha Yoga Pradīpikā 3.19–25)", 5.9, C["golddeep"], italic=True))
     return svg(W, H, "".join(b))
 
 
-reg("bandhas", fig_bandhas(), "The three principal *bandha*s shown on a seated practitioner (schematic). Uḍḍīyāna bandha is practised only on an empty stomach and "
+reg("bandhas", fig_bandhas(), "The three principal *bandha*s shown on a seated practitioner (side view; the locks themselves are internal actions). Uḍḍīyāna bandha is practised only on an empty stomach and "
     "after exhalation; see the safety notes that follow.")
 
 
@@ -487,16 +463,17 @@ reg("gunas", fig_gunas(), "The three *guṇa*s of Sāṃkhya and the Bhagavad G�
 def fig_planes():
     W, H = 470, 250
     b = []
-    s = draw(P["tadasana"] | dict(view="front", face=None, ua1=100, fa1=100, h1=100, ua2=80, fa2=80, h2=80), floor=False, mat=False)
-    inner, h = embed(s, 45, 26, 60)
-    b.append(inner)
-    s2 = draw(P["tadasana"], floor=False, mat=False)
-    inner2, _ = embed(s2, 190, 26, 35)
-    # planes around a front figure (oblique projection)
-    cx, top, bot = 75, 20, 220
-    b.append(f'<polygon points="{cx},{top} {cx+22},{top-12} {cx+22},{bot-12} {cx},{bot}" fill="{C["terra"]}" fill-opacity=".20" stroke="{C["terra"]}" stroke-width=".7"/>')
-    b.append(f'<polygon points="{cx-46},{top+6} {cx+46},{top+6} {cx+46},{bot+6} {cx-46},{bot+6}" fill="{C["blue"]}" fill-opacity=".10" stroke="{C["blue"]}" stroke-width=".7"/>')
-    b.append(f'<polygon points="{cx-52},{125} {cx+40},{125} {cx+62},{113} {cx-30},{113}" fill="{C["gold"]}" fill-opacity=".30" stroke="{C["golddeep"]}" stroke-width=".7"/>')
+    info = F3.render("front", 900, palette="light")
+    w = 200 * info["w"] / info["h"]
+    x0 = 75 - w / 2
+    el, h, proj = F3.svg_image(info, x0, 26, w)
+    # planes around the front figure (oblique projection), drawn behind and in front of it
+    cx, top, bot = 75, 20, 232
+    sag = f'<polygon points="{cx},{top} {cx+24},{top-12} {cx+24},{bot-12} {cx},{bot}" fill="{C["terra"]}" fill-opacity=".20" stroke="{C["terra"]}" stroke-width=".7"/>'
+    fro = f'<polygon points="{cx-58},{top+6} {cx+58},{top+6} {cx+58},{bot+6} {cx-58},{bot+6}" fill="{C["blue"]}" fill-opacity=".10" stroke="{C["blue"]}" stroke-width=".7"/>'
+    zt = proj([0, 0, 0.93])[1]
+    tra = f'<polygon points="{cx-62},{f(zt+6)} {cx+44},{f(zt+6)} {cx+66},{f(zt-6)} {cx-40},{f(zt-6)}" fill="{C["gold"]}" fill-opacity=".30" stroke="{C["golddeep"]}" stroke-width=".7"/>'
+    b += [fro, el, sag, tra]
     rows = [("Sagittal plane", "divides left from right; flexion and extension\n(e.g. forward bends, backbends)", C["terra"]),
             ("Frontal (coronal) plane", "divides front from back; abduction, adduction,\nlateral flexion (e.g. triangle, side bends)", C["blue"]),
             ("Transverse (horizontal) plane", "divides upper from lower; rotation\n(e.g. twists, hip rotation)", C["golddeep"])]
@@ -514,24 +491,34 @@ reg("planes", fig_planes(), "Anatomical position (standing, facing forward, palm
 
 
 def fig_directions():
-    W, H = 440, 250
+    W, H = 470, 250
     b = []
-    s = draw(P["tadasana"] | dict(view="front", face=None, ua1=100, fa1=100, h1=100, ua2=80, fa2=80, h2=80), floor=False, mat=False)
-    inner, h = embed(s, 60, 16, 70)
-    b.append(inner)
-    s2 = draw(P["tadasana"], floor=False, mat=False)
-    inner2, h2 = embed(s2, 270, 16, 34)
-    b.append(inner2)
-    b.append(arrow(40, 120, 40, 30, C["golddeep"]) + arrow(40, 130, 40, 220, C["golddeep"]))
-    b.append(T(36, 26, "Superior (cranial)", 6.3, C["ink"], "start", 600) + T(36, 234, "Inferior (caudal)", 6.3, C["ink"], "start", 600))
-    b.append(arrow(95, 90, 138, 90, C["blue"]) + arrow(95, 90, 102, 90, C["blue"]))
-    b.append(T(142, 92, "Lateral", 6.3, C["blue"], "start", 600) + T(95, 84, "Medial", 6.3, C["blue"], "middle", 600))
-    b.append(arrow(124, 135, 134, 170, C["clay"], m="arrt"))
-    b.append(T(138, 150, "Proximal → distal\n(towards the\nextremity)", 6, C["clay"], "start", 600))
-    b.append(arrow(300, 110, 340, 110, C["golddeep"]) + arrow(282, 110, 250, 110, C["golddeep"]))
-    b.append(T(344, 112, "Anterior (ventral)", 6.3, C["ink"], "start", 600) + T(246, 112, "Posterior\n(dorsal)", 6.3, C["ink"], "end", 600))
-    b.append(T(350, 170, "Superficial ↔ deep:\ncloser to / further\nfrom the surface", 6, C["teak"], italic=True))
-    b.append(T(350, 210, "Ipsilateral = same side\nContralateral = opposite side", 6, C["teak"], italic=True))
+    info = F3.render("front", 900, palette="light")
+    w = 216 * info["w"] / info["h"]
+    el, h, proj = F3.svg_image(info, 100 - w / 2, 16, w)
+    b.append(el)
+    info2 = F3.render("tadasana", 900, palette="light")
+    w2 = 216 * info2["w"] / info2["h"]
+    el2, h2, proj2 = F3.svg_image(info2, 318 - w2 / 2, 16, w2)
+    b.append(el2)
+    b.append(arrow(22, 120, 22, 30, C["golddeep"]) + arrow(22, 130, 22, 220, C["golddeep"]))
+    b.append(T(18, 24, "Superior (cranial)", 6.3, C["ink"], "start", 600) + T(18, 234, "Inferior (caudal)", 6.3, C["ink"], "start", 600))
+    P3 = F3.fig3d.points("front", {"mid": ("spine02", [0, -0.1, 1.15]), "elL": "elbow_L"})
+    mx, my = proj(P3["mid"])
+    # medial / lateral: from the midline out past the figure's left hand (image right)
+    b.append(arrow(mx + 2, my, mx + 74, my, C["blue"]) + arrow(mx + 30, my, mx + 4, my, C["blue"]))
+    b.append(T(mx + 76, my + 2, "Lateral", 6.3, C["blue"], "start", 600) + T(mx + 6, my - 5, "Medial", 6.3, C["blue"], "start", 600))
+    # proximal -> distal along the figure's left arm (image right)
+    ex, ey = proj(P3["elL"])
+    b.append(arrow(ex + 14, ey - 16, ex + 24, ey + 30, C["clay"], m="arrt"))
+    b.append(T(ex + 28, ey + 4, "Proximal → distal\n(towards the\nextremity)", 6, C["clay"], "start", 600))
+    # anterior / posterior on the side figure (it faces image right)
+    P4 = F3.fig3d.points("tadasana", {"c": ("spine02", [0, -0.02, 1.15])})
+    cx2, cy2 = proj2(P4["c"])
+    b.append(arrow(cx2 + 24, cy2, cx2 + 60, cy2, C["golddeep"]) + arrow(cx2 - 24, cy2, cx2 - 60, cy2, C["golddeep"]))
+    b.append(T(cx2 + 64, cy2 + 2, "Anterior (ventral)", 6.3, C["ink"], "start", 600) + T(cx2 - 64, cy2 + 2, "Posterior (dorsal)", 6.3, C["ink"], "end", 600))
+    b.append(T(388, 170, "Superficial ↔ deep:\ncloser to / further\nfrom the surface", 6, C["teak"], italic=True))
+    b.append(T(388, 210, "Ipsilateral = same side\nContralateral = opposite side", 6, C["teak"], italic=True))
     return svg(W, H, "".join(b))
 
 
@@ -545,15 +532,19 @@ def joint_panel(label, pose_a, pose_b, note):
 def fig_jointmoves():
     W, H = 500, 330
     b = []
-    base = P["tadasana"]
-    fr = dict(view="front", face=None, ua1=100, fa1=100, h1=100, ua2=80, fa2=80, h2=80)
+    FR = dict(view=(90, 2))
     panels = [
-        ("Hip flexion / extension", [base | dict(th1=20, sh1=90, ft1=0, ua1=90), base | dict(th1=120, sh1=120, ft1=30)], "sagittal"),
-        ("Shoulder flexion / extension", [base | dict(ua1=-70, fa1=-70, h1=-70), base | dict(ua1=130, fa1=130, h1=130)], "sagittal"),
-        ("Spinal flexion / extension", [base | dict(ut=-40, nk=-10, hd=0, face=60), base | dict(lt=-95, ut=-118, nk=-130, hd=-135, face=-40)], "sagittal"),
-        ("Hip abduction / adduction", [base | fr | dict(th1=130, sh1=130), base | fr | dict(th1=78, sh1=78, th2=90)], "frontal"),
-        ("Shoulder abduction", [base | fr | dict(ua1=180, fa1=180, h1=180, ua2=0, fa2=0, h2=0), base | fr | dict(ua1=-100, fa1=-100, h1=-100, ua2=-80, fa2=-80, h2=-80)], "frontal"),
-        ("Spinal lateral flexion", [base | fr | dict(ut=-60, nk=-55, hd=-55), base | fr | dict(ut=-120, nk=-125, hd=-125)], "frontal"),
+        ("Hip flexion / extension", [dict(hip_L=(90, 0, 0), knee_L=90, free=[("root", 1, -8, 8)], contacts=[("heel_R", "z", 0), ("ball_R", "z", 0)]),
+                                     dict(hip_L=(-25, 0, 0), ankle_L=(-20, 0), contacts=[("heel_R", "z", 0), ("ball_R", "z", 0)])], "sagittal"),
+        ("Shoulder flexion / extension", [dict(shoulder_L=(170, 4, 0), shoulder_R=(0, 4, 0), hand="flat"),
+                                          dict(shoulder_L=(-50, 4, 0), shoulder_R=(0, 4, 0), hand="flat")], "sagittal"),
+        ("Spinal flexion / extension", [dict(lumbar=(28, 0, 0), thoracic=(30, 0, 0), cervical=(25, 0, 0), head=(10, 0, 0), shoulder=(56, 4, 0)),
+                                        dict(lumbar=(-22, 0, 0), thoracic=(-14, 0, 0), cervical=(-25, 0, 0), head=(-10, 0, 0), shoulder=(-30, 4, 0))], "sagittal"),
+        ("Hip abduction / adduction", [FR | dict(hip_L=(0, 40, 0), contacts=[("heel_R", "z", 0), ("ball_R", "z", 0)]),
+                                       FR | dict(hip_L=(12, -18, 0), contacts=[("heel_R", "z", 0), ("ball_R", "z", 0)])], "frontal"),
+        ("Shoulder abduction", [FR | dict(shoulder=(0, 90, 0), hand="flat"), FR | dict(shoulder=(0, 172, 0), hand="flat")], "frontal"),
+        ("Spinal lateral flexion", [FR | dict(lumbar=(0, 14, 0), thoracic=(0, 16, 0), cervical=(0, 12, 0)),
+                                    FR | dict(lumbar=(0, -14, 0), thoracic=(0, -16, 0), cervical=(0, -12, 0))], "frontal"),
     ]
     for i, (lab, poses, plane) in enumerate(panels):
         col = i % 3
@@ -562,16 +553,20 @@ def fig_jointmoves():
         y = 20 + row * 150
         b.append(box(x, y, 152, 138, "#FBF7EF", C["line"], 4, .5))
         b.append(T(x + 8, y + 14, lab, 9.4, C["forest"], "start", 600, family="Cormorant"))
-        b.append(T(x + 144, y + 14, plane + " plane", 5.6, C["terra"] if plane == "sagittal" else C["blue"], "end", 600))
-        for k, ps in enumerate(poses):
-            s = draw(ps, floor=False, mat=False)
-            inner, h = embed(s, 0, 0, 1)
-            import re
-            vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', s).group(1).split()]
-            scale = min(62 / vb[2], 104 / vb[3])
-            wv = vb[2] * scale
-            inner, h = embed(s, x + 10 + k * 72 + (62 - wv) / 2, y + 24 + (104 - vb[3] * scale), wv)
-            b.append(inner)
+        b.append(T(x + 144, y + 25, plane + " plane", 5.6, C["terra"] if plane == "sagittal" else C["blue"], "end", 600))
+        for k, ov in enumerate(poses):
+            ov = dict(ov)
+            if "free" not in ov and "contacts" in ov:
+                ov["free"] = []
+            info = F3.render("tadasana", 520, palette="light", overrides=ov)
+            # same scale in every panel: 1.9 m of body height -> 104 units
+            sc = 104 / 1.95
+            wv, hv = info["span"][0] * sc, info["span"][1] * sc
+            if wv > 70:
+                sc *= 70 / wv
+                wv, hv = 70, hv * 70 / wv
+            el, _, _ = F3.svg_image(info, x + 10 + k * 72 + (62 - wv) / 2, y + 128 - hv, wv)
+            b.append(el)
     b.append(T(14, 324, "Rotation (internal/external, spinal rotation) occurs in the transverse plane and is shown in the twist and hip-rotation figures later in this section.", 6, C["ink2"], italic=True))
     return svg(W, H + 4, "".join(b))
 
@@ -579,475 +574,43 @@ def fig_jointmoves():
 reg("jointmoves", fig_jointmoves(), "Basic joint movements illustrated with the manual’s figure. In each panel the left figure shows the first-named movement.", "full")
 
 
-def vertebra_shape(cx, cy, w, h, ang, kind):
-    """Lateral view of one vertebra: body (anterior, right) and spinous process (posterior, left)."""
-    r = math.radians(ang)
-    ca, sa = math.cos(r), math.sin(r)
+import anatfigs as AF  # noqa: E402  (3D anatomy figures; uses the helpers above)
 
-    def P_(x, y):  # local -> global (x right/anterior, y down)
-        return (cx + x * ca - y * sa, cy + x * sa + y * ca)
-    body = [P_(-w / 2, -h / 2), P_(w / 2, -h / 2), P_(w / 2, h / 2), P_(-w / 2, h / 2)]
-    d = "M" + " L".join(f"{f(x)},{f(y)}" for x, y in body) + " Z"
-    out = f'<path d="{d}" fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".7" stroke-linejoin="round"/>'
-    # posterior elements
-    if kind == "C":
-        sp = [P_(-w / 2, -h * .2), P_(-w / 2 - 10, h * .05), P_(-w / 2 - 14, h * .45), P_(-w / 2 - 10, h * .55), P_(-w / 2, h * .3)]
-    elif kind == "C7":
-        sp = [P_(-w / 2, -h * .2), P_(-w / 2 - 14, 0), P_(-w / 2 - 22, h * .6), P_(-w / 2 - 17, h * .75), P_(-w / 2, h * .35)]
-    elif kind == "T":
-        sp = [P_(-w / 2, -h * .3), P_(-w / 2 - 12, -h * .1), P_(-w / 2 - 20, h * 1.1), P_(-w / 2 - 16, h * 1.2), P_(-w / 2, h * .3)]
-    else:  # lumbar: short, square, horizontal
-        sp = [P_(-w / 2, -h * .32), P_(-w / 2 - 10, -h * .3), P_(-w / 2 - 20, -h * .2), P_(-w / 2 - 20, h * .28), P_(-w / 2 - 10, h * .3), P_(-w / 2, h * .25)]
-    d2 = "M" + " L".join(f"{f(x)},{f(y)}" for x, y in sp) + " Z"
-    out = f'<path d="{d2}" fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".7" stroke-linejoin="round"/>' + out
-    return out
-
-
-def fig_spine():
-    W, H = 380, 468
-    b = []
-    # control points of the vertebral-body centreline (x = anterior to the right)
-    ctrl = [(170, 22), (178, 60), (168, 100), (148, 150), (140, 205), (148, 262), (168, 312), (174, 352), (166, 385), (150, 410), (140, 440)]
-
-    def cm(pts, n=40):
-        out = []
-        P2 = [pts[0]] + pts + [pts[-1]]
-        for i in range(1, len(P2) - 2):
-            p0, p1, p2, p3 = P2[i - 1], P2[i], P2[i + 1], P2[i + 2]
-            for k in range(n):
-                t = k / n
-                out.append(tuple(0.5 * ((2 * p1[j]) + (-p0[j] + p2[j]) * t + (2 * p0[j] - 5 * p1[j] + 4 * p2[j] - p3[j]) * t * t
-                                        + (-p0[j] + 3 * p1[j] - 3 * p2[j] + p3[j]) * t ** 3) for j in (0, 1)))
-        out.append(pts[-1])
-        return out
-    line = cm(ctrl)
-    L = [0]
-    for i in range(1, len(line)):
-        L.append(L[-1] + math.dist(line[i], line[i - 1]))
-    tot = L[-1]
-
-    def at(s):
-        for i in range(1, len(L)):
-            if L[i] >= s:
-                t = (s - L[i - 1]) / (L[i] - L[i - 1] or 1)
-                p = (line[i - 1][0] + (line[i][0] - line[i - 1][0]) * t, line[i - 1][1] + (line[i][1] - line[i - 1][1]) * t)
-                a = math.degrees(math.atan2(line[i][1] - line[i - 1][1], line[i][0] - line[i - 1][0]))
-                return p, a
-        return line[-1], 90
-    need = 7 * (7.5 + 3.2) + sum(9.5 + i * 1.2 + 3.4 for i in range(12)) + sum(13.5 + i * .4 + 6.5 for i in range(5))
-    k = (tot - 90) / need
-    verts = [("C", 7, 7.5 * k, 18, 3.2 * k)] + [("T", 12, 9.5 * k, 22, 3.4 * k)] + [("L", 5, 13.5 * k, 30, 6.5 * k)]
-    s = 4
-    regions = {}
-    for kind, n, h, w, disc in verts:
-        start = s
-        for i in range(n):
-            hh = h + (i * (1.2 if kind == "T" else 0.4)) * k
-            (p, a) = at(s + hh / 2)
-            vk = kind if not (kind == "C" and i == 6) else "C7"
-            rot = a - 90
-            b.append(vertebra_shape(p[0], p[1], w + (i * .6 if kind != "C" else 0), hh, rot, vk))
-            s += hh
-            if not (kind == "L" and i == n - 1):
-                (pd, ad) = at(s + disc / 2)
-                r = math.radians(ad - 90)
-                ww = w + 1
-                corners = [(-ww / 2, -disc / 2), (ww / 2, -disc / 2), (ww / 2, disc / 2), (-ww / 2, disc / 2)]
-                pts = [(pd[0] + x * math.cos(r) - y * math.sin(r), pd[1] + x * math.sin(r) + y * math.cos(r)) for x, y in corners]
-                b.append('<path d="M' + " L".join(f"{f(x)},{f(y)}" for x, y in pts) + f' Z" fill="{C["disc"]}" stroke="#9FBAB6" stroke-width=".5"/>')
-            s += disc
-        regions[kind] = (start, s)
-    # sacrum & coccyx
-    (p0, a0) = at(s + 2)
-    sac = (f'M{f(p0[0]+14)},{f(p0[1]-4)} C{f(p0[0]+20)},{f(p0[1]+20)} {f(p0[0]+6)},{f(p0[1]+52)} {f(p0[0]-10)},{f(p0[1]+66)} '
-           f'L{f(p0[0]-18)},{f(p0[1]+62)} C{f(p0[0]-10)},{f(p0[1]+40)} {f(p0[0]-16)},{f(p0[1]+14)} {f(p0[0]-22)},{f(p0[1]-2)} Z')
-    b.append(f'<path d="{sac}" fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".7"/>')
-    for k in range(4):
-        yy = p0[1] + 12 + k * 12
-        b.append(f'<line x1="{f(p0[0]-14+k*1.5)}" y1="{f(yy)}" x2="{f(p0[0]+12-k*3.5)}" y2="{f(yy+3)}" stroke="{C["boneline"]}" stroke-width=".5"/>')
-    cx0, cy0 = p0[0] - 12, p0[1] + 68
-    for k in range(4):
-        b.append(f'<ellipse cx="{f(cx0-k*2)}" cy="{f(cy0+k*6)}" rx="{f(4.5-k*.8)}" ry="2.6" fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".6"/>')
-    # region brackets
-    labels = [("C", "Cervical  C1–C7", "lordosis (concave posteriorly)"), ("T", "Thoracic  T1–T12", "kyphosis (convex posteriorly);\nribs attach here"),
-              ("L", "Lumbar  L1–L5", "lordosis; largest bodies,\nthickest discs")]
-    for kind, n, d in labels:
-        a, e = regions[kind]
-        ya, _ = at(a)
-        ye, _ = at(e)
-        x = 238
-        b.append(f'<path d="M{x-6},{f(ya[1])} h6 v{f(ye[1]-ya[1])} h-6" fill="none" stroke="{C["golddeep"]}" stroke-width=".8"/>')
-        mid = (ya[1] + ye[1]) / 2
-        b.append(T(x + 8, mid - 3, n, 9.5, C["forest"], "start", 600, family="Cormorant"))
-        b.append(T(x + 8, mid + 7, d, 5.9, C["ink2"]))
-    b.append(f'<path d="M232,{f(p0[1])} h6 v70 h-6" fill="none" stroke="{C["golddeep"]}" stroke-width=".8"/>')
-    b.append(T(246, p0[1] + 22, "Sacrum  S1–S5 (fused)", 9.5, C["forest"], "start", 600, family="Cormorant"))
-    b.append(T(246, p0[1] + 32, "kyphotic curve; forms the back\nof the pelvis at the SI joints", 5.9, C["ink2"]))
-    b.append(T(246, p0[1] + 60, "Coccyx  (3–5 small segments)", 7.5, C["forest"], "start", 600))
-    # annotations left, computed from the drawn column
-    (c7, _) = at(regions["C"][1] - 5)
-    b.append(leader(c7[0] - 30, c7[1] + 4, 70, c7[1] + 4) + T(66, c7[1] + 2, "C7: prominent\nspinous process", 5.9, C["ink2"], "end"))
-    (t6, _) = at((regions["T"][0] + regions["T"][1]) / 2)
-    b.append(leader(t6[0] - 26, t6[1] + 8, 70, t6[1] + 8) + T(66, t6[1] + 6, "spinous process\n(posterior)", 5.9, C["ink2"], "end"))
-    b.append(leader(t6[0] + 4, t6[1], 220, t6[1] - 30) + T(222, t6[1] - 32, "vertebral\nbody", 5.9, C["ink2"]))
-    (ld, _) = at(regions["L"][0] + (regions["L"][1] - regions["L"][0]) * 0.52)
-    b.append(leader(ld[0] + 2, ld[1], 70, ld[1] + 10) + T(66, ld[1] + 8, "intervertebral\ndisc", 5.9, C["ink2"], "end"))
-    b.append(arrow(300, 18, 336, 18, C["golddeep"]) + T(296, 20, "anterior", 6, C["golddeep"], "end", 600))
-    return svg(W, H, "".join(b))
-
-
-reg("spine", fig_spine(), "The vertebral column in lateral view (schematic; anterior to the right). Typical counts are 7 cervical, 12 thoracic and 5 lumbar vertebrae, "
+reg("spine", AF.fig_spine(), "The vertebral column in lateral view (anterior to the right), rendered from the bone geometry of a validated musculoskeletal model [@rajagopal2016]. Typical counts are 7 cervical, 12 thoracic and 5 lumbar vertebrae, "
     "a sacrum of 5 fused segments and a small coccyx; variation exists between individuals [@moore2018].", "half")
 
 
-def fig_vertebra():
-    W, H = 500, 230
-    b = []
-    # superior view of a lumbar vertebra (anterior at top)
-    cx, cy = 110, 100
-    body = (f'M{cx-38},{cy-30} C{cx-40},{cy-62} {cx+40},{cy-62} {cx+38},{cy-30} C{cx+36},{cy-14} {cx+18},{cy-10} {cx},{cy-10} '
-            f'C{cx-18},{cy-10} {cx-36},{cy-14} {cx-38},{cy-30} Z')
-    b.append(f'<path d="{body}" fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".9"/>')
-    # disc ring hint
-    b.append(f'<ellipse cx="{cx}" cy="{cy-36}" rx="16" ry="10" fill="none" stroke="{C["boneline"]}" stroke-width=".4" stroke-dasharray="2 1.5"/>')
-    arch = (f'M{cx-26},{cy-14} L{cx-30},{cy+8} L{cx-78},{cy+2} L{cx-80},{cy+14} L{cx-30},{cy+22} L{cx-22},{cy+40} '
-            f'L{cx-8},{cy+58} L{cx-7},{cy+90} L{cx+7},{cy+90} L{cx+8},{cy+58} L{cx+22},{cy+40} L{cx+30},{cy+22} '
-            f'L{cx+80},{cy+14} L{cx+78},{cy+2} L{cx+30},{cy+8} L{cx+26},{cy-14} Z')
-    b.append(f'<path d="{arch}" fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".9" stroke-linejoin="round"/>')
-    b.append(f'<path d="M{cx-18},{cy-6} C{cx-22},{cy+14} {cx-10},{cy+34} {cx},{cy+36} C{cx+10},{cy+34} {cx+22},{cy+14} {cx+18},{cy-6} Z" fill="#FFFEFA" stroke="{C["boneline"]}" stroke-width=".8"/>')
-    for sx in (-1, 1):
-        b.append(f'<ellipse cx="{cx+sx*24}" cy="{cy+30}" rx="6" ry="9" transform="rotate({sx*-30} {cx+sx*24} {cy+30})" fill="{C["cart"]}" stroke="{C["boneline"]}" stroke-width=".6"/>')
-    lab = [((cx, cy - 40), "vertebral body", 230 - 30, 30), ((cx, cy + 14), "vertebral foramen (spinal cord / cauda equina)", 200, 60),
-           ((cx - 28, cy + 2), "pedicle", 200, 80), ((cx - 70, cy + 8), "transverse process", 200, 100),
-           ((cx + 24, cy + 30), "superior articular process (facet)", 200, 120), ((cx + 14, cy + 50), "lamina", 200, 140),
-           ((cx, cy + 82), "spinous process", 200, 160)]
-    for (px, py), t, tx, ty in lab:
-        b.append(f'<line x1="{f(px)}" y1="{f(py)}" x2="{tx-4}" y2="{ty-2}" stroke="{C["teak"]}" stroke-width=".45"/><circle cx="{f(px)}" cy="{f(py)}" r="1" fill="{C["teak"]}"/>')
-        b.append(T(tx, ty, t, 6.2))
-    b.append(T(cx, 18, "Lumbar vertebra, superior view", 7, C["golddeep"], "middle", 700))
-    b.append(T(cx, 28, "anterior ↑", 5.8, C["ink2"], "middle"))
-    # motion segment lateral
-    ox, oy = 370, 70
-    for dy in (0, 62):
-        b.append(box(ox, oy + dy, 60, 40, C["bone"], C["boneline"], 4, .8))
-        b.append(f'<path d="M{ox},{oy+dy+8} L{ox-18},{oy+dy+4} L{ox-38},{oy+dy+12} L{ox-40},{oy+dy+28} L{ox-18},{oy+dy+30} L{ox},{oy+dy+30} Z" fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".8"/>')
-    b.append(box(ox + 1, oy + 42, 58, 18, C["disc"], "#8FB1AC", 5, .7))
-    b.append(f'<ellipse cx="{ox+33}" cy="{oy+51}" rx="10" ry="5" fill="#B4D0CC"/>')
-    b.append(f'<circle cx="{ox-10}" cy="{oy+52}" r="5" fill="{C["nerve"]}" stroke="#B48F27" stroke-width=".5"/>')
-    b.append(f'<path d="M{ox-26},{oy+34} q4,8 0,16" fill="none" stroke="{C["boneline"]}" stroke-width="1.6"/>')
-    b.append(T(ox + 30, 18, "Motion segment, lateral view", 7, C["golddeep"], "middle", 700))
-    b.append(T(ox + 30, 28, "anterior →", 5.8, C["ink2"], "middle"))
-    for (px, py), t, tx, ty in [((ox + 33, oy + 51), "nucleus pulposus", ox + 70, oy + 48), ((ox + 55, oy + 44), "annulus fibrosus", ox + 70, oy + 60),
-                                ((ox - 10, oy + 52), "spinal nerve in intervertebral foramen", ox - 60, oy + 128),
-                                ((ox - 26, oy + 40), "facet (zygapophyseal) joint", ox - 60, oy + 142)]:
-        b.append(f'<line x1="{f(px)}" y1="{f(py)}" x2="{f(tx)}" y2="{f(ty-3)}" stroke="{C["teak"]}" stroke-width=".45"/><circle cx="{f(px)}" cy="{f(py)}" r="1" fill="{C["teak"]}"/>')
-        b.append(T(tx, ty, t, 6.1, anchor="start"))
-    return svg(W, H, "".join(b))
-
-
-reg("vertebra", fig_vertebra(), "A lumbar vertebra from above and a spinal motion segment from the side (schematic). Each segment moves at three joints: the "
+reg("vertebra", AF.fig_vertebra(), "A lumbar vertebra from above and a spinal motion segment from the side. Each segment moves at three joints: the "
     "intervertebral disc in front and the paired facet joints behind [@bogduk2005].", "full")
 
 
-def fig_pelvis():
-    W, H = 470, 290
-    b = []
-    cx = 170
-    bone = f'fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".9" stroke-linejoin="round"'
-    for sx in (-1, 1):
-        def X(v):
-            return cx + sx * v
-        ilium = (f'M{X(22)},{60} C{X(40)},{30} {X(95)},{22} {X(120)},{40} C{X(132)},{50} {X(130)},{70} {X(122)},{84} '
-                 f'L{X(116)},{96} C{X(104)},{104} {X(96)},{112} {X(90)},{124} C{X(80)},{146} {X(62)},{176} {X(46)},{186} '
-                 f'C{X(34)},{194} {X(18)},{196} {X(8)},{190} L{X(8)},{172} C{X(22)},{168} {X(34)},{150} {X(34)},{130} '
-                 f'C{X(34)},{110} {X(22)},{98} {X(22)},{60} Z')
-        b.append(f'<path d="{ilium}" {bone}/>')
-        # obturator foramen
-        b.append(f'<ellipse cx="{X(48)}" cy="176" rx="12" ry="15" transform="rotate({sx*30} {X(48)} 176)" fill="#FFFEFA" stroke="{C["boneline"]}" stroke-width=".7"/>')
-        # ischial tuberosity
-        b.append(f'<path d="M{X(60)},{188} C{X(66)},{206} {X(58)},{214} {X(48)},{212} C{X(42)},{208} {X(44)},{196} {X(46)},{190}" {bone}/>')
-        # acetabulum + femur
-        b.append(f'<circle cx="{X(96)}" cy="146" r="20" fill="#E7DCC4" stroke="{C["boneline"]}" stroke-width=".9"/>')
-        fem = (f'M{X(96)},{128} C{X(112)},{126} {X(122)},{140} {X(118)},{152} L{X(136)},{170} C{X(150)},{160} {X(160)},{170} {X(156)},{186} '
-               f'L{X(146)},{200} L{X(140)},{280} L{X(118)},{280} L{X(122)},{204} L{X(108)},{178} L{X(92)},{164} C{X(80)},{160} {X(78)},{134} {X(96)},{128} Z')
-        b.append(f'<path d="{fem}" {bone}/>')
-        b.append(f'<circle cx="{X(97)}" cy="146" r="15" fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".9"/>')
-    # sacrum
-    sac = f'M{cx-28},{58} L{cx+28},{58} C{cx+30},{90} {cx+20},{130} {cx+6},{150} L{cx-6},{150} C{cx-20},{130} {cx-30},{90} {cx-28},{58} Z'
-    b.append(f'<path d="{sac}" fill="#EADFC8" stroke="{C["boneline"]}" stroke-width=".9"/>')
-    for k in range(4):
-        y = 72 + k * 18
-        for sx in (-1, 1):
-            b.append(f'<circle cx="{cx+sx*(13-k*2)}" cy="{y}" r="2.2" fill="#FFFEFA" stroke="{C["boneline"]}" stroke-width=".5"/>')
-    b.append(f'<path d="M{cx-4},150 L{cx+4},150 L{cx+2},166 L{cx-2},166 Z" {bone}/>')
-    b.append(box(cx - 20, 34, 40, 20, C["bone"], C["boneline"], 3, .8))
-    b.append(box(cx - 20, 55, 40, 3, C["disc"], "none", 1))
-    # pubic symphysis
-    b.append(f'<rect x="{cx-3}" y="176" width="6" height="18" fill="{C["cart"]}" stroke="{C["boneline"]}" stroke-width=".5"/>')
-    labels = [((cx, 44), "L5 vertebra", 330, 30), ((cx - 26, 100), "sacroiliac (SI) joint", 330, 50), ((cx, 104), "sacrum", 330, 70),
-              ((cx + 122, 50), "iliac crest", 330, 90), ((cx + 126, 84), "ASIS (anterior superior iliac spine)", 330, 110),
-              ((cx + 97, 146), "femoral head in acetabulum (hip joint)", 330, 130), ((cx + 146, 172), "greater trochanter", 330, 150),
-              ((cx + 112, 162), "femoral neck", 330, 170), ((cx, 186), "pubic symphysis", 330, 190), ((cx + 48, 176), "obturator foramen", 330, 210),
-              ((cx + 54, 206), "ischial tuberosity (“sitting bone”)", 330, 230), ((cx, 160), "coccyx", 330, 250)]
-    for (px, py), t, tx, ty in labels:
-        b.append(f'<line x1="{f(px)}" y1="{f(py)}" x2="{tx-4}" y2="{ty-2}" stroke="{C["teak"]}" stroke-width=".4"/><circle cx="{f(px)}" cy="{f(py)}" r="1" fill="{C["teak"]}"/>')
-        b.append(T(tx, ty, t, 6.2))
-    return svg(W, H, "".join(b))
-
-
-reg("pelvis", fig_pelvis(), "The pelvis and hip joints, anterior view (schematic). The pelvis is a ring of two hip bones and the sacrum; the femoral head sits deep in the acetabulum. "
+reg("pelvis", AF.fig_pelvis(), "The pelvis and hip joints, anterior view. The pelvis is a ring of two hip bones and the sacrum; the femoral head sits deep in the acetabulum. "
     "Depth and orientation of the socket, and the angle of the femoral neck, vary considerably between people [@clark2016; @neumann2017].", "full")
 
 
-def fig_pelvictilt():
-    W, H = 470, 190
-    b = []
-    for i, (lab, ang, note) in enumerate([("Anterior tilt", 12, "ASIS moves forward and down;\nlumbar lordosis increases"),
-                                          ("Neutral", 0, "ASIS and pubic symphysis\nroughly in one vertical plane"),
-                                          ("Posterior tilt", -12, "ASIS moves back and up;\nlumbar curve flattens")]):
-        cx, cy = 85 + i * 150, 112   # hip joint = centre of rotation
-        r = math.radians(ang)
-
-        def R(x, y):
-            return (cx + x * math.cos(r) - y * math.sin(r), cy + x * math.sin(r) + y * math.cos(r))
-        outline = [(-30, -30), (-16, -44), (4, -46), (22, -38), (32, -24), (30, -14), (22, -6), (26, 14), (24, 30),
-                   (12, 32), (0, 20), (-12, 28), (-18, 34), (-26, 28), (-22, 12), (-34, -6)]
-        b.append('<path d="M' + " L".join(f"{f(x)},{f(y)}" for x, y in (R(*p) for p in outline)) +
-                 f' Z" fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".9" stroke-linejoin="round"/>')
-        sac = [(-22, -32), (-30, -6), (-34, 16), (-30, 18), (-24, -4), (-14, -30)]
-        b.append('<path d="M' + " L".join(f"{f(x)},{f(y)}" for x, y in (R(*p) for p in sac)) +
-                 f' Z" fill="#E4D6BA" stroke="{C["boneline"]}" stroke-width=".7"/>')
-        hc = R(0, 0)
-        b.append(f'<circle cx="{f(hc[0])}" cy="{f(hc[1])}" r="7" fill="#E7DCC4" stroke="{C["boneline"]}" stroke-width=".8"/>')
-        b.append(f'<line x1="{f(hc[0])}" y1="{f(hc[1])}" x2="{f(hc[0]+2)}" y2="{f(hc[1]+44)}" stroke="#E2D6BC" stroke-width="7" stroke-linecap="round"/>')
-        top = R(-18, -32)
-        bulge = 16 + ang * 1.4
-        lum_end = (top[0] - 2, top[1] - 52)
-        b.append(f'<path d="M{f(top[0])},{f(top[1])} Q{f(top[0]+bulge)},{f(top[1]-28)} {f(lum_end[0])},{f(lum_end[1])}" '
-                 f'fill="none" stroke="{C["forest"]}" stroke-width="4" stroke-linecap="round"/>')
-        asis = R(32, -24)
-        pub = R(24, 30)
-        b.append(f'<circle cx="{f(asis[0])}" cy="{f(asis[1])}" r="2.4" fill="{C["clay"]}"/><circle cx="{f(pub[0])}" cy="{f(pub[1])}" r="2.4" fill="{C["blue"]}"/>')
-        b.append(f'<line x1="{f(asis[0])}" y1="{f(asis[1])}" x2="{f(pub[0])}" y2="{f(pub[1])}" stroke="{C["ink2"]}" stroke-width=".5" stroke-dasharray="2 1.5"/>')
-        b.append(T(cx, 172, lab, 10, C["forest"], "middle", 600, family="Cormorant"))
-        b.append(T(cx, 181, note.split("\n")[0], 5.8, C["ink2"], "middle"))
-        b.append(T(cx, 188, note.split("\n")[1], 5.8, C["ink2"], "middle"))
-    b.append(T(14, 14, "PELVIC TILT · lateral view, facing right · rotation occurs at the hip joints", 6.4, C["golddeep"], "start", 700, ls=.6))
-    b.append(T(456, 14, "● ASIS   ● pubic symphysis", 6, C["ink2"], "end"))
-    return svg(W, H + 6, "".join(b))
+reg("pelvictilt", AF.fig_pelvictilt(), "Pelvic tilt and its effect on the lumbar curve: the pelvis rotates about the hip joints and the lumbar spine follows. Much “alignment” teaching in forward bends and backbends is really about where the pelvis is allowed to move.")
 
 
-reg("pelvictilt", fig_pelvictilt(), "Pelvic tilt and its effect on the lumbar curve (schematic). Much “alignment” teaching in forward bends and backbends is really about where the pelvis is allowed to move.")
-
-
-def fig_shoulder():
-    W, H = 480, 260
-    b = []
-    bone = f'fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".9" stroke-linejoin="round"'
-    cx = 120
-    # ribcage hint
-    for k in range(7):
-        y = 60 + k * 20
-        b.append(f'<path d="M{cx},{y} C{cx+50},{y-10} {cx+86},{y+2} {cx+92},{y+20}" fill="none" stroke="#E2D7C0" stroke-width="3"/>')
-    b.append(box(cx - 5, 30, 10, 190, "#E7DCC4", C["boneline"], 3, .6))
-    # scapula (right side of the body shown on the right, posterior view)
-    sc = (f'M{cx+30},{66} L{cx+104},{58} C{cx+112},{70} {cx+106},{90} {cx+100},{104} L{cx+52},{182} '
-          f'C{cx+46},{188} {cx+40},{184} {cx+38},{176} L{cx+30},{66} Z')
-    b.append(f'<path d="{sc}" {bone}/>')
-    b.append(f'<path d="M{cx+34},{84} L{cx+118},{66} L{cx+124},{56} L{cx+114},{52} L{cx+104},{62} L{cx+32},{76} Z" {bone}/>')
-    b.append(f'<path d="M{cx+10},{40} C{cx+50},{30} {cx+90},{44} {cx+120},{50}" fill="none" stroke="{C["boneline"]}" stroke-width="6" stroke-linecap="round"/>')
-    b.append(f'<path d="M{cx+10},{40} C{cx+50},{30} {cx+90},{44} {cx+120},{50}" fill="none" stroke="{C["bone"]}" stroke-width="4.4" stroke-linecap="round"/>')
-    b.append(f'<circle cx="{cx+124}" cy="{74}" r="15" {bone}/>')
-    b.append(f'<path d="M{cx+116},{84} L{cx+134},{84} L{cx+138},{220} L{cx+122},{220} Z" {bone}/>')
-    labels = [((cx + 66, 40), "clavicle", 300, 34), ((cx + 118, 57), "acromion", 300, 52), ((cx + 76, 70), "spine of scapula", 300, 70),
-              ((cx + 124, 76), "head of humerus (glenohumeral joint)", 300, 88), ((cx + 34, 120), "medial border", 300, 106),
-              ((cx + 44, 180), "inferior angle", 300, 124), ((cx + 70, 130), "scapula lies on the rib cage:\nthe scapulothoracic “joint”", 300, 142)]
-    for (px, py), t, tx, ty in labels:
-        b.append(f'<line x1="{f(px)}" y1="{f(py)}" x2="{tx-4}" y2="{ty-2}" stroke="{C["teak"]}" stroke-width=".4"/><circle cx="{f(px)}" cy="{f(py)}" r="1" fill="{C["teak"]}"/>')
-        b.append(T(tx, ty, t, 6.2))
-    b.append(T(cx + 60, 246, "Right shoulder girdle, posterior view (schematic)", 6.4, C["golddeep"], "middle", 600))
-    # movements
-    b.append(T(300, 182, "Scapular movements", 10, C["forest"], "start", 600, family="Cormorant"))
-    mv = [("Elevation / depression", "shrugging up / drawing down"), ("Protraction / retraction", "sliding forward around the ribs / squeezing back"),
-          ("Upward / downward rotation", "glenoid turns up (arms overhead) / down")]
-    for i, (a, d) in enumerate(mv):
-        b.append(T(300, 196 + i * 20, a, 6.5, C["ink"], "start", 600))
-        b.append(T(300, 204 + i * 20, d, 5.8, C["ink2"]))
-    return svg(W, H, "".join(b))
-
-
-reg("shoulder", fig_shoulder(), "The shoulder girdle is a chain: sternum → clavicle → scapula → humerus. Raising the arms overhead needs both glenohumeral movement and "
+reg("shoulder", AF.fig_shoulder(), "The shoulder girdle is a chain: sternum → clavicle → scapula → humerus. Raising the arms overhead needs both glenohumeral movement and "
     "upward rotation of the scapula (scapulohumeral rhythm) [@neumann2017].", "full")
 
 
-def fig_knee():
-    W, H = 430, 250
-    b = []
-    bone = f'fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".9" stroke-linejoin="round"'
-    cx = 120
-    fem = f'M{cx-18},10 L{cx+18},10 L{cx+22},70 C{cx+46},84 {cx+48},110 {cx+36},118 L{cx+6},116 L{cx},108 L{cx-6},116 L{cx-36},118 C{cx-48},110 {cx-46},84 {cx-22},70 Z'
-    b.append(f'<path d="{fem}" {bone}/>')
-    tib = f'M{cx-44},132 L{cx+44},132 C{cx+46},146 {cx+34},156 {cx+22},160 L{cx+16},240 L{cx-16},240 L{cx-22},160 C{cx-34},156 {cx-46},146 {cx-44},132 Z'
-    b.append(f'<path d="{tib}" {bone}/>')
-    b.append(f'<path d="M{cx-50},150 L{cx-40},150 L{cx-42},240 L{cx-50},240 Z" {bone}/>')  # fibula (lateral, viewer's left for right knee)
-    # menisci
-    b.append(f'<path d="M{cx-42},128 C{cx-40},120 {cx-10},120 {cx-6},128" fill="none" stroke="#8FB1AC" stroke-width="4" stroke-linecap="round"/>')
-    b.append(f'<path d="M{cx+6},128 C{cx+10},120 {cx+42},120 {cx+42},128" fill="none" stroke="#8FB1AC" stroke-width="4" stroke-linecap="round"/>')
-    # cruciates
-    b.append(f'<line x1="{cx-2}" y1="130" x2="{cx-14}" y2="104" stroke="{C["clay"]}" stroke-width="3.2" stroke-linecap="round"/>')
-    b.append(f'<line x1="{cx+6}" y1="134" x2="{cx+12}" y2="104" stroke="{C["blue"]}" stroke-width="3.2" stroke-linecap="round"/>')
-    # collaterals
-    b.append(f'<line x1="{cx+44}" y1="92" x2="{cx+34}" y2="170" stroke="#B89B5C" stroke-width="3.2" stroke-linecap="round"/>')
-    b.append(f'<line x1="{cx-44}" y1="92" x2="{cx-47}" y2="152" stroke="#B89B5C" stroke-width="3.2" stroke-linecap="round"/>')
-    labels = [((cx, 40), "femur", 260, 22), ((cx - 14, 108), "anterior cruciate ligament (ACL)", 260, 50), ((cx + 11, 108), "posterior cruciate ligament (PCL)", 260, 68),
-              ((cx + 26, 122), "medial meniscus", 260, 86), ((cx - 26, 122), "lateral meniscus", 260, 104),
-              ((cx + 40, 130), "medial collateral ligament (MCL)", 260, 122), ((cx - 46, 120), "lateral collateral ligament (LCL)", 260, 140),
-              ((cx - 46, 200), "fibula", 260, 158), ((cx, 200), "tibia", 260, 176)]
-    for (px, py), t, tx, ty in labels:
-        b.append(f'<line x1="{f(px)}" y1="{f(py)}" x2="{tx-4}" y2="{ty-2}" stroke="{C["teak"]}" stroke-width=".4"/><circle cx="{f(px)}" cy="{f(py)}" r="1" fill="{C["teak"]}"/>')
-        b.append(T(tx, ty, t, 6.2))
-    b.append(T(cx - 50, 8, "lateral", 5.8, C["ink2"], "middle", italic=True) + T(cx + 50, 8, "medial", 5.8, C["ink2"], "middle", italic=True))
-    b.append(T(260, 206, "The knee is mainly a hinge (flexion/extension)\nwith a little rotation when flexed. It tolerates\ntwisting under load poorly — which is why\nlotus is never forced from the knee.", 6.2, C["teak"], italic=True))
-    return svg(W, H, "".join(b))
-
-
-reg("knee", fig_knee(), "Right knee, anterior view with the patella removed (schematic). The menisci deepen the flat tibial plateau; the cruciate and collateral ligaments limit "
+reg("knee", AF.fig_knee(), "Right knee, anterior view with the patella removed; the femur is drawn semi-transparent so that the cruciate ligaments in the intercondylar notch are visible (ligaments and menisci modelled at their standard attachments). The menisci deepen the flat tibial plateau; the cruciate and collateral ligaments limit "
     "forward/backward and side-to-side movement of the tibia on the femur [@moore2018].")
 
 
-def fig_foot():
-    W, H = 470, 200
-    b = []
-    bone = f'fill="{C["bone"]}" stroke="{C["boneline"]}" stroke-width=".8" stroke-linejoin="round"'
-    # medial view: calcaneus, talus, navicular, cuneiform, metatarsal, phalanges
-    b.append(f'<path d="M40,140 C30,120 40,104 64,102 L96,108 L100,130 L84,146 C66,152 48,150 40,140 Z" {bone}/>')  # calcaneus
-    b.append(f'<path d="M78,86 C84,72 112,70 122,82 L126,96 L104,106 L84,104 Z" {bone}/>')  # talus
-    b.append(f'<path d="M126,90 L146,94 L146,112 L124,110 Z" {bone}/>')  # navicular
-    b.append(f'<path d="M148,96 L170,102 L168,122 L146,116 Z" {bone}/>')  # cuneiform
-    b.append(f'<path d="M172,106 L250,134 L248,146 L170,124 Z" {bone}/>')  # 1st metatarsal
-    b.append(f'<circle cx="252" cy="142" r="7" {bone}/>')
-    b.append(f'<path d="M258,138 L282,142 L282,152 L258,150 Z" {bone}/>')
-    b.append(f'<path d="M284,142 L302,146 L300,154 L284,152 Z" {bone}/>')
-    b.append(f'<path d="M92,58 L108,58 L112,84 L90,84 Z" {bone}/>')  # tibia stub
-    b.append(f'<path d="M50,152 C120,160 200,158 252,152" fill="none" stroke="{C["terra"]}" stroke-width="1.6" stroke-dasharray="3 2"/>')
-    b.append(f'<path d="M60,142 C100,118 160,112 248,144" fill="none" stroke="{C["golddeep"]}" stroke-width="1" />')
-    b.append(T(120, 176, "Medial longitudinal arch (right foot, medial view)", 6.4, C["golddeep"], "middle", 600))
-    for (px, py), t, tx, ty in [((60, 128), "calcaneus", 20, 188 - 10), ((104, 86), "talus", 60, 40), ((136, 100), "navicular", 130, 58),
-                                ((210, 124), "1st metatarsal", 210, 92), ((150, 156), "plantar fascia", 170, 190 - 4)]:
-        b.append(f'<line x1="{px}" y1="{py}" x2="{tx}" y2="{ty+2}" stroke="{C["teak"]}" stroke-width=".4"/>' + T(tx, ty, t, 6, anchor="middle"))
-    # plantar tripod
-    ox = 380
-    foot = f'M{ox-20},{176} C{ox-34},{150} {ox-30},{96} {ox-26},{70} C{ox-24},{40} {ox-10},{20} {ox+8},{22} C{ox+30},{24} {ox+36},{50} {ox+32},{80} C{ox+28},{110} {ox+16},{150} {ox+12},{174} C{ox+6},{190} {ox-12},{192} {ox-20},{176} Z'
-    b.append(f'<path d="{foot}" fill="#F3EBDD" stroke="{C["boneline"]}" stroke-width=".9"/>')
-    for (x, y, t) in [(ox - 4, 172, "heel"), (ox - 16, 58, "1st metatarsal head\n(ball of big toe)"), (ox + 26, 74, "5th metatarsal head")]:
-        b.append(f'<circle cx="{x}" cy="{y}" r="6" fill="{C["gold"]}" fill-opacity=".55" stroke="{C["golddeep"]}"/>')
-    b.append(f'<polygon points="{ox-4},172 {ox-16},58 {ox+26},74" fill="none" stroke="{C["golddeep"]}" stroke-width=".8" stroke-dasharray="2 1.5"/>')
-    b.append(T(ox + 2, 12, "The “tripod” of the foot (sole)", 6.4, C["golddeep"], "middle", 600))
-    b.append(T(ox - 60, 60, "big-toe\nmound", 5.8, C["ink2"], "end") + T(ox + 44, 76, "little-toe\nmound", 5.8, C["ink2"]) + T(ox + 20, 180, "heel", 5.8, C["ink2"]))
-    return svg(W, H, "".join(b))
-
-
-reg("foot", fig_foot(), "The foot as a foundation: the medial arch (left) and the three weight-bearing points often cued in standing poses (right). Arch height varies widely "
+reg("foot", AF.fig_foot(), "The foot as a foundation: the medial arch (left) and the three weight-bearing points often cued in standing poses (right). Arch height varies widely "
     "and a low arch is not in itself a problem.", "full")
 
 
-def fig_hand():
-    W, H = 470, 210
-    b = []
-    ox, oy = 110, 20
-    hand = (f'M{ox-40},{oy+180} C{ox-50},{oy+140} {ox-52},{oy+110} {ox-48},{oy+96} L{ox-74},{oy+62} C{ox-80},{oy+52} {ox-70},{oy+44} {ox-62},{oy+52} '
-            f'L{ox-38},{oy+78} L{ox-36},{oy+20} C{ox-36},{oy+10} {ox-24},{oy+10} {ox-24},{oy+20} L{ox-22},{oy+66} L{ox-16},{oy+6} C{ox-16},{oy-4} {ox-2},{oy-4} {ox-2},{oy+6} '
-            f'L{ox},{oy+64} L{ox+8},{oy+12} C{ox+10},{oy+2} {ox+22},{oy+4} {ox+20},{oy+14} L{ox+16},{oy+70} L{ox+28},{oy+32} C{ox+32},{oy+22} {ox+42},{oy+26} {ox+40},{oy+36} '
-            f'L{ox+30},{oy+100} C{ox+28},{oy+140} {ox+24},{oy+160} {ox+22},{oy+180} Z')
-    b.append(f'<path d="{hand}" fill="#F3EBDD" stroke="{C["boneline"]}" stroke-width=".9"/>')
-    pts = [(ox - 26, oy + 74, "base of index finger\n(2nd MCP joint)"), (ox - 40, oy + 84, "thumb mound"), (ox + 22, oy + 96, "outer knuckle / edge"),
-           (ox - 8, oy + 156, "heel of the hand")]
-    for x, y, t in pts:
-        b.append(f'<circle cx="{x}" cy="{y}" r="6" fill="{C["gold"]}" fill-opacity=".5" stroke="{C["golddeep"]}"/>')
-    b.append(T(ox + 60, oy + 20, "Spread the load around the\nwhole rim of the palm and press\nthrough the base of the index\nfinger and thumb, rather than\nsinking into the heel of the hand.", 6.2, C["teak"]))
-    b.append(T(ox, 206, "Right palm: loading points", 6.4, C["golddeep"], "middle", 600))
-    # wrist angle panel
-    x0, y0 = 330, 160
-    b.append(f'<line x1="{x0-20}" y1="{y0}" x2="{x0+110}" y2="{y0}" stroke="#CDBFA5"/>')
-    b.append(f'<line x1="{x0}" y1="{y0}" x2="{x0+36}" y2="{y0}" stroke="{C["forest"]}" stroke-width="6" stroke-linecap="round"/>')
-    b.append(f'<line x1="{x0}" y1="{y0}" x2="{x0}" y2="{y0-80}" stroke="{C["sage"]}" stroke-width="7" stroke-linecap="round"/>')
-    b.append(f'<path d="M{x0+18},{y0} A18,18 0 0 0 {x0},{y0-18}" fill="none" stroke="{C["clay"]}" stroke-width="1"/>')
-    b.append(T(x0 - 10, y0 - 50, "≈ 90° wrist\nextension\n(plank, forearm\nvertical)", 6, C["clay"], "end"))
-    b.append(f'<line x1="{x0+62}" y1="{y0}" x2="{x0+96}" y2="{y0}" stroke="{C["forest"]}" stroke-width="6" stroke-linecap="round"/>')
-    b.append(f'<line x1="{x0+62}" y1="{y0}" x2="{x0+100}" y2="{y0-70}" stroke="{C["sage"]}" stroke-width="7" stroke-linecap="round"/>')
-    b.append(T(x0 + 74, y0 + 14, "less extension\n(downward dog)", 6, C["ink2"]))
-    b.append(T(x0 + 40, 30, "Wrist angle under load", 6.4, C["golddeep"], "middle", 600))
-    return svg(W, H, "".join(b))
-
-
-reg("hand", fig_hand(), "Weight-bearing through the hands. Plank and crow place the wrist near the end of its extension range under load; commonly reported active wrist extension "
+reg("hand", AF.fig_hand(), "Weight-bearing through the hands. Plank and crow place the wrist near the end of its extension range under load; commonly reported active wrist extension "
     "is around 70°, though individuals differ [@neumann2017]. Spreading load and building tolerance gradually are the practical responses.", "full")
 
 
-def fig_ribs():
-    W, H = 470, 180
-    b = []
-    # pump handle (lateral view)
-    x0, y0 = 60, 40
-    b.append(box(x0 - 4, y0 - 10, 8, 120, "#E7DCC4", C["boneline"], 2, .6))
-    b.append(T(x0, y0 - 16, "spine", 5.6, C["ink2"], "middle"))
-    for k, dy in enumerate((0, 28, 56)):
-        b.append(f'<path d="M{x0},{y0+dy} C{x0+40},{y0+dy+10} {x0+80},{y0+dy+26} {x0+104},{y0+dy+36}" fill="none" stroke="{C["boneline"]}" stroke-width="3"/>')
-        b.append(f'<path d="M{x0},{y0+dy} C{x0+40},{y0+dy-2} {x0+82},{y0+dy+8} {x0+108},{y0+dy+14}" fill="none" stroke="{C["terra"]}" stroke-width="1.4" stroke-dasharray="3 2"/>')
-    b.append(box(x0 + 104, y0 + 20, 8, 96, "#E7DCC4", C["boneline"], 2, .6))
-    b.append(arrow(x0 + 126, y0 + 60, x0 + 126, y0 + 40, C["clay"], m="arrt") + arrow(x0 + 126, y0 + 60, x0 + 142, y0 + 60, C["clay"], m="arrt"))
-    b.append(T(x0 + 116, y0 + 132, "sternum", 5.6, C["ink2"], "middle"))
-    b.append(T(x0 + 50, 170, "Pump-handle motion (upper ribs, side view):\nsternum moves forward and up", 6.2, C["forest"], "middle", 600))
-    # bucket handle (front view)
-    x1, y1 = 330, 40
-    b.append(box(x1 - 4, y1 - 10, 8, 110, "#E7DCC4", C["boneline"], 2, .6))
-    for sx in (-1, 1):
-        for dy in (20, 44, 68):
-            b.append(f'<path d="M{x1},{y1+dy} C{x1+sx*40},{y1+dy+26} {x1+sx*80},{y1+dy+20} {x1+sx*96},{y1+dy-4}" fill="none" stroke="{C["boneline"]}" stroke-width="3"/>')
-            b.append(f'<path d="M{x1},{y1+dy} C{x1+sx*44},{y1+dy+16} {x1+sx*90},{y1+dy+8} {x1+sx*104},{y1+dy-10}" fill="none" stroke="{C["terra"]}" stroke-width="1.4" stroke-dasharray="3 2"/>')
-    b.append(arrow(x1 + 104, y1 + 70, x1 + 122, y1 + 60, C["clay"], m="arrt") + arrow(x1 - 104, y1 + 70, x1 - 122, y1 + 60, C["clay"], m="arrt"))
-    b.append(T(x1, 170, "Bucket-handle motion (lower ribs, front view):\nribs swing up and out, widening the chest", 6.2, C["forest"], "middle", 600))
-    return svg(W, H + 12, "".join(b))
+reg("ribs", AF.fig_ribs(), "Rib movement during inhalation (arrows). Upper ribs mainly increase the front-to-back depth of the chest; lower ribs mainly increase its width [@calais2006; @west2020].", "full")
 
 
-reg("ribs", fig_ribs(), "Rib movement during inhalation (dashed = inhaled position, schematic). Upper ribs mainly increase the front-to-back depth of the chest; lower ribs mainly increase its width [@calais2006; @west2020].", "full")
-
-
-def fig_diaphragm():
-    W, H = 470, 230
-    b = []
-    for i, (lab, dome, rib) in enumerate([("Exhalation", 92, 0), ("Inhalation", 116, 8)]):
-        ox = 40 + i * 230
-        # torso outline
-        b.append(f'<path d="M{ox+10},{20} C{ox-4-rib},{80} {ox-6-rib},{150} {ox+14},{210} L{ox+166},{210} C{ox+186+rib},{150} {ox+184+rib},{80} {ox+170},{20} Z" fill="#FBF6EC" stroke="{C["line"]}" stroke-width=".8"/>')
-        for k in range(6):
-            y = 42 + k * 18
-            b.append(f'<path d="M{ox+18-rib*(k/6)},{y} C{ox+40},{y+10} {ox+80},{y+12} {ox+90},{y+8}" fill="none" stroke="#E4D6BB" stroke-width="2.4"/>')
-            b.append(f'<path d="M{ox+162+rib*(k/6)},{y} C{ox+140},{y+10} {ox+100},{y+12} {ox+90},{y+8}" fill="none" stroke="#E4D6BB" stroke-width="2.4"/>')
-        # lungs
-        for sx in (-1, 1):
-            cx = ox + 90 + sx * 38
-            b.append(f'<path d="M{cx},{36} C{cx+sx*34},{40} {cx+sx*44+sx*rib},{dome-10} {cx+sx*40+sx*rib},{dome+ (6 if i else 0)} '
-                     f'C{cx+sx*10},{dome-14} {cx-sx*20},{dome-20} {cx-sx*24},{dome-8} C{cx-sx*26},{70} {cx-sx*12},{40} {cx},{36} Z" '
-                     f'fill="{C["lung"]}" stroke="#D9A898" stroke-width=".8"/>')
-        # diaphragm dome
-        d = f'M{ox+8-rib},{dome+26} C{ox+30},{dome-30} {ox+70},{dome-20} {ox+90},{dome-4} C{ox+110},{dome-20} {ox+150},{dome-30} {ox+172+rib},{dome+26}'
-        b.append(f'<path d="{d}" fill="none" stroke="{C["clay"]}" stroke-width="4" stroke-linecap="round"/>')
-        b.append(f'<path d="M{ox+80},{dome+2} L{ox+72},{dome+80} M{ox+100},{dome+2} L{ox+108},{dome+80}" stroke="{C["clay"]}" stroke-width="2"/>')
-        b.append(f'<ellipse cx="{ox+90}" cy="{dome+60 + (10 if i else 0)}" rx="{50 + (8 if i else 0)}" ry="30" fill="#EFE1C6" stroke="#D7C39B" stroke-width=".6"/>')
-        b.append(T(ox + 90, dome + 64 + (10 if i else 0), "abdominal contents", 5.6, C["ink2"], "middle"))
-        b.append(T(ox + 90, 226, lab, 11, C["forest"], "middle", 600, family="Cormorant"))
-        if i:
-            b.append(arrow(ox + 90, dome - 40, ox + 90, dome - 10, C["clay"], 1.2, "arrt"))
-            b.append(arrow(ox + 176, 120, ox + 196, 120, C["clay"], 1.2, "arrt") + arrow(ox + 4, 120, ox - 16, 120, C["clay"], 1.2, "arrt"))
-            b.append(arrow(ox + 150, dome + 70, ox + 162, dome + 84, C["clay"], 1.2, "arrt"))
-    b.append(leader(62, 118, 20, 60) + T(18, 56, "diaphragm", 6, C["clay"], "end", 600) if False else "")
-    b.append(T(150, 140, "diaphragm", 6.2, C["clay"], "middle", 600))
-    b.append(T(92, 176, "crura attach to\nlumbar vertebrae", 5.6, C["ink2"], "middle"))
-    return svg(W, H + 4, "".join(b))
-
-
-reg("diaphragm", fig_diaphragm(), "The diaphragm in exhalation and inhalation (front view, schematic). Contracting, the dome descends and flattens, lower ribs widen, and abdominal "
+reg("diaphragm", AF.fig_diaphragm(), "The diaphragm in exhalation and inhalation (front view; the rib cage is drawn translucent and the dome is modelled). Contracting, the dome descends and flattens, lower ribs widen, and abdominal "
     "contents are displaced downward and forward; in quiet breathing, exhalation is largely passive recoil [@west2020; @hall2021].", "full")
 
 
@@ -1182,12 +745,11 @@ reg("contraction", fig_contraction(), "Three kinds of muscle contraction, shown 
 
 def fig_tension():
     W, H = 470, 200
-    musc = [(("lt", 0.0, "post"), ("sh1", 0.06, "post"), 3.2, "stretch"),
-            (("sh1", 0.1, "post"), ("sh1", 0.8, "post"), 2.6, "stretch"),
-            (("lt", 0.25, "post"), ("ut", 0.85, "post"), 2.4, "stretch")]
-    s = draw(P["paschimottanasana"], muscles=musc, floor=True)
-    inner, h = embed(s, 20, 20, 250)
-    b = [inner]
+    info = F3.render("paschimottanasana", 1000, muscles=dict(
+        work=["rectus_abdominis", "iliopsoas"], stretch=["hamstrings", "gastrocnemius", "erector_spinae", "gluteus_maximus"]))
+    w = 262
+    el, h, proj = F3.svg_image(info, 14, 190 - w * info["h"] / info["w"], w)
+    b = [el]
     b.append(T(290, 40, "Tension (tensile load)", 10, C["clay"], "start", 600, family="Cormorant"))
     b.append(T(290, 52, "tissues on the convex side are pulled:\nhamstrings, calf, back of the trunk,\nposterior hip and spinal ligaments", 6, C["ink2"]))
     b.append(T(290, 98, "Compression", 10, C["blue"], "start", 600, family="Cormorant"))
@@ -1196,19 +758,23 @@ def fig_tension():
     return svg(W, H, "".join(b))
 
 
-reg("tension", fig_tension(), "Tension and compression in a seated forward bend. Coloured spindles show tissues that are lengthening under load (terracotta). Recognising which "
+reg("tension", fig_tension(), "Tension and compression in a seated forward bend. Terracotta: tissues lengthening under load; blue: the region compressed at the front of the hip and abdomen. Recognising which "
     "kind of limit a student has reached changes what you teach next [@clark2016].", "full")
 
 
 def fig_rom():
     W, H = 470, 150
-    a = draw(P["leg_raise"] | dict(th1=-60, sh1=-60, ft1=-60), floor=True)
-    bp = draw(P["supta_padangusthasana"], props=[], floor=True)
-    i1, h1 = embed(a, 30, 20, 170)
-    i2, h2 = embed(bp, 250, 10, 170)
-    b = [i1, i2]
-    b.append(T(115, 140, "Active range: how far your own muscles lift the leg", 6.4, C["forest"], "middle", 600))
-    b.append(T(335, 140, "Passive range: how far the leg goes with help (strap, hands)", 6.4, C["forest"], "middle", 600))
+    b = []
+    for (key, ov, x0) in (("leg_raise", dict(hip_R=(58, 0, 0)), 20), ("supta_padangusthasana", dict(hip_R=(96, 0, 0)), 245)):
+        info = F3.render(key, 900, overrides=ov)
+        w = 200
+        hh = w * info["h"] / info["w"]
+        if hh > 118:
+            w, hh = w * 118 / hh, 118
+        el, _, _ = F3.svg_image(info, x0 + (205 - w) / 2, 124 - hh, w)
+        b.append(el)
+    b.append(T(122, 140, "Active range: how far your own muscles lift the leg", 6.4, C["forest"], "middle", 600))
+    b.append(T(347, 140, "Passive range: how far the leg goes with help (strap, hands)", 6.4, C["forest"], "middle", 600))
     return svg(W, H + 4, "".join(b))
 
 
@@ -1457,33 +1023,13 @@ reg("cuestructure", fig_cuestructure(), "The anatomy of a clear verbal cue.", "f
 
 
 # --------------------------------------------------------------------- muscle location sketches
-def muscle_sketch(pose, musc, labels=(), w=None):
-    return draw(pose, muscles=musc, labels=labels, floor=False, mat=False)
-
-
-def fig_hamstring_psoas():
-    W, H = 470, 250
-    s1 = draw(P["tadasana"], muscles=[(("lt", 0.0, "post"), ("sh1", 0.06, "post"), 3.4, "stretch")],
-              labels=[(("th1", 0.1, "post"), "ischial tuberosity", -14, -6), (("sh1", 0.06, "post"), "below the knee", -14, 10)], floor=False, mat=False)
-    s2 = draw(P["tadasana"], muscles=[(("lt", 0.7, "post", -0.1), ("th1", 0.1, "mid"), 3.0, "active")],
-              labels=[(("lt", 0.75, "mid"), "T12–L5 vertebrae", 16, -8), (("th1", 0.12, "mid"), "lesser trochanter", 16, 12)], floor=False, mat=False)
-    s1, s2 = ghost(s1), ghost(s2)
-    i1, h1 = embed(s1, 50, 6, 118)
-    i2, h2 = embed(s2, 270, 6, 118)
-    b = [i1, i2]
-    b.append(T(115, 246, "Hamstrings (posterior thigh)", 7, C["clay"], "middle", 600))
-    b.append(T(335, 246, "Psoas major (deep, in front of the hip)", 7, C["blue"], "middle", 600))
-    return svg(W, H + 6, "".join(b))
-
-
-reg("hamstring_psoas", fig_hamstring_psoas(), "Location sketches of two muscles that dominate yoga conversations. The hamstrings cross the back of hip and knee; the psoas runs from the lumbar spine, "
-    "in front of the hip joint, to the femur. Sketches are schematic; see the muscle atlas for attachments.", "full")
+reg("hamstring_psoas", AF.fig_hamstring_psoas(), "Two muscles that dominate yoga conversations, drawn along their lines of action in the same musculoskeletal model [@rajagopal2016]. The hamstrings cross the back of hip and knee; the psoas runs from the lumbar spine, "
+    "in front of the hip joint, to the femur. See the muscle atlas for attachments.", "full")
 
 
 # --------------------------------------------------------------------- sequence strip helper
 def sequence_strip(names, labels, numbers=True, w=470, per_row=6, size=66):
-    """Row(s) of pose icons with captions, used for Surya Namaskar and class charts."""
-    import re
+    """Row(s) of pose images with captions, used for Surya Namaskar and class charts."""
     rows = (len(names) + per_row - 1) // per_row
     cell_w = w / per_row
     H = rows * (size + 30) + 6
@@ -1493,12 +1039,12 @@ def sequence_strip(names, labels, numbers=True, w=470, per_row=6, size=66):
         x = c * cell_w + 4
         y = r * (size + 30) + 4
         b.append(box(x, y, cell_w - 8, size, "#FAF6EE", "none", 4))
-        s = draw(P[n] if isinstance(n, str) else n, floor=True, pad=5)
-        vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', s).group(1).split()]
-        sc = min((cell_w - 16) / vb[2], (size - 8) / vb[3])
-        ww, hh = vb[2] * sc, vb[3] * sc
-        inner, _ = embed(s, x + (cell_w - 8 - ww) / 2, y + size - hh - 3, ww)
-        b.append(inner)
+        info = F3.render(n, 420)
+        bw, bh = cell_w - 16, size - 10
+        sc = min(bw / info["w"], bh / info["h"])
+        ww, hh = info["w"] * sc, info["h"] * sc
+        el, _, _ = F3.svg_image(info, x + (cell_w - 8 - ww) / 2, y + size - hh - 4, ww)
+        b.append(el)
         if numbers:
             b.append(f'<circle cx="{f(x+9)}" cy="{f(y+9)}" r="6" fill="{C["forest"]}"/>' + T(x + 9, y + 11.4, str(i + 1), 6.4, "#fff", "middle", 700))
         for k, ln in enumerate(lab.split("\n")):
@@ -1512,7 +1058,7 @@ SURYA = [("pranamasana", "Prayer\nexhale"), ("hasta_uttanasana", "Arms up, arch\
          ("padahastasana", "Hands to feet\nexhale"), ("hasta_uttanasana", "Arms up, arch\ninhale"), ("pranamasana", "Prayer\nexhale")]
 reg("surya", sequence_strip([n for n, _ in SURYA], [l for _, l in SURYA], per_row=6, size=70),
     "Sūrya Namaskār as taught in this course: twelve positions, each linked to one breath. The right leg steps back in position 4 and forward in position 9; "
-    "the next round begins with the left leg. The lunge figures show the stepping leg in the lighter tone.", "full")
+    "the next round begins with the left leg.", "full")
 
 TWELVE = [("sirsasana", "1 Headstand\nŚīrṣāsana"), ("sarvangasana", "2 Shoulderstand\nSarvāṅgāsana"), ("halasana", "3 Plough\nHalāsana"),
           ("matsyasana", "4 Fish\nMatsyāsana"), ("paschimottanasana", "5 Forward bend\nPaścimottānāsana"), ("bhujangasana", "6 Cobra\nBhujaṅgāsana"),
