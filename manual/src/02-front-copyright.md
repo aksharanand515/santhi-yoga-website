@@ -20,12 +20,12 @@ santhiyogaindia.com · santhiyogacochin@gmail.com · +91 79077 14144
 
 **How claims are made in this book.** Traditional teachings are presented as traditional teachings. Where a modern scientific claim is made, a source is given, and where the research is limited or conflicting we say so. Descriptions of the effects of postures and breathing practices “according to tradition” are not claims that those effects have been demonstrated scientifically.
 
-**Lineage and certification.** Santhi Yoga School teaches in the tradition of Swami Sivananda and Swami Vishnudevananda. The school is an independent school and is not an official Sivananda Yoga Vedanta Centre, nor affiliated with that organisation. The school is not a Yoga Alliance Registered Yoga School; graduates receive the school’s own 200-hour certificate.
+**Lineage and certification.** Santhi Yoga School teaches classical Haṭha Yoga. The school is independent and is not affiliated with any other yoga organisation. The school is not a Yoga Alliance Registered Yoga School; graduates receive the school’s own 200-hour certificate.
 
 **Illustrations and photographs.** All diagrams and posture illustrations were drawn specifically for this manual. Anatomical drawings are schematic teaching illustrations, simplified for clarity; they are not to scale. Photographs are of Santhi Yoga School classes and trainings in Fort Kochi and are © Santhi Yoga School.
 
 **Typography.** Set in Cormorant Garamond, Source Serif 4, Inter, Noto Serif Devanagari and Noto Serif Malayalam, all under the SIL Open Font License.
 
-**Sanskrit.** Sanskrit terms are given in the International Alphabet of Sanskrit Transliteration (IAST) where precision matters (e.g. *prāṇāyāma*) and in the familiar anglicised spelling where a term has entered English (e.g. pranayama, Sivananda). Pose names in headings use IAST.
+**Sanskrit.** Sanskrit terms are given in the International Alphabet of Sanskrit Transliteration (IAST) where precision matters (e.g. *prāṇāyāma*) and in the familiar anglicised spelling where a term has entered English (e.g. pranayama, mantra). Pose names in headings use IAST.
 
 </div>

@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 26
+number: 25
 section: II
 id: mapping
 title: Asana–Anatomy Mapping Tables

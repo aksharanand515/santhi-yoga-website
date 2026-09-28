@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 11
+number: 10
 section: I
 id: vedanta
 title: Vedānta — Yoga and Self-Knowledge
@@ -14,7 +14,7 @@ By the end of this chapter you will be able to:
 - explain the core concepts of Advaita Vedānta: brahman, ātman, māyā, superimposition and levels of reality;
 - describe the fourfold qualification of the student and the threefold method of hearing, reflection and meditation;
 - compare the views of Yoga and Vedānta on the nature of liberation;
-- explain the place of Vedānta in the Sivananda tradition’s “Yoga Vedānta”.
+- explain how Yoga and Vedānta are combined in practice as “Yoga Vedānta”.
 :::
 
 ## What Vedānta is
@@ -29,7 +29,7 @@ Table: Three schools of Vedānta {#tab:vedanta-schools}
 | **Viśiṣṭādvaita** (qualified non-dualism) | Rāmānuja (11th–12th century) | souls and world are real, forming the “body” of brahman (God), on which they depend |
 | **Dvaita** (dualism) | Madhva (13th century) | God, souls and world are eternally distinct; liberation is loving service of God |
 
-The Sivananda tradition, like most modern teachers of “Vedānta” in yoga, follows **Advaita**, while honouring devotion as a path. Śaṅkara, its greatest teacher, is traditionally said to have been born at Kaladi, on the Periyar river in central Kerala, and to have travelled the length of India before his early death [[T]]. Many works are attributed to him; scholars accept his commentaries on the Upaniṣads, Gītā and Brahma Sūtras as genuine and debate the authorship of others, such as the popular *Vivekacūḍāmaṇi* (“Crest-jewel of discrimination”) [[H]].
+Most modern teachers of “Vedānta” in yoga follow **Advaita**, while honouring devotion as a path. Śaṅkara, its greatest teacher, is traditionally said to have been born at Kaladi, on the Periyar river in central Kerala, and to have travelled the length of India before his early death [[T]]. Many works are attributed to him; scholars accept his commentaries on the Upaniṣads, Gītā and Brahma Sūtras as genuine and debate the authorship of others, such as the popular *Vivekacūḍāmaṇi* (“Crest-jewel of discrimination”) [[H]].
 
 ## Core ideas of Advaita
 
@@ -84,7 +84,7 @@ Table: Classical Yoga and Advaita Vedānta {#tab:yoga-vedanta}
 | Goal | *kaivalya*: aloneness of puruṣa | *mokṣa*: recognition that ātman is brahman |
 | Role of samādhi | central | useful preparation; knowledge liberates |
 
-Despite these differences, the two traditions have long been practised together. Vedāntins adopt the methods of Yoga to prepare the mind; many Yoga teachers adopt the non-dual vision of Vedānta. Swami Sivananda’s name for his teaching — **Yoga Vedānta** — expresses exactly this: the practices of yoga in the service of Vedāntic self-knowledge. In his framework, Haṭha and Rāja Yoga purify and steady the mind; Karma and Bhakti Yoga soften the ego; and Jñāna Yoga brings the final recognition.
+Despite these differences, the two traditions have long been practised together. Vedāntins adopt the methods of Yoga to prepare the mind; many Yoga teachers adopt the non-dual vision of Vedānta. The phrase **Yoga Vedānta**, used by several modern teachers, expresses exactly this: the practices of yoga in the service of Vedāntic self-knowledge. In this framework, Haṭha and Rāja Yoga purify and steady the mind; Karma and Bhakti Yoga soften the ego; and Jñāna Yoga brings the final recognition.
 
 ::: keyconcept The witness
 Both Yoga and Vedānta point to the **witness** (*sākṣī*): the awareness that observes sensations, thoughts and emotions without being any of them. The practical instruction “observe the breath” or “notice the thought” is the doorway to this teaching. You can offer the doorway to every student; what they find there is their own.
@@ -99,7 +99,7 @@ In final relaxation: “Notice that sensations come and go… thoughts come and 
 - Advaita teaches that the Self is brahman — being, consciousness, bliss — and that multiplicity arises through superimposition and māyā.
 - Empirical reality remains fully binding in everyday life; the teaching is not an excuse to ignore ethics.
 - The student is prepared by the fourfold qualification and liberated through hearing, reflection and meditation.
-- Sivananda’s “Yoga Vedānta” uses the practices of yoga to prepare the mind for Vedāntic self-knowledge.
+- “Yoga Vedānta” uses the practices of yoga to prepare the mind for Vedāntic self-knowledge.
 :::
 
 ::: reflect

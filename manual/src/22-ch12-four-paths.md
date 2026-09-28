@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 12
+number: 11
 section: I
 id: four-paths
 title: The Four Paths — Karma, Bhakti, Jñāna and Rāja Yoga
@@ -11,7 +11,7 @@ epigraph: "“Whatever you do, whatever you eat, whatever you offer or give, wha
 By the end of this chapter you will be able to:
 
 - describe the four classical paths of yoga, their methods and the temperament each suits;
-- explain Swami Sivananda’s Yoga of Synthesis and why the paths are practised together;
+- explain why the four paths are practised together;
 - list the nine forms of devotion and describe practices of karma, bhakti, jñāna and rāja yoga suitable for daily life;
 - recognise the characteristic imbalances of each path practised alone;
 - bring each path into a yoga class in a way that respects students of all backgrounds.
@@ -19,7 +19,7 @@ By the end of this chapter you will be able to:
 
 ## Four paths, one goal
 
-By the time of the Bhagavad Gītā, Indian traditions recognised several paths to liberation, suited to different temperaments. Modern teaching, following Swami Vivekananda and Swami Sivananda, commonly presents four [@vivekananda1896; @lidell1983]:
+By the time of the Bhagavad Gītā, Indian traditions recognised several paths to liberation, suited to different temperaments. Modern teaching, following Swami Vivekananda, commonly presents four [@vivekananda1896]:
 
 !fig(fourpaths)
 
@@ -36,7 +36,7 @@ Table: The four paths compared {#tab:four-paths}
 
 Karma yoga is the yoga of action performed as an offering, without attachment to its results (@ch:gita). Its practice is not a special activity but a way of doing ordinary things. The tests are simple: *Why am I doing this? Would I do it equally well if no one noticed?*
 
-In the Sivananda tradition, karma yoga is a daily practice in the ashram — cleaning, cooking, gardening, serving — and it is part of this course. Its effect is to **purify the heart**, weakening the ego’s constant question, “What do I get?”
+In traditional yoga schools, karma yoga is a daily practice — cleaning, cooking, gardening, serving — and it is part of this course. Its effect is to **purify the heart**, weakening the ego’s constant question, “What do I get?”
 
 ::: exercise Anonymous service
 During the second week of the course, perform one act of useful service each day that no one will know was yours. Note in your journal how it feels to receive no credit.
@@ -60,7 +60,7 @@ Table: The nine forms of devotion (navadhā bhakti) {#tab:navadha}
 | 8 | *sakhya* | the attitude of a friend |
 | 9 | *ātma-nivedana* | complete self-offering |
 
-In a Sivananda setting, bhakti appears most visibly in **kīrtan** (call-and-response chanting), in the opening and closing prayers of class, and in the *ārati* (waving of lights) at satsaṅg. For many students raised in other faiths or none, devotional practice is the most unfamiliar part of the tradition. A teacher can offer it generously and without pressure: devotion to God, to a teacher, to one’s own highest ideal, or simply wholehearted love expressed through practice.
+In a traditional yoga setting, bhakti appears most visibly in **kīrtan** (call-and-response chanting), in the opening and closing prayers of class, and in the *ārati* (waving of lights) at satsaṅg. For many students raised in other faiths or none, devotional practice is the most unfamiliar part of the tradition. A teacher can offer it generously and without pressure: devotion to God, to a teacher, to one’s own highest ideal, or simply wholehearted love expressed through practice.
 
 ## Jñāna yoga
 
@@ -72,12 +72,12 @@ Jñāna yoga suits those with a strong intellect — and the tradition warns tha
 
 *Rāja yoga*, “royal yoga”, meant in the Haṭha texts the state of samādhi itself — the goal to which Haṭha is the stairway. Since Vivekananda’s *Raja Yoga* (1896), the term has commonly referred to the eight-limbed path of Patañjali, the yoga of mental discipline and meditation [@vivekananda1896; @demichelis2004]. It suits those with a strong will and a scientific temperament, who want to experiment with their own minds.
 
-## The Yoga of Synthesis
+## Integrating the paths
 
-Swami Sivananda insisted that the paths are not rival sects but complementary disciplines. A human being has a head, a heart and hands; developing one alone produces distortion. His prescription was to practise all four, adjusting the balance to one’s temperament — with Haṭha Yoga providing a healthy body and steady breath as the foundation for all [[T]] [@lidell1983].
+The paths are not rival sects but complementary disciplines, as the Gītā itself suggests (@ch:gita). A human being has a head, a heart and hands; developing one alone produces distortion. The traditional prescription is to practise all four, adjusting the balance to one’s temperament — with Haṭha Yoga providing a healthy body and steady breath as the foundation for all [[T]].
 
 ::: keyconcept Integration, not eclecticism
-The Yoga of Synthesis does not mean doing a little of everything at random. It means recognising which faculty is overdeveloped and which neglected, and practising accordingly. An intellectual student may need kīrtan more than philosophy; a devotional one may need study; a busy activist may need to sit still.
+Integrating the paths does not mean doing a little of everything at random. It means recognising which faculty is overdeveloped and which neglected, and practising accordingly. An intellectual student may need kīrtan more than philosophy; a devotional one may need study; a busy activist may need to sit still.
 :::
 
 ## The four paths in the practice hall
@@ -95,7 +95,7 @@ Table: Bringing the four paths into a general class {#tab:paths-class}
 - The four classical paths — karma, bhakti, jñāna and rāja yoga — develop action, emotion, intellect and will respectively.
 - Karma yoga is action as offering; bhakti yoga turns emotion towards the divine through nine forms of devotion; jñāna yoga is discrimination and self-enquiry; rāja yoga is the discipline of the mind.
 - Each path has a characteristic imbalance when practised alone.
-- Sivananda’s Yoga of Synthesis practises all four, adjusted to temperament, on the foundation of Haṭha Yoga.
+- An integrated practice uses all four, adjusted to temperament, on the foundation of Haṭha Yoga.
 - A teacher can bring each path into a class without imposing belief.
 :::
 

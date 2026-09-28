@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 13
+number: 12
 section: I
 id: mind
 title: Meditation, Mindfulness and the Yogic Model of the Mind
@@ -13,7 +13,7 @@ By the end of this chapter you will be able to:
 - describe the yogic model of the mind — manas, buddhi, ahaṃkāra and citta — and the role of saṃskāras and vāsanās;
 - distinguish concentration (focused attention) from mindfulness (open monitoring);
 - explain the origins of the word “mindfulness” in Buddhist practice and its modern secular forms;
-- describe the meditation methods central to the Sivananda tradition;
+- describe the traditional foundations of a regular meditation practice;
 - explain the relationship between the traditional and modern understandings of meditation.
 :::
 
@@ -57,9 +57,9 @@ In 1979 Jon Kabat-Zinn developed **Mindfulness-Based Stress Reduction (MBSR)** a
 Some teachers present mindfulness as a Buddhist import foreign to yoga; others present all meditation as “mindfulness”. Both are simplifications. Yoga and Buddhism developed in close dialogue, share much vocabulary (the Yoga Sūtra’s four attitudes of 1.33 are the Buddhist *brahmavihāras*) and differ in philosophy. It is accurate and respectful to name each practice’s origin.
 :::
 
-## Meditation in the Sivananda tradition
+## Traditional guidance for meditation
 
-Swami Sivananda and Swami Vishnudevananda taught meditation as the culmination of the five points, with a strong emphasis on regularity and on **mantra** [@vishnudevananda1978]. Their practical advice can be summarised as follows [[T]]:
+Traditional teachers present meditation as the culmination of practice, with a strong emphasis on regularity and on **mantra**. Their practical advice, which echoes the Gītā’s instructions on the seat and posture of meditation (BG 6.10–14), can be summarised as follows [[T]]:
 
 - **Place.** Keep a special, clean place for meditation; the atmosphere builds with use.
 - **Time.** Practise at the same time daily; the hours around dawn (*brahma muhūrta*) and dusk are recommended.
@@ -89,7 +89,7 @@ Research suggests that regular meditation practice can produce modest improvemen
 - The yogic model divides the mind into manas, buddhi, ahaṃkāra and citta; saṃskāras and vāsanās explain how habits form and how practice changes them.
 - Meditation methods fall into focused attention (concentration) and open monitoring (mindfulness), which support each other.
 - Mindfulness translates the Buddhist *sati*; modern secular programmes such as MBSR date from 1979.
-- The Sivananda approach emphasises a regular time and place, a steady posture, rhythmic breath, one focal point and mantra.
+- Traditional guidance emphasises a regular time and place, a steady posture, rhythmic breath, one focal point and mantra.
 - Research supports modest benefits; exaggerated claims should be avoided and possible difficulties recognised.
 :::
 
@@ -100,7 +100,7 @@ Research suggests that regular meditation practice can produce modest improvemen
 :::
 
 ::: practice
-1. Practise twenty minutes of Sivananda-style meditation daily for the week, following every point in the list above. Record time, place and quality in your journal.
+1. Practise twenty minutes of meditation daily for the week, following every point in the list above. Record time, place and quality in your journal.
 2. Teach a partner a five-minute focused-attention practice, then a five-minute open-monitoring practice. Ask which they preferred and why.
 3. Explain *saṃskāra* to a partner using an example from learning a posture.
 :::
@@ -109,8 +109,8 @@ Research suggests that regular meditation practice can produce modest improvemen
 1. In the fourfold inner instrument, the faculty that decides and discriminates is: (a) manas (b) buddhi (c) ahaṃkāra (d) citta
 2. “Mindfulness” translates the Pāli word: (a) jhāna (b) sati (c) dukkha (d) prajñā
 3. Open-monitoring meditation involves: (a) fixing attention on one object (b) noticing whatever arises without pursuing it (c) chanting aloud (d) visualising a deity
-4. MBSR was developed by: (a) Swami Sivananda (b) Thich Nhat Hanh (c) Jon Kabat-Zinn (d) Patañjali
-5. According to the Sivananda tradition, the space between the eyebrows is recommended as a focal point for: (a) emotional temperaments (b) intellectual temperaments (c) beginners only (d) no one
+4. MBSR was developed by: (a) Swami Vivekananda (b) Thich Nhat Hanh (c) Jon Kabat-Zinn (d) Patañjali
+5. In traditional guidance, the space between the eyebrows is recommended as a focal point for: (a) emotional temperaments (b) intellectual temperaments (c) beginners only (d) no one
 
 Answers: 1 b · 2 b · 3 b · 4 c · 5 b
 :::

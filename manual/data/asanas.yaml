@@ -1,4 +1,4 @@
-# The Sivananda twelve basic postures — monograph data. Rendered by render_data.render_asana.
+# The twelve basic postures — monograph data. Rendered by render_data.render_asana.
 # Every entry has the same fields; the build checks nothing is missing by rendering every field.
 
 - id: sirsasana
@@ -19,7 +19,7 @@
     Traditional hold: "Build from 10 seconds to 3 minutes or more"
     Main planes: "Vertical alignment; balance in the sagittal and frontal planes"
     Counterpose: "Bālāsana (child’s pose), then śavāsana"
-  meaning: "*Śīrṣa* means “head”. The Sivananda tradition calls headstand the “king of āsanas” and places it first in the sequence [@vishnudevananda1960]. Although inverted practice is described in the Haṭha texts as the mudrā *viparītakaraṇī*, the headstand as taught today is largely a modern development of that idea [@mallinson2017]."
+  meaning: "*Śīrṣa* means “head”. Headstand is traditionally called the “king of āsanas” [@iyengar1966], and the classical sequence places it first. Although inverted practice is described in the Haṭha texts as the mudrā *viparītakaraṇī*, the headstand as taught today is largely a modern development of that idea [@mallinson2017]."
   purpose: "To build strength, balance and concentration in an inverted position; to reverse the habitual relationship of the body to gravity; and, in the traditional view, to calm and focus the mind. It is the most demanding of the twelve and is taught progressively."
   preparation:
     - "Regular practice of dolphin, downward dog and plank to build shoulder and trunk strength."
@@ -107,8 +107,8 @@
   adjustments: "Hands-on help, when used, is for **safety and confidence**, not for lifting a student into the pose. With consent, stand beside the student and place a hand lightly at the hips or thighs as they lift, or steady the legs once they are up. Never pull or lift a student’s legs, never stand in front of them, and never adjust the neck or head. Teach the exit before the entry."
   transition_in: "From kneeling (after leg raises and a brief rest) or from child’s pose."
   transition_out: "Reverse the entry with control; rest in child’s pose for at least 5–10 breaths before sitting up."
-  counterpose: "Child’s pose, then śavāsana. In the Sivananda sequence, shoulderstand follows after rest."
-  traditional: "In the Sivananda tradition headstand is said to reverse the effects of gravity on the body, increase circulation to the brain, improve memory and concentration, and bring the mind to calmness and balance; it is called the king of postures [@vishnudevananda1960; @lidell1983] [[T]]."
+  counterpose: "Child’s pose, then śavāsana. In the classical sequence, shoulderstand follows after rest."
+  traditional: "In the tradition taught here headstand is said to reverse the effects of gravity on the body, increase circulation to the brain, improve memory and concentration, and bring the mind to calmness and balance; it is called the king of postures [@iyengar1966; @satyananda1969] [[T]]."
   evidence: "There are no controlled trials of headstand’s long-term effects. Physiology does not support the idea that headstand substantially increases blood flow to the brain: cerebral blood flow is closely autoregulated and kept relatively constant across a wide range of blood pressures [@hall2021]. Headstand roughly doubles intraocular pressure while held [@baskaran2006], which is why it is avoided in glaucoma. Case reports describe neck injuries and rare vascular events associated with headstand [@cramer2013ae]. The pose is an effective way to train strength, balance and focus; claims about memory or “rejuvenation” are traditional, not demonstrated."
 
 - id: sarvangasana
@@ -145,7 +145,7 @@
     - "Bend the elbows and place the hands on the back, fingers pointing towards the spine and up towards the hips; bring the elbows as close together as comfortable."
     - "Walk the hands higher up the back towards the shoulder blades and straighten the body, bringing the legs vertical. The chest moves towards the chin — the chin does not press into the chest."
     - "Hold, breathing slowly. The weight is on the shoulders and upper arms, not on the neck."
-    - "To come down, lower the legs slightly over the head, place the hands on the floor, and roll down vertebra by vertebra, using the abdominal muscles, keeping the head on the floor. In the Sivananda sequence, move from here into plough."
+    - "To come down, lower the legs slightly over the head, place the hands on the floor, and roll down vertebra by vertebra, using the abdominal muscles, keeping the head on the floor. In the classical sequence, move from here into plough."
   breathing: "Slow, quiet abdominal breathing. The chest is compressed towards the chin, so breathing will feel restricted; if it becomes laboured or the face flushes strongly, come down."
   alignment:
     - "Shoulders on the folded blankets, head on the floor: the cervical spine is not pressed flat into the floor."
@@ -209,9 +209,9 @@
     - "Roll down slowly, one vertebra at a time."
   adjustments: "Setting the blankets precisely is the most important “adjustment”. With consent, a teacher can kneel behind the student and steady the legs once they are up, or support the back of the pelvis with a knee or hands while the student walks the hands higher. Never press down on the feet or legs, which drives load into the neck."
   transition_in: "From lying on the back after rest; lift through double leg raise."
-  transition_out: "In the Sivananda sequence, lower the legs directly into plough; otherwise roll down and rest."
+  transition_out: "In the classical sequence, lower the legs directly into plough; otherwise roll down and rest."
   counterpose: "Matsyāsana (fish), after plough, for about half the time spent in shoulderstand."
-  traditional: "The tradition teaches that shoulderstand benefits the whole body, stimulates and regulates the thyroid gland through pressure on the throat, rests the heart, and calms the nervous system [@vishnudevananda1960; @lidell1983] [[T]]."
+  traditional: "The tradition teaches that shoulderstand benefits the whole body, stimulates and regulates the thyroid gland through pressure on the throat, rests the heart, and calms the nervous system [@iyengar1966; @satyananda1969] [[T]]."
   evidence: "No controlled trials have examined shoulderstand’s effects. There is no evidence that it regulates thyroid function. Inverted positions raise intraocular pressure; in a study of four common positions, pressure rose within minutes in legs-up-the-wall and plough as well as other poses [@jasien2015]. Neck injuries associated with shoulderstand are described in case reports [@cramer2013ae]. The posture’s value lies in strength, body awareness and — for many practitioners — its calming effect; the specific health claims remain traditional."
 
 - id: halasana
@@ -234,7 +234,7 @@
     Main planes: "Sagittal (spinal and hip flexion)"
     Counterpose: "Matsyāsana (fish)"
   meaning: "*Hala* means “plough”: the body takes the shape of the traditional Indian plough."
-  purpose: "To flex the whole spine and lengthen the back of the body; in the Sivananda sequence it continues from shoulderstand and prepares the spine for the forward bend."
+  purpose: "To flex the whole spine and lengthen the back of the body; in the classical sequence it continues from shoulderstand and prepares the spine for the forward bend."
   preparation:
     - "Folded blankets under the shoulders, as for shoulderstand."
     - "Sufficient hamstring flexibility to bring the feet towards the floor, or a chair/blocks behind the head."
@@ -305,7 +305,7 @@
   transition_in: "From shoulderstand, lowering the legs over the head."
   transition_out: "Roll down slowly, head on the floor; rest in śavāsana for a few breaths."
   counterpose: "Matsyāsana (fish), which extends the neck and upper back."
-  traditional: "Plough is said to make the spine supple, stimulate the spinal nerves, massage the abdominal organs and relieve constipation, and to strengthen the back, shoulders and arms [@vishnudevananda1960; @lidell1983] [[T]]."
+  traditional: "Plough is said to make the spine supple, stimulate the spinal nerves, massage the abdominal organs and relieve constipation, and to strengthen the back, shoulders and arms [@iyengar1966; @satyananda1969] [[T]]."
   evidence: "No controlled trials address plough specifically. Plough raises intraocular pressure while held [@jasien2015]. Loaded spinal flexion has been associated with vertebral compression fractures in people with osteoporosis [@sinaki2013]. Claims about spinal nerves and digestion are traditional and untested."
 
 - id: matsyasana
@@ -315,7 +315,7 @@
   english: Fish
   pronunciation: "*mat-SYAH-sa-na*"
   fig: matsyasana
-  caption: "Matsyāsana as taught in the Sivananda tradition: legs extended, elbows on the floor under the body, chest lifted and the crown of the head resting lightly on the floor."
+  caption: "Matsyāsana as taught in this course: legs extended, elbows on the floor under the body, chest lifted and the crown of the head resting lightly on the floor."
   overlay:
     - {from: [lt, 0.1, ant], to: [ut, 0.85, ant], w: 1.8, kind: stretch}
     - {from: [lt, 0.4, post], to: [ut, 0.9, post], w: 1.8, kind: active}
@@ -397,7 +397,7 @@
   transition_in: "From plough, roll down, rest briefly, then enter fish."
   transition_out: "Lift the head slightly, lower the head and back, release the arms and rest in śavāsana."
   counterpose: "Rest in śavāsana; knees-to-chest if the back feels tight."
-  traditional: "Fish is the counterpose to shoulderstand; it is said to relieve stiffness of the neck and shoulders, to expand the chest and aid deep breathing, and to tone the nerves of the neck and back [@vishnudevananda1960; @lidell1983] [[T]]."
+  traditional: "Fish is the counterpose to shoulderstand; it is said to relieve stiffness of the neck and shoulders, to expand the chest and aid deep breathing, and to tone the nerves of the neck and back [@iyengar1966; @satyananda1969] [[T]]."
   evidence: "No trials specifically study fish. Case reports link extreme or loaded neck extension in yoga with rare vascular and cervical injuries [@cramer2013ae], supporting the practice of keeping the weight on the elbows and the head lightly supported. The role of fish as a counter-movement to sustained neck flexion is biomechanically sensible; its specific effects are untested."
 
 - id: paschimottanasana
@@ -419,7 +419,7 @@
     Main planes: "Sagittal (hip and spinal flexion)"
     Counterpose: "Cobra (next in the sequence); gentle backbend or tabletop"
   meaning: "*Paścima* means “west” and, by extension, the back of the body (the traditional practitioner faces east, towards the sunrise); *uttāna* means “intense stretch”. It is one of the fifteen postures of the Haṭha Yoga Pradīpikā, which praises it highly (HYP 1.28–29) [@akers2002]."
-  purpose: "To lengthen the whole back of the body — calves, hamstrings and back — and to cultivate patience and inward attention; in the Sivananda sequence it follows the inversions and precedes the backbends."
+  purpose: "To lengthen the whole back of the body — calves, hamstrings and back — and to cultivate patience and inward attention; in the classical sequence it follows the inversions and precedes the backbends."
   preparation:
     - "Warm hamstrings (sun salutations, leg raises)."
     - "A folded blanket or cushion under the sitting bones if the lower back rounds when sitting upright."
@@ -497,7 +497,7 @@
   transition_in: "From sitting (daṇḍāsana), after rest following fish."
   transition_out: "Inhale and rise with a long spine; rest in śavāsana, then turn onto the front for cobra."
   counterpose: "The backbends that follow (cobra); or tabletop and a gentle cow."
-  traditional: "The Haṭha Yoga Pradīpikā says paścimottānāsana makes the breath flow through the central channel, stokes the digestive fire, slims the waist and removes disease (HYP 1.29) [@akers2002]. The Sivananda tradition adds that it stretches the whole back, massages the abdominal organs and calms the mind [@lidell1983] [[T]]."
+  traditional: "The Haṭha Yoga Pradīpikā says paścimottānāsana makes the breath flow through the central channel, stokes the digestive fire, slims the waist and removes disease (HYP 1.29) [@akers2002]. The tradition taught here adds that it stretches the whole back, massages the abdominal organs and calms the mind [@satyananda1969] [[T]]."
   evidence: "Regular stretching increases hamstring range of motion, mostly through increased stretch tolerance in the short term [@weppler2010]. No trials test the digestive or metabolic claims. Loaded spinal flexion has been associated with vertebral fractures in people with osteoporosis [@sinaki2013], and aggressive stretching can irritate the proximal hamstring tendon [@goom2016]. As a calming, gentle forward bend practised without force, it is low-risk for most healthy students."
 
 - id: bhujangasana
@@ -507,7 +507,7 @@
   english: Cobra
   pronunciation: "*boo-jahn-GAH-sa-na*"
   fig: bhujangasana
-  caption: "Bhujaṅgāsana as taught in the Sivananda tradition: elbows bent and close to the body, the chest lifted mainly by the back muscles."
+  caption: "Bhujaṅgāsana as taught in this course: elbows bent and close to the body, the chest lifted mainly by the back muscles."
   overlay:
     - {from: [lt, 0.1, post], to: [ut, 0.85, post], w: 1.8, kind: active}
     - {from: [lt, 0.1, ant], to: [ut, 0.8, ant], w: 1.7, kind: stretch}
@@ -529,7 +529,7 @@
     - "Keep the elbows bent and drawn in, the shoulders down and back, and the lower ribs and navel near or on the floor."
     - "Hold, breathing evenly."
     - "Exhale and roll down slowly — chest, chin, nose, forehead. Rest with the cheek on the hands."
-  breathing: "Inhale to rise, breathe steadily in the pose, exhale to lower. In the Sivananda method the pose may be repeated three times, holding a little longer each time."
+  breathing: "Inhale to rise, breathe steadily in the pose, exhale to lower. In the classical method the pose may be repeated three times, holding a little longer each time."
   alignment:
     - "Pubic bone and legs remain on the floor; the legs relaxed or gently active."
     - "Extension distributed along the whole spine, especially the upper back — not concentrated in the lower back."
@@ -586,7 +586,7 @@
   transition_in: "From makarāsana (crocodile), after the forward bend and a brief rest."
   transition_out: "Roll down, turn the cheek to one side, rest in makarāsana."
   counterpose: "Child’s pose after the series of backbends."
-  traditional: "Cobra is said to make the spine supple and strong, tone the back muscles and spinal nerves, massage the abdominal organs and relieve menstrual irregularities and constipation [@vishnudevananda1960; @lidell1983] [[T]]."
+  traditional: "Cobra is said to make the spine supple and strong, tone the back muscles and spinal nerves, massage the abdominal organs and relieve menstrual irregularities and constipation [@iyengar1966; @satyananda1969] [[T]]."
   evidence: "There are no trials of cobra alone. Yoga programmes that include gentle backbends improve pain and function in chronic low back pain overall [@wieland2022], but the contribution of individual postures is unknown. Claims about menstruation and digestion are traditional and untested."
 
 - id: salabhasana
@@ -674,7 +674,7 @@
   transition_in: "From makarāsana, after cobra."
   transition_out: "Lower slowly; rest in makarāsana."
   counterpose: "Rest; after bow, child’s pose."
-  traditional: "Locust is said to strengthen the lower back, abdomen and legs, massage the abdominal organs, and improve digestion; with breath retention it is said to strengthen the lungs [@vishnudevananda1960; @lidell1983] [[T]]."
+  traditional: "Locust is said to strengthen the lower back, abdomen and legs, massage the abdominal organs, and improve digestion; with breath retention it is said to strengthen the lungs [@iyengar1966; @satyananda1969] [[T]]."
   evidence: "No trials test locust alone. It is a well-recognised back-extensor and hip-extensor strengthening exercise. Breath-holding during effort raises blood pressure transiently, which is the reason for the precautions. Digestive claims are traditional."
 
 - id: dhanurasana
@@ -764,7 +764,7 @@
   transition_in: "From rest after locust."
   transition_out: "Lower slowly; release; rest in makarāsana, then child’s pose."
   counterpose: "Child’s pose; then the twist."
-  traditional: "Bow is said to combine the benefits of cobra and locust, keep the spine elastic, massage the abdominal organs, and improve digestion and appetite [@vishnudevananda1960; @lidell1983] [[T]]."
+  traditional: "Bow is said to combine the benefits of cobra and locust, keep the spine elastic, massage the abdominal organs, and improve digestion and appetite [@iyengar1966; @satyananda1969] [[T]]."
   evidence: "No trials study bow alone. Its demands — deep lumbar extension driven by the legs — are the reason for its place late in the backbend sequence and the modifications above. Traditional claims about digestion are untested."
 
 - id: ardha_matsyendrasana
@@ -853,7 +853,7 @@
   transition_in: "From kneeling or daṇḍāsana after the backbends."
   transition_out: "Unwind on an exhalation, head first; change sides; rest."
   counterpose: "The same twist to the other side; then a short forward bend or rest."
-  traditional: "The twist is said to keep the spine elastic and the spinal nerves toned, massage the abdominal organs, relieve digestive problems and help to balance the nervous system [@vishnudevananda1960; @lidell1983]. The Haṭha Yoga Pradīpikā says the full matsyendrāsana kindles the digestive fire and awakens kuṇḍalinī (HYP 1.27) [@akers2002] [[T]]."
+  traditional: "The twist is said to keep the spine elastic and the spinal nerves toned, massage the abdominal organs, relieve digestive problems and help to balance the nervous system [@iyengar1966; @satyananda1969]. The Haṭha Yoga Pradīpikā says the full matsyendrāsana kindles the digestive fire and awakens kuṇḍalinī (HYP 1.27) [@akers2002] [[T]]."
   evidence: "No trials study the half spinal twist alone. There is no evidence that twisting “detoxifies” or “wrings out” the organs. Twisting and flexion under load are associated with vertebral fractures in people with osteoporosis [@sinaki2013]. For healthy students, gentle, upright twisting is a normal spinal movement practised through a comfortable range."
 
 - id: kakasana
@@ -875,7 +875,7 @@
     Traditional hold: "Build from a few seconds to 30 seconds or more"
     Main planes: "Balance over the hands (sagittal)"
     Counterpose: "Wrist release; standing forward bend follows"
-  meaning: "*Kāka* means “crow”. The Sivananda tradition offers the peacock (*mayūrāsana*, one of the Haṭha Yoga Pradīpikā’s fifteen postures) as an alternative for advanced students."
+  meaning: "*Kāka* means “crow”. The tradition taught here offers the peacock (*mayūrāsana*, one of the Haṭha Yoga Pradīpikā’s fifteen postures) as an alternative for advanced students."
   purpose: "To build strength in the arms, shoulders, wrists and trunk; to develop balance, concentration and confidence."
   preparation:
     - "Plank, downward dog and wrist-strengthening to prepare the hands."
@@ -948,7 +948,7 @@
   transition_in: "From a squat."
   transition_out: "Lower the feet slowly into a squat; release the wrists; rest."
   counterpose: "Wrist circles and gentle wrist flexion; then the standing forward bend."
-  traditional: "Crow is said to strengthen the arms, wrists and shoulders, increase concentration and balance, and develop mental poise and confidence [@vishnudevananda1960; @lidell1983] [[T]]."
+  traditional: "Crow is said to strengthen the arms, wrists and shoulders, increase concentration and balance, and develop mental poise and confidence [@iyengar1966; @satyananda1969] [[T]]."
   evidence: "No specific trials. Crow is a demanding closed-chain strength and balance exercise for the upper body. The main documented risk area for arm-balancing practice is the wrist; gradual loading reflects general principles of tissue adaptation [@soligard2016]."
 
 - id: padahastasana
@@ -1039,7 +1039,7 @@
   transition_in: "From standing, after crow and rest."
   transition_out: "Bend the knees and rise slowly; pause standing."
   counterpose: "Standing upright with a gentle lift of the chest; triangle follows."
-  traditional: "Standing forward bend is said to stretch the whole back of the body, increase blood supply to the brain, relieve digestive complaints and make the spine elastic [@vishnudevananda1960; @lidell1983] [[T]]."
+  traditional: "Standing forward bend is said to stretch the whole back of the body, increase blood supply to the brain, relieve digestive complaints and make the spine elastic [@iyengar1966; @satyananda1969] [[T]]."
   evidence: "No trials of pāda hastāsana alone. Head-below-heart positions raise intraocular pressure within minutes; standing forward bend was one of the four positions shown to do so [@jasien2015]. The claim of increased brain blood supply is not supported by physiology (cerebral blood flow is autoregulated) [@hall2021]. As a hamstring stretch with a mild inversion, it is suitable for most healthy students when knees are bent freely."
 
 - id: trikonasana
@@ -1129,5 +1129,5 @@
   transition_in: "From standing after the standing forward bend."
   transition_out: "Inhale up; turn the feet parallel; step the feet together; stand quietly, then lie down for final relaxation."
   counterpose: "Standing, then final relaxation."
-  traditional: "Triangle is said to make the spine flexible, tone the spinal nerves and abdominal organs, improve the appetite and help with constipation, and to reduce fat at the waist [@vishnudevananda1960; @lidell1983] [[T]]."
+  traditional: "Triangle is said to make the spine flexible, tone the spinal nerves and abdominal organs, improve the appetite and help with constipation, and to reduce fat at the waist [@iyengar1966; @satyananda1969] [[T]]."
   evidence: "No trials of triangle alone. Standing yoga postures challenge balance and leg strength, and yoga-based exercise improves balance and mobility in older adults [@youkhana2016]. Claims about digestion and waist fat are traditional and untested."

@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 15
+number: 14
 section: I
 id: bandhas-mudras-mantra
 title: Bandhas, Mudrās and Mantra
@@ -11,7 +11,7 @@ epigraph: "“Through the practice of the bandhas, the prāṇa is made to enter
 By the end of this chapter you will be able to:
 
 - describe the technique, traditional purpose, physical action and contraindications of mūla, uḍḍīyāna and jālandhara bandha;
-- teach the hand mudrās used in a Sivananda class and describe the principal Haṭha mudrās;
+- teach the hand mudrās used in a classical class and describe the principal Haṭha mudrās;
 - define mantra, explain the three modes of japa and the use of the mālā;
 - chant Oṃ and several traditional mantras correctly and explain their meaning;
 - introduce mantra and mudrā in class in a way that is accurate, safe and inclusive.
@@ -60,7 +60,7 @@ With the breath held out after exhalation, all three locks are applied together,
 - **Haṭha mudrās** — whole-body techniques combining posture, breath and locks, such as the ten in HYP chapter 3 (@ch:hatha);
 - **Hasta mudrās** — hand gestures used in meditation, prāṇāyāma, ritual and Indian classical dance.
 
-Table: Mudrās used in a Sivananda-style class {#tab:mudras}
+Table: Mudrās used in a classical-style class {#tab:mudras}
 
 | Mudrā | How it is formed | When it is used | Traditional meaning |
 |---|---|---|---|
@@ -106,7 +106,7 @@ Divide it into three parts: *A* (open mouth, sound felt in the abdomen), *U* (li
 2. ***Upāṃśu*** — whispered or with moving lips.
 3. ***Mānasika*** — mental; the subtlest and traditionally the most powerful.
 
-A **mālā** of 108 beads, with a larger *meru* bead that is not crossed, is used to count repetitions: the beads are moved with the thumb and middle finger, and at the meru the mālā is turned back. In the Sivananda tradition a personal mantra is given at initiation (*mantra dīkṣā*) by a teacher; students without initiation can practise with Oṃ or a universal mantra [@vishnudevananda1978].
+A **mālā** of 108 beads, with a larger *meru* bead that is not crossed, is used to count repetitions: the beads are moved with the thumb and middle finger, and at the meru the mālā is turned back. Traditionally a personal mantra is given at initiation (*mantra dīkṣā*) by a teacher; students without initiation can practise with Oṃ or a universal mantra [[T]].
 
 ::: evidence Chanting and breathing
 In a small experimental study, reciting the Ave Maria in Latin and a yoga mantra (*Om mani padme om*) both slowed breathing to around six breaths per minute and increased cardiovascular rhythms associated with baroreflex sensitivity [[S]] [@bernardi2001]. This suggests one physiological pathway by which rhythmic chanting may be calming: it structures and slows the breath. Humming, as in *M* of Oṃ and in bhrāmarī, also greatly increases nasal nitric oxide levels [@weitzberg2002], though the practical significance of this is not established.

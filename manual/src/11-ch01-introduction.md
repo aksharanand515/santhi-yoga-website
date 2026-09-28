@@ -59,7 +59,7 @@ Every classical school of Indian philosophy begins from the fact of suffering (*
 
 ### Why students actually come
 
-Surveys of modern practitioners consistently find that most people begin yoga for exercise, flexibility and stress relief; a spiritual motive often grows later, if at all [@penman2012]. There is nothing wrong with this. Swami Vishnudevananda deliberately began with the body, teaching that proper exercise, breathing, relaxation, diet and positive thinking form a practical path that anyone can follow (@ch:sivananda). But a teacher who knows only the modern purposes teaches a thinner practice, and a teacher who scorns them loses the students who most need to begin.
+Surveys of modern practitioners consistently find that most people begin yoga for exercise, flexibility and stress relief; a spiritual motive often grows later, if at all [@penman2012]. There is nothing wrong with this. Haṭha Yoga has always begun with the body: exercise, breathing, relaxation, sensible diet and a positive, steady mind form a practical path that anyone can follow (@ch:hatha). But a teacher who knows only the modern purposes teaches a thinner practice, and a teacher who scorns them loses the students who most need to begin.
 
 ::: tip Meeting students where they are
 A student who comes for a stiff back and leaves ten weeks later sleeping better, a little kinder to themselves and curious about the breath has been well taught. You do not need to lecture on *kaivalya* in a beginners’ class — but you should know why the relaxation at the end matters more than the headstand.
@@ -67,7 +67,7 @@ A student who comes for a stiff back and leaves ten weeks later sleeping better,
 
 ## What yoga is — and is not
 
-Yoga developed within the religious and philosophical cultures of South Asia; Hindu, Buddhist and Jain traditions all have yoga practices and yoga literature [[H]] [@samuel2008]. It is therefore neither true that yoga is “just exercise” nor that practising yoga requires adopting a particular religion. People of many faiths, and of none, practise it seriously. The Sivananda tradition, in which this school teaches, has always welcomed students of every background while chanting in Sanskrit and honouring its Hindu roots. As a teacher you should be able to do both: speak about the tradition knowledgeably and respectfully, and never pressure a student to believe anything.
+Yoga developed within the religious and philosophical cultures of South Asia; Hindu, Buddhist and Jain traditions all have yoga practices and yoga literature [[H]] [@samuel2008]. It is therefore neither true that yoga is “just exercise” nor that practising yoga requires adopting a particular religion. People of many faiths, and of none, practise it seriously. The tradition taught here, in which this school teaches, has always welcomed students of every background while chanting in Sanskrit and honouring its Hindu roots. As a teacher you should be able to do both: speak about the tradition knowledgeably and respectfully, and never pressure a student to believe anything.
 
 ::: myth “Yoga is five thousand years old.”
 You will hear this claim in many classes. The evidence does not support it. The earliest texts that describe yoga as a practice date from the second half of the first millennium BCE, and interpretations of older Indus Valley seals as depicting yogis are speculative [[H]] [@samuel2008]. The traditions that became yoga are certainly ancient, and many practitioners regard the teachings as timeless — but that is a traditional claim [[T]], not a historical date. Chapter 2 sets out what the evidence does show.
@@ -114,7 +114,7 @@ The best-studied use of yoga is chronic non-specific low back pain, where system
 
 ## Yoga in Kerala
 
-You are studying in a region with a remarkable concentration of traditions related to yoga. The great Advaita Vedānta teacher Ādi Śaṅkara is traditionally held to have been born at Kaladi, about forty kilometres north-east of Kochi [[T]]; Kerala is home to *kaḷarippayaṯṯŭ*, the martial art whose training shares with Haṭha Yoga an emphasis on breath, flexibility and the body’s vital points; and Āyurveda has been continuously practised here for centuries. Swami Vishnudevananda, who carried the Sivananda teachings to the West, was born in Kerala in 1927 and in 1978 inaugurated the Sivananda Yoga Vedanta Dhanwantari Ashram at Neyyar Dam, near Thiruvananthapuram [@sivanandaorg2019]. Studying here is an opportunity to see yoga as part of a living culture rather than as an exported product.
+You are studying in a region with a remarkable concentration of traditions related to yoga. The great Advaita Vedānta teacher Ādi Śaṅkara is traditionally held to have been born at Kaladi, about forty kilometres north-east of Kochi [[T]]; Kerala is home to *kaḷarippayaṯṯŭ*, the martial art whose training shares with Haṭha Yoga an emphasis on breath, flexibility and the body’s vital points; and Āyurveda has been continuously practised here for centuries. Studying here is an opportunity to see yoga as part of a living culture rather than as an exported product.
 
 ## How this course works
 

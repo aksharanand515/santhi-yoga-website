@@ -9,17 +9,11 @@ A short list for continuing study, chosen for reliability and usefulness to a ne
 
 ## Primary texts in translation {.nonum}
 
-- **Yoga Sūtra.** @bryant2009 — a scholarly translation with extensive traditional commentary; @satchidananda1978 — a practical, accessible commentary from within Swami Sivananda’s lineage.
+- **Yoga Sūtra.** @bryant2009 — a scholarly translation with extensive traditional commentary; @satchidananda1978 — a practical, accessible commentary.
 - **Bhagavad Gītā.** @easwaran2007 for readability; @sargeant2009 for word-by-word Sanskrit.
 - **Upaniṣads.** @olivelle1996 — an accurate, annotated translation of the principal Upaniṣads.
 - **Haṭha Yoga Pradīpikā.** @muktibodhananda1998, with practical commentary; @akers2002 for a plain translation.
 - **Vedānta.** Śaṅkara’s *Vivekacūḍāmaṇi* [@madhavananda1921].
-
-## The Sivananda tradition {.nonum}
-
-- @vishnudevananda1960 — the classic manual of the twelve basic postures and the five points of yoga.
-- @lidell1983 — the illustrated companion to Sivananda practice.
-- @sivananda1935 and @vishnudevananda1978 — prāṇāyāma, meditation and mantra in the tradition’s own words.
 
 ## Other lineages {.nonum}
 

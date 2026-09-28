@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 16
+number: 15
 section: I
 id: teacher-role
 title: The Role and Responsibilities of a Yoga Teacher
@@ -77,7 +77,7 @@ When a student describes symptoms, your job is not to name them but to recognise
 
 ## The teacher as student
 
-The Sivananda tradition speaks of the teacher as an instrument through which the teaching flows. Practically, this means humility: every class teaches the teacher something. The invocation that opens this manual asks for protection and nourishment for teacher *and* student together, and that they work together with energy. That is the relationship this course hopes to form in you.
+The tradition taught here speaks of the teacher as an instrument through which the teaching flows. Practically, this means humility: every class teaches the teacher something. The invocation that opens this manual asks for protection and nourishment for teacher *and* student together, and that they work together with energy. That is the relationship this course hopes to form in you.
 
 ::: exercise Your teaching intention
 Write a statement of up to 200 words beginning “As a yoga teacher, I intend to…”. Include at least one commitment to students, one to the tradition and one to yourself. Keep it in your journal; re-read it at the end of the course and after your first year of teaching.

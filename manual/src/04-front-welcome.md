@@ -8,7 +8,7 @@ toc: true
 
 This manual is the written companion to twenty-eight days in Fort Kochi. It is not a substitute for the practice hall, the teacher in front of you or the discipline of getting up before sunrise to sit and breathe. What it can do is hold the material steady, so that you can return to it in the weeks of the course and in the years afterwards, when you are teaching your own students and a question arises that you have not met before.
 
-We have tried to write the book we wished we had when we were training. It honours the tradition we come from — the practical, joyful, disciplined yoga of Swami Sivananda and Swami Vishnudevananda, whose ashram at Neyyar Dam sits at the southern end of this same state — and it takes the modern sciences of anatomy, physiology and learning seriously. Where the two speak in different languages, we have tried to let each speak in its own voice rather than forcing one to say what only the other can know. A cakra is not a nerve plexus, and a nerve plexus is not a cakra; a good teacher can talk about both without confusing them.
+We have tried to write the book we wished we had when we were training. It honours the classical tradition of Haṭha Yoga — practical, joyful and disciplined — and it takes the modern sciences of anatomy, physiology and learning seriously. Where the two speak in different languages, we have tried to let each speak in its own voice rather than forcing one to say what only the other can know. A cakra is not a nerve plexus, and a nerve plexus is not a cakra; a good teacher can talk about both without confusing them.
 
 Three requests as you begin:
 

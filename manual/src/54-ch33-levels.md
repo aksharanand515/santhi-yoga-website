@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 33
+number: 32
 section: III
 id: levels
 title: Teaching Different Levels and Mixed-Level Classes
@@ -125,5 +125,5 @@ Answers: 1 c · 2 b · 3 b · 4 b
 :::
 
 ::: assignment
-Design a 60-minute mixed-level class based on the Sivananda sequence, with a written three-tier option for every posture and a plan for pacing. Teach it to a group containing at least one beginner and one experienced practitioner, and ask each for feedback.
+Design a 60-minute mixed-level class based on the classical sequence, with a written three-tier option for every posture and a plan for pacing. Teach it to a group containing at least one beginner and one experienced practitioner, and ask each for feedback.
 :::

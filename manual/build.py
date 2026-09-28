@@ -560,7 +560,7 @@ def main():
 <title>Santhi Yoga School — 200-Hour Yoga Teacher Training Manual</title>
 <meta name="author" content="Santhi School of Yoga &amp; Vedanta Studies">
 <meta name="description" content="200-Hour Yoga Teacher Training Manual, Santhi Yoga School, Fort Kochi, Kerala, India">
-<meta name="keywords" content="yoga teacher training, Sivananda, hatha yoga, anatomy, pranayama, Kerala">
+<meta name="keywords" content="yoga teacher training, hatha yoga, anatomy, pranayama, Kerala">
 <link rel="stylesheet" href="style.css">
 </head><body>
 {cover() if not args.only else ''}

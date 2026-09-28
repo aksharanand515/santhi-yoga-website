@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 29
+number: 28
 section: II
 id: meditation-practice
 title: Meditation — Practice and Teaching
@@ -19,7 +19,7 @@ By the end of this chapter you will be able to:
 
 ## Fundamentals
 
-Meditation practice rests on a few simple foundations, which the Sivananda tradition sums up as regularity of **place, time and practice** (@ch:mind).
+Meditation practice rests on a few simple foundations, which the tradition taught here sums up as regularity of **place, time and practice** (@ch:mind).
 
 ### Posture
 
@@ -74,7 +74,7 @@ Table: A structure for a guided meditation session {#tab:med-structure}
 
 **Technique.** Repeat a mantra mentally, often coordinated with the breath — for example *Oṃ* on the exhalation, or *So* on the inhalation and *Ham* on the exhalation (*so’ham*, “I am That”). A mālā may be used to count repetitions (@ch:bandhas-mudras-mantra). When the mind wanders, return to the mantra.
 
-**Use.** Central in the Sivananda tradition [@vishnudevananda1978]; gives a restless mind a steady, rhythmic object; can carry devotional meaning. Always translate and give context; offer a secular alternative (e.g. a word such as “peace”, or counting) for those who prefer it.
+**Use.** Central in the tradition taught here; gives a restless mind a steady, rhythmic object; can carry devotional meaning. Always translate and give context; offer a secular alternative (e.g. a word such as “peace”, or counting) for those who prefer it.
 
 ### Trāṭaka (steady gazing)
 
@@ -86,7 +86,7 @@ Table: A structure for a guided meditation session {#tab:med-structure}
 
 **Technique.** Move attention systematically through the body — toes to crown or the reverse — noticing sensation in each region without trying to change it. *Yoga nidrā* (“yogic sleep”), developed in the twentieth century by Swami Satyananda of the Bihar School, extends this into a structured practice with an intention (*saṅkalpa*), rotation of awareness through the body, breath awareness, opposite sensations and visualisation, practised lying down [@satyananda1976].
 
-**Use.** Builds interoceptive awareness (@ch:nervous-system); deeply relaxing; a doorway for students who cannot sit still. It overlaps with the Sivananda final relaxation.
+**Use.** Builds interoceptive awareness (@ch:nervous-system); deeply relaxing; a doorway for students who cannot sit still. It overlaps with the classical final relaxation (@ch:preparation).
 
 ### Witnessing (open awareness)
 

@@ -8,13 +8,13 @@ short: Sample Class Plans
 ---
 Six complete class plans built on the principles of @ch:sequencing and @ch:class-planning. Each is a model to learn from and adapt, not a fixed routine. Timings are approximate; protect the final relaxation whatever else you shorten. Before every class, ask about injuries, health conditions and pregnancy, and offer the options shown.
 
-## The traditional Sivananda class (90 minutes) {#g-sivananda}
+## The classical class (90 minutes) {#g-classical}
 
-The open class of the Sivananda tradition, as taught at the school (@ch:sivananda, @ch:twelve-asanas). Its fixed order — relaxation, breath, sun salutation, leg raises, the twelve postures from inversions to standing poses, and deep relaxation — is itself a sequencing lesson: each posture prepares for or counterbalances its neighbours.
+The open class as taught at the school (@ch:twelve-asanas). Its fixed order — relaxation, breath, sun salutation, leg raises, the twelve postures from inversions to standing poses, and deep relaxation — is itself a sequencing lesson: each posture prepares for or counterbalances its neighbours.
 
-!sequence(@sivananda)
+!sequence(@classical)
 
-Table: The Sivananda open class, 90 minutes {#tab:g-sivananda}
+Table: The classical open class, 90 minutes {#tab:g-classical}
 
 | Time | Practice | Notes and options |
 |---|---|---|

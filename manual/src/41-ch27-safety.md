@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 27
+number: 26
 section: II
 id: safety
 title: Injury Prevention and Teacher Safety

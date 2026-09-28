@@ -24,7 +24,6 @@
 - {term: diaphragm}
 - {term: dhāraṇā, match: ["dh[aā]ra[nṇ][aā]"]}
 - {term: dhyāna, match: ["dhy[aā]na"]}
-- {term: Divine Life Society}
 - {term: eccentric contraction, match: ["eccentric"]}
 - {term: erector spinae}
 - {term: evidence, match: ["evidence base"]}
@@ -58,7 +57,6 @@
 - {term: mudrā, match: ["mudr[aā]s?"]}
 - {term: mūla bandha, match: ["m[uū]la bandha"]}
 - {term: nāḍī, match: ["n[aā][dḍ][iī]s?"]}
-- {term: Neyyar Dam}
 - {term: niyama, match: ["niyamas?"]}
 - {term: osteoporosis}
 - {term: pain science, match: ["pain science", "nociception"]}
@@ -84,7 +82,6 @@
 - {term: satya}
 - {term: śauca, match: ["[sś]auca", "saucha"]}
 - {term: scope of practice}
-- {term: Sivananda, Swami, match: ["Swami Sivananda"]}
 - {term: slow breathing}
 - {term: Surya Namaskar, match: ["S[uū]rya Namask[aā]r"]}
 - {term: suṣumṇā, match: ["su[sṣ]um[nṇ][aā]"]}
@@ -97,7 +94,6 @@
 - {term: vagus nerve, match: ["vagus", "vagal"]}
 - {term: vairāgya, match: ["vair[aā]gya"]}
 - {term: Vedānta, match: ["Ved[aā]nta"]}
-- {term: Vishnudevananda, Swami, match: ["Vishnudevananda"]}
 - {term: vṛtti, match: ["v[rṛ]ttis?"]}
 - {term: yama, match: ["yamas?"]}
 - {term: Yoga Sūtra, match: ["Yoga S[uū]tras?"]}

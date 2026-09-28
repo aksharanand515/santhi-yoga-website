@@ -26,10 +26,6 @@ feuerstein2008: {type: scholarship, short: Feuerstein, author: "Feuerstein, G.",
 flood1996: {type: scholarship, short: Flood, author: "Flood, G.", year: 1996, title: "An introduction to Hinduism", publisher: "Cambridge University Press"}
 demichelis2004: {type: scholarship, short: "De Michelis", author: "De Michelis, E.", year: 2004, title: "A history of modern yoga: Patañjali and Western esotericism", publisher: "Continuum"}
 vivekananda1896: {type: scholarship, short: Vivekananda, author: "Vivekananda, S.", year: 1896, title: "Raja Yoga", publisher: "Longmans, Green & Co."}
-sivananda1935: {type: primary, short: Sivananda, author: "Sivananda, S.", year: 1935, title: "The science of pranayama", publisher: "The Divine Life Society (many later editions)"}
-vishnudevananda1960: {type: primary, short: Vishnudevananda, author: "Vishnudevananda, S.", year: 1960, title: "The complete illustrated book of yoga", publisher: "Julian Press"}
-vishnudevananda1978: {type: primary, short: Vishnudevananda, author: "Vishnudevananda, S.", year: 1978, title: "Meditation and mantras", publisher: "OM Lotus Publishing"}
-lidell1983: {type: primary, short: Lidell, author: "Lidell, L., with Narayani & Rabinovitch, G.", year: 1983, title: "The Sivananda companion to yoga", publisher: "Simon & Schuster"}
 satyananda1976: {type: primary, short: Satyananda, author: "Satyananda Saraswati, S.", year: 1976, title: "Yoga nidra", publisher: "Bihar School of Yoga / Yoga Publications Trust (many later editions)"}
 satyananda1969: {type: primary, short: Satyananda, author: "Satyananda Saraswati, S.", year: 1969, title: "Asana pranayama mudra bandha", publisher: "Bihar School of Yoga / Yoga Publications Trust (many later editions)"}
 iyengar1966: {type: primary, short: Iyengar, author: "Iyengar, B. K. S.", year: 1966, title: "Light on yoga", publisher: "George Allen & Unwin"}
@@ -37,8 +33,6 @@ iyengar1981: {type: primary, short: Iyengar, author: "Iyengar, B. K. S.", year: 
 desikachar1995: {type: scholarship, short: Desikachar, author: "Desikachar, T. K. V.", year: 1995, title: "The heart of yoga: Developing a personal practice", publisher: "Inner Traditions"}
 hanh1975: {type: scholarship, short: "Thich Nhat Hanh", author: "Thich Nhat Hanh", year: 1975, title: "The miracle of mindfulness", publisher: "Beacon Press"}
 gunaratana2011: {type: scholarship, short: Gunaratana, author: "Gunaratana, B. H.", year: 2011, title: "Mindfulness in plain English", edition: "20th anniversary ed.", publisher: "Wisdom Publications"}
-dlshq2024: {type: primary, short: "Divine Life Society", author: "The Divine Life Society", year: "n.d.", title: "Swami Sivananda and The Divine Life Society", publisher: "The Divine Life Society, Rishikesh. https://www.dlshq.org"}
-sivanandaorg2019: {type: primary, short: "Sivananda Yoga Vedanta Centres", author: "Sivananda Yoga Vedanta Centres", year: 2019, title: "50 years of the Sivananda Yoga Teachers’ Training Course", publisher: "https://articles.sivananda.org"}
 
 # ------------------------------------------------------------------ textbooks
 neumann2017: {type: textbook, short: Neumann, author: "Neumann, D. A.", year: 2017, title: "Kinesiology of the musculoskeletal system: Foundations for rehabilitation", edition: "3rd ed.", publisher: "Elsevier"}

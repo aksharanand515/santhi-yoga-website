@@ -40,7 +40,7 @@ Each Veda grew in layers. The **Saṃhitā** is the core collection of hymns or 
 We meditate on the excellent radiance of the divine Savitṛ (the sun as impeller); may it inspire our minds.
 :::
 
-The Gāyatrī is the most famous Vedic verse. The opening “oṃ bhūr bhuvaḥ svaḥ” (earth, atmosphere, heaven) is a later ritual prefix, not part of the Ṛgvedic verse itself. It is chanted at dawn and dusk by many practitioners and is often sung at the opening of yoga classes in the Sivananda tradition.
+The Gāyatrī is the most famous Vedic verse. The opening “oṃ bhūr bhuvaḥ svaḥ” (earth, atmosphere, heaven) is a later ritual prefix, not part of the Ṛgvedic verse itself. It is chanted at dawn and dusk by many practitioners and is often sung at the opening of traditional yoga classes.
 
 ## What the Upaniṣads are
 

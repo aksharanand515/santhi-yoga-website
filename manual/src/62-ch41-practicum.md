@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 41
+number: 40
 section: III
 id: practicum
 title: Practicum, Assessment and the Final Teaching Examination
@@ -99,8 +99,6 @@ Teach your exam class at least twice beforehand to classmates. Time it. Memorise
 ## Graduation
 
 On successful completion of all components you receive the Santhi Yoga School 200-hour certificate, traditionally presented in a closing ceremony. Graduation is an ending and a beginning: of your life as a teacher, and of a lifetime of study.
-
-!photo(gbp-cover-graduation-ceremony-1280x720.jpg|A graduation ceremony at Santhi Yoga School.)
 
 ::: takeaways
 - The practicum builds from teaching a single posture to teaching a full class, supported by a log, observation and feedback.

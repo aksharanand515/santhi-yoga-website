@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 35
+number: 34
 section: III
 id: sequencing
 title: Sequencing — Warm-up, Peak Poses, Counterposes, Rest and Integration
@@ -19,7 +19,7 @@ By the end of this chapter you will be able to:
 
 ## Why sequence matters
 
-The same postures, in a different order, make a different class. Sequencing determines whether the body is ready for what is asked of it, whether the nervous system is stimulated or settled, whether the class feels coherent, and — often — whether it is safe. The Sivananda sequence is a carefully tested answer to the sequencing question (@ch:sivananda). Understanding *why* it works lets you teach it well and design other sequences when needed.
+The same postures, in a different order, make a different class. Sequencing determines whether the body is ready for what is asked of it, whether the nervous system is stimulated or settled, whether the class feels coherent, and — often — whether it is safe. The classical sequence is a carefully tested answer to the sequencing question (@ch:twelve-asanas). Understanding *why* it works lets you teach it well and design other sequences when needed.
 
 ## Principles
 
@@ -35,7 +35,7 @@ The same postures, in a different order, make a different class. Sequencing dete
 
 ## Warm-up and preparation
 
-A warm-up raises body temperature, increases blood flow to muscles, mobilises joints through gentle range, and turns attention to the body and breath. In the Sivananda class, relaxation and prāṇāyāma settle the mind; sūrya namaskār warms the whole body; leg raises prepare the abdomen and hip flexors (@ch:preparation).
+A warm-up raises body temperature, increases blood flow to muscles, mobilises joints through gentle range, and turns attention to the body and breath. In the classical class, relaxation and prāṇāyāma settle the mind; sūrya namaskār warms the whole body; leg raises prepare the abdomen and hip flexors (@ch:preparation).
 
 A good warm-up is **specific** as well as general. Look at the joints and muscles the main postures will use (@ch:mapping) and include movements that prepare them:
 
@@ -87,7 +87,7 @@ Counterposes are not an absolute rule. A gentle backbend does not require an imm
 
 Rest is part of the practice, not a gap in it.
 
-- **Between postures**: a few breaths in śavāsana, makarāsana or child’s pose lets heart rate and breath settle and effects be felt — the hallmark of the Sivananda method.
+- **Between postures**: a few breaths in śavāsana, makarāsana or child’s pose lets heart rate and breath settle and effects be felt — the hallmark of the classical method.
 - **Final relaxation**: allow about 10–15 minutes in a 90-minute class, and at least 5 minutes in a 45–60-minute class. Never cut it short to fit in more postures.
 - **After relaxation**: a transition to sitting, perhaps a short meditation, chant or silence, before students leave.
 
@@ -99,7 +99,7 @@ Students remember the end of a class more than the middle. A calm, unhurried end
 
 !fig(classarc)
 
-A well-sequenced class has a recognisable arc: arrival, warming, building, peak, descent and rest. The Sivananda class places its demanding inversions early and its most restful posture at the end, with a rhythm of effort and rest throughout.
+A well-sequenced class has a recognisable arc: arrival, warming, building, peak, descent and rest. The classical class places its demanding inversions early and its most restful posture at the end, with a rhythm of effort and rest throughout.
 
 ::: tip Sequencing for the time of day
 Morning classes can include more stimulating practice (kapālabhāti, sun salutations, backbends); evening classes more calming practice (forward bends, longer holds, lengthened exhalations, bhrāmarī). In the heat of a Kerala afternoon, reduce the number of fast rounds, lengthen rests, and add cooling breaths.
@@ -115,7 +115,7 @@ Morning classes can include more stimulating practice (kapālabhāti, sun saluta
 
 ::: reflect
 1. Which principle is most often broken in classes you have attended?
-2. How does the Sivananda order (inversions first) compare with sequences you know? What are the advantages of each?
+2. How does the classical order (inversions first) compare with sequences you know? What are the advantages of each?
 3. What makes an ending memorable for you?
 :::
 

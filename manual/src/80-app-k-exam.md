@@ -32,7 +32,7 @@ Choose the single best answer.
 4. The Bhagavad Gītā is part of the: (a) Mahābhārata (b) Ṛg Veda (c) Haṭha Yoga Pradīpikā (d) Rāmāyaṇa
 5. Most scholars date the Yoga Sūtra to approximately: (a) the 15th century CE (b) 325–425 CE (c) 1500 BCE (d) 800 BCE
 6. The *Haṭha Yoga Pradīpikā* was composed by: (a) Śaṅkara (b) Patañjali (c) Svātmārāma (d) Vyāsa
-7. The five points of yoga taught by Swami Vishnudevananda are proper exercise, proper breathing, proper relaxation, proper diet and: (a) proper chanting (b) proper study (c) proper sleep (d) positive thinking and meditation
+7. In the Haṭha Yoga Pradīpikā, the practice that comes first is: (a) prāṇāyāma (b) mudrā (c) nādānusandhāna (d) āsana
 8. The kośa associated with the breath and vital energy is the: (a) prāṇamaya (b) vijñānamaya (c) manomaya (d) annamaya
 9. The guṇa of clarity and harmony is: (a) prakṛti (b) rajas (c) sattva (d) tamas
 10. Karma yoga is best described as: (a) action performed without attachment to its results (b) yoga of knowledge (c) yoga of devotion (d) meditation on the chakras
@@ -56,7 +56,7 @@ Choose the single best answer.
 **Teaching methodology**
 
 24. The best time to cue an upward movement is usually on the: (a) exhalation (b) retention (c) inhalation (d) it makes no difference
-25. A counterpose for shoulderstand in the Sivananda sequence is: (a) fish (b) plough (c) headstand (d) cobra
+25. A counterpose for shoulderstand in the classical sequence is: (a) fish (b) plough (c) headstand (d) cobra
 26. When adjusting a student, the teacher must first: (a) check the time (b) obtain consent (c) demonstrate (d) apply firm pressure
 27. Offering tiered options in a mixed-level class aims to: (a) speed the class (b) separate students by ability (c) avoid demonstration (d) let each student find an appropriate version safely
 28. Trauma-sensitive teaching includes: (a) closing all doors and dimming lights without explanation (b) surprising students with adjustments (c) offering choice and invitational language (d) requiring eyes closed
@@ -87,7 +87,7 @@ Answer each question in three to five sentences.
 Choose **two** questions. Plan your answer; aim for a clear structure of about one and a half to two pages each. Credit is given for accuracy, use of sources, balance between tradition and evidence, and practical application to teaching.
 
 1. “Yoga is the stilling of the fluctuations of the mind.” Explain this definition with reference to the vṛttis, the kleśas and the practices Patañjali recommends. How is it relevant to a modern āsana class?
-2. Compare the paths of karma, bhakti, jñāna and rāja yoga. How does Swami Sivananda’s “yoga of synthesis” bring them together, and how might a teacher reflect it in a 90-minute class?
+2. Compare the paths of karma, bhakti, jñāna and rāja yoga. How can they be integrated in one practice, and how might a teacher reflect it in a 90-minute class?
 3. Choose one of the twelve basic postures. Describe its technique, the joint actions and principal muscles involved, common mistakes, contraindications, modifications and a suitable counterpose. Explain what the evidence does and does not tell us about its effects.
 4. Discuss the evidence for yoga’s effects on the autonomic nervous system and stress. Distinguish what is well supported, what is plausible, and what is overclaimed, and explain how you would speak about it to students.
 5. Plan a 75-minute class for a mixed group including a beginner, a student in the second trimester of pregnancy, and a regular practitioner with a history of low-back pain. Justify your sequencing, options and safety measures.
@@ -95,7 +95,7 @@ Choose **two** questions. Plan your answer; aim for a clear structure of about o
 
 ## The practical teaching examination {#k-practical}
 
-**Task.** Teach a 45- to 60-minute class (as assigned) to a group of fellow trainees and/or members of the public, following the structure of the Sivananda class or a plan of your own approved in advance.
+**Task.** Teach a 45- to 60-minute class (as assigned) to a group of fellow trainees and/or members of the public, following the structure of the classical class or a plan of your own approved in advance.
 
 **Submit** your written lesson plan (@ch:class-planning) to the assessors 24 hours before the examination.
 

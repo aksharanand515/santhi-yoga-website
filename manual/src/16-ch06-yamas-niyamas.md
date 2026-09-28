@@ -43,7 +43,7 @@ The results are traditional teachings [[T]]; their language is poetic, but their
 
 ### Ahiṃsā
 
-Non-harming is the root of the other yamas; Vyāsa’s commentary says the others are practised for the sake of ahiṃsā [@bryant2009]. Traditionally it includes vegetarianism, which remains part of the Sivananda tradition’s “proper diet”. In the practice hall, ahiṃsā has a very direct meaning: **do not harm the body in the name of yoga**. Pushing through pain, forcing a student into a posture or practising prāṇāyāma aggressively are failures of ahiṃsā before they are failures of technique.
+Non-harming is the root of the other yamas; Vyāsa’s commentary says the others are practised for the sake of ahiṃsā [@bryant2009]. Traditionally it includes vegetarianism, which many yoga schools, including this one, still recommend. In the practice hall, ahiṃsā has a very direct meaning: **do not harm the body in the name of yoga**. Pushing through pain, forcing a student into a posture or practising prāṇāyāma aggressively are failures of ahiṃsā before they are failures of technique.
 
 ### Satya
 

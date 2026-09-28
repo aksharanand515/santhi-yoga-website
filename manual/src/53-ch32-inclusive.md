@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 32
+number: 31
 section: III
 id: inclusive
 title: Inclusive and Trauma-Aware Teaching
@@ -124,5 +124,5 @@ Answers: 1 b · 2 b · 3 c · 4 b · 5 b
 :::
 
 ::: assignment
-Adapt a 45-minute Sivananda-style class plan so that it is fully accessible to a mixed group including an older student with knee arthritis, a student who prefers not to be touched, and a student with limited English. Mark every adaptation on the plan and teach it to your practice group.
+Adapt a 45-minute classical-style class plan so that it is fully accessible to a mixed group including an older student with knee arthritis, a student who prefers not to be touched, and a student with limited English. Mark every adaptation on the plan and teach it to your practice group.
 :::

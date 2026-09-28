@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 30
+number: 29
 section: III
 id: good-teacher
 title: What Makes a Good Yoga Teacher
@@ -49,12 +49,12 @@ Most yoga students are adults, and adults learn differently from children. Theor
 Motor-learning research adds that learners improve faster with **external-focus cues**, **choice** and a sense of **competence** (@ch:nervous-system) [@wulf2016].
 
 ::: keyconcept Teach the person in front of you
-Every principle above points the same way: good teaching starts from the student’s experience, explains why, offers choice, and builds confidence. The fixed sequence of the Sivananda class is a strength — but within it, every instruction is adapted to the people on the mats.
+Every principle above points the same way: good teaching starts from the student’s experience, explains why, offers choice, and builds confidence. The fixed sequence of the classical class is a strength — but within it, every instruction is adapted to the people on the mats.
 :::
 
 ## The teacher’s own practice
 
-A teacher’s practice is not a private hobby; it is the source of their teaching. The Sivananda tradition expects its teachers to maintain a daily practice of āsana, prāṇāyāma and meditation, study and service [@lidell1983]. In practical terms, a teacher’s practice:
+A teacher’s practice is not a private hobby; it is the source of their teaching. The tradition taught here expects its teachers to maintain a daily practice of āsana, prāṇāyāma and meditation, study and service. In practical terms, a teacher’s practice:
 
 - keeps the teacher’s knowledge embodied — you understand a posture from the inside;
 - reveals what students experience, especially when you practise as a beginner (modified postures, new styles);

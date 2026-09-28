@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 22
+number: 21
 section: II
 id: breathing
 title: The Anatomy and Physiology of Breathing
@@ -104,7 +104,7 @@ In most postures the breath and the movement support each other mechanically:
 - **Inhalation** accompanies **opening and extending** movements — lifting the arms, arching the spine, raising the chest — because inhalation itself extends the thoracic spine slightly and lifts the ribs.
 - **Exhalation** accompanies **folding, twisting and lowering** — forward bends, twists, coming down — because exhalation draws the ribs down and the abdomen in, making space for flexion and rotation.
 
-This is why the Sivananda sun salutation pairs each position with an inhalation or exhalation, and why cues such as “inhale to lengthen, exhale to fold” feel natural.
+This is why the classical sun salutation pairs each position with an inhalation or exhalation, and why cues such as “inhale to lengthen, exhale to fold” feel natural.
 
 ::: tip The breath as the teacher’s instrument
 Watch the breath before you watch the posture. A student holding their breath, breathing through the mouth, or lifting the shoulders to breathe is working beyond their present capacity. “Can you breathe easily here?” is one of the most useful questions in teaching.

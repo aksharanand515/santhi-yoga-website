@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 24
+number: 23
 section: II
 id: preparation
 title: Preparing the Body — Relaxation, Sūrya Namaskār and Leg Raises
@@ -11,7 +11,7 @@ epigraph: "“Lying flat on the ground like a corpse is śavāsana. It removes f
 By the end of this chapter you will be able to:
 
 - teach śavāsana and a complete systematic relaxation, at the beginning, between postures and at the end of class;
-- teach the twelve positions of the Sivananda Sūrya Namaskār with correct breath, alignment and mantras;
+- teach the twelve positions of the classical Sūrya Namaskār with correct breath, alignment and mantras;
 - analyse the sun salutation anatomically and offer modifications for common limitations;
 - teach single and double leg raises safely;
 - explain why these practices precede the twelve basic postures.
@@ -19,7 +19,7 @@ By the end of this chapter you will be able to:
 
 ## The shape of the opening
 
-A traditional Sivananda class does not begin with effort. It begins lying down, with a few minutes of relaxation, followed by prāṇāyāma (@ch:pranayama), and only then moves into sun salutation and leg raises. This order is deliberate: the student arrives, the breath settles, the body warms gradually, and the abdominal and back muscles are prepared for the inversions that follow.
+A traditional class does not begin with effort. It begins lying down, with a few minutes of relaxation, followed by prāṇāyāma (@ch:pranayama), and only then moves into sun salutation and leg raises. This order is deliberate: the student arrives, the breath settles, the body warms gradually, and the abdominal and back muscles are prepared for the inversions that follow.
 
 ## Śavāsana: the relaxation posture
 
@@ -33,11 +33,11 @@ A traditional Sivananda class does not begin with effort. It begins lying down, 
 
 ### Relaxation between postures
 
-After each posture the Sivananda method returns to rest — śavāsana after supine and seated postures, and **makarāsana** (the crocodile: lying on the front, forehead resting on the stacked hands or with the cheek to one side) after prone backbends. A few breaths of rest let the heart rate and breath return towards resting levels and allow students to notice the effects of the posture — an essential part of the practice, not an interruption of it.
+After each posture the classical method returns to rest — śavāsana after supine and seated postures, and **makarāsana** (the crocodile: lying on the front, forehead resting on the stacked hands or with the cheek to one side) after prone backbends. A few breaths of rest let the heart rate and breath return towards resting levels and allow students to notice the effects of the posture — an essential part of the practice, not an interruption of it.
 
 ### Final relaxation
 
-The final relaxation lasts ten to fifteen minutes in a 90-minute class. In the Sivananda tradition it has three stages [@lidell1983]:
+The final relaxation lasts ten to fifteen minutes in a 90-minute class. In the classical class taught here it has three stages:
 
 1. **Tensing and relaxing** the body part by part: lift the right leg a little off the floor, tense it, hold, and let it drop; then the left leg; each arm; the buttocks; the chest (by filling it with air); the shoulders (drawn up and released); the face (squeezed and then opened wide). Gently roll the legs, arms and head from side to side.
 2. **Autosuggestion**: the teacher guides attention slowly through the body from the feet upward, suggesting relaxation of each part in turn — “relax the toes… relax the soles of the feet…” — including the internal organs and the face.
@@ -55,11 +55,11 @@ For some students — particularly those with trauma histories, anxiety or panic
 
 ## Sūrya Namaskār: the sun salutation
 
-The sun salutation is a flowing sequence of twelve positions, each coordinated with one breath. The form taught in the Sivananda tradition was widely popularised in the 1920s and 1930s, though salutations of the sun are of course far older as a devotional practice [@singleton2010] [[H]]. It warms the whole body, links breath and movement, flexes and extends the spine in alternation, and prepares the shoulders, hips and legs for the postures to come.
+The sun salutation is a flowing sequence of twelve positions, each coordinated with one breath. The form taught in the tradition taught here was widely popularised in the 1920s and 1930s, though salutations of the sun are of course far older as a devotional practice [@singleton2010] [[H]]. It warms the whole body, links breath and movement, flexes and extends the spine in alternation, and prepares the shoulders, hips and legs for the postures to come.
 
 !fig(surya)
 
-Table: The twelve positions of Sūrya Namaskār as taught in the Sivananda tradition {#tab:surya}
+Table: The twelve positions of Sūrya Namaskār as taught in this course {#tab:surya}
 
 | # | Position | Breath | Mantra (optional) | Key actions | Common modifications |
 |---:|---|---|---|---|---|
@@ -76,7 +76,7 @@ Table: The twelve positions of Sūrya Namaskār as taught in the Sivananda tradi
 | 11 | Arms raised, gentle backbend | inhale | *Oṃ Arkāya Namaḥ* | come up with a long spine, arms alongside the ears | bend the knees and come up with the back rounded, head last |
 | 12 | Prayer | exhale | *Oṃ Bhāskarāya Namaḥ* | return to stillness | — |
 
-The second half-round repeats the sequence with the **left** leg stepping back in position 4 and forward in position 9. Beginners start with two to four rounds at a slow pace and gradually increase; the tradition allows up to twelve rounds [@lidell1983]. The mantras are twelve names of the sun, one for each position; they may be chanted aloud, mentally, or omitted.
+The second half-round repeats the sequence with the **left** leg stepping back in position 4 and forward in position 9. Beginners start with two to four rounds at a slow pace and gradually increase; the classical class allows up to twelve rounds. The mantras are twelve names of the sun, one for each position; they may be chanted aloud, mentally, or omitted.
 
 ::: tip Pace and breath
 The breath sets the pace, not the teacher’s count. If students are gasping, slow down or add a breath in positions 5 and 8. For beginners, “step” rather than “jump”, and move through positions 4–9 with an extra breath where needed.
@@ -90,7 +90,7 @@ The sequence moves the spine alternately into extension (positions 2, 4, 7, 9, 1
 
 ## Leg raises
 
-After the sun salutation, the Sivananda class includes **leg raises** lying on the back, to strengthen the abdominal and hip-flexor muscles in preparation for headstand, shoulderstand and plough.
+After the sun salutation, the classical class includes **leg raises** lying on the back, to strengthen the abdominal and hip-flexor muscles in preparation for headstand, shoulderstand and plough.
 
 !sequence(savasana=Start/on the back, palms down; leg_raise=Single leg raise/inhale up, exhale down; double_leg_raise=Double leg raise/both legs together)
 
@@ -103,7 +103,7 @@ When both legs are lowered, the hip flexors, including psoas, pull strongly on t
 :::
 
 ::: takeaways
-- The Sivananda class opens with relaxation and prāṇāyāma before movement; śavāsana is taught with care at the beginning, between postures and at the end.
+- The classical class opens with relaxation and prāṇāyāma before movement; śavāsana is taught with care at the beginning, between postures and at the end.
 - Final relaxation has three stages: tensing and relaxing, autosuggestion through the body, and relaxation of the mind.
 - The twelve positions of Sūrya Namaskār are each linked to a breath and, optionally, to one of twelve names of the sun; the stepping leg alternates between half-rounds.
 - The sun salutation alternates spinal extension and flexion and warms the whole body; its modifications should be offered freely.
@@ -123,15 +123,15 @@ When both legs are lowered, the hip flexors, including psoas, pull strongly on t
 :::
 
 ::: check
-1. Position 5 of the Sivananda Sūrya Namaskār is: (a) cobra (b) plank (c) inverted V (d) lunge
+1. Position 5 of the classical Sūrya Namaskār is: (a) cobra (b) plank (c) inverted V (d) lunge
 2. The breath in position 7 (cobra) is: (a) exhale (b) inhale (c) retain (d) any
 3. In the second half-round, which leg steps back in position 4? (a) right (b) left (c) both (d) either
-4. The first stage of Sivananda final relaxation is: (a) autosuggestion (b) tensing and relaxing body parts (c) breath counting (d) chanting
+4. The first stage of the classical final relaxation is: (a) autosuggestion (b) tensing and relaxing body parts (c) breath counting (d) chanting
 5. During double leg raises, the lower back tends to arch because: (a) the hamstrings are tight (b) the hip flexors pull on the pelvis and spine when the abdominals cannot hold it (c) the diaphragm contracts (d) of weak calves
 
 Answers: 1 b · 2 b · 3 b · 4 b · 5 b
 :::
 
 ::: assignment
-Teach the first 25 minutes of a Sivananda-style class to three classmates: opening relaxation (3 min), a short breathing practice (5 min), four rounds of sun salutation with breath and optional mantras, and leg raises with modifications. Record the class. Watching it back, note every place your instructions and the students’ breath were out of step.
+Teach the first 25 minutes of a classical-style class to three classmates: opening relaxation (3 min), a short breathing practice (5 min), four rounds of sun salutation with breath and optional mantras, and leg raises with modifications. Record the class. Watching it back, note every place your instructions and the students’ breath were out of step.
 :::

@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 17
+number: 16
 section: II
 id: anatomy-foundations
 title: Foundations — The Language of Anatomy and Movement
@@ -157,7 +157,7 @@ In a well-taught posture the sensation of stretch is felt in the *belly* of a mu
 ::: practice
 1. In pairs, one partner performs a pose; the other describes it aloud using only anatomical terms (joints, movements, planes). Swap.
 2. Find each landmark in @tab:landmarks on yourself. With consent, find three of them on a partner.
-3. Take five postures from the Sivananda sequence and name the dominant plane of movement for each.
+3. Take five postures from the classical sequence and name the dominant plane of movement for each.
 :::
 
 ::: check

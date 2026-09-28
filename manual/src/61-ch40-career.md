@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 40
+number: 39
 section: III
 id: career
 title: Professional Development and a Sustainable Teaching Career

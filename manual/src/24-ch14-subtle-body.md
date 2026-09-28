@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 14
+number: 13
 section: I
 id: subtle-body
 title: The Subtle Body — Prāṇa, Vāyus, Nāḍīs, Cakras and Kośas

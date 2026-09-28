@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 19
+number: 18
 section: II
 id: muscle-principles
 title: How Muscles Work — Contraction, Flexibility and Strength
@@ -30,7 +30,7 @@ Muscles can only **pull**. They produce movement by pulling on bones across join
 !fig(contraction)
 
 - **Concentric** contraction: the muscle shortens while producing force — lifting into locust (back extensors), rising from a squat (quadriceps and gluteus maximus).
-- **Isometric** contraction: the muscle produces force without changing length — holding the locust, holding plank, holding warrior II. Much of a Sivananda class is isometric work.
+- **Isometric** contraction: the muscle produces force without changing length — holding the locust, holding plank, holding warrior II. Much of a classical class is isometric work.
 - **Eccentric** contraction: the muscle lengthens while producing force, controlling a movement against gravity — lowering slowly from locust, lowering the legs in double leg raises, descending from plank to the floor.
 
 Muscles can produce more force eccentrically than concentrically, and eccentric work is particularly effective for building strength and tendon capacity — but it also produces more post-exercise soreness in the unaccustomed [@hall2021]. Slow, controlled lowering is one of the most valuable and least used tools in a posture class.
@@ -70,7 +70,7 @@ These reflexes are real and useful, but popular accounts exaggerate their role i
 It is widely assumed that regular stretching makes muscles physically longer. The evidence suggests otherwise, at least in the short and medium term. Several weeks of stretching increase range of motion mainly by increasing **tolerance to the sensation of stretch** — the nervous system allows the muscle to go further before signalling “stop” — with little measurable change in the muscle’s mechanical properties [[S]] [@magnusson1996; @weppler2010]. Structural changes may occur over longer periods, and the question is not fully settled.
 
 ::: keyconcept Flexibility is partly a skill of the nervous system
-Much of what students experience as “getting more flexible” is the nervous system learning that a range is safe. This is good news: it responds to calm, regular, unforced practice — to breath, relaxation and trust — exactly the qualities a Sivananda class cultivates. It also means that forcing, which alarms the nervous system, tends to be counter-productive.
+Much of what students experience as “getting more flexible” is the nervous system learning that a range is safe. This is good news: it responds to calm, regular, unforced practice — to breath, relaxation and trust — exactly the qualities a classical class cultivates. It also means that forcing, which alarms the nervous system, tends to be counter-productive.
 :::
 
 ### Stretching principles
@@ -93,7 +93,7 @@ Flexibility beyond what one’s activities require has no demonstrated health be
 
 ## Strength in yoga
 
-Muscle strength develops through **progressive overload** — gradually increasing the demand — and is **specific**: muscles become stronger in the ranges and types of contraction in which they are trained [@garber2011]. Yoga develops strength mainly through isometric holds and slow concentric and eccentric movement against body weight: chaturaṅga, plank, crow, locust and the leg raises of the Sivananda class all build meaningful strength. Yoga is less effective for building maximal strength or bone density in the way that heavy resistance training does; for most students it is best seen as one part of a physically active life that also includes walking and strength training [@bull2020].
+Muscle strength develops through **progressive overload** — gradually increasing the demand — and is **specific**: muscles become stronger in the ranges and types of contraction in which they are trained [@garber2011]. Yoga develops strength mainly through isometric holds and slow concentric and eccentric movement against body weight: chaturaṅga, plank, crow, locust and the leg raises of the classical class all build meaningful strength. Yoga is less effective for building maximal strength or bone density in the way that heavy resistance training does; for most students it is best seen as one part of a physically active life that also includes walking and strength training [@bull2020].
 
 ::: tip Strength and flexibility together
 Build strength at the ends of the range you are gaining. In practice: after passively stretching the hamstrings in a forward bend, practise lifting the leg actively in leg raises. The nervous system is more willing to allow a range it can control.

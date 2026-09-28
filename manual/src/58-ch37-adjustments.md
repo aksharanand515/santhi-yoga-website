@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 37
+number: 36
 section: III
 id: adjustments
 title: Hands-on Adjustments, Consent and Appropriate Touch

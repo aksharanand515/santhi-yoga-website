@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 31
+number: 30
 section: III
 id: ethics
 title: Ethics, the Teacher–Student Relationship and Professional Boundaries

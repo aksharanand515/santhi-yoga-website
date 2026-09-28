@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 38
+number: 37
 section: III
 id: classroom
 title: Managing the Classroom and Handling Difficult Situations

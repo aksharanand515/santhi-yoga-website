@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 20
+number: 19
 section: II
 id: muscle-atlas
 title: A Yoga Teacher’s Muscle Atlas

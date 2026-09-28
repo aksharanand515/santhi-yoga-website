@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 23
+number: 22
 section: II
 id: nervous-system
 title: The Nervous System, Stress and Regulation

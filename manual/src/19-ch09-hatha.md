@@ -29,7 +29,7 @@ The traditional rationale runs roughly as follows [[T]]: mind and breath are bou
 
 ## The Haṭha Yoga Pradīpikā
 
-The ***Haṭha Yoga Pradīpikā*** (“Light on Haṭha Yoga”) was compiled by **Svātmārāma** in the fifteenth century, drawing on at least twenty earlier texts [[H]] [@mallinson2017]. It became the best-known Haṭha text and is the foundation of the Haṭha practice taught in the Sivananda tradition. It has four chapters (*upadeśa*s). Verse numbering differs slightly between editions; this manual follows @akers2002; the Bihar School edition with extensive commentary is @muktibodhananda1998.
+The ***Haṭha Yoga Pradīpikā*** (“Light on Haṭha Yoga”) was compiled by **Svātmārāma** in the fifteenth century, drawing on at least twenty earlier texts [[H]] [@mallinson2017]. It became the best-known Haṭha text and is the foundation of the Haṭha practice taught in this course. It has four chapters (*upadeśa*s). Verse numbering differs slightly between editions; this manual follows @akers2002; the Bihar School edition with extensive commentary is @muktibodhananda1998.
 
 ### Chapter 1: preparation and āsana
 
@@ -41,7 +41,7 @@ The first chapter describes the ideal practitioner and place of practice — a s
 **Yoga succeeds through:** enthusiasm, courage, patience, knowledge of the truth, determination, and giving up excessive company.
 :::
 
-Āsana is presented as the first limb, bringing “steadiness, health and lightness” (1.17). Fifteen postures are described: *svastikāsana*, *gomukhāsana*, *vīrāsana*, *kūrmāsana*, *kukkuṭāsana*, *uttāna-kūrmāsana*, *dhanurāsana*, *matsyendrāsana*, *paścimottānāsana*, *mayūrāsana*, *śavāsana*, and the four principal seated postures *siddhāsana*, *padmāsana*, *siṃhāsana* and *bhadrāsana* [@akers2002]. Siddhāsana is praised as the foremost (1.35–43). Several of the Sivananda twelve basic postures appear here in early form: *dhanurāsana* (bow), *matsyendrāsana* (the ancestor of the half spinal twist), *paścimottānāsana* (forward bend) and *śavāsana*. The chapter closes with guidance on moderate diet (*mitāhāra*), recommending pleasant, nourishing food eaten while leaving a quarter of the stomach empty [[T]].
+Āsana is presented as the first limb, bringing “steadiness, health and lightness” (1.17). Fifteen postures are described: *svastikāsana*, *gomukhāsana*, *vīrāsana*, *kūrmāsana*, *kukkuṭāsana*, *uttāna-kūrmāsana*, *dhanurāsana*, *matsyendrāsana*, *paścimottānāsana*, *mayūrāsana*, *śavāsana*, and the four principal seated postures *siddhāsana*, *padmāsana*, *siṃhāsana* and *bhadrāsana* [@akers2002]. Siddhāsana is praised as the foremost (1.35–43). Several of the twelve basic postures appear here in early form: *dhanurāsana* (bow), *matsyendrāsana* (the ancestor of the half spinal twist), *paścimottānāsana* (forward bend) and *śavāsana*. The chapter closes with guidance on moderate diet (*mitāhāra*), recommending pleasant, nourishing food eaten while leaving a quarter of the stomach empty [[T]].
 
 ### Chapter 2: prāṇāyāma and cleansing
 
@@ -90,7 +90,7 @@ Table: Principal Haṭha texts {#tab:hatha-texts}
 
 ## Haṭha Yoga today
 
-The Haṭha tradition reaches a modern yoga class mostly through three routes: its postures, its breathing practices, and its attitude — that the body is not an obstacle to the spiritual life but its instrument. The Sivananda tradition preserves the Haṭha order of practice (āsana, prāṇāyāma, relaxation, meditation) and its emphasis on the breath, while teaching a set of postures suited to householders. It is worth remembering the *Pradīpikā*’s own balance: success comes not from wearing the robes or talking about yoga, but from practice (1.66) [[T]].
+The Haṭha tradition reaches a modern yoga class mostly through three routes: its postures, its breathing practices, and its attitude — that the body is not an obstacle to the spiritual life but its instrument. The classical class taught in this course preserves the Haṭha order of practice (āsana, prāṇāyāma, relaxation, meditation) and its emphasis on the breath, while teaching a set of postures suited to householders. It is worth remembering the *Pradīpikā*’s own balance: success comes not from wearing the robes or talking about yoga, but from practice (1.66) [[T]].
 
 ::: takeaways
 - Haṭha Yoga developed between the eleventh and fifteenth centuries; *haṭha* means “force”; the sun–moon etymology is later and symbolic.
@@ -109,7 +109,7 @@ The Haṭha tradition reaches a modern yoga class mostly through three routes: i
 ::: practice
 1. Recite the six obstacles and six supports of HYP 1.15–16 from memory and give a modern example of each.
 2. Practise jala neti under supervision, then teach it to a partner, including hygiene and safety instructions.
-3. Compare the fifteen āsanas of the Pradīpikā with the Sivananda twelve basic postures. Which appear in both? Which are new?
+3. Compare the fifteen āsanas of the Pradīpikā with the twelve basic postures of this course. Which appear in both? Which are new?
 :::
 
 ::: check

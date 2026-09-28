@@ -13,7 +13,7 @@ By the end of this chapter you will be able to:
 - explain Patañjali’s three sūtras on āsana and how the meaning of āsana changed in Haṭha Yoga;
 - explain Patañjali’s account of prāṇāyāma, including its three movements and three measures;
 - define pratyāhāra and describe practical ways to cultivate it;
-- relate these three limbs to the structure of a Sivananda class;
+- relate these three limbs to the structure of a classical Haṭha class;
 - teach “steadiness and ease” as a quality within any posture.
 :::
 
@@ -93,15 +93,15 @@ Table: Practical doorways into pratyāhāra {#tab:pratyahara}
 Sit for five minutes with the eyes closed. For one minute each, notice sounds, then bodily sensations, then smells, then the taste in the mouth, then the play of light behind the eyelids — simply registering each without following it. For the last minute, let all the senses be present at once while attention rests on the breath. What changed between the first and last minute?
 :::
 
-## The three limbs in a Sivananda class
+## The three limbs in a classical class
 
-The traditional structure of a Sivananda class follows the logic of these three limbs [@lidell1983]:
+The traditional structure of the class taught in this course follows the logic of these three limbs:
 
 1. It begins with **relaxation** and **prāṇāyāma** — kapālabhāti and alternate-nostril breathing — to steady breath and mind before moving.
 2. **Āsana** follows, with short relaxations between postures so that each is absorbed.
 3. The class ends with a long **final relaxation**, a guided practice of pratyāhāra in which awareness withdraws from the body part by part.
 
-In this sense a well-taught Sivananda class is not an exercise class with breathing added; it is a practice of the outer limbs in the service of the inner ones.
+In this sense a well-taught classical class is not an exercise class with breathing added; it is a practice of the outer limbs in the service of the inner ones.
 
 ::: takeaways
 - In the Yoga Sūtra, āsana is primarily the steady, comfortable seat for meditation (2.46); Haṭha Yoga developed it into a large practice with benefits of its own.

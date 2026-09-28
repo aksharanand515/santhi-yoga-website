@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 28
+number: 27
 section: II
 id: pranayama
 title: Prāṇāyāma — Theory and Practice
@@ -19,7 +19,7 @@ By the end of this chapter you will be able to:
 
 ## The place of prāṇāyāma
 
-Prāṇāyāma is the fourth limb of Patañjali’s yoga (@ch:limbs-outer) and a central practice of Haṭha Yoga (@ch:hatha). In the Sivananda class it comes near the beginning, after the opening relaxation and before the sun salutation, so that the breath and mind are steady before the body moves. Swami Sivananda wrote extensively on it [@sivananda1935], and Swami Vishnudevananda made “proper breathing” the second of his five points.
+Prāṇāyāma is the fourth limb of Patañjali’s yoga (@ch:limbs-outer) and a central practice of Haṭha Yoga (@ch:hatha). In the classical class it comes near the beginning, after the opening relaxation and before the sun salutation, so that the breath and mind are steady before the body moves.
 
 The traditional aim of prāṇāyāma is the regulation of *prāṇa* and, through it, of the mind — ultimately preparing for concentration and meditation (YS 2.52–53) [[T]]. The physiological mechanisms are described in @ch:breathing: breathing rate and depth influence blood gases, heart-rate rhythms and the autonomic nervous system, and attention to the breath is itself a form of concentration. Proposed mechanisms linking slow breathing to calm — for instance through pulmonary stretch receptors and vagal pathways — remain largely hypotheses [@jerath2006; @brown2005] [[I]].
 
@@ -62,7 +62,7 @@ Gentle slow breathing (awareness, diaphragmatic, full yogic breath without strai
 
 ## 4. Nāḍī śodhana / anuloma viloma — alternate-nostril breathing
 
-In the Sivananda tradition, alternate-nostril breathing with retention is called ***anuloma viloma***; the preparatory form without retention is often called *nāḍī śodhana*, “purification of the channels” [@lidell1983]. The *Haṭha Yoga Pradīpikā* describes it as the principal practice for purifying the nāḍīs (HYP 2.7–10) [[T]].
+In the tradition taught here, alternate-nostril breathing with retention is called ***anuloma viloma***; the preparatory form without retention is often called *nāḍī śodhana*, “purification of the channels”. The *Haṭha Yoga Pradīpikā* describes it as the principal practice for purifying the nāḍīs (HYP 2.7–10) [[T]].
 
 **Hand position.** Right hand in *Viṣṇu mudrā*: fold the index and middle fingers into the palm; the thumb closes the right nostril, the ring finger (with the little finger) closes the left. Left-handed students may use either hand.
 
@@ -74,7 +74,7 @@ In the Sivananda tradition, alternate-nostril breathing with retention is called
 4. Close the right; exhale through the left for 4. This is one round.
 5. Practise 5–10 rounds, then lengthen the exhalation (4 : 8) over the following weeks.
 
-**Technique (Sivananda anuloma viloma, with retention).** Inhale left for 4 counts; close both nostrils and retain for 16; exhale right for 8; inhale right for 4; retain 16; exhale left for 8 — one round at the classical **1 : 4 : 2** ratio [@vishnudevananda1960].
+**Technique (classical anuloma viloma, with retention).** Inhale left for 4 counts; close both nostrils and retain for 16; exhale right for 8; inhale right for 4; retain 16; exhale left for 8 — one round at the classical **1 : 4 : 2** ratio taught in this course.
 
 !fig(nadishodhana)
 
@@ -104,7 +104,7 @@ Suggested progression over weeks: 4:4 (no retention) → 4:8 → 4:4:8 → 4:8:8
 
 ## 7. Kapālabhāti — “skull-shining” breath
 
-Traditionally one of the six cleansing practices (ṣaṭkarma) rather than a prāṇāyāma (HYP 2.35) [@akers2002], kapālabhāti is taught at the beginning of every Sivananda class [@lidell1983].
+Traditionally one of the six cleansing practices (ṣaṭkarma) rather than a prāṇāyāma (HYP 2.35) [@akers2002], kapālabhāti is taught near the beginning of every class in this course.
 
 **Technique.**
 
@@ -184,7 +184,7 @@ Table: Prāṇāyāma practices — traditional effects and physiological eviden
 - **Set up** everyone in a comfortable, upright seat first; offer cushions and chairs.
 - **Demonstrate** the technique, then guide it with a calm, steady count — or let each student count at their own pace once learned.
 - **Observe**: shoulders rising, faces straining, gasping after retention and swaying are signs to simplify.
-- **Sequence**: calming practices (diaphragmatic, nāḍī śodhana, bhrāmarī) suit the end of the day; energising practices (kapālabhāti) the morning. In the Sivananda class, kapālabhāti precedes anuloma viloma.
+- **Sequence**: calming practices (diaphragmatic, nāḍī śodhana, bhrāmarī) suit the end of the day; energising practices (kapālabhāti) the morning. In the classical class, kapālabhāti precedes anuloma viloma.
 - **Duration** for beginners: 5–10 minutes in total, increasing over months.
 - **Finish** with a few natural breaths and a moment of stillness to notice the effects.
 
@@ -205,7 +205,7 @@ Table: Prāṇāyāma practices — traditional effects and physiological eviden
 ::: practice
 1. Practise and then teach each technique in this chapter to a partner, including the safety statement for kapālabhāti.
 2. Record your breaths per minute at rest, then after five minutes of slow breathing and after three rounds of kapālabhāti; note how you feel after each.
-3. Lead the prāṇāyāma section of a Sivananda class: kapālabhāti (three rounds) and anuloma viloma (ten rounds), with a beginner option throughout.
+3. Lead the prāṇāyāma section of a classical class: kapālabhāti (three rounds) and anuloma viloma (ten rounds), with a beginner option throughout.
 :::
 
 ::: check

@@ -132,8 +132,8 @@ def fig_timeline():
           (1050, "Amṛtasiddhi\n(c. 11th c.)"),
           (1450, "Haṭha Yoga Pradīpikā\n(c. 15th c.)"),
           (1893, "Vivekananda,\nChicago 1893"),
-          (1936, "Divine Life Society\nfounded (Rishikesh)"),
-          (1978, "Sivananda ashram,\nNeyyar Dam, Kerala"),
+          (1933, "Krishnamacharya teaches\nat Mysore palace"),
+          (1966, "Iyengar, Light on\nYoga published"),
           (2015, "First International\nDay of Yoga")]
     for i, (yr, lab) in enumerate(ev):
         xx = X(yr)
@@ -271,8 +271,8 @@ def fig_fourpaths():
     return svg(W, H, "".join(b))
 
 
-reg("fourpaths", fig_fourpaths(), "Swami Sivananda’s “Yoga of Synthesis”: the four classical paths are practised together so that "
-    "head, heart, hands and will develop in balance [@vishnudevananda1960; @lidell1983]. The associations with faculties are a traditional teaching aid.")
+reg("fourpaths", fig_fourpaths(), "Integrating the four classical paths: they are practised together so that "
+    "head, heart, hands and will develop in balance. The associations with faculties are a traditional teaching aid.")
 
 
 def fig_koshas():
@@ -1336,7 +1336,7 @@ def fig_nadishodhana():
     return svg(W, H, "".join(b))
 
 
-reg("nadishodhana", fig_nadishodhana(), "The pattern of alternate-nostril breathing as taught in the Sivananda tradition [@vishnudevananda1960]. Retention (*kumbhaka*) is optional and is omitted for beginners and for anyone with contraindications.", "full")
+reg("nadishodhana", fig_nadishodhana(), "The pattern of alternate-nostril breathing as taught in this course. Retention (*kumbhaka*) is optional and is omitted for beginners and for anyone with contraindications.", "full")
 
 
 def fig_classarc():
@@ -1367,7 +1367,7 @@ def fig_classarc():
     return svg(W, H + 40, "".join(b))
 
 
-reg("classarc", fig_classarc(), "The shape of a traditional 90-minute Sivananda-style class: effort rises and falls, with savasana between postures and a long final relaxation. Timings are indicative.", "full")
+reg("classarc", fig_classarc(), "The shape of a traditional 90-minute classical class: effort rises and falls, with savasana between postures and a long final relaxation. Timings are indicative.", "full")
 
 
 def fig_peakpose():
@@ -1454,21 +1454,6 @@ def fig_cuestructure():
 reg("cuestructure", fig_cuestructure(), "The anatomy of a clear verbal cue.", "full")
 
 
-def fig_sivananda_points():
-    W, H = 470, 120
-    b = []
-    pts = [("Proper exercise", "āsana"), ("Proper breathing", "prāṇāyāma"), ("Proper relaxation", "śavāsana"),
-           ("Proper diet", "vegetarian, sattvic"), ("Positive thinking\n& meditation", "vedānta & dhyāna")]
-    for i, (n, s) in enumerate(pts):
-        x = 12 + i * 92
-        b.append(f'<circle cx="{x+41}" cy="46" r="34" fill="{C["forest"] if i == 4 else C["goldpale"]}" stroke="{C["gold"]}" stroke-width=".8"/>')
-        b.append(T(x + 41, 44 - (5 if "\n" in n else 0), n, 7.8, "#FFF8EA" if i == 4 else C["forest"], "middle", 600, family="Cormorant"))
-        b.append(T(x + 41, 58 + (3 if "\n" in n else 0), s, 5.6, "#E9E2CF" if i == 4 else C["golddeep"], "middle", 600))
-        b.append(T(x + 41, 96, str(i + 1), 9, C["gold"], "middle", 700))
-    return svg(W, H, "".join(b))
-
-
-reg("fivepoints", fig_sivananda_points(), "Swami Vishnudevananda’s five points of yoga, the practical summary of the Sivananda tradition [@vishnudevananda1960; @lidell1983].", "full")
 
 
 # --------------------------------------------------------------------- muscle location sketches
@@ -1526,7 +1511,7 @@ SURYA = [("pranamasana", "Prayer\nexhale"), ("hasta_uttanasana", "Arms up, arch\
          ("bhujangasana", "Cobra\ninhale"), ("adho_mukha", "Inverted V\nexhale"), ("lunge", "Lunge, right foot forward\ninhale"),
          ("padahastasana", "Hands to feet\nexhale"), ("hasta_uttanasana", "Arms up, arch\ninhale"), ("pranamasana", "Prayer\nexhale")]
 reg("surya", sequence_strip([n for n, _ in SURYA], [l for _, l in SURYA], per_row=6, size=70),
-    "Sūrya Namaskār as taught in the Sivananda tradition: twelve positions, each linked to one breath. The right leg steps back in position 4 and forward in position 9; "
+    "Sūrya Namaskār as taught in this course: twelve positions, each linked to one breath. The right leg steps back in position 4 and forward in position 9; "
     "the next round begins with the left leg. The lunge figures show the stepping leg in the lighter tone.", "full")
 
 TWELVE = [("sirsasana", "1 Headstand\nŚīrṣāsana"), ("sarvangasana", "2 Shoulderstand\nSarvāṅgāsana"), ("halasana", "3 Plough\nHalāsana"),
@@ -1534,4 +1519,4 @@ TWELVE = [("sirsasana", "1 Headstand\nŚīrṣāsana"), ("sarvangasana", "2 Shou
           ("salabhasana", "7 Locust\nŚalabhāsana"), ("dhanurasana", "8 Bow\nDhanurāsana"), ("ardha_matsyendrasana", "9 Half spinal twist\nArdha Matsyendrāsana"),
           ("kakasana", "10 Crow\nKākāsana"), ("padahastasana", "11 Standing forward bend\nPāda Hastāsana"), ("trikonasana", "12 Triangle\nTrikoṇāsana")]
 reg("twelve", sequence_strip([n for n, _ in TWELVE], [l.split(" ", 1)[1] for _, l in TWELVE], per_row=6, size=74),
-    "The twelve basic postures of the Sivananda sequence in their traditional order [@vishnudevananda1960]. Savāsana is taken between postures.", "full")
+    "The twelve basic postures of the classical sequence in their traditional order. Savāsana is taken between postures.", "full")

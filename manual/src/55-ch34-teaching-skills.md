@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 34
+number: 33
 section: III
 id: teaching-skills
 title: The Teacher’s Craft — Verbal Cueing, Demonstration, Observation and Voice

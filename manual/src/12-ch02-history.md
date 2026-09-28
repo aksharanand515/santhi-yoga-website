@@ -87,7 +87,6 @@ Modern yoga was shaped by encounters between Indian traditions and the colonial,
 - **Swami Vivekananda** (1863–1902) addressed the World’s Parliament of Religions in Chicago in 1893 and published *Raja Yoga* (1896), presenting Patañjali’s yoga as a universal science of mind. He was notably dismissive of Haṭha Yoga [@vivekananda1896; @demichelis2004].
 - **Scientific research** on yoga began in India in the 1920s, notably at Kaivalyadhama, founded by Swami Kuvalayananda at Lonavla in 1924.
 - **Physical culture.** In the early twentieth century Indian reformers, influenced in part by European gymnastics and physical-culture movements, developed exercise systems that drew on yogic postures. The Raja of Aundh popularised a systematic *sūrya namaskār* in the 1920s and 1930s, and **T. Krishnamacharya** (1888–1989) taught a dynamic posture practice at the Mysore palace in the 1930s whose students included B. K. S. Iyengar, K. Pattabhi Jois and his son T. K. V. Desikachar [@singleton2010].
-- **Swami Sivananda** (1887–1963) founded the Divine Life Society at Rishikesh in 1936 and published hundreds of books presenting a practical, synthetic yoga to a wide public [@dlshq2024]. His disciples carried his teaching world-wide: among them **Swami Vishnudevananda**, born in Kerala in 1927, who founded the Sivananda Yoga Vedanta Centres from 1959 and trained teachers on the first Sivananda teacher training in 1969 [@sivanandaorg2019] (@ch:sivananda).
 - In 2014 the United Nations General Assembly proclaimed 21 June as the **International Day of Yoga**, first observed in 2015.
 
 ## Continuity and change
@@ -103,7 +102,7 @@ Yoga’s aims — a steady body, a regulated breath, a focused mind and ultimate
 - Threads of yoga appear in the Vedas (sacred sound, tapas, breath); the first explicit teachings on yoga come in the Upaniṣads and early Buddhist and Jain texts.
 - The Bhagavad Gītā broadened yoga to include action and devotion; Patañjali systematised it as a discipline of mind around 325–425 CE.
 - Tantra contributed the subtle body, cakras, kuṇḍalinī and much mantra practice; Haṭha Yoga (from c. 1000 CE) made the body a primary instrument.
-- Modern posture-based yoga developed in the late nineteenth and twentieth centuries; Swami Sivananda and Swami Vishnudevananda were central figures in its spread.
+- Modern posture-based yoga developed in the late nineteenth and twentieth centuries, shaped by reformers, physical culture and teachers such as Krishnamacharya.
 :::
 
 ::: reflect
@@ -123,7 +122,7 @@ Yoga’s aims — a steady body, a regulated breath, a focused mind and ultimate
 2. The first explicit definition of yoga appears in: (a) the Ṛgveda (b) the Kaṭha Upaniṣad (c) the Haṭha Yoga Pradīpikā (d) the Gheraṇḍa Saṃhitā
 3. How many āsanas does the Haṭha Yoga Pradīpikā describe? (a) 12 (b) 15 (c) 32 (d) 84
 4. The word *haṭha* literally means: (a) sun and moon (b) force (c) posture (d) union
-5. Swami Vishnudevananda’s first teacher training course was held in: (a) 1936 (b) 1959 (c) 1969 (d) 1978
+5. The Haṭha Yoga Pradīpikā was compiled in approximately the: (a) 2nd century BCE (b) 5th century CE (c) 15th century CE (d) 19th century CE
 
 Answers: 1 b · 2 b · 3 b · 4 b · 5 c
 :::

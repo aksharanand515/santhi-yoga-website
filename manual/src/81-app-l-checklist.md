@@ -21,9 +21,9 @@ Use this checklist to track your progress through the course. Your course leader
 <tr><td>Kapālabhāti, anuloma viloma, bhrāmarī and ujjāyī as taught</td><td><span class="checkbox"></span></td><td></td></tr>
 <tr><td>Daily practice journal kept (Appendix J)</td><td><span class="checkbox"></span></td><td></td></tr>
 <tr><td colspan="3"><b>3. Portfolio</b></td></tr>
-<tr><td>Teaching assignments, Chapters 1–16</td><td><span class="checkbox"></span></td><td></td></tr>
-<tr><td>Teaching assignments, Chapters 17–29</td><td><span class="checkbox"></span></td><td></td></tr>
-<tr><td>Teaching assignments, Chapters 30–41</td><td><span class="checkbox"></span></td><td></td></tr>
+<tr><td>Teaching assignments, Chapters 1–15</td><td><span class="checkbox"></span></td><td></td></tr>
+<tr><td>Teaching assignments, Chapters 16–28</td><td><span class="checkbox"></span></td><td></td></tr>
+<tr><td>Teaching assignments, Chapters 29–40</td><td><span class="checkbox"></span></td><td></td></tr>
 <tr><td>Personal code of conduct (@ch:ethics)</td><td><span class="checkbox"></span></td><td></td></tr>
 <tr><td>Health questionnaire prepared for your own classes</td><td><span class="checkbox"></span></td><td></td></tr>
 <tr><td colspan="3"><b>4. Practicum</b></td></tr>

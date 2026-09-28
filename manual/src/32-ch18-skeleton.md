@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 18
+number: 17
 section: II
 id: skeleton
 title: The Skeletal System in Practice
@@ -14,7 +14,7 @@ By the end of this chapter you will be able to:
 - explain the structure and function of the pelvis and sacroiliac joints, and the meaning of pelvic tilt;
 - describe the rib cage, shoulder girdle, hip, knee, ankle, foot, elbow, wrist and hand in terms relevant to yoga;
 - explain how differences in bone shape between individuals affect what postures look like;
-- relate skeletal anatomy to specific postures in the Sivananda sequence.
+- relate skeletal anatomy to specific postures in the classical sequence.
 :::
 
 ## The skeleton at a glance

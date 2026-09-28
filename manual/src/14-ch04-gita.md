@@ -84,7 +84,7 @@ From chapter 7 onward the Gītā turns increasingly to devotion. Kṛṣṇa rev
 
 ## The three guṇas
 
-The Gītā adopts from Sāṃkhya the teaching that all of nature is composed of three qualities, the **guṇas**: *sattva* (clarity, harmony), *rajas* (activity, passion) and *tamas* (inertia, darkness) (ch. 14). Every experience, food and activity is a mixture of the three. Chapter 17 applies this to daily life, and it remains the basis for the yogic approach to diet and lifestyle taught in the Sivananda tradition.
+The Gītā adopts from Sāṃkhya the teaching that all of nature is composed of three qualities, the **guṇas**: *sattva* (clarity, harmony), *rajas* (activity, passion) and *tamas* (inertia, darkness) (ch. 14). Every experience, food and activity is a mixture of the three. Chapter 17 applies this to daily life, and it remains the basis for the yogic approach to diet and lifestyle taught in the tradition taught here.
 
 !fig(gunas)
 
@@ -99,7 +99,7 @@ Table: The guṇas applied to food, practice and teaching (after Bhagavad Gītā
 The first row follows the text [[T]]; the second and third are applications, not quotations [[I]]. The Gītā’s ultimate teaching goes beyond cultivating sattva: the liberated person transcends all three guṇas (14.19–26).
 
 ::: keyconcept The Gītā’s synthesis
-The Gītā does not ask you to choose one path. Action, knowledge, meditation and devotion are presented as mutually supporting — the foundation of what Swami Sivananda called the “Yoga of Synthesis” (@ch:four-paths).
+The Gītā does not ask you to choose one path. Action, knowledge, meditation and devotion are presented as mutually supporting — the foundation of the integrated practice of the four paths (@ch:four-paths).
 :::
 
 ::: takeaways

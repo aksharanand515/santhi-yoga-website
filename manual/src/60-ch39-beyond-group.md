@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 39
+number: 38
 section: III
 id: beyond-group
 title: Private Classes, Workshops and Online Teaching

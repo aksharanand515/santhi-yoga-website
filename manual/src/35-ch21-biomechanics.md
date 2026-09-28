@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 21
+number: 20
 section: II
 id: biomechanics
 title: Yoga Biomechanics — How Postures Load the Body

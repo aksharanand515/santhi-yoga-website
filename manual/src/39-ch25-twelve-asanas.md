@@ -1,16 +1,16 @@
 ---
 kind: chapter
-number: 25
+number: 24
 section: II
 id: twelve-asanas
-title: The Sivananda Twelve Basic Postures
+title: The Twelve Basic Postures
 short: The Twelve Basic Postures
 epigraph: "“Posture should be steady and comfortable.” — Yoga Sūtra 2.46"
 ---
 ::: objectives
 By the end of this chapter you will be able to:
 
-- practise and teach each of the twelve basic postures of the Sivananda sequence, with preparation, technique, breathing and alignment;
+- practise and teach each of the twelve basic postures of the classical sequence, with preparation, technique, breathing and alignment;
 - describe the joints, muscles, spinal actions, planes and loads involved in each posture;
 - recognise common mistakes and limitations and offer appropriate modifications, beginner and advanced variations and props;
 - apply the contraindications and precautions for each posture, and know when hands-on help is and is not appropriate;
@@ -19,7 +19,7 @@ By the end of this chapter you will be able to:
 
 ## How to use the posture monographs
 
-The twelve basic postures are the heart of the Sivananda class (@ch:sivananda). Each is presented in a monograph with the same structure, so that you can compare them and later use the same framework for any posture you teach:
+The twelve basic postures are the heart of the classical class (@ch:hatha, @ch:sequencing). Each is presented in a monograph with the same structure, so that you can compare them and later use the same framework for any posture you teach:
 
 1. **Names, meaning and facts** — Sanskrit (IAST and Devanāgarī), English, an approximate pronunciation guide, the family of postures, level, hold and counterpose.
 2. **Purpose** and **preparation**.
@@ -35,7 +35,7 @@ The twelve basic postures are the heart of the Sivananda class (@ch:sivananda). 
 The illustrations show one way the posture may look; they are not a template every body must match (@ch:skeleton). Where a figure carries coloured overlays, **terracotta** marks muscles that are lengthening under load and **blue** marks muscles that are working; these are schematic locations.
 
 ::: safety Before teaching any inversion
-Inversions come first in the Sivananda sequence and carry the highest demands. Before teaching headstand, shoulderstand or plough to any group, ask about neck problems, high blood pressure, heart disease, glaucoma and other eye conditions, pregnancy, osteoporosis, recent head injury and dizziness. Offer the supported alternatives (dolphin, half shoulderstand on blankets, legs up the wall) without making anyone feel singled out.
+Inversions come first in the classical sequence and carry the highest demands. Before teaching headstand, shoulderstand or plough to any group, ask about neck problems, high blood pressure, heart disease, glaucoma and other eye conditions, pregnancy, osteoporosis, recent head injury and dizziness. Offer the supported alternatives (dolphin, half shoulderstand on blankets, legs up the wall) without making anyone feel singled out.
 :::
 
 ## The sequence at a glance
@@ -73,10 +73,10 @@ After triangle, students lie down for the final relaxation described in @ch:prep
 :::
 
 ::: check
-1. Which posture immediately follows plough in the Sivananda sequence? (a) cobra (b) fish (c) forward bend (d) headstand
+1. Which posture immediately follows plough in the classical sequence? (a) cobra (b) fish (c) forward bend (d) headstand
 2. In headstand, most of the weight should be carried by: (a) the head (b) the forearms and shoulders (c) the neck (d) the hands clasped behind the head
 3. Why are folded blankets used under the shoulders in shoulderstand? (a) for comfort only (b) to reduce neck flexion (c) to increase the stretch (d) to make the pose higher
-4. In cobra as taught in the Sivananda tradition, the elbows are: (a) straight (b) bent and close to the body (c) wide (d) off the floor
+4. In cobra as taught in this course, the elbows are: (a) straight (b) bent and close to the body (c) wide (d) off the floor
 5. Which claim is *not* supported by physiology? (a) inversions raise intraocular pressure (b) headstand greatly increases blood flow to the brain (c) crow loads the wrists in extension (d) bending the knees makes forward bends easier for short hamstrings
 
 Answers: 1 b · 2 b · 3 b · 4 b · 5 b

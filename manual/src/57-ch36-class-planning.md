@@ -1,6 +1,6 @@
 ---
 kind: chapter
-number: 36
+number: 35
 section: III
 id: class-planning
 title: Class Planning and Lesson Plans
@@ -69,13 +69,13 @@ Table: Elements of a lesson plan {#tab:plan-elements}
 **Reflection after class:** What worked? What would I change? What did I notice about the students?
 :::
 
-Appendix G contains complete sample plans for 60- and 90-minute classes, a Sivananda class, and beginner, intermediate and mixed-level classes.
+Appendix G contains complete sample plans for 60- and 90-minute classes, a classical class, and beginner, intermediate and mixed-level classes.
 
 ## Planning a series
 
 Students learn best when classes build on one another. A four- or six-week series might:
 
-- introduce one element of the Sivananda class each week (for beginners);
+- introduce one element of the classical class each week (for beginners);
 - work towards a peak pose over several weeks;
 - follow a theme — the five points, the eight limbs, the koshas — one aspect per week.
 
@@ -136,5 +136,5 @@ Answers: 1 b · 2 c · 3 b · 4 b
 :::
 
 ::: assignment
-Plan a four-week series for beginners introducing the Sivananda class (one lesson plan per week). Teach week 1 in your practice group and submit all four plans with your reflection on week 1.
+Plan a four-week series for beginners introducing the classical class (one lesson plan per week). Teach week 1 in your practice group and submit all four plans with your reflection on week 1.
 :::
