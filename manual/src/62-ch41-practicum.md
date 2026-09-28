@@ -5,7 +5,7 @@ section: III
 id: practicum
 title: Practicum, Assessment and the Final Teaching Examination
 short: Practicum and Assessment
-epigraph: "“Knowledge is complete only when it is practised.”"
+epigraph: "“Knowledge is complete only when it is practised.” — a teaching maxim"
 ---
 ::: objectives
 By the end of this chapter you will be able to:

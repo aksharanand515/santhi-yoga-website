@@ -21,7 +21,7 @@ By the end of this chapter you will be able to:
 
 Prāṇāyāma is the fourth limb of Patañjali’s yoga (@ch:limbs-outer) and a central practice of Haṭha Yoga (@ch:hatha). In the Sivananda class it comes near the beginning, after the opening relaxation and before the sun salutation, so that the breath and mind are steady before the body moves. Swami Sivananda wrote extensively on it [@sivananda1935], and Swami Vishnudevananda made “proper breathing” the second of his five points.
 
-The traditional aim of prāṇāyāma is the regulation of *prāṇa* and, through it, of the mind — ultimately preparing for concentration and meditation (YS 2.52–53) [[T]]. The physiological mechanisms are described in @ch:breathing: breathing rate and depth influence blood gases, heart-rate rhythms and the autonomic nervous system, and attention to the breath is itself a form of concentration.
+The traditional aim of prāṇāyāma is the regulation of *prāṇa* and, through it, of the mind — ultimately preparing for concentration and meditation (YS 2.52–53) [[T]]. The physiological mechanisms are described in @ch:breathing: breathing rate and depth influence blood gases, heart-rate rhythms and the autonomic nervous system, and attention to the breath is itself a form of concentration. Proposed mechanisms linking slow breathing to calm — for instance through pulmonary stretch receptors and vagal pathways — remain largely hypotheses [@jerath2006; @brown2005] [[I]].
 
 ## General guidelines
 

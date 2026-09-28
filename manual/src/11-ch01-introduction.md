@@ -109,7 +109,7 @@ Keep five cautions in mind:
 - **Mechanism is not outcome.** A plausible mechanism (“the pose stretches the psoas, which attaches to the lumbar spine…”) does not show that the pose relieves back pain. Only outcome studies can show that.
 
 ::: evidence Where yoga research is strongest
-The best-studied use of yoga is chronic non-specific low back pain, where systematic reviews find small-to-moderate improvements in pain and function compared with no exercise, and results broadly similar to other exercise [@wieland2022; @cramer2013lbp]. Clinical guidelines include yoga among the recommended non-drug options for chronic low back pain [@qaseem2017]. Evidence for anxiety, depression and balance in older adults is encouraging but more mixed and generally of lower quality [@cramer2018; @cramer2013dep; @youkhana2016]. Evidence for many specific claims made about individual postures is absent.
+The best-studied use of yoga is chronic non-specific low back pain, where systematic reviews find small-to-moderate improvements in pain and function compared with no exercise, and results broadly similar to other exercise [@wieland2022; @cramer2013lbp]; large randomised trials found yoga comparable to stretching or physical therapy [@sherman2011; @saper2017] and better than usual care [@tilbrook2011]. Clinical guidelines include yoga among the recommended non-drug options for chronic low back pain [@qaseem2017]. Evidence for anxiety, depression and balance in older adults is encouraging but more mixed and generally of lower quality [@cramer2018; @cramer2013dep; @youkhana2016]. Evidence for many specific claims made about individual postures is absent.
 :::
 
 ## Yoga in Kerala

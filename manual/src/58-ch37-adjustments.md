@@ -5,7 +5,7 @@ section: III
 id: adjustments
 title: Hands-on Adjustments, Consent and Appropriate Touch
 short: Adjustments and Consent
-epigraph: "“First, do no harm.”"
+epigraph: "“First, do no harm.” — a principle of medical ethics"
 ---
 ::: objectives
 By the end of this chapter you will be able to:

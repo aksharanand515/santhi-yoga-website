@@ -460,3 +460,11 @@ blockquote { margin: 1em 6mm 1em 0; padding: 1mm 0 1mm 5mm; border-left: 2pt sol
   line-height: 1.35; color: var(--forest); }
 blockquote p { text-align: left; }
 blockquote em { font-style: italic; }
+
+/* appendix refinements */
+.app-plans td:first-child { white-space: nowrap; }
+.form-table td { border: .4pt solid #D8D0BC; }
+.form-table th { border: .4pt solid var(--forest); }
+.form-table.attendance { table-layout: fixed; }
+.form-table.attendance th { font-size: 6pt; padding: 1mm .5mm; text-align: center; }
+.form-table.attendance td { height: 8mm; padding: 0; }

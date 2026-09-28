@@ -246,7 +246,9 @@ MD_EXT = ["tables", "attr_list", "md_in_html", "def_list", "smarty", "sane_lists
 
 
 def md(text):
-    return markdown.markdown(text, extensions=MD_EXT, output_format="html")
+    out = markdown.markdown(text, extensions=MD_EXT, output_format="html", lazy_ol=False)
+    # WeasyPrint ignores <ol start>; reset the list-item counter explicitly
+    return re.sub(r'<ol start="(\d+)"', lambda m: f'<ol start="{m.group(1)}" style="counter-reset: list-item {int(m.group(1)) - 1}"', out)
 
 
 def number_headings(ch, htmltext):
@@ -448,7 +450,7 @@ def index_html(chapter_htmls):
         pats = t.get("match") or [re.escape(t["term"])]
         compiled.append((t["term"], re.compile(r"(?<![\w-])(" + "|".join(pats) + r")(?![\w-])", re.I)))
     for kind, cid, h in chapter_htmls:
-        if kind not in ("chapter", "appendix"):
+        if kind != "chapter":
             new_htmls.append(h)
             continue
         parts = re.split(r"(<[^>]+>)", h)

@@ -5,7 +5,7 @@ section: III
 id: class-planning
 title: Class Planning and Lesson Plans
 short: Class Planning
-epigraph: "“Prepare carefully; then teach the students in front of you.”"
+epigraph: "“Prepare carefully; then teach the students in front of you.” — a teaching maxim"
 ---
 ::: objectives
 By the end of this chapter you will be able to:

@@ -133,7 +133,7 @@ Plank, down dog, crow and wheel load the wrists in extension (@fig:hand). Warm t
 
 ### Pregnancy
 
-For women with uncomplicated pregnancies, physical activity including modified yoga is recommended by obstetric guidelines [@acog2020; @mottola2018]. A study of healthy women in late pregnancy found 26 yoga postures, including supine and some inverted positions, were well tolerated without changes in fetal heart rate [@polis2015]. General precautions [[C]]:
+For women with uncomplicated pregnancies, physical activity including modified yoga is recommended by obstetric guidelines [@acog2020; @mottola2018], and reviews of prenatal yoga report no increase in adverse outcomes, though most trials are small [@babbar2012]. A study of healthy women in late pregnancy found 26 yoga postures, including supine and some inverted positions, were well tolerated without changes in fetal heart rate [@polis2015]. General precautions [[C]]:
 
 - Obtain the student’s confirmation that her pregnancy is uncomplicated and that she has discussed exercise with her midwife or doctor.
 - Avoid overheating (no hot yoga), deep twists that compress the abdomen, lying on the front, strong abdominal work, breath retention and forceful breathing (kapālabhāti, bhastrikā), and deep backbends.
@@ -146,7 +146,7 @@ Teaching pregnant students beyond these general principles requires specialist p
 
 ### Older adults
 
-Yoga-based exercise improves balance and mobility in adults over 60 [@youkhana2016], and exercise that challenges balance reduces falls [@sherrington2019]. But older students are more likely to have osteoporosis, osteoarthritis, high blood pressure and reduced balance. In spinal **osteoporosis**, repeated or loaded spinal flexion (e.g. forward bends, plough) has been associated with vertebral compression fractures [@sinaki2013]: emphasise upright postures, gentle extension, standing balance with support, and leg strength. Offer chairs and walls, allow extra time for transitions, and help students up and down from the floor safely.
+Yoga-based exercise improves balance and mobility in adults over 60 [@youkhana2016], and exercise that challenges balance reduces falls [@sherrington2019]. But older students are more likely to have osteoporosis, osteoarthritis, high blood pressure and reduced balance. In spinal **osteoporosis**, repeated or loaded spinal flexion (e.g. forward bends, plough) has been associated with vertebral compression fractures [@sinaki2013]: emphasise upright postures, gentle extension, standing balance with support, and leg strength. (A widely reported claim that a short daily yoga routine reverses bone loss rests on an uncontrolled study and should not be repeated as fact [@lu2016].) Offer chairs and walls, allow extra time for transitions, and help students up and down from the floor safely. For knee and hip **osteoarthritis**, exercise is a core recommended treatment, and yoga is conditionally recommended for the knee [@kolasinski2020]: keep weight-bearing postures within a comfortable range and avoid sustained deep knee flexion under load. For **high blood pressure**, reviews suggest modest reductions with yoga that includes breathing and meditation [@hagins2013]; avoid breath retention and long inversions unless it is well controlled.
 
 ### Hypermobility
 

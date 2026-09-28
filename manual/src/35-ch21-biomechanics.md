@@ -5,7 +5,7 @@ section: II
 id: biomechanics
 title: Yoga Biomechanics — How Postures Load the Body
 short: Yoga Biomechanics
-epigraph: "“Sthira: steady. Sukha: easy. Between the two lies the whole art of posture.”"
+epigraph: "“Sthira: steady. Sukha: easy. Between the two lies the whole art of posture.” — a reflection on Yoga Sūtra 2.46"
 ---
 ::: objectives
 By the end of this chapter you will be able to:

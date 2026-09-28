@@ -5,7 +5,7 @@ section: II
 id: muscle-atlas
 title: A Yoga Teacher’s Muscle Atlas
 short: Muscle Atlas
-epigraph: "“Know the muscle, then forget it, and teach the person.”"
+epigraph: "“Know the muscle, then forget it, and teach the person.” — a teaching maxim"
 ---
 ::: objectives
 By the end of this chapter you will be able to:

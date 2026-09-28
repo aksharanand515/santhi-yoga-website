@@ -5,7 +5,7 @@ section: II
 id: mapping
 title: Asana–Anatomy Mapping Tables
 short: Asana–Anatomy Mapping
-epigraph: "“Observe the body as it is, not as the picture says it should be.”"
+epigraph: "“Observe the body as it is, not as the picture says it should be.” — a working principle of this manual"
 ---
 ::: objectives
 By the end of this chapter you will be able to:

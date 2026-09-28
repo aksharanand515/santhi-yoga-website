@@ -163,7 +163,7 @@
       role: "The main limit to forward bends with straight legs; work in locust, bridge and warrior III. Their upper tendon, at the sitting bone, is vulnerable to overload in aggressive forward bending [@goom2016]."
       train: "Lengthen patiently in forward bends (knees bent if needed); strengthen in bridge, locust and slow lowering from standing forward bends."
       asanas: "Paścimottānāsana, pāda hastāsana, adho mukha śvānāsana, trikoṇāsana (lengthening); setu bandha, śalabhāsana (working)."
-      myth: "“Tight hamstrings cause back pain.” Studies find at best weak associations; many people with tight hamstrings have no back pain and vice versa."
+      myth: "“Tight hamstrings cause back pain.” Reduced hamstring flexibility is one of several modest predictors of developing back pain in prospective studies [@sadler2017], but back pain has many causes, and many people with tight hamstrings have no back pain (and vice versa)."
       sketch: {pose: tadasana, spindles: [{from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 3.0, kind: stretch}]}
     - name: Quadriceps femoris
       latin: rectus femoris, vastus lateralis, medialis and intermedius

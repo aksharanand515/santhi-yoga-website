@@ -5,7 +5,7 @@ section: III
 id: teaching-skills
 title: The Teacher’s Craft — Verbal Cueing, Demonstration, Observation and Voice
 short: Cueing, Demonstration, Observation, Voice
-epigraph: "“Speak so that the student can do it with their eyes closed.”"
+epigraph: "“Speak so that the student can do it with their eyes closed.” — a teaching maxim"
 ---
 ::: objectives
 By the end of this chapter you will be able to:
