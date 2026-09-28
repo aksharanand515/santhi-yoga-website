@@ -10,33 +10,32 @@ Options -Indexes
   RewriteEngine On
 
   # ----------------------------------------------------------------
-  # The school's old domain, santhiyoga.in. While it still answers with
-  # its own pages, search engines and AI assistants treat it as a second
-  # school with its own tagline, times and prices, and the two sites split
-  # the school's standing between them. Every address there moves here
-  # for good, page to page where there is an equivalent.
+  # The school's old domain, santhiyoga.in. While it answered with its own
+  # pages, search engines and AI assistants treated it as a second school
+  # with its own tagline, times and prices, and the two sites split the
+  # school's standing between them.
   #
-  # These rules only act on requests for santhiyoga.in, so they are inert
-  # on santhiyogaindia.com. They work as they are if santhiyoga.in is added
-  # to this hosting as a parked or alias domain. If it stays on its own
-  # hosting, copy this block into the .htaccess there instead.
+  # Its DNS is on Cloudflare, and a Redirect Rule there sends every request
+  # here, http and https, with the path kept:
+  #   All incoming requests -> Dynamic
+  #   concat("https://santhiyogaindia.com", http.request.uri.path) -> 301
+  # Should the domain ever be pointed at this hosting instead, the first
+  # rule below does the same job.
+  #
+  # So an old address arrives here as itself. Most have a page of the same
+  # name (/about/, the Journal articles brought over from that site) or are
+  # caught by the old-address redirects further down
+  # (/yoga-teacher-training-kerala/). The rest are mapped here.
   # ----------------------------------------------------------------
   RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
-  RewriteRule ^(index\.(php|html?))?$            https://santhiyogaindia.com/ [R=301,L,NC]
-  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
-  RewriteRule ^schedule\.php$                    https://santhiyogaindia.com/services/ [R=301,L,NC]
-  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
-  RewriteRule ^(teacher-training|ttc)[^/]*\.php$ https://santhiyogaindia.com/teacher-training/ [R=301,L,NC]
-  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
-  RewriteRule ^(about[^/]*|philosophy)\.php$     https://santhiyogaindia.com/about/ [R=301,L,NC]
-  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
-  RewriteRule ^contact[^/]*\.php$                https://santhiyogaindia.com/contact/ [R=301,L,NC]
-  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
-  RewriteRule ^gallery[^/]*\.php$                https://santhiyogaindia.com/gallery/ [R=301,L,NC]
-  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
-  RewriteRule ^blog                              https://santhiyogaindia.com/blog/ [R=301,L,NC]
-  RewriteCond %{HTTP_HOST} ^(www\.)?santhiyoga\.in$ [NC]
-  RewriteRule ^                                  https://santhiyogaindia.com/ [R=301,L]
+  RewriteRule ^(.*)$ https://santhiyogaindia.com/$1 [R=301,L]
+  RewriteRule ^schedule\.php$                    /services/ [R=301,L,NC]
+  RewriteRule ^(teacher-training|ttc)[^/]*\.php$ /teacher-training/ [R=301,L,NC]
+  RewriteRule ^(about[^/]*|philosophy)\.php$     /about/ [R=301,L,NC]
+  RewriteRule ^contact[^/]*\.php$                /contact/ [R=301,L,NC]
+  RewriteRule ^gallery[^/]*\.php$                /gallery/ [R=301,L,NC]
+  # Its Kerala-kitchen article was folded into the sattvic food article here
+  RewriteRule ^blog/sattvic-food-kerala-kitchen/?$ /blog/sattvic-food-explained/ [R=301,L,NC]
 
   # One address for the whole site: https://santhiyogaindia.com (matches the canonical tags)
   RewriteCond %{HTTP_HOST} ^www\.santhiyogaindia\.com$ [NC]
