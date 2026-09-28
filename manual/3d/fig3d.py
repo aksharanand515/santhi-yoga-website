@@ -225,10 +225,14 @@ def _render(spec, png, width, view, mat, palette, overlays, margin, samples, sca
 
 
 def _optimise(png):
+    """Recompress a render: clear the colour of fully transparent pixels and keep 7 bits per
+    colour channel (visually identical, about half the size). Borders are not trimmed so the
+    stored projection stays exact."""
     from PIL import Image
-    im = Image.open(png).convert("RGBA")
-    # trim fully transparent borders is avoided (keeps projection exact); just recompress
-    im.save(png, optimize=True, compress_level=9)
+    im = np.array(Image.open(png).convert("RGBA"))
+    im[im[:, :, 3] == 0, :3] = 0
+    im[:, :, :3] &= 0xFE
+    Image.fromarray(im).save(png, optimize=True, compress_level=9)
 
 
 def points(key, pts, spec_overrides=None):

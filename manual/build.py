@@ -581,7 +581,8 @@ def main():
     out = ROOT / (PDF_NAME if not args.only else f"build/proof-{args.only.replace(',', '_')}.pdf")
     doc_obj = HTML(filename=str(BUILD / "manual.html"), base_url=str(ROOT)).render()
     print(f"Pages: {len(doc_obj.pages)}")
-    doc_obj.write_pdf(str(out))
+    # images above 300 dpi at their printed size are downsampled (keeps the file shareable)
+    doc_obj.write_pdf(str(out), optimize_images=True, dpi=300)
     print(f"PDF written: {out}")
 
 

@@ -84,6 +84,8 @@ def render_scene(key, objects, view=(0, 0), width=900, margin=0.04, points=None,
             ob.rotation_euler = m.to_euler()
         OUT.mkdir(exist_ok=True)
         R.render(png, (W, Hpx), samples)
+        from fig3d import _optimise
+        _optimise(png)
         meta.write_text(json.dumps({"w": W, "h": Hpx}))
     info = json.loads(meta.read_text())
     info["file"] = "figs3d/" + png.name
