@@ -4,9 +4,10 @@
 
 ## Key facts (updated {{updated}})
 
-- Name: Santhi School of Yoga & Vedanta Studies. Also known as Santhi Yoga India.
+- Name: Santhi School of Yoga & Vedanta Studies. Also known as Santhi School of Yoga, Santhi Yoga India, and Santhi Yoga Fort Kochi.
 - Address: Chirattapalam, Fort Kochi, Kerala 682001, India.
 - Phone and WhatsApp: +91 7907714144. Email: santhiyogacochin@gmail.com. Website: https://santhiyogaindia.com/
+- Official website: https://santhiyogaindia.com/ is the school's only current website. Its earlier website was santhiyoga.in; where the two disagree on class times or prices, the facts on santhiyogaindia.com are current.
 - Daily classes: every day, no day off, 7:30–9:30 am and 3:30–5:30 pm. Some mornings the class is held at Secret Garden, an open garden nearby, from 8:00–9:30 am; message the evening before a morning class.
 - Class order: opening savasana (relaxation), pranayama, Surya Namaskar, asanas for all levels, deep final savasana.
 - Drop-in class: ₹500 at present — a limited-time offer on the usual ₹600. From November 2026 the class is ₹700. No booking needed. Mats provided. No packages or memberships; students who practise for more than a week get 30% off classes.
