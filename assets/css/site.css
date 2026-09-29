@@ -826,9 +826,9 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 .form-status.is-error { color: var(--clay); }
 .map-box { position: relative; aspect-ratio: 4 / 3; border-radius: var(--r-xl); overflow: hidden; background: var(--sand); box-shadow: var(--shadow-float); }
 @media (min-width: 700px) { .map-box { aspect-ratio: 16 / 9; } }
-.map-box > img { width: 100%; height: 100%; object-fit: cover; }
-.map-box .map-cta { position: absolute; inset: auto 1rem 1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; border-radius: var(--r-md); }
 .map-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* the address sits under the map, not over it: Google's logo and controls stay in view */
+.map-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; }
 
 /* ---------- Booking: a letter with blanks ----------
    The form is written as the message itself. Each blank is a word you tap:
