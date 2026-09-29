@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Santhi Yoga — Google Review Flyer (A4)</title>
+<style>
+  @font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 400 600; src: url("../../assets/fonts/cormorant-garamond-latin.woff2") format("woff2"); }
+  @font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 400 500; src: url("../../assets/fonts/cormorant-garamond-italic-latin.woff2") format("woff2"); }
+  @font-face { font-family: "Inter"; font-style: normal; font-weight: 400 700; src: url("../../assets/fonts/inter-latin.woff2") format("woff2"); }
+
+  @page { size: A4 portrait; margin: 0; }
+
+  :root {
+    --paper: #FFFBF5;
+    --ivory: #FAF3E9;
+    --forest: #4B5236;
+    --forest-deep: #3A4029;
+    --kasavu: #B8914A;
+    --gold-ink: #7A5A1E;
+    --gold-light: #E2C27F;
+    --ink: #2D2A1F;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: Inter, system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; background: var(--paper); }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: var(--ink); }
+
+  .sheet {
+    position: relative;
+    width: 210mm; height: 297mm;
+    overflow: hidden;
+    z-index: 0;
+    background:
+      radial-gradient(120mm 90mm at 50% -6%, rgba(247, 215, 154, .42), transparent 70%),
+      radial-gradient(140mm 80mm at 50% 108%, rgba(239, 201, 160, .34), transparent 72%),
+      linear-gradient(180deg, #FFFBF5 0%, #FCF4E8 100%);
+  }
+
+  /* Soft ripple rings radiating from the QR code */
+  .ripples { position: absolute; left: 50%; top: 50%; width: 0; height: 0; z-index: -1; }
+  .ripples span {
+    position: absolute; border-radius: 50%;
+    border: .3mm solid rgba(184, 145, 74, var(--a));
+    width: var(--d); height: var(--d);
+    left: calc(var(--d) / -2); top: calc(var(--d) / -2);
+  }
+
+  /* Double gold frame */
+  .frame { position: absolute; inset: 8mm; border: .35mm solid rgba(184, 145, 74, .55); border-radius: 3mm; pointer-events: none; }
+  .frame::after { content: ""; position: absolute; inset: 1.6mm; border: .18mm solid rgba(184, 145, 74, .4); border-radius: 2mm; }
+  .frame-gem { position: absolute; left: 50%; width: 3.2mm; height: 3.2mm; margin-left: -1.6mm; transform: rotate(45deg); background: var(--paper); border: .35mm solid var(--kasavu); }
+  .frame-gem.top { top: 6.4mm; }
+  .frame-gem.bottom { bottom: 6.4mm; }
+
+  .content {
+    position: relative;
+    height: 100%;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+    padding: 19mm 20mm 0;
+  }
+
+  .emblem { width: 23mm; height: auto; display: block; }
+  .wordmark {
+    margin-top: 3.2mm;
+    font-family: var(--sans); font-weight: 500;
+    font-size: 7.6pt; letter-spacing: .42em; text-transform: uppercase;
+    color: var(--gold-ink);
+    padding-left: .42em;
+  }
+
+  .eyebrow {
+    margin-top: 9.5mm;
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: 36pt; line-height: 1;
+    color: var(--gold-ink);
+    display: inline-flex; align-items: center; gap: 3.2mm;
+  }
+  .heart { width: 10mm; height: 10mm; flex: none; transform: translateY(.6mm); }
+
+  h1 {
+    margin-top: 4.5mm;
+    font-family: var(--serif); font-weight: 600;
+    font-size: 58pt; line-height: .96; letter-spacing: -.005em;
+    color: var(--forest);
+  }
+  h1 .g { display: block; }
+
+  .rule {
+    margin-top: 6mm;
+    display: flex; align-items: center; gap: 4mm;
+    color: var(--kasavu);
+  }
+  .rule i { display: block; width: 22mm; height: .3mm; background: linear-gradient(90deg, transparent, var(--kasavu)); }
+  .rule i:last-child { background: linear-gradient(270deg, transparent, var(--kasavu)); }
+  .stars { display: flex; gap: 1.6mm; }
+  .stars svg { width: 5.2mm; height: 5.2mm; }
+
+  .sub {
+    margin-top: 6mm;
+    font-family: var(--sans); font-weight: 500;
+    font-size: 15pt; line-height: 1.3; letter-spacing: .005em;
+    color: var(--ink);
+  }
+
+  /* QR card */
+  .card {
+    position: relative;
+    margin-top: 7mm;
+    padding: 11mm;
+    background: #fff;
+    border-radius: 6mm;
+    border: .35mm solid rgba(184, 145, 74, .55);
+    box-shadow:
+      0 0 0 2.2mm rgba(255, 251, 245, .9),
+      0 0 0 2.55mm rgba(184, 145, 74, .28),
+      0 18mm 26mm -16mm rgba(92, 58, 20, .38),
+      0 5mm 10mm -6mm rgba(92, 58, 20, .18);
+  }
+  .qr { display: block; width: 92mm; height: 92mm; }
+  /* Viewfinder corners — a gentle cue to scan */
+  .corner { position: absolute; width: 8mm; height: 8mm; border: 0 solid var(--forest); }
+  .corner.tl { top: 3mm; left: 3mm; border-top-width: .9mm; border-left-width: .9mm; border-top-left-radius: 2.4mm; }
+  .corner.tr { top: 3mm; right: 3mm; border-top-width: .9mm; border-right-width: .9mm; border-top-right-radius: 2.4mm; }
+  .corner.bl { bottom: 3mm; left: 3mm; border-bottom-width: .9mm; border-left-width: .9mm; border-bottom-left-radius: 2.4mm; }
+  .corner.br { bottom: 3mm; right: 3mm; border-bottom-width: .9mm; border-right-width: .9mm; border-bottom-right-radius: 2.4mm; }
+
+  .thanks {
+    margin-top: auto;
+    margin-bottom: 18mm;
+    display: flex; flex-direction: column; align-items: center; gap: 2.6mm;
+  }
+  .lotus { width: 14mm; height: auto; color: var(--kasavu); }
+  .thanks p {
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: 17pt; line-height: 1.1;
+    color: var(--forest);
+  }
+</style>
+</head>
+<body>
+  <main class="sheet">
+    <div class="frame" aria-hidden="true"></div>
+    <div class="frame-gem top" aria-hidden="true"></div>
+    <div class="frame-gem bottom" aria-hidden="true"></div>
+
+    <div class="content">
+      <img class="emblem" src="santhi-emblem.png" alt="Santhi School of Yoga emblem">
+      <div class="wordmark">Santhi School of Yoga</div>
+
+      <p class="eyebrow">
+        Loved Your Experience?
+        <svg class="heart" viewBox="0 0 32 32" aria-label="yellow heart">
+          <defs>
+            <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#FFE08A"/>
+              <stop offset=".55" stop-color="#F4C542"/>
+              <stop offset="1" stop-color="#D99A1E"/>
+            </linearGradient>
+          </defs>
+          <path d="M16 28.6s-11.8-7.3-13.6-15C1.2 8.4 4.4 4 9.2 4c3 0 5.3 1.7 6.8 4 1.5-2.3 3.8-4 6.8-4 4.8 0 8 4.4 6.8 9.6-1.8 7.7-13.6 15-13.6 15z" fill="url(#hg)" stroke="#B8862A" stroke-width=".8"/>
+          <path d="M8.6 7.6c-1.9.2-3.3 1.8-3.2 3.9" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </p>
+
+      <h1><span class="g">Leave Us a</span><span class="g">Google Review</span></h1>
+
+      <div class="rule" aria-hidden="true">
+        <i></i>
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path fill="#C99F52" d="M12 1.8l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.6l-6.3 3.6 1.5-7.1L1.8 9.2 9 8.4z"/></svg>
+          <svg viewBox="0 0 24 24"><path fill="#C99F52" d="M12 1.8l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.6l-6.3 3.6 1.5-7.1L1.8 9.2 9 8.4z"/></svg>
+          <svg viewBox="0 0 24 24"><path fill="#C99F52" d="M12 1.8l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.6l-6.3 3.6 1.5-7.1L1.8 9.2 9 8.4z"/></svg>
+          <svg viewBox="0 0 24 24"><path fill="#C99F52" d="M12 1.8l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.6l-6.3 3.6 1.5-7.1L1.8 9.2 9 8.4z"/></svg>
+          <svg viewBox="0 0 24 24"><path fill="#C99F52" d="M12 1.8l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.6l-6.3 3.6 1.5-7.1L1.8 9.2 9 8.4z"/></svg>
+        </div>
+        <i></i>
+      </div>
+
+      <p class="sub">Scan the QR code &amp; share your experience.</p>
+
+      <div class="card">
+        <div class="ripples" aria-hidden="true">
+      <span style="--d:136mm; --a:.30"></span>
+      <span style="--d:162mm; --a:.22"></span>
+      <span style="--d:190mm; --a:.15"></span>
+      <span style="--d:220mm; --a:.10"></span>
+      <span style="--d:252mm; --a:.06"></span>
+    </div>
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <img class="qr" src="google-review-qr.svg" alt="QR code linking to the Santhi Yoga Google review page">
+      </div>
+
+      <div class="thanks">
+        <svg class="lotus" viewBox="0 0 56 22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+          <path d="M28 2c-4 4.5-4 11.5 0 17 4-5.5 4-12.5 0-17z"/>
+          <path d="M26.2 19C21 17.8 17.6 12.6 18 7c4.6 1.2 8 5.4 8.6 10.3"/>
+          <path d="M29.8 19C35 17.8 38.4 12.6 38 7c-4.6 1.2-8 5.4-8.6 10.3"/>
+          <path d="M24.6 19.6c-6 .6-11.2-2.2-13.6-6.6 4.4-1.2 9.2.2 12.4 3.6"/>
+          <path d="M31.4 19.6c6 .6 11.2-2.2 13.6-6.6-4.4-1.2-9.2.2-12.4 3.6"/>
+          <path d="M4 20.4h48" stroke-width=".7"/>
+        </svg>
+        <p>Thank you for supporting Santhi Yoga</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
