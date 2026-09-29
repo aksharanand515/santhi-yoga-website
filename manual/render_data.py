@@ -160,22 +160,28 @@ def all_muscles():
 
 # ------------------------------------------------------------------------------ mapping tables
 def render_mapping(arg, ch, numbered, xref):
+    """Asana–anatomy mapping table on portrait pages: related columns are paired in one cell."""
     groups = load("mapping")
     g = next(g for g in groups if g["id"] == arg.strip())
     label = numbered(ch, "tab")
     xref[f"tab:map-{g['id']}"] = f"Table {label}"
+
+    def pair(r, k1, l1, k2, l2):
+        return (f'<span class="ml">{l1}</span>{md(r[k1], True)}'
+                f'<span class="ml">{l2}</span>{md(r[k2], True)}')
     rows = []
     for r in g["rows"]:
-        fig = ""
-        if r.get("fig") and r["fig"] in P:
-            fig = F3.img(r["fig"], 15, 13, px=260)
+        fig = F3.img(r["fig"], 22, 16, px=300) if r.get("fig") and r["fig"] in P else ""
         aid = "map-" + slug(r["asana"])
-        rows.append(f'<tr id="{aid}"><td>{md(r["asana"], True)}</td><td class="mapfig">{fig}</td>'
-                    + "".join(f"<td>{md(r[k], True)}</td>" for k in
-                              ["joints", "movement", "muscles", "action", "loading", "limitations", "modifications"]) + "</tr>")
-    head = ("<thead><tr><th>Asana</th><th></th><th>Joints</th><th>Movement</th><th>Key muscles</th>"
-            "<th>Muscle action</th><th>Loading</th><th>Common limitations</th><th>Modifications</th></tr></thead>")
-    return (f'<div class="landscape"><div class="tcap" id="tab-map-{g["id"]}"><span class="tabnum">Table {label}</span> '
+        rows.append(f'<tr id="{aid}"><td class="mapname">{md(r["asana"], True)}<div class="mapfig">{fig}</div></td>'
+                    f'<td>{pair(r, "joints", "Joints", "movement", "Movement")}</td>'
+                    f'<td>{pair(r, "muscles", "Key muscles", "action", "Action")}</td>'
+                    f'<td>{md(r["loading"], True)}</td>'
+                    f'<td>{pair(r, "limitations", "Common limitations", "modifications", "Modifications")}</td></tr>')
+    head = ('<thead><tr><th style="width:17%">Asana</th><th style="width:20%">Joints · movement</th>'
+            '<th style="width:25%">Muscles · action</th><th style="width:15%">Loading</th>'
+            '<th>Limitations · modifications</th></tr></thead>')
+    return (f'<div class="maptable"><div class="tcap" id="tab-map-{g["id"]}"><span class="tabnum">Table {label}</span> '
             f'{md(g["title"], True)}</div><table>{head}<tbody>{"".join(rows)}</tbody></table>'
             f'<p class="small muted">{md(g.get("note", ""), True)}</p></div>')
 

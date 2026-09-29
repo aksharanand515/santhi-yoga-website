@@ -34,7 +34,7 @@ The maps are deliberately simplified. Every posture involves more muscles than a
 To prepare for a posture, look at its **joints** and **key muscles** and choose earlier postures that mobilise those joints and warm those muscles. To choose a counterpose, look at its **movement** and choose a posture that moves the main joints gently in the opposite direction. To prepare modifications, read the **limitations** column before class and have the props ready.
 :::
 
-The mapping tables are printed on landscape pages.
+In each table, related columns are paired: joints with the movement, key muscles with their action, and common limitations with the modifications that answer them.
 
 !mapping(twelve)
 
