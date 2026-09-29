@@ -1,0 +1,115 @@
+{
+  "location": "locations/7917990689267313823",
+  "note": "The full list of services on the Google Business Profile, as sent with the Windsor.ai update_service_items action. That action replaces the whole list, so edit this file and send all of it. Prices change in November 2026: drop-in ₹700, private ₹2,000.",
+  "updated": "2026-09-29",
+  "service_items": [
+    {
+      "service_type_id": "job_type_id:hatha_yoga",
+      "description": "Daily Hatha Yoga classes in Fort Kochi, taught in the traditional way since 2005. Posture, breath and stillness at an unhurried pace, in small groups open to every level.",
+      "price": { "currency_code": "INR", "amount": 500 }
+    },
+    {
+      "service_type_id": "job_type_id:vinyasa_yoga",
+      "description": "Vinyasa yoga in Fort Kochi: postures linked with the breath, taught with the same care for alignment as our traditional Hatha classes."
+    },
+    {
+      "service_type_id": "job_type_id:ashtanga_yoga",
+      "description": "Ashtanga yoga in Fort Kochi, taught with close attention to breath, alignment and hands-on guidance."
+    },
+    {
+      "service_type_id": "job_type_id:group_lessons",
+      "description": "Group yoga classes in Kochi, morning and evening, seven days a week. Beginners, long-term practitioners and visiting teachers all practise together.",
+      "price": { "currency_code": "INR", "amount": 500 }
+    },
+    {
+      "service_type_id": "job_type_id:private_lessons",
+      "description": "One-to-one yoga instruction in Fort Kochi, adapted to your experience, an injury, or a specific practice goal.",
+      "price": { "currency_code": "INR", "amount": 1500 }
+    },
+    {
+      "service_type_id": "job_type_id:morning_flow",
+      "description": "Early morning yoga in Fort Kochi from 7:30 am, every day: a steady start with asana, pranayama and meditation.",
+      "price": { "currency_code": "INR", "amount": 500 }
+    },
+    {
+      "service_type_id": "job_type_id:pregnancy_yoga",
+      "description": "Prenatal yoga in Fort Kochi, adapted to each stage of pregnancy, with gentle asana and breathing practice."
+    },
+    {
+      "service_type_id": "job_type_id:teacher_training",
+      "description": "28-day 200-hour Yoga Teacher Training in Kerala at our Fort Kochi school: asana, pranayama, anatomy, teaching methodology and Vedanta philosophy, in small groups.",
+      "price": { "currency_code": "EUR", "amount": 899 }
+    },
+    {
+      "service_type_id": "job_type_id:meditation_instruction",
+      "description": "Guided meditation instruction in Fort Kochi, taught in the traditional Vedanta method for beginners and experienced practitioners."
+    },
+    {
+      "service_type_id": "job_type_id:yoga_meditation",
+      "description": "Meditation practised as part of the yoga tradition: breath, concentration and stillness, woven into our daily classes in Kochi."
+    },
+    {
+      "service_type_id": "job_type_id:retreats",
+      "description": "Seven-day yoga retreats in Kerala, in Fort Kochi and Munnar, with daily asana, pranayama, meditation and philosophy."
+    },
+    {
+      "service_type_id": "job_type_id:group_sessions",
+      "description": "Group meditation and pranayama sessions at our Fort Kochi school, open to all levels."
+    },
+    {
+      "service_type_id": "job_type_id:private_sessions",
+      "description": "One-to-one meditation and pranayama guidance in Fort Kochi, adapted to your own practice.",
+      "price": { "currency_code": "INR", "amount": 1500 }
+    },
+    {
+      "category_id": "gcid:yoga_studio",
+      "display_name": "Drop-In Yoga Class",
+      "description": "A single two-hour morning or evening Hatha Yoga class in Fort Kochi, every day at 7:30 am and 3:30 pm. Open to visitors and complete beginners. No booking, membership or experience needed; mats provided.",
+      "language_code": "en",
+      "price": { "currency_code": "INR", "amount": 500 }
+    },
+    {
+      "category_id": "gcid:yoga_studio",
+      "display_name": "Pranayama",
+      "description": "Yogic breathing in Fort Kochi: part of every daily class, and taught in depth in private sessions and workshops.",
+      "language_code": "en"
+    },
+    {
+      "category_id": "gcid:yoga_studio",
+      "display_name": "Yoga Nidra",
+      "description": "Yoga Nidra in Fort Kochi: guided deep relaxation that rests the body and quietens the mind, suitable for every level.",
+      "language_code": "en"
+    },
+    {
+      "category_id": "gcid:yoga_studio",
+      "display_name": "200-Hour Yoga Teacher Training",
+      "description": "28-day 200-hour yoga teacher training in Kerala, held at our Fort Kochi school in small groups. Covers Hatha asana, pranayama, anatomy, teaching methodology and Vedanta philosophy — for practitioners ready to teach, and for those deepening their own practice.",
+      "language_code": "en",
+      "price": { "currency_code": "EUR", "amount": 899 }
+    },
+    {
+      "category_id": "gcid:yoga_studio",
+      "display_name": "Advanced Yoga Teacher Training",
+      "description": "Continued study for certified teachers at our Kochi school: advanced asana, deeper pranayama, Vedanta philosophy and mentored teaching practice.",
+      "language_code": "en"
+    },
+    {
+      "category_id": "gcid:yoga_studio",
+      "display_name": "Yoga Retreat in Kerala",
+      "description": "Seven-day residential yoga retreats in Fort Kochi and Munnar, Kerala, combining daily asana, pranayama, meditation and philosophy.",
+      "language_code": "en"
+    },
+    {
+      "category_id": "gcid:yoga_studio",
+      "display_name": "Yoga Course in Kochi",
+      "description": "A structured multi-day yoga course for students staying longer in Kochi, building progressively through asana, breath and meditation.",
+      "language_code": "en"
+    },
+    {
+      "category_id": "gcid:yoga_studio",
+      "display_name": "Meditation & Pranayama Sessions",
+      "description": "Guided meditation and breathing practice in Fort Kochi, taught in the traditional Vedanta method alongside our yoga classes.",
+      "language_code": "en"
+    }
+  ]
+}
