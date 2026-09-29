@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ------------------------------------------------------------------
-   Santhi Yoga India — page build
+   Santhi School of Yoga & Vedanta Studies — page build
    Stamps the shared head, header, footer and icon sprite into every
    page between <!-- build:NAME --> ... <!-- /build:NAME --> markers, and
    prepares each page so it is fast and reads the same with or without

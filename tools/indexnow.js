@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ------------------------------------------------------------------
-   Santhi Yoga India — tell search engines what changed
+   Santhi School of Yoga & Vedanta Studies — tell search engines what changed
 
    IndexNow pushes URLs to Bing and Yandex straight away instead of
    waiting to be crawled. Bing matters beyond Bing itself: ChatGPT's

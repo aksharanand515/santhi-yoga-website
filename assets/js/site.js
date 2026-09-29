@@ -1,5 +1,5 @@
 /* ==================================================================
-   Santhi Yoga India — shared site script
+   Santhi School of Yoga & Vedanta Studies — shared site script
    Vanilla JS. GSAP + ScrollTrigger drive motion; Lenis is the only
    smooth-scroll engine. Everything degrades to a complete static page
    when scripts fail or the visitor prefers reduced motion.
