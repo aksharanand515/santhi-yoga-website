@@ -1120,16 +1120,6 @@
       setStatus('Your email app should open with the enquiry ready to send. If it doesn’t, write to ' + EMAIL + '.', true);
     });
 
-    var mapBtn = $('#load-map');
-    if (mapBtn) mapBtn.addEventListener('click', function () {
-      var frame = document.createElement('iframe');
-      frame.src = 'https://www.google.com/maps?q=' + encodeURIComponent('Santhi School of Yoga & Vedanta Studies, House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India') + '&output=embed';
-      frame.title = 'Map showing Santhi School of Yoga & Vedanta Studies, House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India';
-      frame.loading = 'lazy';
-      frame.referrerPolicy = 'no-referrer-when-downgrade';
-      $('.map-box').appendChild(frame);
-      mapBtn.closest('.map-cta').remove();
-    });
   })();
 
   /* ---------- Conversion tracking -------------------------------------
