@@ -29,7 +29,7 @@ const GA_ID = 'G-B04M93CEGM';
 // e.g. 'https://wise.com/pay/me/yourname'. Every link marked data-wise points
 // here. Left empty, those links open WhatsApp asking Achu for payment details
 // instead, so the reserve page still works.
-const WISE_URL = '';
+const WISE_URL = 'https://wise.com/pay/me/aksharananda';
 const WISE_FALLBACK = 'https://wa.me/917907714144?text=' + encodeURIComponent('Namaste Achu, I would like to pay the €90 deposit to reserve my place on the teacher training. Could you send me the Wise payment link?');
 
 const pages = [

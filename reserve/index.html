@@ -26,13 +26,13 @@
   <link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/site.min.css?v=8c23962d">
+  <link rel="stylesheet" href="../assets/css/site.min.css?v=b5f52142">
   <script>document.documentElement.classList.add('js');</script>
   <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved -->
   <script defer src="../assets/js/vendor/gsap.min.js"></script>
   <script defer src="../assets/js/vendor/ScrollTrigger.min.js"></script>
   <script defer src="../assets/js/vendor/lenis.min.js"></script>
-  <script defer src="../assets/js/site.min.js?v=0ddad05c"></script>
+  <script defer src="../assets/js/site.min.js?v=b4cbf1da"></script>
   <!-- Google Analytics 4, loaded after the page has finished loading -->
   <script>
     window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }
@@ -69,7 +69,7 @@
       {
         "@type": "Question",
         "name": "How do I pay the deposit?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Through Wise. The button on this page opens the school's Wise page in a new tab. Send €90, add the reference shown on the page so the payment can be matched to you, then send Achu a short confirmation on WhatsApp or by email." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Through Wise, or by bank transfer to the school's Federal Bank account in India. The button on this page opens the school's Wise page in a new tab; the bank details are on the page too. Send €90, add the reference shown on the page so the payment can be matched to you, then send Achu a short confirmation on WhatsApp or by email." }
       },
       {
         "@type": "Question",
@@ -289,17 +289,30 @@
             </li>
 
             <li class="rsv-step" data-step="3">
-              <div class="rsv-legend"><span class="rsv-num" aria-hidden="true">3</span><span><b>Pay the €90 deposit with Wise</b><small>In euros or your own currency, at the real exchange rate</small></span></div>
+              <div class="rsv-legend"><span class="rsv-num" aria-hidden="true">3</span><span><b>Pay the €90 deposit</b><small>With Wise, in euros or your own currency, or by bank transfer</small></span></div>
               <div class="rsv-pay">
                 <dl class="rsv-copy">
                   <div><dt>Amount</dt><dd><span class="rsv-copy-val">€90</span><button class="rsv-copybtn" type="button" data-copy="90" aria-label="Copy the amount, 90 euros">Copy</button></dd></div>
                   <div><dt>Reference</dt><dd><span class="rsv-copy-val" id="rv-ref">TTC JAN27</span><button class="rsv-copybtn" type="button" data-copy-from="rv-ref" aria-label="Copy the payment reference">Copy</button></dd></div>
                 </dl>
-                <a class="cta cta--primary rsv-wise" id="rv-wise" data-wise href="https://wa.me/917907714144?text=Namaste%20Achu%2C%20I%20would%20like%20to%20pay%20the%20%E2%82%AC90%20deposit%20to%20reserve%20my%20place%20on%20the%20teacher%20training.%20Could%20you%20send%20me%20the%20Wise%20payment%20link%3F" target="_blank" rel="noopener" data-magnetic>
+                <a class="cta cta--primary rsv-wise" id="rv-wise" data-wise href="https://wise.com/pay/me/aksharananda" target="_blank" rel="noopener" data-magnetic>
                   <span class="cta-label" data-roll>Pay €90 with Wise</span>
                   <span class="cta-icon" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
                 </a>
-                <p class="rsv-fine">Wise opens in a new tab. Enter <b>€90</b> and paste the reference, so Achu can match the payment to you. Then come back here for the last step.</p>
+                <p class="rsv-fine">Wise opens in a new tab, on the school’s Wise account <b>@aksharananda</b>. Enter <b>€90</b> and paste the reference, so Achu can match the payment to you. Then come back here for the last step.</p>
+                <details class="rsv-bank" id="rv-bank">
+                  <summary>Prefer a bank transfer? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+                  <div class="rsv-bank-panel">
+                    <p class="rsv-fine">Send the equivalent of <b>€90</b> to the school’s account in India, with the same reference as above.</p>
+                    <dl class="rsv-copy rsv-copy--bank">
+                      <div><dt>Account name</dt><dd><span class="rsv-copy-val">Aksharanand A S</span><button class="rsv-copybtn" type="button" data-copy="Aksharanand A S" aria-label="Copy the account name">Copy</button></dd></div>
+                      <div><dt>Bank</dt><dd><span class="rsv-copy-val">Federal Bank, India</span></dd></div>
+                      <div><dt>Account number</dt><dd><span class="rsv-copy-val">10330100238095</span><button class="rsv-copybtn" type="button" data-copy="10330100238095" aria-label="Copy the account number">Copy</button></dd></div>
+                      <div><dt>IFSC</dt><dd><span class="rsv-copy-val">FDRL0001033</span><button class="rsv-copybtn" type="button" data-copy="FDRL0001033" aria-label="Copy the IFSC code">Copy</button></dd></div>
+                      <div><dt>SWIFT / BIC</dt><dd><span class="rsv-copy-val">FDRLINBBCHN</span><button class="rsv-copybtn" type="button" data-copy="FDRLINBBCHN" aria-label="Copy the SWIFT code">Copy</button></dd></div>
+                    </dl>
+                  </div>
+                </details>
               </div>
             </li>
 
@@ -442,11 +455,11 @@
           </details>
           <details>
             <summary>When is the balance due? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-            <div class="panel"><p>Within the first three days of the course. Every 2027 batch starts on the 1st of the month, so the balance of €809 is due by the 3rd: by 3 January for the January batch, 3 February for February, and so on. You can pay it through Wise again, or ask Achu about other ways to pay.</p></div>
+            <div class="panel"><p>Within the first three days of the course. Every 2027 batch starts on the 1st of the month, so the balance of €809 is due by the 3rd: by 3 January for the January batch, 3 February for February, and so on. You can pay it through Wise or by bank transfer again, or ask Achu about other ways to pay.</p></div>
           </details>
           <details>
-            <summary>How do I pay with Wise? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-            <div class="panel"><p>The “Pay €90 with Wise” button opens the school’s Wise page in a new tab. Send €90 and paste the reference from step 3, which carries your batch and your name, so the payment can be matched to you. Wise converts from your own currency at the real exchange rate. If it does not work from your country, message Achu and he will send another way to pay.</p></div>
+            <summary>How do I pay the deposit? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="panel"><p>The “Pay €90 with Wise” button opens the school’s Wise page in a new tab. Send €90 and paste the reference from step 3, which carries your batch and your name, so the payment can be matched to you. Wise converts from your own currency at the real exchange rate.</p><p>Would rather use your own bank? Open “Prefer a bank transfer?” in step 3 for the school’s Federal Bank account, with its IFSC and SWIFT codes, and use the same reference.</p></div>
           </details>
           <details>
             <summary>How do I know my place is confirmed? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>

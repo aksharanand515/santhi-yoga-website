@@ -1217,13 +1217,13 @@
       var lines = [
         'Namaste Achu,',
         '',
-        'I have paid the €' + DEPOSIT + ' deposit on Wise to reserve my place on the 200-hour Teacher Training, ' + b.month + ' ' + b.year + ' batch (' + b.range + ').',
+        'I have paid the €' + DEPOSIT + ' deposit ' + (saved.method === 'bank' ? 'by bank transfer' : 'on Wise') + ' to reserve my place on the 200-hour Teacher Training, ' + b.month + ' ' + b.year + ' batch (' + b.range + ').',
         '',
         'Name: ' + (name || '—'),
       ];
       if (email) lines.push('Email: ' + email);
       if (country) lines.push('Travelling from: ' + country);
-      lines.push('Wise reference: ' + reference(b), '', 'I understand the balance of €' + BALANCE + ' is due by ' + b.due + ', within the first three days of the course. Could you confirm my place?', '', 'With thanks,', name || '');
+      lines.push('Payment reference: ' + reference(b), '', 'I understand the balance of €' + BALANCE + ' is due by ' + b.due + ', within the first three days of the course. Could you confirm my place?', '', 'With thanks,', name || '');
       return lines.join('\n').trim();
     }
 
@@ -1289,10 +1289,20 @@
     // Paying is never blocked; a missing name only means a vaguer reference
     $('#rv-wise').addEventListener('click', function () {
       var b = current();
-      saved.paid = true; store.set(saved);
+      saved.paid = true; saved.method = 'wise'; store.set(saved);
       steps[3].classList.add('is-ready');
       update(false);
       track('begin_checkout', { currency: 'EUR', value: DEPOSIT, items: [{ item_name: '200-hour TTC deposit', item_variant: b ? b.value + ' ' + b.year : '' }] });
+    });
+
+    // Opening the bank details counts as choosing a bank transfer
+    var bankBox = $('#rv-bank');
+    if (bankBox) bankBox.addEventListener('toggle', function () {
+      if (!bankBox.open) return;
+      saved.paid = true; saved.method = 'bank'; store.set(saved);
+      steps[3].classList.add('is-ready');
+      update(false);
+      track('begin_checkout', { currency: 'EUR', value: DEPOSIT, payment_type: 'bank_transfer' });
     });
 
     ['#rv-confirm', '#rv-mail'].forEach(function (sel) {
