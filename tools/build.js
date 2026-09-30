@@ -25,6 +25,13 @@ const write = (p, s) => fs.writeFileSync(path.join(ROOT, p), s);
 // Google Analytics 4 Measurement ID, e.g. 'G-ABC123XYZ'. Leave empty for no analytics.
 const GA_ID = 'G-B04M93CEGM';
 
+// The school's Wise payment link, where the teacher training deposit is paid,
+// e.g. 'https://wise.com/pay/me/yourname'. Every link marked data-wise points
+// here. Left empty, those links open WhatsApp asking Achu for payment details
+// instead, so the reserve page still works.
+const WISE_URL = 'https://wise.com/pay/me/aksharananda';
+const WISE_FALLBACK = 'https://wa.me/917907714144?text=' + encodeURIComponent('Namaste Achu, I would like to pay the €90 deposit to reserve my place on the teacher training. Could you send me the Wise payment link?');
+
 const pages = [
   // The home page ends on the booking letter instead of the call-to-action band
   { file: 'index.html',                  base: '',    key: 'home',     cta: false },
@@ -34,6 +41,8 @@ const pages = [
   { file: 'gallery/index.html',          base: '../', key: 'gallery',  cta: true },
   { file: 'contact/index.html',          base: '../', key: 'contact',  cta: false },
   { file: 'book/index.html',             base: '../', key: 'book',     cta: false },
+  // Ends on its own invitation to reserve, so no shared call-to-action band
+  { file: 'reserve/index.html',          base: '../', key: 'reserve',  cta: false },
   // Served for any unknown address, so its links must be absolute, not relative.
   { file: '404.html',                    base: '/',   key: 'none',     cta: false },
 ];
@@ -226,6 +235,7 @@ for (const page of pages) {
   if (html.includes('<!-- build:booking -->')) html = stamp(html, 'booking', render(partials.booking, page), page.file);
   html = splitHeadings(html);
   html = responsiveImages(html, page.file, warn);
+  html = html.replace(/(<a\b[^>]*\bdata-wise\b[^>]*\bhref=")[^"]*(")/g, (_, a, b) => a + (WISE_URL || WISE_FALLBACK).replace(/&/g, '&amp;') + b);
   // Inline only the icons this page uses
   const used = [...new Set([...html.matchAll(/<use href="#i-([a-z-]+)"/g)].map((m) => m[1]))];
   const unknown = used.filter((id) => !ICONS[id] && !BRAND_ICONS[id]);
@@ -333,4 +343,5 @@ if (unfiled.length) {
 write('llms.txt', doc);
 console.log(`wrote llms.txt (${articles.size} journal pages)`);
 
+if (!WISE_URL) console.warn('note: WISE_URL is empty in tools/build.js, so the reserve page asks for payment details on WhatsApp instead of opening Wise');
 if (errors) { console.error(errors + ' problem(s)'); process.exit(1); }

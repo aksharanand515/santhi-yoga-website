@@ -1122,6 +1122,233 @@
 
   })();
 
+  /* ---------- Reserve: hold a teacher training place ----------
+     Choosing a batch and typing a name fill in the ticket, the Wise payment
+     reference and the confirmation message together. Batches that have
+     already begun are closed, each one counts down to its first morning,
+     and the choices are remembered on this device so a visitor who leaves
+     to find a card comes back to the same reservation. /reserve/?batch=April
+     (or ?month=April, as the booking page uses) preselects a batch. */
+  (function () {
+    var form = $('#reserve-form');
+    if (!form) return;
+    var WA = 'https://wa.me/917907714144', EMAIL = 'santhiyogacochin@gmail.com', KEY = 'santhi-reserve';
+    var DEPOSIT = 90, BALANCE = 809, DAY = 864e5;
+    var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var batches = $$('.rsv-batch', form);
+    var nameIn = $('#rv-name'), emailIn = $('#rv-email'), countryIn = $('#rv-country');
+    var ticket = $('.ticket', form), status = $('#rv-status');
+    var steps = $$('.rsv-step', form);
+    var bar = $('#rsv-bar'), section = $('#reserve');
+    var store = {
+      get: function () { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } },
+      set: function (v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) { /* private mode: nothing to keep */ } }
+    };
+    function track(name, params) { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); }
+
+    // Dates are the school's: midnight in Kerala, whatever the visitor's clock says
+    var now = Date.now();
+    function startOf(label) { return new Date(label.dataset.start + 'T00:00:00+05:30').getTime(); }
+    function daysTo(t) { return Math.ceil((t - now) / DAY); }
+    function info(label) {
+      var start = new Date(label.dataset.start + 'T12:00:00Z');
+      var month = MONTHS[start.getUTCMonth()], year = start.getUTCFullYear();
+      var due = new Date(start.getTime() + 2 * DAY);
+      return {
+        label: label, value: $('input', label).value, month: month, year: year,
+        range: start.getUTCDate() + ' – ' + (start.getUTCDate() + 27) + ' ' + month + ' ' + year,
+        due: due.getUTCDate() + ' ' + MONTHS[due.getUTCMonth()],
+        days: daysTo(startOf(label)),
+        code: month.slice(0, 3).toUpperCase() + String(year).slice(2)
+      };
+    }
+
+    // Close batches that are under way; count down to the rest
+    var open = batches.filter(function (label) {
+      var d = daysTo(startOf(label)), soon = $('[data-soon]', label), input = $('input', label);
+      if (d <= 0) {
+        label.classList.add('is-past'); input.disabled = true; input.checked = false;
+        if (soon) soon.textContent = 'Under way';
+        return false;
+      }
+      if (soon) soon.textContent = d === 1 ? 'Begins tomorrow' : 'Begins in ' + d + ' days';
+      return true;
+    });
+
+    // The next batch, for the hero and the bar
+    var next = open.length ? info(open[0]) : null;
+    $$('[data-next-month]').forEach(function (el) { if (next) el.textContent = next.month + ' ' + next.year; });
+    $$('[data-next-countdown]').forEach(function (el) {
+      if (next) el.textContent = 'Next batch · begins in ' + next.days + (next.days === 1 ? ' day' : ' days');
+    });
+
+    function current() {
+      var input = $('input[name="batch"]:checked', form);
+      return input ? info(input.closest('.rsv-batch')) : null;
+    }
+    function select(value) {
+      var match = batches.filter(function (l) { return !l.classList.contains('is-past') && $('input', l).value.toLowerCase() === String(value || '').toLowerCase(); })[0];
+      if (!match) match = open[0];
+      if (match) $('input', match).checked = true;
+    }
+
+    // Restore: the address wins over what was remembered
+    var saved = store.get();
+    var params = new URLSearchParams(location.search);
+    select(params.get('batch') || params.get('month') || saved.batch);
+    if (saved.name) nameIn.value = saved.name;
+    if (saved.email) emailIn.value = saved.email;
+    if (saved.country) countryIn.value = saved.country;
+
+    function setText(id, text) {
+      var el = document.getElementById(id);
+      if (!el || el.textContent === text) return;
+      el.textContent = text;
+      if (!reduceMotion) { el.classList.remove('is-new'); void el.offsetWidth; el.classList.add('is-new'); }
+    }
+
+    function reference(b) {
+      var who = nameIn.value.trim().replace(/\s+/g, ' ').toUpperCase().slice(0, 22);
+      return 'TTC ' + b.code + (who ? ' ' + who : '');
+    }
+
+    function message(b) {
+      var name = nameIn.value.trim(), email = emailIn.value.trim(), country = countryIn.value.trim();
+      var lines = [
+        'Namaste Achu,',
+        '',
+        'I have paid the €' + DEPOSIT + ' deposit ' + (saved.method === 'bank' ? 'by bank transfer' : 'on Wise') + ' to reserve my place on the 200-hour Teacher Training, ' + b.month + ' ' + b.year + ' batch (' + b.range + ').',
+        '',
+        'Name: ' + (name || '—'),
+      ];
+      if (email) lines.push('Email: ' + email);
+      if (country) lines.push('Travelling from: ' + country);
+      lines.push('Payment reference: ' + reference(b), '', 'I understand the balance of €' + BALANCE + ' is due by ' + b.due + ', within the first three days of the course. Could you confirm my place?', '', 'With thanks,', name || '');
+      return lines.join('\n').trim();
+    }
+
+    function update(fromUser) {
+      var b = current();
+      batches.forEach(function (l) { l.classList.toggle('is-on', $('input', l).checked); });
+      if (!b) return;
+      var name = nameIn.value.trim();
+      setText('tk-month', b.month);
+      setText('tk-year', String(b.year));
+      setText('tk-range', b.range);
+      setText('tk-due', b.due);
+      var tkName = $('#tk-name');
+      tkName.classList.toggle('is-empty', !name);
+      setText('tk-name', name || 'your name');
+      var soon = $('#tk-soon');
+      soon.hidden = false;
+      soon.textContent = 'Your first morning is ' + b.days + (b.days === 1 ? ' day' : ' days') + ' away';
+      setText('rv-ref', reference(b));
+      var bm = $('#bar-month'); if (bm) bm.textContent = b.month + ' ' + b.year;
+
+      var text = message(b);
+      $('#rv-confirm').href = WA + '?text=' + encodeURIComponent(text);
+      $('#rv-mail').href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Teacher training deposit paid: ' + b.month + ' ' + b.year + (name ? ', ' + name : '')) + '&body=' + encodeURIComponent(text);
+      var ask = $('#rv-ask');
+      if (ask) ask.href = WA + '?text=' + encodeURIComponent('Namaste Achu, I am thinking about the ' + b.month + ' ' + b.year + ' teacher training and have a question: ');
+
+      // Which step is next
+      var done = [true, !!name, !!saved.paid, false];
+      steps.forEach(function (s, i) { s.classList.toggle('is-done', done[i]); });
+      var active = done.indexOf(false);
+      steps.forEach(function (s, i) { s.classList.toggle('is-active', i === active); });
+
+      saved = Object.assign(saved, { batch: b.value, name: name, email: emailIn.value.trim(), country: countryIn.value.trim() });
+      store.set(saved);
+      if (fromUser && ticket && !reduceMotion) { ticket.classList.remove('is-changing'); void ticket.offsetWidth; ticket.classList.add('is-changing'); }
+    }
+
+    form.addEventListener('change', function (e) {
+      if (e.target.name === 'batch') {
+        update(true);
+        var b = current();
+        track('reserve_select_batch', { batch: b.value + ' ' + b.year });
+      }
+    });
+    [nameIn, emailIn, countryIn].forEach(function (el) {
+      el.addEventListener('input', function () { el.removeAttribute('aria-invalid'); update(false); });
+    });
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+    function setStatus(text, ok) {
+      status.textContent = text;
+      status.className = 'form-status ' + (ok ? 'is-ok' : 'is-error');
+    }
+    function needName() {
+      if (nameIn.value.trim()) return false;
+      nameIn.setAttribute('aria-invalid', 'true');
+      nameIn.focus({ preventScroll: true });
+      nameIn.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+      return true;
+    }
+
+    // Paying is never blocked; a missing name only means a vaguer reference
+    $('#rv-wise').addEventListener('click', function () {
+      var b = current();
+      saved.paid = true; saved.method = 'wise'; store.set(saved);
+      steps[3].classList.add('is-ready');
+      update(false);
+      track('begin_checkout', { currency: 'EUR', value: DEPOSIT, items: [{ item_name: '200-hour TTC deposit', item_variant: b ? b.value + ' ' + b.year : '' }] });
+    });
+
+    // Opening the bank details counts as choosing a bank transfer
+    var bankBox = $('#rv-bank');
+    if (bankBox) bankBox.addEventListener('toggle', function () {
+      if (!bankBox.open) return;
+      saved.paid = true; saved.method = 'bank'; store.set(saved);
+      steps[3].classList.add('is-ready');
+      update(false);
+      track('begin_checkout', { currency: 'EUR', value: DEPOSIT, payment_type: 'bank_transfer' });
+    });
+
+    ['#rv-confirm', '#rv-mail'].forEach(function (sel) {
+      $(sel).addEventListener('click', function (e) {
+        if (needName()) {
+          e.preventDefault();
+          setStatus('Add your name in step 2, so Achu can match your deposit to your place.', false);
+          return;
+        }
+        var b = current();
+        setStatus('Your confirmation is written out and ready to send. Achu will reply to confirm your place.', true);
+        track('reserve_confirm', { method: sel === '#rv-confirm' ? 'whatsapp' : 'email', batch: b ? b.value + ' ' + b.year : '', currency: 'EUR', value: DEPOSIT });
+      });
+    });
+
+    // Copy the amount and the reference
+    $$('.rsv-copybtn', form).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = btn.dataset.copy || (document.getElementById(btn.dataset.copyFrom) || {}).textContent || '';
+        var done = function () {
+          btn.textContent = 'Copied'; btn.classList.add('is-copied');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('is-copied'); }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () {});
+        else {
+          var t = document.createElement('textarea'); t.value = text; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+          document.body.appendChild(t); t.select();
+          try { document.execCommand('copy'); done(); } catch (err) { /* the text is on screen to copy by hand */ }
+          t.remove();
+        }
+      });
+    });
+
+    // The bar: shown once the hero has gone, hidden while the reservation itself is in view
+    if (bar && section && 'IntersectionObserver' in window) {
+      var heroEl = $('.rsv-hero'), heroGone = false, inReserve = false, closing = false;
+      var show = function () { bar.setAttribute('data-show', heroGone && !inReserve && !closing ? 'true' : 'false'); };
+      new IntersectionObserver(function (en) { heroGone = !en[0].isIntersecting; show(); }).observe(heroEl);
+      new IntersectionObserver(function (en) { inReserve = en[0].isIntersecting; show(); }, { rootMargin: '-35% 0px -35% 0px' }).observe(section);
+      var close = $('.cta-band');
+      if (close) new IntersectionObserver(function (en) { closing = en[0].isIntersecting; show(); }).observe(close);
+    }
+
+    update(false);
+  })();
+
   /* ---------- Conversion tracking -------------------------------------
      Sends a GA4 event when someone takes an action that could turn into a
      booking. These names are registered as key events in GA4, so the
@@ -1138,6 +1365,8 @@
     document.addEventListener('click', function (e) {
       var link = e.target.closest ? e.target.closest('a[href]') : null;
       if (!link) return;
+      // The reserve page reports its own confirmation links as reserve_confirm
+      if (link.id === 'rv-confirm' || link.id === 'rv-mail') return;
       var href = link.getAttribute('href') || '';
       var where = link.id === 'wa-send' ? 'booking_form'
         : link.id === 'float-wa' ? 'floating_button'

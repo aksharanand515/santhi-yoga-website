@@ -128,6 +128,7 @@
     "ttc": "dates, fees and what is included",
     "contact": "directions, phone, WhatsApp and email",
     "book": "choose a class, retreat or training and send the details by WhatsApp",
+    "reserve": "reserve a teacher training place with a €90 deposit (10%), balance due within the first three days of the course",
     "gallery": "photographs of the school, classes and retreats",
     "blog": "all guides"
   },
@@ -138,6 +139,7 @@
     "ttc": "200-hour teacher training",
     "contact": "Contact",
     "book": "Book a class",
+    "reserve": "Reserve a teacher training place",
     "gallery": "Gallery",
     "blog": "Journal"
   },
@@ -146,6 +148,7 @@
     "about",
     "services",
     "ttc",
+    "reserve",
     "gallery",
     "contact",
     "book",
