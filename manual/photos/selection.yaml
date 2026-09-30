@@ -1,0 +1,80 @@
+# pose key -> Wikimedia Commons file; optional: box [x0, y0, x1, y1] (0..1 crop of the original;
+# [0, 0, 1, 1] = whole photo, used where the background is too busy for the automatic crop), flip, lift.
+# Chosen for accuracy against the manual's descriptions; the Heinz Grill 1992 studio series is used
+# wherever it shows the version taught, so most monographs share one practitioner and backdrop.
+adho_mukha:
+  box: [0, 0, 1, 1]
+  file: File:5adho mukha shvanasana.JPG
+ardha_matsyendrasana:
+  file: File:Ardha Matsyendrasana, Heinz Grill 1992.jpg
+ashtanga_namaskara:
+  file: File:6Ashtanga Namaskara.JPG
+baddha_konasana:
+  file: File:Flickr - Nicholas T - Amber.jpg
+balasana:
+  file: File:Balasana.JPG
+bhujangasana:
+  file: File:Bhujangasana, Heinz Grill 1992.jpg
+cat:
+  file: File:Yoga at Your Park - Bitilasana.jpg
+dhanurasana:
+  file: File:Dhanurasana, Heinz Grill 1992.jpg
+halasana:
+  file: File:Halasana, Heinz Grill 1992.jpg
+hasta_uttanasana:
+  box: [0, 0, 1, 1]
+  file: File:2Urdva Hastasana.JPG
+kakasana:
+  file: File:Kakasana, Heinz Grill 1992.jpg
+leg_raise:
+  box: [0, 0, 1, 1]
+  file: File:Ardha maerudhandaasana.jpg
+lunge:
+  file: File:ASHWA SANCHALANASANA.jpg
+matsyasana:
+  file: File:Matsyasana, Heinz Grill 1992.jpg
+mayurasana:
+  file: File:Mayurasana, Heinz Grill 1992.jpg
+meditation_front:
+  file: File:Padmasana, Heinz Grill 1992.jpg
+navasana:
+  file: File:Ardha Navāsana-half-boat.jpg
+padahastasana:
+  file: File:Uttanasana, Heinz Grill 1992.jpg
+paschimottanasana:
+  file: File:Paschimottanasana, Heinz Grill 1992.jpg
+plank:
+  file: File:Woman-in-black-tank-top-and-black-leggings-doing-yoga-3823063.jpg
+pranamasana:
+  box: [0, 0, 1, 1]
+  file: File:1Pranamasana.JPG
+salabhasana:
+  file: File:Shalabhasana, Heinz Grill 1992.jpg
+sarvangasana:
+  file: File:Sarvangasana, Heinz Grill (1992).jpg
+savasana:
+  file: File:Helen yoga2.jpg
+sirsasana:
+  file: File:Shirshasana, Heinz Grill 1992.jpg
+sphinx:
+  file: File:A style of bhujangasana.JPG
+tadasana:
+  file: File:Mr-yoga-mountain-pose-1.jpg
+trikonasana:
+  file: File:Flickr - Nicholas T - Bent.jpg
+urdhva_dhanurasana:
+  file: File:Chakrasana, Heinz Grill 1992.jpg
+ustrasana:
+  file: File:Ustrasana, Heinz Grill 1992.jpg
+utkatasana:
+  file: File:Utkatasana Yoga-Asana Nina-Mel.jpg
+viparita_karani:
+  file: File:Inverted leg pose.JPG
+virabhadrasana2:
+  file: File:Yoga Warrior I.jpg
+vrksasana:
+  file: File:Tadasana, Heinz Grill 1992.jpg
+bakasana:
+  file: File:Cranse Pose 5.jpg
+malasana:
+  file: File:Upaveśāsana.jpg

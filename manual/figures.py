@@ -9,6 +9,7 @@ import math
 
 from posefig import ACTIVE
 import fig3dhtml as F3
+import photohtml as PH
 
 FIG = {}
 
@@ -1038,13 +1039,17 @@ def sequence_strip(names, labels, numbers=True, w=470, per_row=6, size=66):
         r, c = divmod(i, per_row)
         x = c * cell_w + 4
         y = r * (size + 30) + 4
-        b.append(box(x, y, cell_w - 8, size, "#FAF6EE", "none", 4))
-        info = F3.render(n, 420)
-        bw, bh = cell_w - 16, size - 10
-        sc = min(bw / info["w"], bh / info["h"])
-        ww, hh = info["w"] * sc, info["h"] * sc
-        el, _, _ = F3.svg_image(info, x + (cell_w - 8 - ww) / 2, y + size - hh - 4, ww)
-        b.append(el)
+        if PH.has(n):
+            b.append(box(x, y, cell_w - 8, size, C["paper"], C["line"], 4, .35))
+            b.append(PH.photo_svg(n, x + 2, y + 2, cell_w - 12, size - 4, "strip"))
+        else:
+            b.append(box(x, y, cell_w - 8, size, "#FAF6EE", "none", 4))
+            info = F3.render(n, 420)
+            bw, bh = cell_w - 16, size - 10
+            sc = min(bw / info["w"], bh / info["h"])
+            ww, hh = info["w"] * sc, info["h"] * sc
+            el, _, _ = F3.svg_image(info, x + (cell_w - 8 - ww) / 2, y + size - hh - 4, ww)
+            b.append(el)
         if numbers:
             b.append(f'<circle cx="{f(x+9)}" cy="{f(y+9)}" r="6" fill="{C["forest"]}"/>' + T(x + 9, y + 11.4, str(i + 1), 6.4, "#fff", "middle", 700))
         for k, ln in enumerate(lab.split("\n")):

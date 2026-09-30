@@ -3,3 +3,5 @@ __pycache__/
 # 3D pipeline: regenerable caches and dev output
 3d/cache/
 3d/out/
+photos/cache/
+photos/cand/

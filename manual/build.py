@@ -232,7 +232,7 @@ def process_figures_tables(ch, text):
             return ""
         return "\n" + fn(arg, ch, numbered, XREF) + "\n"
 
-    text = re.sub(r"^!(asana|muscles|mapping|glossary|poseindex|cues|sequence|table|allasanas|musclegroup)\(([^)]*)\)\s*$",
+    text = re.sub(r"^!(asana|muscles|mapping|glossary|poseindex|cues|sequence|table|allasanas|musclegroup|photocredits)\(([^)]*)\)\s*$",
                   datablock, text, flags=re.M)
     return text
 

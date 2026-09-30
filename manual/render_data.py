@@ -17,6 +17,7 @@ import yaml
 from poses import P
 import figures
 import fig3dhtml as F3
+import photohtml as PH
 
 DATA = pathlib.Path(__file__).parent / "data"
 _cache = {}
@@ -57,7 +58,9 @@ def render_asana(arg, ch, numbered, xref):
     data = {a["id"]: a for a in load("asanas")}
     a = data[arg.strip()]
     n = a.get("number", "")
-    main = F3.img(a["fig"], 92, 80, px=1100, muscles=a.get("muscles3d"))
+    photo = PH.has(a["fig"])
+    main = (PH.photo_img(a["fig"], 92, 84, "hero") if photo
+            else F3.img(a["fig"], 92, 80, px=1100, muscles=a.get("muscles3d")))
     label = numbered(ch, "fig")
     xref[f"fig:asana-{a['id']}"] = f"Figure {label}"
     facts = "".join(f"<dt>{k}</dt><dd>{md(v, True)}</dd>" for k, v in a["facts"].items())
@@ -70,11 +73,11 @@ def render_asana(arg, ch, numbered, xref):
              f'<div><div class="asana-dev">{a.get("devanagari", "")}</div>'
              f'<div class="asana-pron">{md(a.get("pronunciation", ""), True)}</div></div></div>')
     legend = ""
-    if a.get("muscles3d"):
+    if a.get("muscles3d") and not photo:
         legend = (f' <span style="color:{F3.WORK}">■</span> working (contracting) '
                   f'<span style="color:{F3.STRETCH}">■</span> lengthening')
-    H.append('<div class="asana-hero"><figure class="fig-main" id="fig-asana-' + a["id"] + '">' + main +
-             f'<figcaption><span class="fignum">Figure {label}</span> {md(a.get("caption", a["english"]), True)}{legend}</figcaption></figure>'
+    H.append('<div class="asana-hero"><figure class="fig-main' + (' has-photo' if photo else '') + '" id="fig-asana-' + a["id"] + '">' + main +
+             f'<figcaption><span class="fignum">Figure {label}</span> {md(a.get("photo_caption" if photo else "caption", a["english"]) or a.get("caption"), True)}{legend}</figcaption></figure>'
              f'<dl class="asana-facts">{facts}</dl></div>')
     H.append(f'<p class="lead">{md(a["meaning"], True)}</p>')
 
@@ -92,7 +95,13 @@ def render_asana(arg, ch, numbered, xref):
     sec("06", "Major joints and their positions",
         f'<table class="kv"><thead><tr><th>Joint</th><th>Position / movement</th></tr></thead><tbody>{jt}</tbody></table>')
     mt = "".join(f"<tr><td>{md(r[0], True)}</td><td>{md(r[1], True)}</td><td>{md(r[2], True)}</td></tr>" for r in a["muscles"])
-    sec("07", "Major muscles and what they are doing",
+    mmap = ""
+    if photo and a.get("muscles3d"):
+        mimg = F3.img(a["fig"], 58, 34, px=1100, muscles=a.get("muscles3d"))
+        mmap = (f'<figure class="muscle-map">{mimg}<figcaption>Muscle map: '
+                f'<span style="color:{F3.WORK}">■</span> working (contracting) '
+                f'<span style="color:{F3.STRETCH}">■</span> lengthening</figcaption></figure>')
+    sec("07", "Major muscles and what they are doing", mmap +
         f'<table><thead><tr><th style="width:26%">Muscle(s)</th><th style="width:26%">Action in this pose</th><th>Role</th></tr></thead><tbody>{mt}</tbody></table>')
     sec("08", "Spinal action and planes of movement", md(a["spine"]) + md(a["planes"]))
     sec("09", "Biomechanics: how the pose loads the body", md(a["biomechanics"]))
@@ -108,8 +117,10 @@ def render_asana(arg, ch, numbered, xref):
     # variations with figures
     vf = []
     for v in a.get("variation_figs", []):
-        s = F3.img(v["fig"], 50, 40, px=640)
-        vf.append(f"<figure>{s}<figcaption>{md(v['caption'], True)}</figcaption></figure>")
+        if not PH.has(v["fig"]):
+            continue   # only accurate photographs are shown; the text describes the others
+        s = PH.photo_img(v["fig"], 52, 39, "var")
+        vf.append(f"<figure class=\"has-photo\">{s}<figcaption>{md(v['caption'], True)}</figcaption></figure>")
     sec("10", "Modifications, variations and props",
         (f'<div class="var-figs">{"".join(vf)}</div>' if vf else "") +
         f'<h4>Modifications</h4>{ul(a["modifications"])}'
@@ -171,7 +182,7 @@ def render_mapping(arg, ch, numbered, xref):
                 f'<span class="ml">{l2}</span>{md(r[k2], True)}')
     rows = []
     for r in g["rows"]:
-        fig = F3.img(r["fig"], 22, 16, px=300) if r.get("fig") and r["fig"] in P else ""
+        fig = PH.photo_img(r["fig"], 22, 16.5, "thumb") if r.get("fig") and PH.has(r["fig"]) else ""
         aid = "map-" + slug(r["asana"])
         rows.append(f'<tr id="{aid}"><td class="mapname">{md(r["asana"], True)}<div class="mapfig">{fig}</div></td>'
                     f'<td>{pair(r, "joints", "Joints", "movement", "Movement")}</td>'
@@ -276,11 +287,16 @@ def render_sequence(arg, ch, numbered, xref):
             items.append((k.strip(), v.strip()))
     cells = []
     for i, (k, lab) in enumerate(items):
-        s = F3.box(k, 22, 17, px=300)
+        s = (f'<div class="ph has-photo" style="width:22mm;height:17mm">{PH.photo_img(k, 22, 16.5, "strip")}</div>'
+             if PH.has(k) else F3.box(k, 22, 17, px=300))
         main, _, sub = lab.partition("/")
         cells.append(f'<div class="step">{s}<span class="sn">{i+1}</span><span class="sl"><b>{html.escape(main)}</b>'
                      f'{"<br>" + html.escape(sub) if sub else ""}</span></div>')
     return '<div class="seq">' + "".join(cells) + "</div>"
+
+
+def render_photocredits(arg, ch, numbered, xref):
+    return PH.render_photocredits(arg, ch, numbered, xref)
 
 
 def render_table(arg, ch, numbered, xref):

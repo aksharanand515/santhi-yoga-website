@@ -10,6 +10,7 @@
   fig: sirsasana
   muscles3d: {work: [deltoid, triceps, trapezius, serratus, abdominals, erector_spinae, gluteus_maximus, adductors], stretch: []}
   caption: "Śīrṣāsana, side view. Weight is carried mainly through the forearms and shoulders; the crown of the head rests lightly on the floor."
+  photo_caption: "Śīrṣāsana, side view: fingers interlaced behind the head, forearms and elbows on the floor carrying most of the weight, the body in one vertical line."
   overlay:
     - {from: [ut, 0.8, post, 0.6], to: [ua1, 0.35, mid], w: 2.4, kind: active}
     - {from: [lt, 0.1, ant], to: [ut, 0.8, ant], w: 1.8, kind: active}
@@ -93,7 +94,7 @@
     - "Practise with the back a few centimetres from a wall; use the wall only for security, not to lean on."
     - "Stay at the walking-in stage or in the tuck, with the feet close to the floor."
     - "Substitute dolphin or supported half shoulderstand for students who should not load the head."
-  beginner: "Dolphin and walking in (shown above), held for 5–10 breaths, then child’s pose. When these are steady for a minute, try lifting one foot, then both knees into the tuck, at a wall."
+  beginner: "Dolphin and walking in, held for 5–10 breaths, then child’s pose. When these are steady for a minute, try lifting one foot, then both knees into the tuck, at a wall."
   advanced: "Variations with the legs (splits, lotus in headstand, legs lowered to horizontal with control) and the tripod headstand (hands flat, śīrṣāsana II), taught only when the classic pose is held steadily for several minutes."
   props_use:
     - "Folded blanket or firm mat under head and forearms."
@@ -121,6 +122,7 @@
   fig: sarvangasana
   muscles3d: {work: [erector_spinae, gluteus_maximus, hamstrings, triceps, abdominals], stretch: [neck_extensors]}
   caption: "Sarvāṅgāsana. In the version shown the trunk is close to vertical and supported by the hands; the neck is strongly flexed, which is why blankets under the shoulders are recommended."
+  photo_caption: "Sarvāṅgāsana: the hands support the back, the trunk and legs rise close to vertical, and the weight rests on the shoulders and upper arms."
   overlay:
     - {from: [ut, 0.85, post], to: [nk, 1.0, post], w: 1.4, kind: stretch}
     - {from: [lt, 0.3, post], to: [th1, 0.25, post], w: 2.4, kind: active}
@@ -225,6 +227,7 @@
   fig: halasana
   muscles3d: {work: [abdominals, triceps], stretch: [hamstrings, gastrocnemius, erector_spinae, neck_extensors]}
   caption: "Halāsana: legs over the head with the toes on the floor. The back of the legs and the whole back are lengthened; the neck remains strongly flexed."
+  photo_caption: "Halāsana: the legs pass over the head and the toes rest on the floor; the arms lie on the floor behind the back."
   overlay:
     - {from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 2.6, kind: stretch}
     - {from: [lt, 0.2, post], to: [ut, 0.9, post], w: 2.0, kind: stretch}
@@ -320,6 +323,7 @@
   fig: matsyasana
   muscles3d: {work: [erector_spinae, rhomboids, trapezius, triceps], stretch: [intercostals, pectorals, rectus_abdominis, scm]}
   caption: "Matsyāsana as taught in this course: legs extended, elbows on the floor under the body, chest lifted and the crown of the head resting lightly on the floor."
+  photo_caption: "Matsyāsana with the legs extended: the elbows press down, the chest lifts and the crown of the head rests lightly on the floor."
   overlay:
     - {from: [lt, 0.1, ant], to: [ut, 0.85, ant], w: 1.8, kind: stretch}
     - {from: [lt, 0.4, post], to: [ut, 0.9, post], w: 1.8, kind: active}
@@ -413,6 +417,7 @@
   fig: paschimottanasana
   muscles3d: {work: [quadriceps], stretch: [hamstrings, gastrocnemius, erector_spinae, gluteus_maximus]}
   caption: "Paścimottānāsana: the fold comes first from the hips; the spine then rounds gently over the legs."
+  photo_caption: "Paścimottānāsana: the fold begins at the hips and the spine lengthens over the straight legs, the hands holding the feet."
   overlay:
     - {from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 2.6, kind: stretch}
     - {from: [sh1, 0.1, post], to: [sh1, 0.8, post], w: 1.8, kind: stretch}
@@ -514,6 +519,7 @@
   fig: bhujangasana
   muscles3d: {work: [erector_spinae, trapezius, rhomboids, triceps, gluteus_maximus], stretch: [rectus_abdominis, hip_flexors]}
   caption: "Bhujaṅgāsana as taught in this course: elbows bent and close to the body, the chest lifted mainly by the back muscles."
+  photo_caption: "Bhujaṅgāsana: the chest lifts with the pubic bone and legs on the floor; this practitioner takes the hands further forward and the arch higher than the beginner’s version taught in class (elbows bent and close to the body)."
   overlay:
     - {from: [lt, 0.1, post], to: [ut, 0.85, post], w: 1.8, kind: active}
     - {from: [lt, 0.1, ant], to: [ut, 0.8, ant], w: 1.7, kind: stretch}
@@ -604,6 +610,7 @@
   fig: salabhasana
   muscles3d: {work: [gluteus_maximus, hamstrings, erector_spinae, latissimus, triceps, deltoid], stretch: [hip_flexors]}
   caption: "Śalabhāsana (full locust): chin on the floor, arms under the body, both legs lifted by the back and hip extensors."
+  photo_caption: "Śalabhāsana (full locust), shown at full height: chin down, arms under the body, both legs lifted together. Most students lift the legs only a little way."
   overlay:
     - {from: [lt, 0.3, post], to: [th1, 0.25, post], w: 2.6, kind: active}
     - {from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 2.2, kind: active}
@@ -693,6 +700,7 @@
   fig: dhanurasana
   muscles3d: {work: [hamstrings, gluteus_maximus, erector_spinae, rhomboids], stretch: [quadriceps, iliopsoas, rectus_abdominis, pectorals, deltoid]}
   caption: "Dhanurāsana: the hands hold the ankles; the legs pressing back into the hands lift the chest and thighs, making the body a bow and the arms its string."
+  photo_caption: "Dhanurāsana: the hands hold the ankles and the legs press back into the hands, lifting the chest and thighs."
   overlay:
     - {from: [th1, 0.1, ant], to: [sh1, 0.05, ant], w: 2.4, kind: stretch}
     - {from: [lt, 0.1, ant], to: [ut, 0.8, ant], w: 1.7, kind: stretch}
@@ -784,6 +792,7 @@
   fig: ardha_matsyendrasana
   muscles3d: {work: [obliques, erector_spinae], stretch: [gluteus_medius:R, gluteus_maximus:R]}
   caption: "Ardha Matsyendrāsana, front view (schematic): the right knee is raised with the foot outside the left knee; the left arm presses against the right knee; the trunk turns to the right from the rib cage."
+  photo_caption: "Ardha Matsyendrāsana: one foot crosses over the opposite knee; the arm presses against the raised knee and the trunk turns towards it."
   facts:
     Family: "Seated twist"
     Level: "Beginner (easy twist) to intermediate"
@@ -874,6 +883,7 @@
   fig: kakasana
   muscles3d: {work: [serratus, pectorals, deltoid, triceps, forearm_flexors, abdominals, hip_flexors], stretch: []}
   caption: "Kākāsana: hands on the floor, elbows bent, knees resting on the backs of the upper arms, the body tilted forward until the feet lift."
+  photo_caption: "Kākāsana: hands flat on the floor, elbows bent, knees resting on the backs of the upper arms, the feet lifted."
   overlay:
     - {from: [ua1, 0.05, post], to: [fa1, 0.04, post], w: 1.8, kind: active}
     - {from: [ut, 0.4, ant], to: [ut, 0.85, post], w: 1.8, kind: active}
@@ -970,6 +980,7 @@
   fig: padahastasana
   muscles3d: {work: [quadriceps], stretch: [hamstrings, gastrocnemius, erector_spinae, gluteus_maximus]}
   caption: "Pāda Hastāsana: folding from the hips with the hands holding the backs of the ankles; the spine and neck hang relaxed."
+  photo_caption: "Pāda Hastāsana: folding forward from the hips, the hands under or holding the feet, the head and neck relaxed."
   overlay:
     - {from: [lt, 0.0, post], to: [sh1, 0.06, post], w: 2.6, kind: stretch}
     - {from: [sh1, 0.1, post], to: [sh1, 0.8, post], w: 1.8, kind: stretch}
@@ -1062,6 +1073,7 @@
   fig: trikonasana
   muscles3d: {work: [obliques:R, quadriceps, gluteus_medius, deltoid, trapezius], stretch: [obliques:L, latissimus:L, hamstrings:R, adductors:R]}
   caption: "Trikoṇāsana, front view: legs wide and straight, the trunk bending laterally over the front leg, the lower hand on the shin and the upper arm vertical."
+  photo_caption: "Trikoṇāsana: legs wide and straight, the trunk bending sideways over the front leg, the lower hand at the shin or ankle and the upper arm vertical."
   facts:
     Family: "Standing lateral bend"
     Level: "Beginner"
