@@ -529,6 +529,13 @@ main { position: relative; z-index: 1; }
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
   animation: ctaOrbit 5.5s linear infinite; }
 @keyframes ctaOrbit { to { --cta-a: 360deg; } }
+/* Turning the thread repaints the button on every frame, which a phone feels
+   for as long as the page is open. On touch screens it goes round twice each
+   time the button comes into view (site.js adds .orbit-on), then rests. */
+@media (hover: none), (pointer: coarse) {
+  .btn-orbit, .cta--primary::after { animation-play-state: paused; }
+  .btn-orbit.orbit-on, .cta--primary.orbit-on::after { animation-play-state: running; animation-iteration-count: 2; }
+}
 .cta-label { position: relative; display: block; overflow: hidden; line-height: 1.3; }
 .cta-roll { display: block; white-space: pre; }
 .cta-char { position: relative; display: inline-block; }
@@ -566,9 +573,7 @@ main { position: relative; z-index: 1; }
 .phero::before { content: ""; position: absolute; z-index: -1; right: clamp(-12rem, -6vw, -2rem); top: 54%; width: clamp(22rem, 50vw, 44rem); aspect-ratio: 1; translate: 0 -50%; border-radius: 50%; pointer-events: none;
   background: radial-gradient(closest-side, rgba(255, 236, 196, .95), rgba(252, 218, 160, .55) 40%, rgba(250, 210, 160, 0) 72%); }
 .phero::after { content: ""; position: absolute; z-index: -1; right: clamp(-16rem, -9vw, -4rem); top: 54%; width: clamp(28rem, 62vw, 54rem); aspect-ratio: 1; translate: 0 -50%; border-radius: 50%; pointer-events: none;
-  background: repeating-radial-gradient(circle, rgba(184, 145, 74, 0) 0 46px, rgba(184, 145, 74, .16) 46px 47px); -webkit-mask: radial-gradient(closest-side, #000 40%, transparent); mask: radial-gradient(closest-side, #000 40%, transparent);
-  animation: ringsTurn 90s linear infinite; }
-@keyframes ringsTurn { to { rotate: 360deg; } }
+  background: repeating-radial-gradient(circle, rgba(184, 145, 74, 0) 0 46px, rgba(184, 145, 74, .16) 46px 47px); -webkit-mask: radial-gradient(closest-side, #000 40%, transparent); mask: radial-gradient(closest-side, #000 40%, transparent); }
 .phero .grid-2 { align-items: center; }
 .crumbs { display: flex; flex-wrap: wrap; gap: .5rem; font-size: .7rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-55); }
 .crumbs a { transition: color .4s var(--ease); }
@@ -1227,7 +1232,7 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 .portrait-sun { position: absolute; z-index: -1; left: -18%; top: -10%; width: 62%; aspect-ratio: 1; border-radius: 50%;
   background: radial-gradient(closest-side, rgba(255, 230, 180, .95), rgba(247, 205, 145, .5) 55%, transparent); }
 .portrait-sun::after { content: ""; position: absolute; inset: -30%; border-radius: 50%; background: repeating-radial-gradient(circle, transparent 0 22px, rgba(184, 145, 74, .18) 22px 23px);
-  -webkit-mask: radial-gradient(closest-side, #000 30%, transparent); mask: radial-gradient(closest-side, #000 30%, transparent); animation: ringsTurn 80s linear infinite; }
+  -webkit-mask: radial-gradient(closest-side, #000 30%, transparent); mask: radial-gradient(closest-side, #000 30%, transparent); }
 .teacher-portrait { isolation: isolate; }
 
 /* Student voices in a pane of glass */
@@ -1258,7 +1263,9 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
    waiting for scripts. site.js only holds back content that is still below
    the fold (.rv-wait / .sp-wait / .cl-wait) and plays it in on arrival. */
 :root { --ease-out2: cubic-bezier(.25, .46, .45, .94); --ease-out3: cubic-bezier(.215, .61, .355, 1); --ease-inout3: cubic-bezier(.645, .045, .355, 1); }
-@keyframes fadeRise { from { opacity: 0; translate: 0 var(--rise, 36px); filter: blur(6px); } }
+/* from a hair above transparent, like heroFade below: Chrome skips fully
+   transparent text when it times Largest Contentful Paint */
+@keyframes fadeRise { from { opacity: .01; translate: 0 var(--rise, 36px); filter: blur(6px); } }
 @keyframes wordRise { from { translate: 0 110%; } }
 @keyframes clipOpen { from { clip-path: inset(18% 6% 18% 6% round 24px); } to { clip-path: inset(0% 0% 0% 0% round 0px); } }
 @keyframes zoomSettle { from { scale: 1.15; } }
@@ -1306,12 +1313,26 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 .js .hero-stars .ic { animation: starPop .7s var(--ease) backwards; animation-delay: calc(1.6s + var(--s, 0) * 90ms); }
 .hero-stars .ic:nth-child(2) { --s: 1; } .hero-stars .ic:nth-child(3) { --s: 2; } .hero-stars .ic:nth-child(4) { --s: 3; } .hero-stars .ic:nth-child(5) { --s: 4; }
 /* Inner page hero intro */
-@keyframes pheroClip { from { clip-path: inset(100% 0% 0% 0% round 999px 999px 24px 24px); } to { clip-path: inset(0% 0% 0% 0% round 999px 999px 24px 24px); } }
+/* opens from a sliver rather than nothing, so the photo counts as painted when
+   it first appears instead of when the arch has finished opening */
+@keyframes pheroClip { from { clip-path: inset(97% 0% 0% 0% round 999px 999px 24px 24px); } to { clip-path: inset(0% 0% 0% 0% round 999px 999px 24px 24px); } }
 @keyframes pheroZoom { from { scale: 1.18; } }
 .js .phero-media .frame { animation: pheroClip 1.8s var(--ease-inout3) .1s backwards; }
 .js .phero-media img { animation: pheroZoom 2.2s var(--ease-out3) .1s backwards; }
 .phero-media img { translate: 0 var(--py, 0%); }
 .js .phero-tag { --rise: 20px; animation: fadeRise 1.2s var(--ease) 1.1s backwards; }
+
+/* On touch screens the ambient loops play a few rounds and come to rest where
+   they are, the way the hero's scene does. While any of them runs, a phone
+   redoes the whole page's layers on every frame, for as long as it is open;
+   at rest it does almost nothing. Desktops keep them going. */
+@media (hover: none), (pointer: coarse) {
+  .atmos-mote { animation-iteration-count: 1; animation-fill-mode: forwards; }
+  .js .hero-title em { animation-iteration-count: 2; animation-fill-mode: forwards; }
+  .hero-triad li, .hero-triad::after { animation-iteration-count: 2; }
+  .hero-scroll-mouse::after { animation-iteration-count: 4; }
+  .float-wa span.ic-wrap::after { animation-iteration-count: 4; animation-fill-mode: forwards; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
@@ -1321,7 +1342,7 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .js .phero-media .frame, .js .phero-media img, .js .phero-tag,
   .js [data-hero], .js .hero-line > span, .js .hero-title em, .js .hero-stars .ic, .hero-triad li, .hero-triad::after, .hero-scroll-mouse::after,
   .cta--primary::after, .text-link-text::after, .letter-seal, .pop, .blank-value.is-new, .marquee-track,
-  .atmos-mote, .phero::after, .portrait-sun::after, .phero-tag, .float-wa span.ic-wrap::after, .btn-orbit { animation: none !important; }
+  .atmos-mote, .phero-tag, .float-wa span.ic-wrap::after, .btn-orbit { animation: none !important; }
   .menu, .menu.is-open { transition: none; }
   .lamp { display: none; }
   ::view-transition-old(root), ::view-transition-new(root) { animation: none; }

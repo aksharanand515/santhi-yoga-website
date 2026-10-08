@@ -238,15 +238,20 @@
       var track = $('.marquee-track', m), groups = $$('.marquee-group', m);
       if (!track) return;
       track.style.animation = 'none';
-      var loop = gsap.to(track, { xPercent: -50, ease: 'none', duration: 56, repeat: -1 });
+      // it only drifts while it is on screen: a tween left running writes a
+      // transform every frame, and each one makes the browser redo the page's layers
+      var loop = gsap.to(track, { xPercent: -50, ease: 'none', duration: 56, repeat: -1, paused: true });
       var skew = gsap.quickTo(groups, 'skewX', { duration: 0.6, ease: 'power3.out' });
-      ScrollTrigger.create({ trigger: m, start: 'top bottom', end: 'bottom top', onUpdate: function (self) {
+      var st = ScrollTrigger.create({ trigger: m, start: 'top bottom', end: 'bottom top', onToggle: function (self) {
+        if (self.isActive) loop.resume(); else loop.pause();
+      }, onUpdate: function (self) {
         var v = self.getVelocity();
         loop.timeScale(gsap.utils.clamp(-6, 6, 1 + v / 400) || 1);
         skew(gsap.utils.clamp(-8, 8, v / -300));
         clearTimeout(m._rest);
         m._rest = setTimeout(function () { gsap.to(loop, { timeScale: 1, duration: 1.2, ease: 'power2.out' }); skew(0); }, 140);
       } });
+      if (st.isActive) loop.resume();
     });
   }
 
@@ -747,6 +752,16 @@
       dot.addEventListener('animationend', function () { dot.remove(); });
     });
   });
+  /* On touch screens the thread of light on the primary buttons goes round
+     twice each time a button comes into view, then rests (see site.css) */
+  (function () {
+    if (reduceMotion || finePointer || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle('orbit-on', e.isIntersecting); });
+    });
+    $$('.btn-orbit, .cta--primary').forEach(function (el) { io.observe(el); });
+  })();
+
   /* ---------- Home: service list swaps the preview photo ---------- */
   (function () {
     var preview = $('.svc-preview');
