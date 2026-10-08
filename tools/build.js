@@ -59,7 +59,7 @@ if (fs.existsSync(blogDir)) {
     if (!entry.isDirectory()) continue;
     const file = `blog/${entry.name}/index.html`;
     if (fs.existsSync(path.join(ROOT, file))) {
-      pages.push({ file, base: '../../', key: 'blog', cta: false });
+      pages.push({ file, base: '../../', key: 'blog', cta: false, article: true });
     }
   }
 }
@@ -151,6 +151,11 @@ function render(tpl, page) {
     .replace(/\{\{cur:([a-z]+)\}\}/g, (_, k) => (k === page.key ? ' aria-current="page"' : ''));
   if (!page.cta) out = out.replace(/\s*<!--cta-->[\s\S]*?<!--\/cta-->/, '');
   else out = out.replace(/<!--\/?cta-->\n?/g, '');
+  /* An article is mostly reading: on a phone the motion library would only
+     drift its photographs, at the cost of downloading and running it before
+     the words settle. site.js fetches it for a mouse once the page is up. */
+  if (page.article) out = out.replace(/\s*<!--vendor-->[\s\S]*?<!--\/vendor-->/, '');
+  else out = out.replace(/\s*<!--\/?vendor-->/g, '');
   return out.replace(/\s+$/, '');
 }
 

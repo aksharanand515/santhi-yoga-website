@@ -6,9 +6,12 @@
   <link rel="preload" href="{{base}}assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{base}}assets/css/site.min.css?v={{v:css}}">
   <script>document.documentElement.classList.add('js');</script>
-  <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved -->
+  <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved.
+       Journal articles leave these out: site.js fetches them itself after the page is up, and only for a mouse. -->
+  <!--vendor-->
   <script defer src="{{base}}assets/js/vendor/gsap.min.js"></script>
   <script defer src="{{base}}assets/js/vendor/ScrollTrigger.min.js"></script>
   <script defer src="{{base}}assets/js/vendor/lenis.min.js"></script>
+  <!--/vendor-->
   <script defer src="{{base}}assets/js/site.min.js?v={{v:js}}"></script>
   <!--analytics-->

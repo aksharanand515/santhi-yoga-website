@@ -13,6 +13,8 @@
   var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
   var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
   var lenis = null;
+  // where site.js itself was served from, so the motion library can be fetched beside it
+  var jsBase = ((document.currentScript && document.currentScript.src) || '').replace(/[^/]*$/, '');
 
   /* ---------- Header state + floating WhatsApp ---------- */
   var header = $('#site-header');
@@ -219,10 +221,12 @@
 
   // Photographs drift inside their frames as they pass through the screen,
   // and anything marked data-speed floats at its own depth
-  function initParallax() {
+  function initParallax(late) {
     $$('main .frame > img').forEach(function (img) {
       var frame = img.parentNode;
       if (frame.closest('.phero-media, .svc-preview, .journey-track, .lightbox, .hall')) return;
+      // started after the page was already showing: a photo in view would jump to its drift position
+      if (late && frame.getBoundingClientRect().top < window.innerHeight) return;
       img.classList.add('is-parallax');
       gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: frame, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
@@ -355,14 +359,29 @@
   function initMotion() {
     initReveals();
     if (!reduceMotion) initTilt();
-    if (reduceMotion || !(window.gsap && window.ScrollTrigger)) return;
+    if (reduceMotion) return;
+    if (window.gsap && window.ScrollTrigger) return startGsap(false);
+    // Journal articles ship without the motion library (tools/build.js). With a
+    // mouse, fetch it now that the page is up; on a touch screen do without it.
+    if (finePointer && jsBase && !$('script[src*="gsap.min.js"]')) loadMotion();
+  }
+  function loadMotion() {
+    var files = ['vendor/gsap.min.js', 'vendor/ScrollTrigger.min.js', 'vendor/lenis.min.js'], left = files.length;
+    files.forEach(function (f) {
+      var s = document.createElement('script');
+      s.src = jsBase + f; s.async = false; // keep their order
+      s.onload = function () { if (--left === 0 && window.gsap && window.ScrollTrigger) { startGsap(true); ScrollTrigger.refresh(); } };
+      document.head.appendChild(s);
+    });
+  }
+  function startGsap(late) {
     gsap.registerPlugin(ScrollTrigger);
     root.classList.add('has-gsap');
     initLenis();
     initHomeHero();
     initMagnetic();
     initPageHero();
-    initParallax();
+    initParallax(late);
     initMarquee();
     initLightText();
     initHall();

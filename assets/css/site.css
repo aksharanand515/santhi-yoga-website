@@ -11,15 +11,21 @@
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("../fonts/inter-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("../fonts/inter-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20B8, U+20BA-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
 @font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("../fonts/cormorant-garamond-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("../fonts/cormorant-garamond-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20B8, U+20BA-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
 @font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 400 500; font-display: swap; src: url("../fonts/cormorant-garamond-italic-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 400 500; font-display: swap; src: url("../fonts/cormorant-garamond-italic-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20B8, U+20BA-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+/* The rupee sign alone, cut from the latin-ext files (fontTools subset, --unicodes=U+20B9):
+   prices in ₹ appear on a few dozen pages, and that one glyph used to pull in
+   both latin-ext files, 116 KB, while the page was still loading */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("../fonts/inter-rupee.woff2") format("woff2"); unicode-range: U+20B9; }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("../fonts/cormorant-garamond-rupee.woff2") format("woff2"); unicode-range: U+20B9; }
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 400 500; font-display: swap; src: url("../fonts/cormorant-garamond-italic-rupee.woff2") format("woff2"); unicode-range: U+20B9; }
 /* Malayalam: only the glyphs for ശാന്തി (Santhi) */
 @font-face { font-family: "Noto Serif Malayalam"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/noto-serif-malayalam-santhi.woff2") format("woff2"); unicode-range: U+0D24, U+0D28, U+0D36, U+0D3E-0D3F, U+0D4D; }
 
@@ -1158,7 +1164,11 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 .site-footer { position: relative; z-index: 1; overflow: hidden; background:
   radial-gradient(70% 60% at 80% 100%, rgba(239, 196, 145, .55), transparent 70%),
   radial-gradient(50% 50% at 0% 100%, rgba(140, 144, 108, .18), transparent 70%),
-  linear-gradient(180deg, rgba(250, 243, 233, 0), #F6E9D6 30%, #F1DDC2); }
+  linear-gradient(180deg, rgba(250, 243, 233, 0), #F6E9D6 30%, #F1DDC2);
+  /* always below the fold on arrival: the browser lays it out when it nears
+     the screen, not on first paint (the size is a stand-in until then) */
+  content-visibility: auto; contain-intrinsic-size: auto 1470px; }
+@media (min-width: 960px) { .site-footer { contain-intrinsic-size: auto 870px; } }
 .site-footer .kasavu-rule { width: min(100% - var(--gutter) * 2, var(--container)); margin-inline: auto; opacity: .55; }
 .footer-main { position: relative; display: grid; gap: 3rem; padding-block: clamp(64px, 8vw, 110px) 3rem; }
 @media (min-width: 900px) { .footer-main { grid-template-columns: 5fr 3fr 4fr; } }
@@ -1380,6 +1390,12 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 /* ---------- Reading column ---------- */
 .article { padding-bottom: clamp(3.5rem, 7vw, 6rem); }
 .article-body { max-width: 68ch; margin-inline: auto; }
+/* The article starts below the fold on phones and desktops alike. Laying out
+   (and shaping the text of) every paragraph before the first paint was most
+   of a phone's work on arrival; now each block is laid out as it nears the
+   screen. The sizes are stand-ins until then, and remembered afterwards. */
+.article-body > *, .toc { content-visibility: auto; contain-intrinsic-size: auto 200px; }
+@media (min-width: 960px) { .article-body > * { contain-intrinsic-size: auto 120px; } }
 @media (min-width: 1100px) {
   .article-grid { display: grid; grid-template-columns: minmax(0, 68ch) 15rem; gap: 4.5rem; justify-content: center; align-items: start; }
   .article-grid .article-body { margin-inline: 0; }
