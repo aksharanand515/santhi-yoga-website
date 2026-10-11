@@ -26,14 +26,14 @@
   <link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/site.min.css?v=50612ad8">
+  <link rel="stylesheet" href="../assets/css/site.min.css?v=e840f028">
   <script>document.documentElement.classList.add('js');</script>
   <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved.
        Journal articles leave these out: site.js fetches them itself after the page is up, and only for a mouse. -->
   <script defer src="../assets/js/vendor/gsap.min.js"></script>
   <script defer src="../assets/js/vendor/ScrollTrigger.min.js"></script>
   <script defer src="../assets/js/vendor/lenis.min.js"></script>
-  <script defer src="../assets/js/site.min.js?v=bc9869c9"></script>
+  <script defer src="../assets/js/site.min.js?v=fab4e13f"></script>
   <!-- Google Analytics 4, loaded after the page has finished loading -->
   <script>
     window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }
@@ -70,7 +70,7 @@
       {
         "@type": "Question",
         "name": "How do I pay the deposit?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Through Wise, or by bank transfer to the school's Federal Bank account in India. The button on this page opens the school's Wise page in a new tab; the bank details are on the page too. Send €90, add the reference shown on the page so the payment can be matched to you, then send Achu a short confirmation on WhatsApp or by email." }
+        "acceptedAnswer": { "@type": "Answer", "text": "By transfer to the school's Federal Bank account in India, whose details are shown on the page, either with Wise or from your own bank. Send €90, add the reference shown on the page (Wise may call it the invoice number) so the payment can be matched to you, then send Achu a short confirmation on WhatsApp or by email." }
       },
       {
         "@type": "Question",
@@ -290,37 +290,38 @@
             </li>
 
             <li class="rsv-step" data-step="3">
-              <div class="rsv-legend"><span class="rsv-num" aria-hidden="true">3</span><span><b>Pay the €90 deposit</b><small>With Wise, in euros or your own currency, or by bank transfer</small></span></div>
+              <div class="rsv-legend"><span class="rsv-num" aria-hidden="true">3</span><span><b>Pay the €90 deposit</b><small>Straight to the school’s bank account, with Wise or your own bank</small></span></div>
               <div class="rsv-pay">
                 <dl class="rsv-copy">
                   <div><dt>Amount</dt><dd><span class="rsv-copy-val">€90</span><button class="rsv-copybtn" type="button" data-copy="90" aria-label="Copy the amount, 90 euros">Copy</button></dd></div>
-                  <div><dt>Reference</dt><dd><span class="rsv-copy-val" id="rv-ref">TTC JAN27</span><button class="rsv-copybtn" type="button" data-copy-from="rv-ref" aria-label="Copy the payment reference">Copy</button></dd></div>
+                  <div><dt>Reference / invoice no.</dt><dd><span class="rsv-copy-val" id="rv-ref">TTC JAN27</span><button class="rsv-copybtn" type="button" data-copy-from="rv-ref" aria-label="Copy the payment reference">Copy</button></dd></div>
                 </dl>
-                <a class="cta cta--primary rsv-wise" id="rv-wise" data-wise href="https://wise.com/pay/me/aksharananda" target="_blank" rel="noopener" data-magnetic>
-                  <span class="cta-label" data-roll>Pay €90 with Wise</span>
+                <p class="rsv-pay-head">The school’s bank account</p>
+                <dl class="rsv-copy rsv-copy--bank" id="rv-bank">
+                  <div><dt>Account name</dt><dd><span class="rsv-copy-val">Aksharanand A S</span><button class="rsv-copybtn" type="button" data-copy="Aksharanand A S" aria-label="Copy the account name">Copy</button></dd></div>
+                  <div><dt>Bank</dt><dd><span class="rsv-copy-val">Federal Bank, India</span></dd></div>
+                  <div><dt>Account number</dt><dd><span class="rsv-copy-val">10330100238095</span><button class="rsv-copybtn" type="button" data-copy="10330100238095" aria-label="Copy the account number">Copy</button></dd></div>
+                  <div><dt>IFSC</dt><dd><span class="rsv-copy-val">FDRL0001033</span><button class="rsv-copybtn" type="button" data-copy="FDRL0001033" aria-label="Copy the IFSC code">Copy</button></dd></div>
+                  <div><dt>SWIFT / BIC</dt><dd><span class="rsv-copy-val">FDRLINBBCHN</span><button class="rsv-copybtn" type="button" data-copy="FDRLINBBCHN" aria-label="Copy the SWIFT code">Copy</button></dd></div>
+                </dl>
+                <p class="rsv-pay-head">Sending with Wise</p>
+                <ol class="rsv-howto">
+                  <li>In Wise, choose <b>Send</b>, enter <b>€90</b> and pick <b>Indian rupees (INR)</b> for the school to receive.</li>
+                  <li>Add a new recipient with the account name, account number and IFSC above.</li>
+                  <li>If Wise asks for an invoice number or a reference, paste your <b>reference</b> from above. It is your booking number.</li>
+                </ol>
+                <a class="cta cta--primary rsv-wise" id="rv-wise" data-wise href="https://wise.com/send" target="_blank" rel="noopener" data-magnetic>
+                  <span class="cta-label" data-roll>Open Wise to send €90</span>
                   <span class="cta-icon" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
                 </a>
-                <p class="rsv-fine">Wise opens in a new tab, on the school’s Wise account <b>@aksharananda</b>. Enter <b>€90</b> and paste the reference, so Achu can match the payment to you. Then come back here for the last step.</p>
-                <details class="rsv-bank" id="rv-bank">
-                  <summary>Prefer a bank transfer? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-                  <div class="rsv-bank-panel">
-                    <p class="rsv-fine">Send the equivalent of <b>€90</b> to the school’s account in India, with the same reference as above. Please choose the option where you pay the bank charges (often called “OUR”), so the full €90 reaches the school.</p>
-                    <dl class="rsv-copy rsv-copy--bank">
-                      <div><dt>Account name</dt><dd><span class="rsv-copy-val">Aksharanand A S</span><button class="rsv-copybtn" type="button" data-copy="Aksharanand A S" aria-label="Copy the account name">Copy</button></dd></div>
-                      <div><dt>Bank</dt><dd><span class="rsv-copy-val">Federal Bank, India</span></dd></div>
-                      <div><dt>Account number</dt><dd><span class="rsv-copy-val">10330100238095</span><button class="rsv-copybtn" type="button" data-copy="10330100238095" aria-label="Copy the account number">Copy</button></dd></div>
-                      <div><dt>IFSC</dt><dd><span class="rsv-copy-val">FDRL0001033</span><button class="rsv-copybtn" type="button" data-copy="FDRL0001033" aria-label="Copy the IFSC code">Copy</button></dd></div>
-                      <div><dt>SWIFT / BIC</dt><dd><span class="rsv-copy-val">FDRLINBBCHN</span><button class="rsv-copybtn" type="button" data-copy="FDRLINBBCHN" aria-label="Copy the SWIFT code">Copy</button></dd></div>
-                    </dl>
-                  </div>
-                </details>
+                <p class="rsv-fine">Using your own bank instead? Send the equivalent of <b>€90</b> with the SWIFT code above and the same reference, and choose the option where you pay the bank charges (often called “OUR”), so the full €90 reaches the school. Then come back here for the last step.</p>
               </div>
             </li>
 
             <li class="rsv-step" data-step="4">
               <div class="rsv-legend"><span class="rsv-num" aria-hidden="true">4</span><span><b>Send Achu your confirmation</b><small>He confirms your place personally, usually the same day</small></span></div>
               <div class="rsv-confirm">
-                <a class="btn btn--primary" id="rv-confirm" href="https://wa.me/917907714144?text=Namaste%20Achu%2C%20I%20have%20paid%20the%20%E2%82%AC90%20deposit%20on%20Wise%20to%20reserve%20my%20place%20on%20the%202027%20teacher%20training." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg> Confirm on WhatsApp</a>
+                <a class="btn btn--primary" id="rv-confirm" href="https://wa.me/917907714144?text=Namaste%20Achu%2C%20I%20have%20sent%20the%20%E2%82%AC90%20deposit%20to%20reserve%20my%20place%20on%20the%202027%20teacher%20training." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg> Confirm on WhatsApp</a>
                 <a class="text-link" id="rv-mail" href="mailto:santhiyogacochin@gmail.com?subject=Teacher%20training%20deposit%20paid"><span class="text-link-text">or confirm by email</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
               </div>
               <p class="form-status" id="rv-status" role="status" aria-live="polite"></p>
@@ -460,7 +461,7 @@
           </details>
           <details>
             <summary>How do I pay the deposit? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-            <div class="panel"><p>The “Pay €90 with Wise” button opens the school’s Wise page in a new tab. Send €90 and paste the reference from step 3, which carries your batch and your name, so the payment can be matched to you. Wise converts from your own currency at the real exchange rate.</p><p>Would rather use your own bank? Open “Prefer a bank transfer?” in step 3 for the school’s Federal Bank account, with its IFSC and SWIFT codes, and use the same reference. International transfers can lose a fee on the way, so please choose the option where you pay the bank charges, and the full €90 arrives.</p></div>
+            <div class="panel"><p>Step 3 shows the school’s Federal Bank account in India: account name, account number, IFSC and SWIFT. With Wise, choose Send, enter €90, pick Indian rupees for the school to receive and add the school as a new recipient with those details. If Wise asks for an invoice number, paste the reference from step 3, which carries your batch and your name. Wise converts from your own currency at the real exchange rate.</p><p>Would rather use your own bank? Use the same account with its SWIFT code and the same reference. International transfers can lose a fee on the way, so please choose the option where you pay the bank charges, and the full €90 arrives.</p></div>
           </details>
           <details>
             <summary>How do I know my place is confirmed? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>

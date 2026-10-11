@@ -1029,6 +1029,10 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 .rsv-copybtn:hover { border-color: var(--kasavu); }
 .rsv-copybtn.is-copied { background: var(--forest); border-color: var(--forest); color: #F6E3B4; }
 .rsv-wise { margin-top: 1.25rem; }
+.rsv-pay-head { margin: 1.5rem 0 .7rem; font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--forest); }
+.rsv-howto { display: grid; gap: .5rem; padding-left: 1.3rem; list-style: decimal; max-width: 36rem; font-size: .92rem; line-height: 1.6; color: var(--ink-80); }
+.rsv-howto li::marker { color: var(--kasavu-deep); font-weight: 600; }
+.rsv-howto b { color: var(--ink); font-weight: 600; }
 .rsv-fine { margin-top: .9rem; font-size: .84rem; line-height: 1.6; color: var(--ink-55); max-width: 34rem; }
 .rsv-fine b { color: var(--ink-80); font-weight: 600; }
 

@@ -1329,10 +1329,10 @@
       track('begin_checkout', { currency: 'EUR', value: DEPOSIT, items: [{ item_name: '200-hour TTC deposit', item_variant: b ? b.value + ' ' + b.year : '' }] });
     });
 
-    // Opening the bank details counts as choosing a bank transfer
+    // Copying a bank detail counts as paying by bank transfer, unless Wise was opened
     var bankBox = $('#rv-bank');
-    if (bankBox) bankBox.addEventListener('toggle', function () {
-      if (!bankBox.open) return;
+    if (bankBox) bankBox.addEventListener('click', function (e) {
+      if (!e.target.closest('.rsv-copybtn') || saved.paid) return;
       saved.paid = true; saved.method = 'bank'; store.set(saved);
       steps[3].classList.add('is-ready');
       update(false);

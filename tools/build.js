@@ -25,11 +25,12 @@ const write = (p, s) => fs.writeFileSync(path.join(ROOT, p), s);
 // Google Analytics 4 Measurement ID, e.g. 'G-ABC123XYZ'. Leave empty for no analytics.
 const GA_ID = 'G-B04M93CEGM';
 
-// The school's Wise payment link, where the teacher training deposit is paid,
-// e.g. 'https://wise.com/pay/me/yourname'. Every link marked data-wise points
-// here. Left empty, those links open WhatsApp asking Achu for payment details
+// Where the reserve page's Wise button goes. It opens Wise's own Send flow:
+// the visitor pays the school's bank account, shown on the page, as a new
+// recipient. (The wise.com/pay/me link asked payers for an invoice number and
+// some gave up there.) Every link marked data-wise points here. Left empty, those links open WhatsApp asking Achu for payment details
 // instead, so the reserve page still works.
-const WISE_URL = 'https://wise.com/pay/me/aksharananda';
+const WISE_URL = 'https://wise.com/send';
 const WISE_FALLBACK = 'https://wa.me/917907714144?text=' + encodeURIComponent('Namaste Achu, I would like to pay the €90 deposit to reserve my place on the teacher training. Could you send me the Wise payment link?');
 
 const pages = [
