@@ -6,7 +6,10 @@
     {
       "id": "rain",
       "publish_on": "2026-10-06",
-      "posted": { "date": "2026-10-06", "name": "accounts/100782322667941279590/locations/7917990689267313823/localPosts/4099508228581659906" },
+      "posted": {
+        "date": "2026-10-06",
+        "name": "accounts/100782322667941279590/locations/7917990689267313823/localPosts/4099508228581659906"
+      },
       "photo_url": "https://santhiyogaindia.com/assets/img/yoga-pavilion-garden-fort-kochi-1280.jpg",
       "cta_type": "LEARN_MORE",
       "cta_url": "https://santhiyogaindia.com/blog/rainy-day-fort-kochi/?utm_source=google&utm_medium=organic&utm_campaign=gbp_post",
@@ -15,7 +18,10 @@
     {
       "id": "nets",
       "publish_on": "2026-10-13",
-      "posted": null,
+      "posted": {
+        "date": "2026-10-13",
+        "name": "accounts/100782322667941279590/locations/7917990689267313823/localPosts/1748919242326483528"
+      },
       "photo_url": "https://santhiyogaindia.com/assets/img/santhi-yoga-pavilion-class-fort-kochi-1280.jpg",
       "cta_type": "LEARN_MORE",
       "cta_url": "https://santhiyogaindia.com/blog/chinese-fishing-nets-fort-kochi/?utm_source=google&utm_medium=organic&utm_campaign=gbp_post",
