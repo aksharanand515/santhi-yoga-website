@@ -361,33 +361,31 @@
     if (!reduceMotion) initTilt();
     if (reduceMotion) return;
     if (window.gsap && window.ScrollTrigger) return startGsap(false);
-    // Journal articles ship without the motion library (tools/build.js). With a
-    // mouse, fetch it now that the page is up; on a touch screen do without it.
-    if (finePointer && jsBase && !$('script[src*="gsap.min.js"]')) loadMotion();
+    // The motion library is fetched once the page has loaded (tools/build.js).
+    // Journal articles take it only with a mouse; on a touch screen they do without.
+    if (!jsBase || $('script[src*="gsap.min.js"]') || !($('meta[name="motion"]') || finePointer)) return;
+    if (document.readyState === 'complete') loadMotion();
+    else window.addEventListener('load', loadMotion, { once: true });
   }
   function loadMotion() {
     var files = ['vendor/gsap.min.js', 'vendor/ScrollTrigger.min.js', 'vendor/lenis.min.js'], left = files.length;
     files.forEach(function (f) {
       var s = document.createElement('script');
       s.src = jsBase + f; s.async = false; // keep their order
-      s.onload = function () { if (--left === 0 && window.gsap && window.ScrollTrigger) { startGsap(true); ScrollTrigger.refresh(); } };
+      s.onload = function () { if (--left === 0 && window.gsap && window.ScrollTrigger) startGsap(true); }; // its last step refreshes
       document.head.appendChild(s);
     });
   }
   function startGsap(late) {
     gsap.registerPlugin(ScrollTrigger);
     root.classList.add('has-gsap');
-    initLenis();
-    initHomeHero();
-    initMagnetic();
-    initPageHero();
-    initParallax(late);
-    initMarquee();
-    initLightText();
-    initHall();
-    initCtaWindow();
-    initJourney();
-    initCounters();
+    // One task each: together they measure most of the page, and on a phone
+    // that would hold off a tap for the best part of a second
+    var steps = [initLenis, initHomeHero, initMagnetic, initPageHero, function () { initParallax(late); },
+      initMarquee, initLightText, initHall, initCtaWindow, initJourney, initCounters,
+      // triggers made after the page loaded still need the pins above them counted
+      function () { if (document.readyState === 'complete') ScrollTrigger.refresh(); }];
+    (function next() { steps.shift()(); if (steps.length) setTimeout(next, 0); })();
     window.addEventListener('load', function () { ScrollTrigger.refresh(); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
   }
@@ -411,6 +409,35 @@
     return new Promise(function (resolve) { requestAnimationFrame(function () { requestAnimationFrame(function () { setTimeout(resolve, 150); }); }); });
   });
 
+  /* The hero's canvases are for screens that can draw them smoothly. Without a
+     GPU the browser draws WebGL in software, and every frame takes many times
+     its budget, freezing the page while the motion plays. There the
+     photograph simply stays still. Asked once, by whichever canvas starts first. */
+  var softRender;
+  function softwareRenderer(gl) {
+    if (softRender !== undefined) return softRender;
+    try {
+      var own = !gl;
+      if (own) gl = document.createElement('canvas').getContext('webgl');
+      if (!gl) return (softRender = true);
+      var info = gl.getExtension('WEBGL_debug_renderer_info');
+      softRender = /swiftshader|llvmpipe|softpipe|software|basic render/i.test(gl.getParameter(info ? info.UNMASKED_RENDERER_WEBGL : gl.RENDERER) || '');
+      var lose = own && gl.getExtension('WEBGL_lose_context');
+      if (lose) lose.loseContext();
+    } catch (e) { softRender = true; }
+    return softRender;
+  }
+  /* Watches a canvas loop's frame times. Once most frames run slower than
+     about 25 a second, the device can't keep up: the loop should come to rest. */
+  function frameBudget() {
+    var n = 0, slow = 0;
+    return function (ms) {
+      if (++n <= 3) return false; // the first frames carry start-up work
+      if (ms > 40) slow++;
+      return slow >= 5 && slow * 2 > n - 3;
+    };
+  }
+
   /* ---------- Home hero: the living photograph ----------
      The <img> is what the visitor sees first, and what stays if WebGL is
      missing. Once it and its map have decoded, a WebGL canvas takes over,
@@ -429,10 +456,10 @@
     // made here rather than in the HTML: a canvas in the page from the start can hold back its first paint
     canvas = document.createElement('canvas');
     canvas.className = 'hero-gl';
-    art.insertBefore(canvas, $('.hero-veil', art));
     var gl = null;
     try { gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false, preserveDrawingBuffer: true }); } catch (e) { gl = null; }
-    if (!gl) return;
+    if (!gl || softwareRenderer(gl)) return;
+    art.insertBefore(canvas, $('.hero-veil', art));
 
     var VS = 'attribute vec2 p;varying vec2 vUv;void main(){vUv=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
     var FS = [
@@ -542,12 +569,13 @@
 
     var stageRect = [0, 0, 1, 1], fade = 0, heroH = 1, t0 = 0, last = 0, intro = 0;
     // The entrance eases in over 2.6s; a little longer lets the light breathe.
-    var HOLD = 7, done = false;
+    var HOLD = 7, done = false, keepUp = frameBudget();
     var px = 0, py = 0, tx = 0, ty = 0, running = false, visible = true, raf = 0, live = false;
     function measure() {
       var r = art.getBoundingClientRect(), s = img.getBoundingClientRect();
-      var dpr = Math.min(window.devicePixelRatio || 1, finePointer ? 1.75 : 1.5);
-      var scale = Math.min(dpr, Math.sqrt(2.8e6 / Math.max(1, r.width * r.height)));
+      // the motion is soft and slow: past about 1.6 million pixels a frame, sharpness only costs time
+      var dpr = Math.min(window.devicePixelRatio || 1, finePointer ? 1.5 : 1.25);
+      var scale = Math.min(dpr, Math.sqrt(1.6e6 / Math.max(1, r.width * r.height)));
       canvas.width = Math.max(1, Math.round(r.width * scale));
       canvas.height = Math.max(1, Math.round(r.height * scale));
       gl.viewport(0, 0, canvas.width, canvas.height);
@@ -558,6 +586,8 @@
     function frame(now) {
       raf = 0;
       if (!t0) { t0 = last = now; }
+      // falling behind: hold this frame (it is the photograph, a little stirred) and rest
+      if (keepUp(now - last)) { done = true; running = false; return; }
       var dt = Math.min(0.05, (now - last) / 1000); last = now;
       var t = (now - t0) / 1000;
       intro = Math.min(1, intro + dt / 2.6);
@@ -619,8 +649,8 @@
     var heroEl = $('.hero'), art = $('.hero-art'), img = $('.hero-plate'), canvas;
     if (!heroEl || !art || !img || reduceMotion) return;
     var ctx = null, GOLD, WHITE, ORB;
-    var HOLD = 7, done = false;
-    var dpr = Math.min(window.devicePixelRatio || 1, finePointer ? 2 : 1.5);
+    var HOLD = 7, done = false, keepUp = frameBudget();
+    var dpr = Math.min(window.devicePixelRatio || 1, finePointer ? 1.5 : 1.25);
     var sun = (art.getAttribute('data-sun') || '.65 .47').split(' ').map(Number);
     var W = 0, H = 0, sx = 0, sy = 0, reach = 1, motes = [], orbs = [];
     var mx = -9999, my = -9999, running = false, visible = true, raf = 0, prev = 0, time = 0;
@@ -653,6 +683,8 @@
     }
     function frame(now) {
       raf = 0;
+      // falling behind: the dust fades away rather than stutter
+      if (keepUp(now - prev)) { done = true; running = false; heroEl.classList.remove('is-ready'); return; }
       var dt = Math.min(0.05, (now - prev) / 1000 || 0.016); prev = now; time += dt;
       ctx.clearRect(0, 0, W, H);
       ctx.globalCompositeOperation = 'lighter';
@@ -699,6 +731,7 @@
     }
     document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
     settled.then(function () {
+      if (softwareRenderer()) return;
       canvas = document.createElement('canvas');
       canvas.className = 'hero-dust';
       art.insertBefore(canvas, $('.hero-veil', art));

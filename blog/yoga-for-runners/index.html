@@ -110,12 +110,22 @@
   <script>document.documentElement.classList.add('js');</script>
   <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved.
        Journal articles leave these out: site.js fetches them itself after the page is up, and only for a mouse. -->
-  <script defer src="../../assets/js/site.min.js?v=44c83482"></script>
-  <!-- Google Analytics 4, loaded after the page has finished loading -->
+  <script defer src="../../assets/js/site.min.js?v=9b3a3617"></script>
+  <!-- Google Analytics 4, loaded on the first scroll, tap or key, or 7s after the page loads:
+       its 170 KB of script would otherwise compete with the page while it settles -->
   <script>
     window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date()); gtag('config', 'G-K9QP1XG6J8');
-    window.addEventListener('load', function () { var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=G-K9QP1XG6J8'; document.head.appendChild(s); });
+    (function () {
+      var go = ['scroll', 'pointerdown', 'keydown', 'touchstart'], done = false;
+      function load() {
+        if (done) return; done = true;
+        go.forEach(function (e) { removeEventListener(e, load, true); });
+        var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=G-K9QP1XG6J8'; document.head.appendChild(s);
+      }
+      go.forEach(function (e) { addEventListener(e, load, { capture: true, passive: true, once: true }); });
+      addEventListener('load', function () { setTimeout(load, 7000); });
+    })();
   </script>
   <!-- /build:head -->
 </head>

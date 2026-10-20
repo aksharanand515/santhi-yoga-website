@@ -149,11 +149,21 @@ function sprite(ids) {
 /* ---------- Partials ---------- */
 const partials = { consent: read('partials/consent.html'), head: read('partials/head.html'), header: read('partials/header.html'), footer: read('partials/footer.html'), booking: read('partials/booking.html') };
 const analytics = GA_ID ? `
-  <!-- Google Analytics 4, loaded after the page has finished loading -->
+  <!-- Google Analytics 4, loaded on the first scroll, tap or key, or 7s after the page loads:
+       its 170 KB of script would otherwise compete with the page while it settles -->
   <script>
     window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date()); gtag('config', '${GA_ID}');
-    window.addEventListener('load', function () { var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_ID}'; document.head.appendChild(s); });
+    (function () {
+      var go = ['scroll', 'pointerdown', 'keydown', 'touchstart'], done = false;
+      function load() {
+        if (done) return; done = true;
+        go.forEach(function (e) { removeEventListener(e, load, true); });
+        var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_ID}'; document.head.appendChild(s);
+      }
+      go.forEach(function (e) { addEventListener(e, load, { capture: true, passive: true, once: true }); });
+      addEventListener('load', function () { setTimeout(load, 7000); });
+    })();
   </script>` : '';
 
 function render(tpl, page) {
@@ -168,8 +178,10 @@ function render(tpl, page) {
   /* An article is mostly reading: on a phone the motion library would only
      drift its photographs, at the cost of downloading and running it before
      the words settle. site.js fetches it for a mouse once the page is up. */
-  if (page.article) out = out.replace(/\s*<!--vendor-->[\s\S]*?<!--\/vendor-->/, '');
-  else out = out.replace(/\s*<!--\/?vendor-->/g, '');
+  /* Elsewhere it comes for everyone, but only once the page has loaded: run
+     any earlier and its first measurements make the phone lay out the whole
+     page again while it is still settling, holding off taps for about a second. */
+  out = out.replace(/\s*<!--vendor-->[\s\S]*?<!--\/vendor-->/, page.article ? '' : '\n  <meta name="motion" content="after-load">');
   return out.replace(/\s+$/, '');
 }
 
