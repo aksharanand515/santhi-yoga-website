@@ -26,14 +26,14 @@
   <link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/site.min.css?v=82d1bbaf">
+  <link rel="stylesheet" href="../assets/css/site.min.css?v=1029235e">
   <script>document.documentElement.classList.add('js');</script>
   <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved.
        Journal articles leave these out: site.js fetches them itself after the page is up, and only for a mouse. -->
   <script defer src="../assets/js/vendor/gsap.min.js"></script>
   <script defer src="../assets/js/vendor/ScrollTrigger.min.js"></script>
   <script defer src="../assets/js/vendor/lenis.min.js"></script>
-  <script defer src="../assets/js/site.min.js?v=f150fa91"></script>
+  <script defer src="../assets/js/site.min.js?v=44c83482"></script>
   <!-- Google Analytics 4, loaded after the page has finished loading -->
   <script>
     window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }
@@ -70,7 +70,7 @@
       {
         "@type": "Question",
         "name": "How do I pay the deposit?",
-        "acceptedAnswer": { "@type": "Answer", "text": "By transfer straight into the school's Federal Bank account in India, whose details are shown on the page. Wise is the recommended way: it uses the real exchange rate, costs about €1.50 for the deposit and usually arrives within minutes. Revolut, an international (SWIFT) transfer from your own bank, or IMPS/NEFT from an Indian bank also work. Send €90, add the reference shown on the page so the payment can be matched to you, then send Achu a short confirmation on WhatsApp or by email." }
+        "acceptedAnswer": { "@type": "Answer", "text": "By transfer straight into the school's Federal Bank account in India, whose details are shown on the page. Wise is the recommended way: the button on the page opens Wise with the school and the €90 already filled in, it uses the real exchange rate, costs about €1.50 and usually arrives within minutes. Revolut, an international (SWIFT) transfer from your own bank, or IMPS/NEFT from an Indian bank also work. Send €90, add the reference shown on the page so the payment can be matched to you, then send Achu a short confirmation on WhatsApp or by email." }
       },
       {
         "@type": "Question",
@@ -361,17 +361,24 @@
                     <li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg> Usually in the school’s account within minutes</li>
                     <li><svg class="ic" aria-hidden="true"><use href="#i-global"/></svg> Pay from almost any country, by bank transfer or card</li>
                   </ul>
+                  <div class="pm-ready">
+                    <p class="pm-ready-head"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Everything is filled in for you</p>
+                    <dl class="pm-ready-list">
+                      <div><dt>Paying</dt><dd>Aksharanand A S · Santhi School of Yoga</dd></div>
+                      <div><dt>Amount</dt><dd>€90</dd></div>
+                      <div><dt>Reference</dt><dd id="rv-ref-wise">TTC JAN27</dd></div>
+                    </dl>
+                  </div>
                   <ol class="rsv-howto">
-                    <li>Open Wise and sign in, or make a free account. It takes a couple of minutes.</li>
-                    <li>Choose <b>Send</b>, enter <b>90 EUR</b> (or the same in your own currency) and pick <b>INR</b> as the currency the school receives.</li>
-                    <li>Add a new recipient with the <b>account name, account number and IFSC</b> above. Tap <b>Copy all details</b> to grab them in one go.</li>
-                    <li>If Wise asks for a reference or an invoice number, paste <b>your reference</b>. It is your booking number.</li>
+                    <li>Tap the button. Wise opens with the school and the €90 already filled in.</li>
+                    <li>Log in, or make a free Wise account. It takes a couple of minutes.</li>
+                    <li>Pay by bank transfer or card. If Wise asks why you’re sending, choose <b>Education</b>. If it asks for an invoice, <button class="text-btn" type="button" data-invoice>download yours here</button>.</li>
                   </ol>
-                  <a class="cta cta--primary rsv-wise" id="rv-wise" data-wise href="https://wise.com/send" target="_blank" rel="noopener" data-magnetic>
-                    <span class="cta-label" data-roll>Open Wise to send €90</span>
+                  <a class="cta cta--primary rsv-wise" id="rv-wise" data-wise href="https://wise.com/pay/me/aksharananda" target="_blank" rel="noopener" data-magnetic>
+                    <span class="cta-label" data-roll>Pay €90 with Wise</span>
                     <span class="cta-icon" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
                   </a>
-                  <p class="rsv-fine">Paying from the US? In Wise, choose <b>debit card</b> to pay. From a US bank account it costs several dollars more.</p>
+                  <p class="rsv-fine">Paying from the US? In Wise, choose <b>debit card</b> to pay. From a US bank account it costs several dollars more. If the link won’t open, choose <b>Your own bank</b> above to see the account details. They work in Wise too.</p>
                 </div>
 
                 <div class="pm-panel" data-panel="revolut">
@@ -398,6 +405,10 @@
                   </ol>
                 </div>
 
+                <div class="pm-invoice">
+                  <button class="btn btn--ghost btn--sm" type="button" data-invoice><svg class="ic" aria-hidden="true"><use href="#i-notebook"/></svg> Download your invoice</button>
+                  <span>A PDF with your name, batch and reference, if your bank or Wise asks for one.</span>
+                </div>
                 <p class="rsv-fine">Paid? Come back here for the last step, so Achu can match your deposit to your place.</p>
               </div>
             </li>
@@ -545,7 +556,7 @@
           </details>
           <details>
             <summary>How do I pay the deposit? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-            <div class="panel"><p>Step 3 shows the school’s Federal Bank account in India, with a button that copies every detail at once. We recommend Wise: it converts from your own currency at the real exchange rate, the fee for a €90 deposit is about €1.50 and is shown before you pay, and the money usually reaches the school within minutes. Choose Send, enter €90, pick Indian rupees (INR) for the school to receive, and add the school as a new recipient with the account name, account number and IFSC.</p><p>Revolut works the same way. A SWIFT transfer from your own bank also works, but it is slower and banks take fees on both sides, so please choose “OUR” for the charges. In India, send the rupee equivalent by IMPS or NEFT. Whichever you use, add the reference from step 3. It carries your batch and your name.</p></div>
+            <div class="panel"><p>Step 3 shows the school’s Federal Bank account in India, with a button that copies every detail at once. We recommend Wise: the “Pay €90 with Wise” button opens Wise with the school and the amount already filled in, so you only log in (or make a free account) and pay. It converts from your own currency at the real exchange rate, the fee is about €1.50 and is shown before you pay, and the money usually arrives within minutes. If Wise asks why you are sending, choose Education. If it asks for an invoice, the “Download your invoice” button makes one with your name, batch and reference.</p><p>Revolut works the same way. A SWIFT transfer from your own bank also works, but it is slower and banks take fees on both sides, so please choose “OUR” for the charges. In India, send the rupee equivalent by IMPS or NEFT. Whichever you use, add the reference from step 3. It carries your batch and your name.</p></div>
           </details>
           <details>
             <summary>How do I know my place is confirmed? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
@@ -586,6 +597,44 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- The invoice: only ever printed (or saved as a PDF). site.js fills it from
+         the reservation when "Download your invoice" is pressed. -->
+    <section class="invoice" id="invoice" aria-hidden="true">
+      <header class="inv-head">
+        <div>
+          <p class="inv-school">Santhi School of Yoga &amp; Vedanta Studies</p>
+          <p>Aksharanand A S<br>House No 1/1790, Chirattapalam Road, Fort Kochi<br>Kochi, Kerala 682001, India<br>+91 7907714144 · santhiyogacochin@gmail.com<br>santhiyogaindia.com</p>
+        </div>
+        <div class="inv-meta">
+          <p class="inv-title">Invoice</p>
+          <dl>
+            <div><dt>Invoice no.</dt><dd data-inv="ref">TTC JAN27</dd></div>
+            <div><dt>Date</dt><dd data-inv="date"></dd></div>
+            <div><dt>Purpose</dt><dd>Education: course fee</dd></div>
+          </dl>
+        </div>
+      </header>
+      <div class="inv-to">
+        <p class="inv-label">Billed to</p>
+        <p><b data-inv="name">Student name</b><br><span data-inv="email"></span><br><span data-inv="country"></span></p>
+      </div>
+      <table class="inv-table">
+        <thead><tr><th>Description</th><th>Amount</th></tr></thead>
+        <tbody>
+          <tr><td>Deposit (10%) for the 200-hour Yoga Teacher Training, <span data-inv="range">1 – 28 January 2027</span>, Fort Kochi, Kerala</td><td>€90.00</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><th>Due now</th><td>€90.00</td></tr>
+          <tr class="inv-later"><th>Balance of the €899 fee, due by <span data-inv="due">3 January</span></th><td>€809.00</td></tr>
+        </tfoot>
+      </table>
+      <div class="inv-pay">
+        <p class="inv-label">Pay to</p>
+        <p>Account name: Aksharanand A S · Bank: Federal Bank, India<br>Account number: 10330100238095 · IFSC: FDRL0001033 · SWIFT / BIC: FDRLINBBCHN<br>Please quote the invoice number as your payment reference.</p>
+      </div>
+      <p class="inv-foot">Thank you. Your place is confirmed by Achu once the deposit arrives. Refunds and changes: santhiyogaindia.com/refund-policy/</p>
     </section>
 
     <!-- Follows the visitor down the page until the reservation is in view -->

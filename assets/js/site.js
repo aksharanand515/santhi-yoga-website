@@ -1285,6 +1285,13 @@
       soon.hidden = false;
       soon.textContent = 'Your first morning is ' + b.days + (b.days === 1 ? ' day' : ' days') + ' away';
       setText('rv-ref', reference(b));
+      setText('rv-ref-wise', reference(b));
+      // Achu's Wise link, opened with the amount and the booking reference filled in
+      var wise = $('#rv-wise');
+      if (wise && /wise\.com\/pay\//.test(wise.href)) {
+        var base = wise.dataset.base || (wise.dataset.base = wise.href.split('?')[0]);
+        wise.href = base + '?amount=' + DEPOSIT + '&currency=EUR&description=' + encodeURIComponent(reference(b));
+      }
       var bm = $('#bar-month'); if (bm) bm.textContent = b.month + ' ' + b.year;
 
       var text = message(b);
@@ -1347,6 +1354,29 @@
       steps[3].classList.add('is-ready');
       update(false);
       track('begin_checkout', { currency: 'EUR', value: DEPOSIT, payment_type: 'card', items: [{ item_name: '200-hour TTC deposit', item_variant: b ? b.value + ' ' + b.year : '' }] });
+    });
+
+    // The invoice: filled from the reservation, then printed, which on every
+    // phone and computer can be saved as a PDF. The page title names the file.
+    var invoice = $('#invoice');
+    $$('[data-invoice]', form).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (!invoice || needName()) return;
+        var b = current(), d = new Date();
+        var fill = {
+          ref: reference(b), name: nameIn.value.trim(), email: emailIn.value.trim(), country: countryIn.value.trim(),
+          range: b.range, due: b.due + ' ' + b.year,
+          date: d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear()
+        };
+        $$('[data-inv]', invoice).forEach(function (el) { el.textContent = fill[el.dataset.inv] || ''; });
+        var title = document.title;
+        document.title = 'Invoice ' + fill.ref;
+        document.body.classList.add('is-invoicing');
+        var done = function () { document.body.classList.remove('is-invoicing'); document.title = title; window.removeEventListener('afterprint', done); };
+        window.addEventListener('afterprint', done);
+        track('reserve_invoice', { batch: b.value + ' ' + b.year });
+        window.print();
+      });
     });
 
     // Copying a bank detail counts as starting to pay, by whichever method is chosen

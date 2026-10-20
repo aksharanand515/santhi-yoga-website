@@ -1077,6 +1077,42 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   /* a card payer never needs the bank account */
   .rsv-pay:has(input[value="card"]:checked) .pm-card { display: none; }
 }
+/* Wise opens already addressed to the school, so its payers need no bank details */
+@supports selector(:has(*)) { .rsv-pay:has(input[value="wise"]:checked) .pm-card { display: none; } }
+.pm-ready { margin-bottom: 1.1rem; padding: 1rem 1.1rem; border-radius: 16px; background: linear-gradient(135deg, rgba(106, 115, 80, .1), rgba(106, 115, 80, .04)); box-shadow: inset 0 0 0 1px rgba(75, 82, 54, .22); }
+.pm-ready-head { display: flex; align-items: center; gap: .5rem; font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--forest); }
+.pm-ready-head .ic { width: 1.1rem; height: 1.1rem; color: var(--forest); }
+.pm-ready-list { display: grid; gap: .35rem; margin-top: .6rem; }
+.pm-ready-list > div { display: flex; flex-wrap: wrap; gap: .1rem .75rem; font-size: .9rem; }
+.pm-ready-list dt { min-width: 5.5rem; font-size: .68rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink); padding-top: .2rem; }
+.pm-ready-list dd { color: var(--ink); font-variant-numeric: tabular-nums; }
+.text-btn { padding: 0; border: 0; background: none; font: inherit; color: var(--forest); text-decoration: underline; text-decoration-color: var(--kasavu); text-underline-offset: .2em; cursor: pointer; }
+.text-btn:hover { color: var(--kasavu-deep); }
+.pm-invoice { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; margin-top: 1.1rem; font-size: .84rem; color: var(--ink-55); }
+
+/* the invoice is never on screen: printing the reserve page prints only it */
+.invoice { display: none; }
+@media print {
+  @page { size: A4; margin: 16mm; }
+  body.is-invoicing > *:not(main), body.is-invoicing main > *:not(.invoice) { display: none !important; }
+  body.is-invoicing { background: #fff !important; }
+  body.is-invoicing .invoice { display: block; color: #222; font: 10.5pt/1.5 var(--sans); }
+  .inv-head { display: flex; justify-content: space-between; gap: 2rem; padding-bottom: 1.2rem; border-bottom: 2px solid #B8914A; }
+  .inv-school { font-family: var(--serif); font-size: 18pt; color: #4B5236; margin-bottom: .3rem; }
+  .inv-title { font-family: var(--serif); font-size: 26pt; letter-spacing: .04em; color: #4B5236; text-align: right; }
+  .inv-meta dl > div { display: flex; justify-content: flex-end; gap: .8rem; }
+  .inv-meta dt, .inv-label { color: #7A5A1E; font-size: 8pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+  .inv-to, .inv-pay { margin-top: 1.4rem; }
+  .inv-table { width: 100%; margin-top: 1.4rem; border-collapse: collapse; }
+  .inv-table th, .inv-table td { padding: .55rem .4rem; text-align: left; border-bottom: 1px solid #ddd; vertical-align: top; }
+  .inv-table thead th { font-size: 8pt; letter-spacing: .14em; text-transform: uppercase; color: #7A5A1E; }
+  .inv-table td:last-child, .inv-table th:last-child { text-align: right; white-space: nowrap; }
+  .inv-table tfoot th { text-align: right; }
+  .inv-table tfoot tr:first-child > * { font-size: 13pt; color: #4B5236; border-bottom: 2px solid #4B5236; }
+  .inv-later > * { color: #666; font-weight: 400; }
+  .inv-foot { margin-top: 2rem; font-size: 9pt; color: #666; }
+}
+
 /* the card option waits, hidden, until tools/build.js has a payment link for it */
 [data-card][hidden] { display: none !important; }
 .pm-opt--card { grid-column: 1 / -1; }
