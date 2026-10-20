@@ -23,7 +23,7 @@ const read = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8');
 const write = (p, s) => fs.writeFileSync(path.join(ROOT, p), s);
 
 // Google Analytics 4 Measurement ID, e.g. 'G-ABC123XYZ'. Leave empty for no analytics.
-const GA_ID = 'G-B04M93CEGM';
+const GA_ID = 'G-K9QP1XG6J8';
 
 // Where the reserve page's Wise button goes: Achu's own Wise payment link, which
 // opens with him already set as the recipient, so the payer types no bank details.
