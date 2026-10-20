@@ -26,14 +26,14 @@
   <link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/site.min.css?v=e840f028">
+  <link rel="stylesheet" href="../assets/css/site.min.css?v=28ca064f">
   <script>document.documentElement.classList.add('js');</script>
   <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved.
        Journal articles leave these out: site.js fetches them itself after the page is up, and only for a mouse. -->
   <script defer src="../assets/js/vendor/gsap.min.js"></script>
   <script defer src="../assets/js/vendor/ScrollTrigger.min.js"></script>
   <script defer src="../assets/js/vendor/lenis.min.js"></script>
-  <script defer src="../assets/js/site.min.js?v=fab4e13f"></script>
+  <script defer src="../assets/js/site.min.js?v=0bccd176"></script>
   <!-- Google Analytics 4, loaded after the page has finished loading -->
   <script>
     window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }
@@ -70,7 +70,7 @@
       {
         "@type": "Question",
         "name": "How do I pay the deposit?",
-        "acceptedAnswer": { "@type": "Answer", "text": "By transfer to the school's Federal Bank account in India, whose details are shown on the page, either with Wise or from your own bank. Send €90, add the reference shown on the page (Wise may call it the invoice number) so the payment can be matched to you, then send Achu a short confirmation on WhatsApp or by email." }
+        "acceptedAnswer": { "@type": "Answer", "text": "By transfer straight into the school's Federal Bank account in India, whose details are shown on the page. Wise is the recommended way: it uses the real exchange rate, costs about €1.50 for the deposit and usually arrives within minutes. Revolut, an international (SWIFT) transfer from your own bank, or IMPS/NEFT from an Indian bank also work. Send €90, add the reference shown on the page so the payment can be matched to you, then send Achu a short confirmation on WhatsApp or by email." }
       },
       {
         "@type": "Question",
@@ -101,9 +101,11 @@
     <symbol id="i-diploma" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="16" r="3"/><path d="M12 19.2599L9.73713 21.4293C9.41306 21.74 9.25102 21.8953 9.1138 21.9491C8.80111 22.0716 8.45425 21.9667 8.28977 21.7C8.21758 21.583 8.19509 21.3719 8.1501 20.9496C8.1247 20.7113 8.112 20.5921 8.07345 20.4922C7.98715 20.2687 7.80579 20.0948 7.57266 20.0121C7.46853 19.9751 7.3442 19.963 7.09553 19.9386C6.65512 19.8955 6.43491 19.8739 6.31283 19.8047C6.03463 19.647 5.92529 19.3145 6.05306 19.0147C6.10913 18.8832 6.27116 18.7278 6.59523 18.4171L8.07345 16.9999L9.1138 15.9596"/><path d="M12 19.2599L14.2629 21.4294C14.5869 21.7401 14.749 21.8954 14.8862 21.9492C15.1989 22.0717 15.5457 21.9668 15.7102 21.7001C15.7824 21.5831 15.8049 21.372 15.8499 20.9497C15.8753 20.7113 15.888 20.5921 15.9265 20.4923C16.0129 20.2688 16.1942 20.0949 16.4273 20.0122C16.5315 19.9752 16.6558 19.9631 16.9045 19.9387C17.3449 19.8956 17.5651 19.874 17.6872 19.8048C17.9654 19.6471 18.0747 19.3146 17.9469 19.0148C17.8909 18.8832 17.7288 18.7279 17.4048 18.4172L15.9265 17L15 16.0735"/><path d="M17.3197 17.9957C19.2921 17.9748 20.3915 17.8512 21.1213 17.1213C22 16.2426 22 14.8284 22 12V8C22 5.17157 22 3.75736 21.1213 2.87868C20.2426 2 18.8284 2 16 2L8 2C5.17157 2 3.75736 2 2.87868 2.87868C2 3.75736 2 5.17157 2 8L2 12C2 14.8284 2 16.2426 2.87868 17.1213C3.64706 17.8897 4.82497 17.9862 7 17.9983"/><path stroke-linecap="round" d="M9 6L15 6"/><path stroke-linecap="round" d="M7 9.5H17"/></g></symbol>
     <symbol id="i-leaf" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9.00006L16.5 4.50006M12 14.5001L18.5 8.00006M12 19.5001L19.5 12.0001"/><path d="M12 22C16.4183 22 20 18.3541 20 13.8567C20 9.39453 17.4467 4.18759 13.4629 2.32555C12.9986 2.10852 12.4993 2 12 2M12 22C7.58172 22 4 18.3541 4 13.8567C4 9.39453 6.55332 4.18759 10.5371 2.32555C11.0014 2.10852 11.5007 2 12 2M12 22V2"/></g></symbol>
     <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8V12L14.5 14.5"/></g></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15"/></g></symbol>
     <symbol id="i-notebook" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8C3 5.17157 3 3.75736 3.87868 2.87868C4.75736 2 6.17157 2 9 2H15C17.8284 2 19.2426 2 20.1213 2.87868C21 3.75736 21 5.17157 21 8V16C21 18.8284 21 20.2426 20.1213 21.1213C19.2426 22 17.8284 22 15 22H9C6.17157 22 4.75736 22 3.87868 21.1213C3 20.2426 3 18.8284 3 16V8Z"/><path stroke-linecap="round" d="M8 2.5V22"/><path stroke-linecap="round" d="M2 12H4"/><path stroke-linecap="round" d="M2 16H4"/><path stroke-linecap="round" d="M2 8H4"/><path stroke-linecap="round" d="M11.5 6.5H16.5"/><path stroke-linecap="round" d="M11.5 10H16.5"/></g></symbol>
+    <symbol id="i-global" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12C22 13.3132 21.7413 14.6136 21.2388 15.8268C20.7362 17.0401 19.9997 18.1425 19.0711 19.0711C18.1425 19.9997 17.0401 20.7362 15.8268 21.2388C14.6136 21.7413 13.3132 22 12 22C10.6868 22 9.38642 21.7413 8.17317 21.2388C6.95991 20.7362 5.85752 19.9997 4.92893 19.0711C4.00035 18.1425 3.26375 17.0401 2.7612 15.8268C2.25866 14.6136 2 13.3132 2 12C2 10.6868 2.25866 9.38642 2.76121 8.17316C3.26375 6.95991 4.00035 5.85752 4.92893 4.92893C5.85752 4.00035 6.95991 3.26375 8.17317 2.7612C9.38642 2.25866 10.6868 2 12 2C13.3132 2 14.6136 2.25866 15.8268 2.76121C17.0401 3.26375 18.1425 4.00035 19.0711 4.92893C19.9997 5.85752 20.7362 6.95991 21.2388 8.17317C21.7413 9.38642 22 10.6868 22 12L22 12Z"/><path d="M16 12C16 13.3132 15.8965 14.6136 15.6955 15.8268C15.4945 17.0401 15.1999 18.1425 14.8284 19.0711C14.457 19.9997 14.016 20.7362 13.5307 21.2388C13.0454 21.7413 12.5253 22 12 22C11.4747 22 10.9546 21.7413 10.4693 21.2388C9.98396 20.7362 9.54301 19.9997 9.17157 19.0711C8.80014 18.1425 8.5055 17.0401 8.30448 15.8268C8.10346 14.6136 8 13.3132 8 12C8 10.6868 8.10346 9.38642 8.30448 8.17316C8.5055 6.95991 8.80014 5.85752 9.17157 4.92893C9.54301 4.00035 9.98396 3.26375 10.4693 2.7612C10.9546 2.25866 11.4747 2 12 2C12.5253 2 13.0454 2.25866 13.5307 2.76121C14.016 3.26375 14.457 4.00035 14.8284 4.92893C15.1999 5.85752 15.4945 6.95991 15.6955 8.17317C15.8965 9.38642 16 10.6868 16 12L16 12Z"/><path stroke-linecap="round" d="M2 12H22"/></g></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M7.03.084c-1.277.06-2.149.264-2.91.563a5.9 5.9 0 0 0-2.124 1.388a5.9 5.9 0 0 0-1.38 2.127C.321 4.926.12 5.8.064 7.076s-.069 1.688-.063 4.947s.021 3.667.083 4.947c.061 1.277.264 2.149.563 2.911c.308.789.72 1.457 1.388 2.123a5.9 5.9 0 0 0 2.129 1.38c.763.295 1.636.496 2.913.552c1.278.056 1.689.069 4.947.063s3.668-.021 4.947-.082c1.28-.06 2.147-.265 2.91-.563a5.9 5.9 0 0 0 2.123-1.388a5.9 5.9 0 0 0 1.38-2.129c.295-.763.496-1.636.551-2.912c.056-1.28.07-1.69.063-4.948c-.006-3.258-.02-3.667-.081-4.947c-.06-1.28-.264-2.148-.564-2.911a5.9 5.9 0 0 0-1.387-2.123a5.9 5.9 0 0 0-2.128-1.38c-.764-.294-1.636-.496-2.914-.55C15.647.009 15.236-.006 11.977 0S8.31.021 7.03.084m.14 21.693c-1.17-.05-1.805-.245-2.228-.408a3.7 3.7 0 0 1-1.382-.895a3.7 3.7 0 0 1-.9-1.378c-.165-.423-.363-1.058-.417-2.228c-.06-1.264-.072-1.644-.08-4.848c-.006-3.204.006-3.583.061-4.848c.05-1.169.246-1.805.408-2.228c.216-.561.477-.96.895-1.382a3.7 3.7 0 0 1 1.379-.9c.423-.165 1.057-.361 2.227-.417c1.265-.06 1.644-.072 4.848-.08c3.203-.006 3.583.006 4.85.062c1.168.05 1.804.244 2.227.408c.56.216.96.475 1.382.895s.681.817.9 1.378c.165.422.362 1.056.417 2.227c.06 1.265.074 1.645.08 4.848c.005 3.203-.006 3.583-.061 4.848c-.051 1.17-.245 1.805-.408 2.23c-.216.56-.477.96-.896 1.38a3.7 3.7 0 0 1-1.378.9c-.422.165-1.058.362-2.226.418c-1.266.06-1.645.072-4.85.079s-3.582-.006-4.848-.06m9.783-16.192a1.44 1.44 0 1 0 1.437-1.442a1.44 1.44 0 0 0-1.437 1.442M5.839 12.012a6.161 6.161 0 1 0 12.323-.024a6.162 6.162 0 0 0-12.323.024M8 12.008A4 4 0 1 1 12.008 16A4 4 0 0 1 8 12.008"/></symbol>
   </svg>
   <!-- /build:sprite -->
@@ -290,31 +292,94 @@
             </li>
 
             <li class="rsv-step" data-step="3">
-              <div class="rsv-legend"><span class="rsv-num" aria-hidden="true">3</span><span><b>Pay the €90 deposit</b><small>Straight to the school’s bank account, with Wise or your own bank</small></span></div>
+              <div class="rsv-legend"><span class="rsv-num" aria-hidden="true">3</span><span><b>Pay the €90 deposit</b><small>Straight into the school’s own bank account in India. No middleman holds your money.</small></span></div>
               <div class="rsv-pay">
-                <dl class="rsv-copy">
-                  <div><dt>Amount</dt><dd><span class="rsv-copy-val">€90</span><button class="rsv-copybtn" type="button" data-copy="90" aria-label="Copy the amount, 90 euros">Copy</button></dd></div>
-                  <div><dt>Reference / invoice no.</dt><dd><span class="rsv-copy-val" id="rv-ref">TTC JAN27</span><button class="rsv-copybtn" type="button" data-copy-from="rv-ref" aria-label="Copy the payment reference">Copy</button></dd></div>
-                </dl>
-                <p class="rsv-pay-head">The school’s bank account</p>
-                <dl class="rsv-copy rsv-copy--bank" id="rv-bank">
-                  <div><dt>Account name</dt><dd><span class="rsv-copy-val">Aksharanand A S</span><button class="rsv-copybtn" type="button" data-copy="Aksharanand A S" aria-label="Copy the account name">Copy</button></dd></div>
-                  <div><dt>Bank</dt><dd><span class="rsv-copy-val">Federal Bank, India</span></dd></div>
-                  <div><dt>Account number</dt><dd><span class="rsv-copy-val">10330100238095</span><button class="rsv-copybtn" type="button" data-copy="10330100238095" aria-label="Copy the account number">Copy</button></dd></div>
-                  <div><dt>IFSC</dt><dd><span class="rsv-copy-val">FDRL0001033</span><button class="rsv-copybtn" type="button" data-copy="FDRL0001033" aria-label="Copy the IFSC code">Copy</button></dd></div>
-                  <div><dt>SWIFT / BIC</dt><dd><span class="rsv-copy-val">FDRLINBBCHN</span><button class="rsv-copybtn" type="button" data-copy="FDRLINBBCHN" aria-label="Copy the SWIFT code">Copy</button></dd></div>
-                </dl>
-                <p class="rsv-pay-head">Sending with Wise</p>
-                <ol class="rsv-howto">
-                  <li>In Wise, choose <b>Send</b>, enter <b>€90</b> and pick <b>Indian rupees (INR)</b> for the school to receive.</li>
-                  <li>Add a new recipient with the account name, account number and IFSC above.</li>
-                  <li>If Wise asks for an invoice number or a reference, paste your <b>reference</b> from above. It is your booking number.</li>
-                </ol>
-                <a class="cta cta--primary rsv-wise" id="rv-wise" data-wise href="https://wise.com/send" target="_blank" rel="noopener" data-magnetic>
-                  <span class="cta-label" data-roll>Open Wise to send €90</span>
-                  <span class="cta-icon" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
-                </a>
-                <p class="rsv-fine">Using your own bank instead? Send the equivalent of <b>€90</b> with the SWIFT code above and the same reference, and choose the option where you pay the bank charges (often called “OUR”), so the full €90 reaches the school. Then come back here for the last step.</p>
+                <fieldset class="pm">
+                  <legend class="rsv-pay-head">How would you like to send it?</legend>
+                  <div class="pm-options">
+                    <label class="pm-opt pm-opt--best">
+                      <input type="radio" name="method" value="wise" checked>
+                      <span class="pm-flag">Recommended</span>
+                      <span class="pm-name">Wise</span>
+                      <span class="pm-meta"><b>About €1.50</b> · arrives in minutes</span>
+                    </label>
+                    <label class="pm-opt">
+                      <input type="radio" name="method" value="revolut">
+                      <span class="pm-name">Revolut</span>
+                      <span class="pm-meta">If you already have it</span>
+                    </label>
+                    <label class="pm-opt">
+                      <input type="radio" name="method" value="bank">
+                      <span class="pm-name">Your own bank</span>
+                      <span class="pm-meta">SWIFT · 2–5 working days</span>
+                    </label>
+                    <label class="pm-opt">
+                      <input type="radio" name="method" value="india">
+                      <span class="pm-name">From India</span>
+                      <span class="pm-meta">IMPS or NEFT · free</span>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <div class="pm-card" id="rv-bank">
+                  <div class="pm-card-head">
+                    <p><span class="pm-card-kicker">Send to</span><span class="pm-card-bank">Federal Bank · India</span></p>
+                    <button class="rsv-copybtn rsv-copyall" type="button" id="rv-copyall" data-copy="Account name: Aksharanand A S&#10;Bank: Federal Bank, India&#10;Account number: 10330100238095&#10;IFSC: FDRL0001033&#10;SWIFT / BIC: FDRLINBBCHN" aria-label="Copy all the bank details">Copy all details</button>
+                  </div>
+                  <dl class="rsv-copy rsv-copy--bank">
+                    <div><dt>Amount</dt><dd><span class="rsv-copy-val">€90</span><button class="rsv-copybtn" type="button" data-copy="90" aria-label="Copy the amount, 90 euros">Copy</button></dd></div>
+                    <div class="pm-ref"><dt>Your reference</dt><dd><span class="rsv-copy-val" id="rv-ref">TTC JAN27</span><button class="rsv-copybtn" type="button" data-copy-from="rv-ref" aria-label="Copy the payment reference">Copy</button></dd></div>
+                    <div><dt>Account name</dt><dd><span class="rsv-copy-val">Aksharanand A S</span><button class="rsv-copybtn" type="button" data-copy="Aksharanand A S" aria-label="Copy the account name">Copy</button></dd></div>
+                    <div><dt>Account number</dt><dd><span class="rsv-copy-val">10330100238095</span><button class="rsv-copybtn" type="button" data-copy="10330100238095" aria-label="Copy the account number">Copy</button></dd></div>
+                    <div><dt>IFSC</dt><dd><span class="rsv-copy-val">FDRL0001033</span><button class="rsv-copybtn" type="button" data-copy="FDRL0001033" aria-label="Copy the IFSC code">Copy</button></dd></div>
+                    <div><dt>SWIFT / BIC</dt><dd><span class="rsv-copy-val">FDRLINBBCHN</span><button class="rsv-copybtn" type="button" data-copy="FDRLINBBCHN" aria-label="Copy the SWIFT code">Copy</button></dd></div>
+                  </dl>
+                </div>
+
+                <div class="pm-panel" data-panel="wise">
+                  <ul class="pm-why">
+                    <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> The real exchange rate, with the fee shown before you pay</li>
+                    <li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg> Usually in the school’s account within minutes</li>
+                    <li><svg class="ic" aria-hidden="true"><use href="#i-global"/></svg> Pay from almost any country, by bank transfer or card</li>
+                  </ul>
+                  <ol class="rsv-howto">
+                    <li>Open Wise and sign in, or make a free account. It takes a couple of minutes.</li>
+                    <li>Choose <b>Send</b>, enter <b>90 EUR</b> (or the same in your own currency) and pick <b>INR</b> as the currency the school receives.</li>
+                    <li>Add a new recipient with the <b>account name, account number and IFSC</b> above. Tap <b>Copy all details</b> to grab them in one go.</li>
+                    <li>If Wise asks for a reference or an invoice number, paste <b>your reference</b>. It is your booking number.</li>
+                  </ol>
+                  <a class="cta cta--primary rsv-wise" id="rv-wise" data-wise href="https://wise.com/send" target="_blank" rel="noopener" data-magnetic>
+                    <span class="cta-label" data-roll>Open Wise to send €90</span>
+                    <span class="cta-icon" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+                  </a>
+                  <p class="rsv-fine">Paying from the US? In Wise, choose <b>debit card</b> to pay. From a US bank account it costs several dollars more.</p>
+                </div>
+
+                <div class="pm-panel" data-panel="revolut">
+                  <ol class="rsv-howto">
+                    <li>In Revolut, tap <b>Send</b>, then <b>Add recipient</b> and choose <b>Bank account</b>.</li>
+                    <li>Pick <b>India</b> and <b>INR</b>, then enter the <b>account name, account number and IFSC</b> above.</li>
+                    <li>Send <b>€90</b> and add <b>your reference</b> as the payment note. Revolut shows any fee before you confirm.</li>
+                  </ol>
+                </div>
+
+                <div class="pm-panel" data-panel="bank">
+                  <ol class="rsv-howto">
+                    <li>Start an <b>international (SWIFT) transfer</b> to the account above, using the <b>SWIFT / BIC</b> code and account number.</li>
+                    <li>Send <b>€90</b> and put <b>your reference</b> in the payment details.</li>
+                    <li>Where your bank asks who pays the charges, choose <b>“OUR”</b> (you pay), so the full €90 arrives.</li>
+                  </ol>
+                  <p class="rsv-fine">Banks add their own fees and a weaker exchange rate, and the transfer takes a few days. Wise is usually quicker and cheaper for both of us.</p>
+                </div>
+
+                <div class="pm-panel" data-panel="india">
+                  <ol class="rsv-howto">
+                    <li>From any Indian bank app, add the account above as a payee using the <b>account number and IFSC</b>.</li>
+                    <li>Send the <b>rupee equivalent of €90</b> by <b>IMPS</b> or <b>NEFT</b>, with <b>your reference</b> as the remark. Achu can confirm the exact amount on WhatsApp.</li>
+                  </ol>
+                </div>
+
+                <p class="rsv-fine">Paid? Come back here for the last step, so Achu can match your deposit to your place.</p>
               </div>
             </li>
 
@@ -461,7 +526,7 @@
           </details>
           <details>
             <summary>How do I pay the deposit? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-            <div class="panel"><p>Step 3 shows the school’s Federal Bank account in India: account name, account number, IFSC and SWIFT. With Wise, choose Send, enter €90, pick Indian rupees for the school to receive and add the school as a new recipient with those details. If Wise asks for an invoice number, paste the reference from step 3, which carries your batch and your name. Wise converts from your own currency at the real exchange rate.</p><p>Would rather use your own bank? Use the same account with its SWIFT code and the same reference. International transfers can lose a fee on the way, so please choose the option where you pay the bank charges, and the full €90 arrives.</p></div>
+            <div class="panel"><p>Step 3 shows the school’s Federal Bank account in India, with a button that copies every detail at once. We recommend Wise: it converts from your own currency at the real exchange rate, the fee for a €90 deposit is about €1.50 and is shown before you pay, and the money usually reaches the school within minutes. Choose Send, enter €90, pick Indian rupees (INR) for the school to receive, and add the school as a new recipient with the account name, account number and IFSC.</p><p>Revolut works the same way. A SWIFT transfer from your own bank also works, but it is slower and banks take fees on both sides, so please choose “OUR” for the charges. In India, send the rupee equivalent by IMPS or NEFT. Whichever you use, add the reference from step 3. It carries your batch and your name.</p></div>
           </details>
           <details>
             <summary>How do I know my place is confirmed? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>

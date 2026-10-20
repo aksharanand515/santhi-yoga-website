@@ -1251,7 +1251,7 @@
       var lines = [
         'Namaste Achu,',
         '',
-        'I have paid the €' + DEPOSIT + ' deposit ' + (saved.method === 'bank' ? 'by bank transfer' : 'on Wise') + ' to reserve my place on the 200-hour Teacher Training, ' + b.month + ' ' + b.year + ' batch (' + b.range + ').',
+        'I have paid the €' + DEPOSIT + ' deposit ' + (PAID_BY[method()] || 'by bank transfer') + ' to reserve my place on the 200-hour Teacher Training, ' + b.month + ' ' + b.year + ' batch (' + b.range + ').',
         '',
         'Name: ' + (name || '—'),
       ];
@@ -1260,6 +1260,11 @@
       lines.push('Payment reference: ' + reference(b), '', 'I understand the balance of €' + BALANCE + ' is due by ' + b.due + ', within the first three days of the course. Could you confirm my place?', '', 'With thanks,', name || '');
       return lines.join('\n').trim();
     }
+
+    // How the deposit is sent: the radios in step 3, remembered with the rest
+    var PAID_BY = { wise: 'with Wise', revolut: 'with Revolut', bank: 'by bank transfer', india: 'by IMPS/NEFT from India' };
+    function method() { var m = $('input[name="method"]:checked', form); return m ? m.value : 'wise'; }
+    if (saved.method && PAID_BY[saved.method]) { var mIn = $('input[name="method"][value="' + saved.method + '"]', form); if (mIn) mIn.checked = true; }
 
     function update(fromUser) {
       var b = current();
@@ -1291,7 +1296,7 @@
       var active = done.indexOf(false);
       steps.forEach(function (s, i) { s.classList.toggle('is-active', i === active); });
 
-      saved = Object.assign(saved, { batch: b.value, name: name, email: emailIn.value.trim(), country: countryIn.value.trim() });
+      saved = Object.assign(saved, { method: method(), batch: b.value, name: name, email: emailIn.value.trim(), country: countryIn.value.trim() });
       store.set(saved);
       if (fromUser && ticket && !reduceMotion) { ticket.classList.remove('is-changing'); void ticket.offsetWidth; ticket.classList.add('is-changing'); }
     }
@@ -1301,6 +1306,9 @@
         update(true);
         var b = current();
         track('reserve_select_batch', { batch: b.value + ' ' + b.year });
+      } else if (e.target.name === 'method') {
+        update(false);
+        track('reserve_select_method', { method: e.target.value });
       }
     });
     [nameIn, emailIn, countryIn].forEach(function (el) {
@@ -1323,20 +1331,20 @@
     // Paying is never blocked; a missing name only means a vaguer reference
     $('#rv-wise').addEventListener('click', function () {
       var b = current();
-      saved.paid = true; saved.method = 'wise'; store.set(saved);
+      saved.paid = true; store.set(saved);
       steps[3].classList.add('is-ready');
       update(false);
       track('begin_checkout', { currency: 'EUR', value: DEPOSIT, items: [{ item_name: '200-hour TTC deposit', item_variant: b ? b.value + ' ' + b.year : '' }] });
     });
 
-    // Copying a bank detail counts as paying by bank transfer, unless Wise was opened
+    // Copying a bank detail counts as starting to pay, by whichever method is chosen
     var bankBox = $('#rv-bank');
     if (bankBox) bankBox.addEventListener('click', function (e) {
       if (!e.target.closest('.rsv-copybtn') || saved.paid) return;
-      saved.paid = true; saved.method = 'bank'; store.set(saved);
+      saved.paid = true; store.set(saved);
       steps[3].classList.add('is-ready');
       update(false);
-      track('begin_checkout', { currency: 'EUR', value: DEPOSIT, payment_type: 'bank_transfer' });
+      track('begin_checkout', { currency: 'EUR', value: DEPOSIT, payment_type: method() });
     });
 
     ['#rv-confirm', '#rv-mail'].forEach(function (sel) {
@@ -1356,9 +1364,10 @@
     $$('.rsv-copybtn', form).forEach(function (btn) {
       btn.addEventListener('click', function () {
         var text = btn.dataset.copy || (document.getElementById(btn.dataset.copyFrom) || {}).textContent || '';
+        var label = btn.dataset.label || (btn.dataset.label = btn.textContent);
         var done = function () {
           btn.textContent = 'Copied'; btn.classList.add('is-copied');
-          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('is-copied'); }, 1800);
+          setTimeout(function () { btn.textContent = label; btn.classList.remove('is-copied'); }, 1800);
         };
         if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () {});
         else {

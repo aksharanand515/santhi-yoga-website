@@ -1047,6 +1047,51 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 .rsv-copy--bank { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
 .rsv-copy--bank .rsv-copy-val { font-family: var(--sans); font-size: 1rem; font-variant-numeric: tabular-nums; letter-spacing: .02em; overflow-wrap: normal; white-space: nowrap; }
 
+/* step 3: choosing how to pay. Every panel shows without :has(), so the
+   instructions are never hidden from an older browser. */
+.pm { margin: 0; padding: 0; border: 0; min-width: 0; }
+.pm .rsv-pay-head { margin-top: 0; padding: 0; }
+.pm-options { display: grid; gap: .6rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pm-opt { position: relative; display: grid; align-content: start; gap: .2rem; padding: 1rem 1rem .95rem; border-radius: var(--r-md); cursor: pointer;
+  border: 1px solid var(--line-gold); background: rgba(255, 251, 245, .7);
+  transition: border-color .45s var(--ease), background-color .45s var(--ease), box-shadow .45s var(--ease), translate .45s var(--ease); }
+.pm-opt:hover { translate: 0 -2px; border-color: var(--kasavu); }
+.pm-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.pm-opt:has(input:focus-visible) { outline: 2px solid var(--kasavu); outline-offset: 3px; }
+.pm-opt:has(input:checked) { border-color: var(--kasavu); background: radial-gradient(90% 80% at 85% 0%, rgba(247, 215, 154, .45), transparent 70%), #FFFCF5;
+  box-shadow: 0 0 0 1px var(--kasavu), 0 22px 40px -28px rgba(138, 106, 44, .65); }
+.pm-name { font-family: var(--serif); font-size: 1.35rem; line-height: 1.15; color: var(--forest); }
+.pm-meta { font-size: .78rem; line-height: 1.4; color: var(--ink-55); }
+.pm-meta b { font-weight: 600; color: var(--forest); }
+.pm-flag { justify-self: start; margin-bottom: .3rem; padding: .15rem .6rem; border-radius: 999px; background: linear-gradient(135deg, #6A7350, #4B5236); color: #F6E3B4; font-size: .62rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+
+.pm-panel { margin-top: 1.25rem; }
+.pm-panel + .pm-panel { margin-top: 1.5rem; }
+@supports selector(:has(*)) {
+  .pm-panel { display: none; }
+  .rsv-pay:has(input[value="wise"]:checked) [data-panel="wise"],
+  .rsv-pay:has(input[value="revolut"]:checked) [data-panel="revolut"],
+  .rsv-pay:has(input[value="bank"]:checked) [data-panel="bank"],
+  .rsv-pay:has(input[value="india"]:checked) [data-panel="india"] { display: block; animation: blankIn .55s var(--ease); }
+}
+.pm-why { display: grid; gap: .45rem; margin-bottom: 1.1rem; font-size: .9rem; color: var(--ink-80); }
+.pm-why li { display: flex; align-items: flex-start; gap: .55rem; }
+.pm-why .ic { flex-shrink: 0; width: 1.05rem; height: 1.05rem; margin-top: .2rem; color: var(--kasavu-deep); }
+
+/* the account, laid out like a cheque from the school */
+.pm-card { position: relative; margin-top: 1.25rem; padding: clamp(1rem, 2.6vw, 1.4rem); border-radius: 20px;
+  background: radial-gradient(70% 60% at 100% 0%, rgba(247, 215, 154, .35), transparent 70%), linear-gradient(180deg, #FFFDF8, #FBF3E4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), 0 0 0 1px rgba(184, 145, 74, .3), 0 26px 50px -38px rgba(92, 58, 20, .55); }
+.pm-card-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1rem; margin-bottom: 1rem; }
+.pm-card-head p { display: grid; gap: .1rem; }
+.pm-card-kicker { font-size: .64rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-ink); }
+.pm-card-bank { font-family: var(--serif); font-size: 1.35rem; color: var(--forest); }
+.rsv-copyall { min-height: 40px; padding-inline: 1.1rem; background: var(--forest); border-color: var(--forest); color: #F6E3B4; }
+.rsv-copyall:hover { background: var(--forest-soft); }
+.rsv-copyall.is-copied { background: var(--kasavu-deep); border-color: var(--kasavu-deep); }
+.pm-card .rsv-copy > div { background: rgba(255, 253, 249, .85); }
+.pm-card .pm-ref { border-style: solid; border-color: var(--kasavu); background: #FFF8EA; }
+
 /* step 4: the confirmation */
 .rsv-confirm { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; margin-top: 1.4rem; }
 .rsv-step[data-step="4"] .form-status:empty { display: none; }
