@@ -33,6 +33,11 @@ const GA_ID = 'G-B04M93CEGM';
 const WISE_URL = 'https://wise.com/send';
 const WISE_FALLBACK = 'https://wa.me/917907714144?text=' + encodeURIComponent('Namaste Achu, I would like to pay the €90 deposit to reserve my place on the teacher training. Could you send me the Wise payment link?');
 
+// The Razorpay Payment Page for the €90 deposit, e.g. 'https://pages.razorpay.com/santhi-ttc-deposit'.
+// While empty, the reserve page's "Card" option stays hidden. Once set, it appears
+// first and the "Pay €90 by card" button opens this page in a new tab.
+const CARD_URL = '';
+
 const pages = [
   // The home page ends on the booking letter instead of the call-to-action band
   { file: 'index.html',                  base: '',    key: 'home',     cta: false },
@@ -44,6 +49,11 @@ const pages = [
   { file: 'book/index.html',             base: '../', key: 'book',     cta: false },
   // Ends on its own invitation to reserve, so no shared call-to-action band
   { file: 'reserve/index.html',          base: '../', key: 'reserve',  cta: false },
+  // The policies a card payment gateway asks to see before it switches on international cards
+  { file: 'terms/index.html',            base: '../', key: 'terms',    cta: false },
+  { file: 'privacy/index.html',          base: '../', key: 'privacy',  cta: false },
+  { file: 'refund-policy/index.html',    base: '../', key: 'refund',   cta: false },
+  { file: 'shipping-policy/index.html',  base: '../', key: 'shipping', cta: false },
   // Served for any unknown address, so its links must be absolute, not relative.
   { file: '404.html',                    base: '/',   key: 'none',     cta: false },
 ];
@@ -242,6 +252,9 @@ for (const page of pages) {
   html = splitHeadings(html);
   html = responsiveImages(html, page.file, warn);
   html = html.replace(/(<a\b[^>]*\bdata-wise\b[^>]*\bhref=")[^"]*(")/g, (_, a, b) => a + (WISE_URL || WISE_FALLBACK).replace(/&/g, '&amp;') + b);
+  // Show or hide the card option, and point its button at the payment page
+  html = html.replace(/\bdata-card( hidden)?(?=[\s>])/g, 'data-card' + (CARD_URL ? '' : ' hidden'));
+  html = html.replace(/(<a\b[^>]*\bdata-card-link\b[^>]*\bhref=")[^"]*(")/g, (_, a, b) => a + (CARD_URL || '#').replace(/&/g, '&amp;') + b);
   // Inline only the icons this page uses
   const used = [...new Set([...html.matchAll(/<use href="#i-([a-z-]+)"/g)].map((m) => m[1]))];
   const unknown = used.filter((id) => !ICONS[id] && !BRAND_ICONS[id]);

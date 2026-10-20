@@ -1072,8 +1072,14 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .rsv-pay:has(input[value="wise"]:checked) [data-panel="wise"],
   .rsv-pay:has(input[value="revolut"]:checked) [data-panel="revolut"],
   .rsv-pay:has(input[value="bank"]:checked) [data-panel="bank"],
-  .rsv-pay:has(input[value="india"]:checked) [data-panel="india"] { display: block; animation: blankIn .55s var(--ease); }
+  .rsv-pay:has(input[value="india"]:checked) [data-panel="india"],
+  .rsv-pay:has(input[value="card"]:checked) [data-panel="card"] { display: block; animation: blankIn .55s var(--ease); }
+  /* a card payer never needs the bank account */
+  .rsv-pay:has(input[value="card"]:checked) .pm-card { display: none; }
 }
+/* the card option waits, hidden, until tools/build.js has a payment link for it */
+[data-card][hidden] { display: none !important; }
+.pm-opt--card { grid-column: 1 / -1; }
 .pm-why { display: grid; gap: .45rem; margin-bottom: 1.1rem; font-size: .9rem; color: var(--ink-80); }
 .pm-why li { display: flex; align-items: flex-start; gap: .55rem; }
 .pm-why .ic { flex-shrink: 0; width: 1.05rem; height: 1.05rem; margin-top: .2rem; color: var(--kasavu-deep); }

@@ -1262,9 +1262,12 @@
     }
 
     // How the deposit is sent: the radios in step 3, remembered with the rest
-    var PAID_BY = { wise: 'with Wise', revolut: 'with Revolut', bank: 'by bank transfer', india: 'by IMPS/NEFT from India' };
+    var PAID_BY = { card: 'by card', wise: 'with Wise', revolut: 'with Revolut', bank: 'by bank transfer', india: 'by IMPS/NEFT from India' };
     function method() { var m = $('input[name="method"]:checked', form); return m ? m.value : 'wise'; }
-    if (saved.method && PAID_BY[saved.method]) { var mIn = $('input[name="method"][value="' + saved.method + '"]', form); if (mIn) mIn.checked = true; }
+    // Card is the easiest way to pay, so it is chosen first whenever it is offered
+    var cardOpt = $('.pm-opt--card', form), cardOn = cardOpt && !cardOpt.hidden;
+    var want = saved.method && PAID_BY[saved.method] && (saved.method !== 'card' || cardOn) ? saved.method : (cardOn ? 'card' : '');
+    if (want) { var mIn = $('input[name="method"][value="' + want + '"]', form); if (mIn) mIn.checked = true; }
 
     function update(fromUser) {
       var b = current();
@@ -1335,6 +1338,15 @@
       steps[3].classList.add('is-ready');
       update(false);
       track('begin_checkout', { currency: 'EUR', value: DEPOSIT, items: [{ item_name: '200-hour TTC deposit', item_variant: b ? b.value + ' ' + b.year : '' }] });
+    });
+
+    var cardBtn = $('#rv-card');
+    if (cardBtn) cardBtn.addEventListener('click', function () {
+      var b = current();
+      saved.paid = true; store.set(saved);
+      steps[3].classList.add('is-ready');
+      update(false);
+      track('begin_checkout', { currency: 'EUR', value: DEPOSIT, payment_type: 'card', items: [{ item_name: '200-hour TTC deposit', item_variant: b ? b.value + ' ' + b.year : '' }] });
     });
 
     // Copying a bank detail counts as starting to pay, by whichever method is chosen
