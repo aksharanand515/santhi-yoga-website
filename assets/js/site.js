@@ -1159,6 +1159,9 @@
       Array.prototype.forEach.call(sel.options, function (o) { if (o.text === params.get('interest')) sel.value = o.text; });
     }
     function setStatus(msg, ok) { status.textContent = msg; status.className = 'form-status ' + (ok ? 'is-ok' : 'is-error'); }
+    function sent(method, interest) {
+      if (typeof window.gtag === 'function') window.gtag('event', 'contact_form_send', { method: method, interest: interest });
+    }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var required = $$('[required]', form), invalid = required.filter(function (f) { return !f.checkValidity(); });
@@ -1177,12 +1180,13 @@
       if (endpoint) {
         setStatus('Sending…', true);
         fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(d) })
-          .then(function (r) { if (!r.ok) throw new Error(); form.reset(); setStatus('Thank you — your enquiry has been sent. We will reply soon.', true); })
+          .then(function (r) { if (!r.ok) throw new Error(); sent('form', d.interest); form.reset(); setStatus('Thank you — your enquiry has been sent. We will reply soon.', true); })
           .catch(function () { setStatus('Your enquiry could not be sent. Email ' + EMAIL + ' or message us on WhatsApp.', false); });
         return;
       }
       var subject = 'Booking Inquiry - Santhi School of Yoga & Vedanta Studies' + (d.interest ? ' (' + d.interest + ')' : '');
       var body = ['Name: ' + d.name, 'Email: ' + d.email, 'WhatsApp / Phone: ' + (d.phone || '-'), 'Interested in: ' + d.interest, 'Preferred dates: ' + (d.dates || '-'), '', 'Message:', d.message || '-'].join('\r\n');
+      sent('email', d.interest);
       window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       setStatus('Your email app should open with the enquiry ready to send. If it doesn’t, write to ' + EMAIL + '.', true);
     });
@@ -1469,8 +1473,9 @@
 
   /* ---------- Conversion tracking -------------------------------------
      Sends a GA4 event when someone takes an action that could turn into a
-     booking. These names are registered as key events in GA4, so the
-     "Key events" figure stops reading zero. Analytics is optional: if the
+     booking. booking_send, reserve_confirm, whatsapp_click and
+     contact_form_send (sent by the contact form above) are marked as key
+     events in GA4, so the "Key events" figure counts real enquiries. Analytics is optional: if the
      tag is blocked or absent, gtag() is simply undefined and nothing here
      runs. Clicks are captured on the document so links added later (the
      floating WhatsApp button, the booking preview) are covered too. */
@@ -1492,13 +1497,15 @@
         : link.closest('.site-header') ? 'header'
         : 'page';
 
-      if (href.indexOf('wa.me') > -1) {
-        // The booking form's send button carries the whole enquiry, so it is
+      if (link.id === 'wa-send' || link.id === 'mail-send') {
+        // The booking form's send buttons carry the whole enquiry, so they are
         // the strongest signal of intent on the site.
-        track(link.id === 'wa-send' ? 'booking_send' : 'whatsapp_click', {
-          link_location: where,
+        track('booking_send', {
+          method: link.id === 'wa-send' ? 'whatsapp' : 'email',
           page_path: location.pathname
         });
+      } else if (href.indexOf('wa.me') > -1) {
+        track('whatsapp_click', { link_location: where, page_path: location.pathname });
       } else if (href.indexOf('tel:') === 0) {
         track('phone_click', { link_location: where, page_path: location.pathname });
       } else if (href.indexOf('mailto:') === 0) {
