@@ -101,11 +101,11 @@
   <link rel="preload" href="../../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../../assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.min.css?v=1029235e">
+  <link rel="stylesheet" href="../../assets/css/site.min.css?v=82193d76">
   <script>document.documentElement.classList.add('js');</script>
   <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved.
        Journal articles leave these out: site.js fetches them itself after the page is up, and only for a mouse. -->
-  <script defer src="../../assets/js/site.min.js?v=a731a542"></script>
+  <script defer src="../../assets/js/site.min.js?v=22de8dbd"></script>
   <!-- Google Analytics 4, loaded on the first scroll, tap or key, or 7s after the page loads:
        its 170 KB of script would otherwise compete with the page while it settles -->
   <script>
@@ -349,6 +349,60 @@
 
   <!-- build:footer -->
 
+
+  <!-- Newsletter: sign-ups go to the Google Sheet in tools/newsletter once data-endpoint holds its /exec URL;
+       until then the form opens a prefilled email. The moon is redrawn at tonight's phase by site.js. -->
+  <section class="nl" id="letters" aria-labelledby="nl-title">
+    <div class="container nl-grid">
+      <div class="nl-sky" data-reveal>
+        <div class="nl-moon" aria-hidden="true">
+          <svg class="nl-ring" viewBox="0 0 200 200"><defs><path id="nl-ring-path" d="M100,100 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0"/></defs><text><textPath href="#nl-ring-path" textLength="538" lengthAdjust="spacing">One letter each full moon · from Fort Kochi · Kerala ·</textPath></text></svg>
+          <svg class="nl-orb" viewBox="0 0 120 120">
+            <defs>
+              <radialGradient id="nl-glow" cx="38%" cy="34%" r="78%"><stop offset="0" stop-color="#FFFCF2"/><stop offset=".55" stop-color="#F8E6BD"/><stop offset="1" stop-color="#E4C384"/></radialGradient>
+              <clipPath id="nl-clip"><path id="nl-lit-path" d="M60,6 A54,54 0 0,1 60,114 A54,54 0 0,1 60,6Z"/></clipPath>
+            </defs>
+            <circle class="nl-dark" cx="60" cy="60" r="54"/>
+            <g clip-path="url(#nl-clip)">
+              <circle cx="60" cy="60" r="54" fill="url(#nl-glow)"/>
+              <g class="nl-maria"><ellipse cx="44" cy="40" rx="15" ry="11"/><ellipse cx="70" cy="42" rx="9" ry="8"/><ellipse cx="78" cy="58" rx="10" ry="9"/><ellipse cx="94" cy="50" rx="5" ry="6"/><ellipse cx="32" cy="66" rx="13" ry="19"/><ellipse cx="62" cy="82" rx="8" ry="6"/><circle cx="56" cy="100" r="2.6"/></g>
+            </g>
+          </svg>
+        </div>
+        <p class="nl-moon-note" data-moon-note>One letter each <b>full moon</b></p>
+      </div>
+
+      <div class="nl-letter" data-reveal>
+        <div class="nl-sheet">
+          <div class="nl-stamp" aria-hidden="true"><div class="nl-stamp-in"><span class="nl-stamp-val">₹5</span><span class="nl-stamp-mal">ശാന്തി</span><span class="nl-stamp-place">Fort Kochi</span></div></div>
+          <svg class="nl-postmark" viewBox="0 0 230 120" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2,36 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,50 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,64 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,78 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,92 q12,-7 24,0 t24,0 t24,0 t24,0"/></g>
+            <g transform="translate(170 62)">
+              <circle r="52" fill="none" stroke="currentColor" stroke-width="2.6"/><circle r="31" fill="none" stroke="currentColor" stroke-width="1.3"/>
+              <path id="nl-pm-arc" d="M-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0" fill="none"/>
+              <text class="nl-pm-ring"><textPath href="#nl-pm-arc" textLength="262" lengthAdjust="spacing">FORT KOCHI · KERALA · POSTED ·</textPath></text>
+              <text class="nl-pm-date" y="4" text-anchor="middle">FULL MOON</text>
+            </g>
+          </svg>
+
+          <p class="kicker">The Pournami letter</p>
+          <h2 class="h2 nl-title" id="nl-title">Letters from <em>Fort Kochi</em></h2>
+          <p class="nl-lede">Once a month, as the moon comes full over the fishing nets, we write from the shala: one practice to try at home, a few lines from the old texts, how the season feels in Kerala, and the dates of the next training and retreat.</p>
+
+          <form class="nl-form" id="nl-form" data-endpoint="" novalidate>
+            <p class="nl-salute">Dear Santhi,</p>
+            <p class="nl-line">please write to me. My name is <span class="nl-blank"><label class="sr-only" for="nl-name">Your first name (optional)</label><input id="nl-name" name="name" type="text" autocomplete="given-name" maxlength="60" placeholder="your name"></span>, and my letters can find me at <span class="nl-blank nl-blank--wide"><label class="sr-only" for="nl-email">Your email address</label><input id="nl-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="120" placeholder="you@example.com" required></span>.</p>
+            <div class="nl-hp" aria-hidden="true"><label for="nl-web">Leave this empty</label><input id="nl-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <div class="nl-foot">
+              <button class="nl-seal" type="submit"><span class="nl-wax" aria-hidden="true">ശ</span><span class="nl-seal-label">Seal &amp; send</span></button>
+              <p class="nl-small">One letter a month, one click to stop. Your address stays with us and is never shared. <a href="../../privacy/">Privacy</a></p>
+            </div>
+            <p class="form-status nl-status" id="nl-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer class="site-footer">
     <div class="kasavu-rule" aria-hidden="true"></div>

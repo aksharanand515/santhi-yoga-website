@@ -1620,3 +1620,93 @@ select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 
 
 @media (prefers-reduced-motion: reduce) { .post-card .frame img { transition: none; } }
+
+/* ---------- Newsletter: the full moon letter ----------
+   A letter on airmail paper, kasavu and clay stripes for the border, a
+   Fort Kochi stamp in the corner, and the form written as a sentence on
+   the page. Beside it tonight's moon, drawn at its real phase. Sealing
+   the letter stamps a postmark over the stamp. */
+.nl { position: relative; padding-block: var(--section); overflow: hidden;
+  background: radial-gradient(55% 60% at 16% 46%, rgba(247, 215, 154, .42), transparent 72%), radial-gradient(40% 50% at 92% 18%, rgba(244, 217, 184, .5), transparent 70%); }
+.nl-grid { display: grid; gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center; }
+@media (min-width: 960px) { .nl-grid { grid-template-columns: 4fr 7fr; } }
+
+.nl-sky { text-align: center; }
+.nl-moon { position: relative; width: min(64vw, 360px); aspect-ratio: 1; margin-inline: auto; }
+.nl-moon::before { content: ""; position: absolute; inset: 4%; border-radius: 50%; background: radial-gradient(circle, rgba(247, 215, 154, .75) 30%, rgba(247, 215, 154, 0) 70%); filter: blur(18px); }
+.nl-ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; animation: nl-turn 120s linear infinite; }
+.nl-ring text { font: 600 7.4px var(--sans); letter-spacing: .3em; text-transform: uppercase; fill: var(--gold-ink); }
+.nl-orb { position: absolute; inset: 17%; width: 66%; height: 66%; filter: drop-shadow(0 18px 30px rgba(184, 145, 74, .35)); }
+.nl-dark { fill: rgba(235, 218, 195, .6); stroke: var(--line-gold); stroke-width: .6; }
+.nl-maria { fill: rgba(184, 145, 74, .16); }
+.nl-moon-note { margin-top: 1.25rem; font: italic 400 clamp(1.15rem, 1rem + .4vw, 1.35rem)/1.5 var(--serif); color: var(--ink-70); text-wrap: balance; }
+.nl-moon-note b { font-weight: 500; color: var(--gold-ink); }
+@keyframes nl-turn { to { rotate: 360deg; } }
+
+.nl-letter { position: relative; padding: 9px; border-radius: 8px; rotate: -.6deg; box-shadow: var(--shadow-float);
+  background: repeating-linear-gradient(-45deg, var(--clay) 0 16px, var(--paper) 16px 24px, var(--forest-soft) 24px 40px, var(--paper) 40px 48px); }
+.nl-sheet { position: relative; border-radius: 3px; padding: clamp(1.75rem, 5vw, 3.75rem); padding-top: clamp(2rem, 5vw, 3.75rem);
+  background: radial-gradient(120% 80% at 100% 0, rgba(244, 217, 184, .32), transparent 60%), var(--paper); }
+.nl-sheet > .kicker { padding-right: clamp(5.5rem, 14vw, 7.5rem); }
+.nl-title { margin-top: .9rem; padding-right: clamp(5.5rem, 14vw, 7.5rem); text-wrap: balance; }
+.nl-lede { margin-top: 1.1rem; max-width: 34rem; color: var(--ink-70); line-height: 1.72; }
+
+.nl-stamp { position: absolute; top: clamp(1rem, 3vw, 2rem); right: clamp(1rem, 3vw, 2rem); width: clamp(70px, 9vw, 92px); aspect-ratio: 5 / 6; padding: 5px; rotate: 4deg;
+  background: radial-gradient(circle, var(--paper) 2.4px, transparent 2.9px) -1px -1px / 8.6px 8.6px, var(--sand-deep); filter: drop-shadow(0 4px 6px rgba(92, 58, 20, .18)); }
+.nl-stamp-in { height: 100%; display: grid; place-items: center; align-content: space-between; padding: .4rem .2rem .45rem; color: var(--dawn); text-align: center;
+  background: radial-gradient(circle at 50% 46%, rgba(247, 215, 154, .55) 0 22%, transparent 23%), linear-gradient(170deg, var(--olive-light), var(--forest)); box-shadow: inset 0 0 0 1.5px rgba(252, 246, 238, .5); }
+.nl-stamp-val { justify-self: start; padding-left: .2rem; font: 600 .62rem/1 var(--sans); }
+.nl-stamp-mal { font: 500 clamp(.95rem, 1.6vw, 1.2rem)/1 var(--mal); }
+.nl-stamp-place { font: 600 .44rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; }
+
+.nl-postmark { position: absolute; top: clamp(-2.4rem, -2.6vw, -1.4rem); right: clamp(.4rem, 2.6vw, 1.5rem); width: clamp(150px, 20vw, 210px); color: rgba(162, 90, 64, .72);
+  mix-blend-mode: multiply; pointer-events: none; opacity: 0; transform: scale(1.5) rotate(-22deg); }
+.nl-pm-ring { font: 700 9.4px var(--sans); letter-spacing: .14em; fill: currentColor; }
+.nl-pm-date { font: 700 10.5px var(--sans); letter-spacing: .08em; fill: currentColor; }
+.nl-letter.is-posted .nl-postmark { animation: nl-stamp .6s var(--ease) forwards; }
+.nl-letter.is-posted { animation: nl-thud .5s var(--ease) .12s; }
+@keyframes nl-stamp { 0% { opacity: 0; transform: scale(1.5) rotate(-22deg); } 55% { opacity: 1; transform: scale(.94) rotate(-11deg); } 100% { opacity: 1; transform: scale(1) rotate(-12deg); } }
+@keyframes nl-thud { 30% { translate: 0 3px; } }
+
+.nl-form { margin-top: clamp(1.75rem, 3.5vw, 2.5rem); padding-top: clamp(1.5rem, 3vw, 2rem); border-top: 1px dashed var(--line-gold); }
+.nl-salute { font: italic 400 clamp(1.5rem, 1.2rem + 1vw, 2rem)/1.2 var(--serif); color: var(--teak); }
+.nl-line { margin-top: .5rem; font: 400 clamp(1.3rem, 1.08rem + .8vw, 1.8rem)/2 var(--serif); color: var(--ink-80); }
+.nl-blank { display: inline-block; max-width: 100%; vertical-align: baseline; }
+.nl-blank input { width: 9.5ch; max-width: 100%; padding: 0 .15em; border: 0; border-bottom: 1.5px solid var(--line-gold); border-radius: 0; background: transparent;
+  font: italic 500 1em/1.3 var(--serif); color: var(--gold-ink); transition: border-color .4s var(--ease), background-color .4s var(--ease); }
+.nl-blank--wide input { width: 19ch; }
+.nl-blank input::placeholder { color: rgba(122, 90, 30, .45); }
+.nl-blank input:focus { outline: none; border-bottom-color: var(--kasavu); background: rgba(247, 215, 154, .22); }
+.nl-blank input[aria-invalid="true"] { border-bottom-color: var(--clay); }
+.nl-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.nl-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem 2rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+.nl-seal { display: inline-flex; align-items: center; gap: 1rem; font: 600 .74rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--teak); }
+.nl-wax { width: 66px; height: 66px; display: grid; place-items: center; flex: none; border-radius: 48% 52% 46% 54% / 53% 47% 55% 45%;
+  font: 500 1.75rem/1 var(--mal); color: rgba(255, 228, 206, .88); text-shadow: 0 -1px 0 rgba(90, 40, 22, .5);
+  background: radial-gradient(circle at 34% 28%, #DE9473, var(--clay) 52%, #73381F);
+  box-shadow: inset 0 0 0 5px rgba(115, 56, 31, .32), inset 0 0 0 7px rgba(255, 214, 190, .14), 0 12px 20px -10px rgba(115, 56, 31, .7);
+  transition: transform .6s var(--ease), box-shadow .6s var(--ease); }
+.nl-seal:hover .nl-wax, .nl-seal:focus-visible .nl-wax { transform: rotate(-12deg) translateY(-2px); box-shadow: inset 0 0 0 5px rgba(115, 56, 31, .32), inset 0 0 0 7px rgba(255, 214, 190, .14), 0 18px 26px -12px rgba(115, 56, 31, .75); }
+.nl-seal:active .nl-wax { transform: scale(.92); }
+.nl-seal-label { border-bottom: 1px solid var(--line-gold); padding-bottom: .35rem; }
+.nl-seal[disabled] { cursor: default; }
+.nl-seal[disabled] .nl-wax { transform: rotate(-12deg) scale(.96); }
+.nl-small { flex: 1 1 16rem; font-size: .84rem; line-height: 1.6; color: var(--ink-55); }
+.nl-small a { color: var(--gold-ink); border-bottom: 1px solid var(--line-gold); }
+.nl-status { font: italic 400 1.2rem/1.5 var(--serif); }
+
+@media (max-width: 560px) {
+  .nl-letter { rotate: 0deg; padding: 7px; }
+  .nl-sheet { padding-top: 7.25rem; }
+  .nl-sheet > .kicker, .nl-title { padding-right: 0; }
+  .nl-stamp { width: 66px; }
+  .nl-blank--wide { width: calc(100% - .4em); }
+  .nl-blank--wide input { width: 100%; }
+
+}
+@media (prefers-reduced-motion: reduce) {
+  .nl-ring { animation: none; }
+  .nl-letter.is-posted, .nl-letter.is-posted .nl-postmark { animation: none; }
+  .nl-letter.is-posted .nl-postmark { opacity: 1; transform: rotate(-12deg); }
+}

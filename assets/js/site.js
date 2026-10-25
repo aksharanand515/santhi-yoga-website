@@ -1193,6 +1193,70 @@
 
   })();
 
+  /* ---------- Newsletter: the full moon letter ----------
+     The moon beside the letter is drawn at tonight's phase from the mean
+     synodic month (right to within a day) and names the next full moon.
+     With a data-endpoint the form posts to the Apps Script in
+     tools/newsletter; without one it opens a prefilled email instead. */
+  (function () {
+    var form = $('#nl-form');
+    if (!form) return;
+    var EMAIL = 'santhiyogacochin@gmail.com', DAY = 864e5, MONTH = 29.530588853, NEW_MOON = Date.UTC(2000, 0, 6, 18, 14);
+    var letter = form.closest('.nl-letter'), status = $('#nl-status'), note = $('[data-moon-note]'), lit = $('#nl-lit-path');
+    var age = (((Date.now() - NEW_MOON) / DAY) % MONTH + MONTH) % MONTH, phase = age / MONTH;
+    var nextFull = new Date(Date.now() + (((MONTH / 2 - age) % MONTH + MONTH) % MONTH) * DAY);
+    var c = Math.cos(2 * Math.PI * phase), waxing = phase < 0.5;
+    function day(d) { return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', timeZone: 'Asia/Kolkata' }); }
+    // the lit edge is a half circle on the sunward side; the terminator is a half ellipse
+    // that bulges towards the light for a crescent and away from it for a gibbous moon
+    if (lit) lit.setAttribute('d', 'M60,6 A54,54 0 0,' + (waxing ? 1 : 0) + ' 60,114 A' + (Math.abs(c) * 54).toFixed(2) + ',54 0 0,' + ((waxing ? c > 0 : c < 0) ? 0 : 1) + ' 60,6Z');
+    if (note) {
+      note.innerHTML = Math.abs(age - MONTH / 2) < 0.75
+        ? 'The moon is <b>full</b> over Fort Kochi tonight'
+        : 'Tonight the moon is <b>' + Math.round((1 - c) * 50) + '% full</b>. The next full moon is on <b>' + day(nextFull) + '</b>';
+    }
+
+    function setStatus(msg, ok) { status.textContent = msg; status.className = 'form-status nl-status ' + (ok ? 'is-ok' : 'is-error'); }
+    function signedUp(method) {
+      if (typeof window.gtag === 'function') window.gtag('event', 'newsletter_signup', { method: method, page_path: location.pathname });
+    }
+    function posted(name) {
+      var pm = $('.nl-pm-date', letter);
+      if (pm) pm.textContent = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit', timeZone: 'Asia/Kolkata' }).toUpperCase();
+      letter.classList.remove('is-posted'); void letter.offsetWidth; letter.classList.add('is-posted');
+      $$('input', form).forEach(function (f) { f.readOnly = true; });
+      $('.nl-seal', form).disabled = true;
+      $('.nl-seal-label', form).textContent = 'Sealed';
+      setStatus('Posted' + (name ? ', ' + name : '') + '. A short note is on its way now, and the letters follow each full moon. The next one rises on ' + day(nextFull) + '.', true);
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.elements.email, address = email.value.trim(), name = form.elements.name.value.trim();
+      email.removeAttribute('aria-invalid');
+      if (!address || !email.checkValidity()) {
+        email.setAttribute('aria-invalid', 'true');
+        email.focus();
+        setStatus('Add an email address so the letters can find you.', false);
+        return;
+      }
+      if (form.elements.website.value) return;
+      var endpoint = form.dataset.endpoint;
+      if (endpoint) {
+        setStatus('Sealing your letter…', true);
+        // Apps Script answers through a redirect the page cannot read, so this is sent
+        // no-cors: a network failure still rejects, and the script checks the address itself
+        fetch(endpoint, { method: 'POST', mode: 'no-cors', body: new URLSearchParams({ email: address, name: name, page: location.pathname }) })
+          .then(function () { signedUp('form'); posted(name); })
+          .catch(function () { setStatus('That did not go through. Write to ' + EMAIL + ' and we will add you by hand.', false); });
+        return;
+      }
+      var body = ['Please add me to the full moon letter.', '', 'Name: ' + (name || '-'), 'Email: ' + address].join('\r\n');
+      signedUp('email');
+      window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Please send me the full moon letter') + '&body=' + encodeURIComponent(body);
+      setStatus('Your email app should open with the request ready to send. If it doesn’t, write to ' + EMAIL + '.', true);
+    });
+  })();
+
   /* ---------- Reserve: hold a teacher training place ----------
      Choosing a batch and typing a name fill in the ticket, the Wise payment
      reference and the confirmation message together. Batches that have
