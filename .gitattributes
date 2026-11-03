@@ -1,0 +1,3 @@
+# Agent skills are listed in .well-known/agent-skills/index.json with the SHA-256
+# of each file as served, so they keep LF line endings on every machine.
+/.well-known/agent-skills/** text eol=lf

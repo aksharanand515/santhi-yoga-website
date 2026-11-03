@@ -370,6 +370,7 @@ doc += '\n## For AI agents\n\n' + [
   entry('Pages as Markdown', SITE + '/index.md', 'every page has a Markdown copy at its own address plus index.md (for example /about/index.md), and the page address itself answers in Markdown to a request that accepts text/markdown'),
   entry('MCP server', SITE + '/mcp', 'a read-only Model Context Protocol server (Streamable HTTP, no sign-in) with tools for the school\'s key facts, searching and reading any page, and drafting a WhatsApp booking message'),
   entry('MCP server card', SITE + '/.well-known/mcp/server-card.json', 'how to connect to the MCP server'),
+  entry('Agent skill', SITE + '/.well-known/agent-skills/santhi-yoga-fort-kochi/SKILL.md', 'instructions for helping someone plan yoga at the school, listed in /.well-known/agent-skills/index.json'),
 ].join('\n') + '\n';
 
 const filed = new Set();
@@ -544,6 +545,30 @@ for (const p of built) {
   mdCount++;
 }
 console.log(`wrote ${mdCount} Markdown copies`);
+
+/* ---------- Agent skills index ----------
+   Each folder in .well-known/agent-skills/ holds a SKILL.md: instructions an
+   AI agent can load to help someone plan yoga at the school. The index lists
+   them with the SHA-256 of each file, which agents check against what they
+   download, so it is rewritten on every build rather than kept by hand.
+   (Agent Skills Discovery RFC v0.2.0.) The file is hashed as it is served,
+   with LF line endings, whatever the editor saved. */
+const SKILLS_DIR = '.well-known/agent-skills';
+const skills = [];
+for (const entry of fs.readdirSync(path.join(ROOT, SKILLS_DIR), { withFileTypes: true })) {
+  const file = `${SKILLS_DIR}/${entry.name}/SKILL.md`;
+  if (!entry.isDirectory() || !fs.existsSync(path.join(ROOT, file))) continue;
+  const text = read(file).replace(/\r\n/g, '\n');
+  write(file, text);
+  const front = (text.match(/^---\n([\s\S]*?)\n---/) || [])[1] || '';
+  const name = (front.match(/^name:\s*(.+)$/m) || [])[1] || '';
+  const description = (front.match(/^description:\s*(.+)$/m) || [])[1] || '';
+  if (name !== entry.name) warn(`${file}: its name should be ${entry.name}, the folder's name`);
+  if (!description || description.length > 1024) warn(`${file}: needs a description of up to 1024 characters`);
+  skills.push({ name: entry.name, type: 'skill-md', description, url: '/' + file, digest: 'sha256:' + crypto.createHash('sha256').update(text).digest('hex') });
+}
+write(`${SKILLS_DIR}/index.json`, JSON.stringify({ $schema: 'https://schemas.agentskills.io/discovery/0.2.0/schema.json', skills }, null, 2) + '\n');
+console.log(`wrote ${SKILLS_DIR}/index.json (${skills.length} skill${skills.length === 1 ? '' : 's'})`);
 
 if (!WISE_URL) console.warn('note: WISE_URL is empty in tools/build.js, so the reserve page asks for payment details on WhatsApp instead of opening Wise');
 if (errors) { console.error(errors + ' problem(s)'); process.exit(1); }

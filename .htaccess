@@ -96,6 +96,10 @@ Options -Indexes
   RewriteRule ^mcp/?$            /mcp.php [L]
   RewriteRule ^mcp/server-card$  /.well-known/mcp/server-card.json [L]
 
+  # The ARD manifest lives at ard.json in its current spec and at ai-catalog.json
+  # before that, so both addresses serve the one file
+  RewriteRule ^\.well-known/ard\.json$ /.well-known/ai-catalog.json [L]
+
 </IfModule>
 
 <IfModule mod_mime.c>

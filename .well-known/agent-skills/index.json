@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "santhi-yoga-fort-kochi",
+      "type": "skill-md",
+      "description": "Help someone plan yoga with Santhi School of Yoga & Vedanta Studies in Fort Kochi, Kerala - daily walk-in classes, private sessions, retreats or the 28-day 200-hour teacher training - using the school's current facts, and draft their WhatsApp enquiry.",
+      "url": "/.well-known/agent-skills/santhi-yoga-fort-kochi/SKILL.md",
+      "digest": "sha256:28befd8a834f931c431a68e85713e30296fed03cc351f0579ca5340b05996001"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "@context": "https://agenticresourcediscovery.org/context/v1",
+  "specVersion": "0.91",
+  "host": {
+    "name": "Santhi School of Yoga & Vedanta Studies",
+    "domain": "santhiyogaindia.com",
+    "url": "https://santhiyogaindia.com/",
+    "logo": "https://santhiyogaindia.com/assets/brand/santhi-emblem-192.png"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:santhiyogaindia.com:mcp:school",
+      "displayName": "Santhi School of Yoga MCP server",
+      "type": "application/mcp-server-card+json",
+      "url": "https://santhiyogaindia.com/.well-known/mcp/server-card.json",
+      "description": "Read-only MCP server for a traditional Hatha Yoga school in Fort Kochi, Kerala: current class times and prices, teacher training dates and fees, every page of the site as Markdown, and a drafted WhatsApp booking message.",
+      "capabilities": ["get_school_facts", "search_site", "get_page", "draft_booking_message"],
+      "tags": ["yoga", "hatha yoga", "yoga teacher training", "Fort Kochi", "Kerala", "India"],
+      "representativeQueries": [
+        "what time are the yoga classes in Fort Kochi",
+        "how much is a 200-hour yoga teacher training in Kerala",
+        "when are the 2027 yoga teacher training batches at Santhi Yoga",
+        "book a private yoga session in Kochi"
+      ]
+    },
+    {
+      "identifier": "urn:air:santhiyogaindia.com:skills:santhi-yoga-fort-kochi",
+      "displayName": "Plan yoga at Santhi School of Yoga, Fort Kochi",
+      "type": "application/agent-skills+json",
+      "url": "https://santhiyogaindia.com/.well-known/agent-skills/index.json",
+      "description": "An agent skill for helping someone choose between the school's daily classes, private sessions, retreats and teacher training, using its current facts, and drafting their WhatsApp enquiry.",
+      "tags": ["yoga", "travel", "Kerala"],
+      "representativeQueries": [
+        "plan a yoga holiday in Kerala",
+        "find a drop-in yoga class in Fort Kochi",
+        "choose a yoga teacher training in India"
+      ]
+    }
+  ]
+}

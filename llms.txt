@@ -37,6 +37,7 @@
 - [Pages as Markdown](https://santhiyogaindia.com/index.md): every page has a Markdown copy at its own address plus index.md (for example /about/index.md), and the page address itself answers in Markdown to a request that accepts text/markdown
 - [MCP server](https://santhiyogaindia.com/mcp): a read-only Model Context Protocol server (Streamable HTTP, no sign-in) with tools for the school's key facts, searching and reading any page, and drafting a WhatsApp booking message
 - [MCP server card](https://santhiyogaindia.com/.well-known/mcp/server-card.json): how to connect to the MCP server
+- [Agent skill](https://santhiyogaindia.com/.well-known/agent-skills/santhi-yoga-fort-kochi/SKILL.md): instructions for helping someone plan yoga at the school, listed in /.well-known/agent-skills/index.json
 
 ## Classes in Fort Kochi
 
