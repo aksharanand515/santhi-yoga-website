@@ -24,6 +24,9 @@ const write = (p, s) => fs.writeFileSync(path.join(ROOT, p), s);
 
 // Google Analytics 4 Measurement ID, e.g. 'G-ABC123XYZ'. Leave empty for no analytics.
 const GA_ID = 'G-K9QP1XG6J8';
+// Google Ads tag ID (account 718-929-1280), configured on the same gtag.js as GA4 so
+// Ads sees its own tag on the site. Leave empty to drop it.
+const ADS_ID = 'AW-18536684543';
 
 // Where the reserve page's Wise button goes: Achu's own Wise payment link, which
 // opens with him already set as the recipient, so the payer types no bank details.
@@ -153,7 +156,7 @@ const analytics = GA_ID ? `
        its 170 KB of script would otherwise compete with the page while it settles -->
   <script>
     window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date()); gtag('config', '${GA_ID}');
+    gtag('js', new Date()); gtag('config', '${GA_ID}');${ADS_ID ? ` gtag('config', '${ADS_ID}');` : ''}
     (function () {
       var go = ['scroll', 'pointerdown', 'keydown', 'touchstart'], done = false;
       function load() {
