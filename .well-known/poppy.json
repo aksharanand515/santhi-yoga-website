@@ -5,12 +5,5 @@
     "domain": "santhiyogaindia.com",
     "logo_uri": "https://santhiyogaindia.com/assets/brand/santhi-emblem-192.png"
   },
-  "web": {},
-  "apis": [
-    {
-      "type": "mcp",
-      "url": "https://santhiyogaindia.com/mcp",
-      "description": "Read-only: class times and prices, teacher training dates and fees, any page as Markdown, and a drafted WhatsApp booking message"
-    }
-  ]
+  "web": {}
 }
