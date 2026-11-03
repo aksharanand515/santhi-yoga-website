@@ -80,23 +80,60 @@ Options -Indexes
   RewriteRule ^(wp-content|wp-includes|wp-admin|wp-json)(/|$) - [G,L]
   RewriteRule ^(cart|checkout|my-account|shop)/?$             - [G,L]
 
+  # ----------------------------------------------------------------
+  # For AI agents.
+  # A request that asks for Markdown (Accept: text/markdown) gets the page's
+  # Markdown copy, which tools/build.js writes beside every index.html:
+  # / gives /index.md, /about/ gives /about/index.md.
+  # ----------------------------------------------------------------
+  RewriteCond %{HTTP_ACCEPT} text/markdown [NC]
+  RewriteCond %{DOCUMENT_ROOT}/$1index.md -f
+  RewriteRule ^(|.*/)(?:index\.html)?$ /$1index.md [L]
+
+  # The MCP server is one PHP file, given a clean address with no folder behind
+  # it: a folder would make the server redirect /mcp to /mcp/, which breaks a POST.
+  # Its card also sits at the address the MCP extension recommends, <server>/server-card.
+  RewriteRule ^mcp/?$            /mcp.php [L]
+  RewriteRule ^mcp/server-card$  /.well-known/mcp/server-card.json [L]
+
 </IfModule>
 
 <IfModule mod_mime.c>
   AddType image/webp .webp
   AddType font/woff2 .woff2
+  AddType text/markdown .md
+  AddCharset utf-8 .md .txt
 </IfModule>
+
+# The API catalog (RFC 9727) has no extension, so its type is given by name
+<Files "api-catalog">
+  ForceType application/linkset+json
+</Files>
 
 # Compress text files
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript text/javascript image/svg+xml
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/markdown text/xml application/xml application/json application/linkset+json application/javascript text/javascript image/svg+xml
 </IfModule>
 
 # Caching: pages are always re-checked; CSS and JS carry a version number (?v=…)
 # that changes on every build, and photos and fonts never change under the same name.
 <IfModule mod_headers.c>
-  <FilesMatch "\.(html|xml|txt)$">
+  <FilesMatch "\.(html|xml|txt|md|json)$|^api-catalog$">
     Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # A page and its Markdown copy share an address, so caches must keep them apart.
+  # Content-Signal repeats robots.txt: these pages may be indexed, quoted and trained on.
+  <FilesMatch "\.(html|md)$">
+    Header append Vary Accept
+    Header set Content-Signal "search=yes, ai-input=yes, ai-train=yes"
+  </FilesMatch>
+  # Every page points agents at its Markdown copy, the site summary, the sitemap and the API catalog
+  <FilesMatch "^index\.html$">
+    Header set Link "<index.md>; rel=\"alternate\"; type=\"text/markdown\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\", </.well-known/api-catalog>; rel=\"api-catalog\""
+  </FilesMatch>
+  # Agents running in someone else's web page may read the plain-text and Markdown files
+  <FilesMatch "\.(md|txt|json)$|^api-catalog$">
+    Header set Access-Control-Allow-Origin "*"
   </FilesMatch>
   <FilesMatch "\.(css|js|webp|jpe?g|png|woff2)$">
     Header set Cache-Control "public, max-age=31536000"

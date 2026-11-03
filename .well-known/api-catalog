@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://santhiyogaindia.com/mcp",
+      "service-desc": [
+        { "href": "https://santhiyogaindia.com/.well-known/mcp/server-card.json", "type": "application/json" }
+      ],
+      "service-doc": [
+        { "href": "https://santhiyogaindia.com/llms.txt", "type": "text/plain" }
+      ]
+    },
+    {
+      "anchor": "https://santhiyogaindia.com/",
+      "alternate": [
+        { "href": "https://santhiyogaindia.com/index.md", "type": "text/markdown" }
+      ],
+      "describedby": [
+        { "href": "https://santhiyogaindia.com/llms.txt", "type": "text/plain" }
+      ],
+      "sitemap": [
+        { "href": "https://santhiyogaindia.com/sitemap.xml", "type": "application/xml" }
+      ]
+    }
+  ]
+}
