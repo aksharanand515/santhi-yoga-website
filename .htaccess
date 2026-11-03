@@ -124,12 +124,13 @@ Options -Indexes
   # A page and its Markdown copy share an address, so caches must keep them apart.
   # Content-Signal repeats robots.txt: these pages may be indexed, quoted and trained on.
   <FilesMatch "\.(html|md)$">
-    Header append Vary Accept
+    Header merge Vary Accept
     Header set Content-Signal "search=yes, ai-input=yes, ai-train=yes"
   </FilesMatch>
-  # Every page points agents at its Markdown copy, the site summary, the sitemap and the API catalog
+  # Every page points agents at its Markdown copy, the site summary, the sitemap and the API catalog.
+  # Single quotes outside: Hostinger's server sends \" through as it is, backslash and all.
   <FilesMatch "^index\.html$">
-    Header set Link "<index.md>; rel=\"alternate\"; type=\"text/markdown\", </llms.txt>; rel=\"describedby\"; type=\"text/plain\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\", </.well-known/api-catalog>; rel=\"api-catalog\""
+    Header set Link '<index.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"; type="text/plain", </sitemap.xml>; rel="sitemap"; type="application/xml", </.well-known/api-catalog>; rel="api-catalog"'
   </FilesMatch>
   # Agents running in someone else's web page may read the plain-text and Markdown files
   <FilesMatch "\.(md|txt|json)$|^api-catalog$">
