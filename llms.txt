@@ -2,7 +2,7 @@
 
 > A traditional Hatha Yoga school and yoga studio in Chirattapalam, Fort Kochi, Kerala, India, led by Master Aksharanand A S (known as Achu), who trained in the Sivananda tradition. Two-hour walk-in yoga classes run every day at 7:30 am and 3:30 pm, taught in English, for all levels.
 
-## Key facts (updated 2026-09-29)
+## Key facts (updated 2026-11-10)
 
 - Name: Santhi School of Yoga & Vedanta Studies. Also known as Santhi School of Yoga and Santhi Yoga Fort Kochi. santhiyogaindia.com is the school's domain name, not its name.
 - Address: House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India. Google Maps: https://maps.app.goo.gl/BbwKnL9gK1QzCh8i7
@@ -10,8 +10,8 @@
 - Official website: https://santhiyogaindia.com/ is the school's only current website. Its earlier website was santhiyoga.in; where the two disagree on class times or prices, the facts on santhiyogaindia.com are current.
 - Daily classes: every day, no day off, 7:30–9:30 am and 3:30–5:30 pm. Some mornings the class is held at Secret Garden, an open garden nearby, from 8:00–9:30 am; message the evening before a morning class.
 - Class order: opening savasana (relaxation), pranayama, Surya Namaskar, asanas for all levels, deep final savasana.
-- Drop-in class: ₹500 at present — a limited-time offer on the usual ₹600. From November 2026 the class is ₹700. No booking needed. Mats provided. No packages or memberships; students who practise for more than a week get 30% off classes.
-- Private session: ₹1,500 (₹2,000 from November 2026).
+- Drop-in class: ₹700. No booking needed. Mats provided. No packages or memberships; students who practise for more than a week get 30% off classes.
+- Private session: ₹2,000.
 - Also offered: a separate meditation class (timing depends on availability), workshops in pranayama, mudras, alignment and Kundalini-focused practices, retreats in Kerala, online group and private classes, and a 28-day 200-hour yoga teacher training (€899 all-inclusive; 2027 batches in January, February, April and June).
 - Seven-day residential retreats in Fort Kochi and Munnar run under the school’s retreat project, Samya Retreats (https://samyaretreats.com/). The 2027 dates are 13–19 March, 4–10 September, 10–16 October and 4–10 December, chosen so they do not overlap the teacher training months.
 - Teacher: Master Aksharanand A S. Trained in the Sivananda tradition; holds an Advanced Teacher Training Certificate. Over fifteen years teaching in Fort Kochi, more than 5,000 group classes, more than 70 international teacher training batches.
@@ -30,7 +30,14 @@
 - [Gallery](https://santhiyogaindia.com/gallery/): photographs of the school, classes and retreats
 - [Contact](https://santhiyogaindia.com/contact/): directions, phone, WhatsApp and email
 - [Book a class](https://santhiyogaindia.com/book/): choose a class, retreat or training and send the details by WhatsApp
-- [Journal](https://santhiyogaindia.com/blog/yoga-teacher-training-visa-india/): all guides
+- [Journal](https://santhiyogaindia.com/blog/): all guides
+
+## For AI agents
+
+- [Pages as Markdown](https://santhiyogaindia.com/index.md): every page has a Markdown copy at its own address plus index.md (for example /about/index.md), and the page address itself answers in Markdown to a request that accepts text/markdown
+- [MCP server](https://santhiyogaindia.com/mcp): a read-only Model Context Protocol server (Streamable HTTP, no sign-in) with tools for the school's key facts, searching and reading any page, and drafting a WhatsApp booking message
+- [MCP server card](https://santhiyogaindia.com/.well-known/mcp/server-card.json): how to connect to the MCP server
+- [Agent skill](https://santhiyogaindia.com/.well-known/agent-skills/santhi-yoga-fort-kochi/SKILL.md): instructions for helping someone plan yoga at the school, listed in /.well-known/agent-skills/index.json
 
 ## Classes in Fort Kochi
 

@@ -213,7 +213,9 @@ function render(tpl, page) {
     .replace(/\{\{home\}\}/g, page.base || './')
     .replace(/\{\{v:(css|js)\}\}/g, (_, k) => versions[k])
     .replace(/\s*<!--analytics-->/, analytics)
-    .replace(/\{\{cur:([a-z]+)\}\}/g, (_, k) => (k === page.key ? ' aria-current="page"' : ''));
+    .replace(/\{\{cur:([a-z]+)\}\}/g, (_, k) => (k === page.key ? ' aria-current="page"' : ''))
+    // Every page but the 404 has a Markdown copy beside it (see "Markdown copies" below)
+    .replace(/\n?[ \t]*<link rel="alternate" type="text\/markdown"[^>]*>/, (m) => (page.key === 'none' ? '' : m));
   if (!page.cta) out = out.replace(/\s*<!--cta-->[\s\S]*?<!--\/cta-->/, '');
   else out = out.replace(/<!--\/?cta-->\n?/g, '');
   /* An article is mostly reading: on a phone the motion library would only
@@ -372,7 +374,10 @@ console.log('wrote sitemap.xml');
 
 /* The visible heading of a page: the aria-label when the heading was split into
    words for animation, otherwise the text itself. */
-const entities = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
+const entities = {
+  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
+  lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”', ndash: '–', mdash: '—', hellip: '…', middot: '·', times: '×', rarr: '→', larr: '←', euro: '€', copy: '©',
+};
 const plain = (s) => s
   .replace(/<[^>]*>/g, '')
   .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n))
@@ -386,7 +391,8 @@ const heading = (p) => {
 const entry = (name, url, desc) => `- [${name}](${url}): ${desc}`;
 
 const cfg = JSON.parse(read('content/llms-sections.json'));
-const byKey = new Map(built.map((p) => [p.key, p]));
+// Articles share the Journal hub's key, so they are left out or the last one would stand in for the hub
+const byKey = new Map(built.filter((p) => !p.article).map((p) => [p.key, p]));
 const articles = new Map(built
   .filter((p) => /^blog\/[^/]+\/index\.html$/.test(p.file))
   .map((p) => [p.file.split('/')[1], p]));
@@ -398,6 +404,13 @@ doc += '\n## Main pages\n\n' + cfg.mainPageOrder
   .filter((k) => byKey.has(k))
   .map((k) => entry(cfg.mainPageLabels[k], urlOf(byKey.get(k)), cfg.mainPages[k]))
   .join('\n') + '\n';
+
+doc += '\n## For AI agents\n\n' + [
+  entry('Pages as Markdown', SITE + '/index.md', 'every page has a Markdown copy at its own address plus index.md (for example /about/index.md), and the page address itself answers in Markdown to a request that accepts text/markdown'),
+  entry('MCP server', SITE + '/mcp', 'a read-only Model Context Protocol server (Streamable HTTP, no sign-in) with tools for the school\'s key facts, searching and reading any page, and drafting a WhatsApp booking message'),
+  entry('MCP server card', SITE + '/.well-known/mcp/server-card.json', 'how to connect to the MCP server'),
+  entry('Agent skill', SITE + '/.well-known/agent-skills/santhi-yoga-fort-kochi/SKILL.md', 'instructions for helping someone plan yoga at the school, listed in /.well-known/agent-skills/index.json'),
+].join('\n') + '\n';
 
 const filed = new Set();
 for (const [section, slugs] of Object.entries(cfg.sections)) {
@@ -418,6 +431,183 @@ if (unfiled.length) {
 
 write('llms.txt', doc);
 console.log(`wrote llms.txt (${articles.size} journal pages)`);
+
+/* ---------- Markdown copies of every page ----------
+   An AI agent reading the site pays for every tag, class and script it wades
+   through; the same page as Markdown is a fraction of the size. Each page gets
+   an index.md beside its index.html, made from its <main>, and .htaccess hands
+   it to any request that asks for text/markdown. The MCP server (mcp.php)
+   reads these files too. Decorative parts (aria-hidden, svg) and the
+   interactive ones (forms, buttons, maps) are left out. */
+const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
+const SKIP = new Set(['script', 'style', 'svg', 'noscript', 'template', 'form', 'button', 'select', 'textarea', 'input', 'label', 'iframe', 'video', 'audio', 'canvas', 'nav', 'dialog']);
+const BLOCK = new Set(['p', 'div', 'section', 'article', 'header', 'footer', 'aside', 'main', 'figure', 'figcaption', 'address',
+  'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'table', 'hr', 'details', 'summary']);
+const BR = '\u0001';
+const decodeText = (s) => s
+  .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+  .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
+  .replace(/&([a-z]+);/gi, (m, n) => (n in entities ? entities[n] : m));
+const tidy = (s) => s.replace(/[ \t\r\n\f ]+/g, ' ').replace(new RegExp(` ?${BR} ?`, 'g'), '\n').trim();
+
+function parseHtml(html) {
+  const top = { tag: '#root', attrs: {}, children: [] };
+  const stack = [top];
+  const re = /<!--[\s\S]*?-->|<(\/?)([a-zA-Z][a-zA-Z0-9-]*)((?:[^>"']|"[^"]*"|'[^']*')*)>|([^<]+)|</g;
+  for (const m of html.matchAll(re)) {
+    const parent = stack[stack.length - 1];
+    if (m[0].startsWith('<!--')) continue;
+    if (m[4] !== undefined || !m[2]) { parent.children.push(decodeText(m[0])); continue; }
+    const tag = m[2].toLowerCase();
+    if (m[1]) {
+      const at = stack.map((n) => n.tag).lastIndexOf(tag);
+      if (at > 0) stack.length = at;
+      continue;
+    }
+    const attrs = {};
+    for (const a of m[3].matchAll(/([^\s=/]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+)))?/g)) {
+      attrs[a[1].toLowerCase()] = decodeText(a[2] ?? a[3] ?? a[4] ?? '');
+    }
+    const node = { tag, attrs, children: [] };
+    parent.children.push(node);
+    if (!VOID.has(tag) && !/\/\s*$/.test(m[3])) stack.push(node);
+  }
+  return top;
+}
+
+let mdPage = SITE + '/';
+const absUrl = (href) => { try { return new URL(href, mdPage).href; } catch { return href; } };
+const unseen = (n) => SKIP.has(n.tag) || n.attrs['aria-hidden'] === 'true' || 'hidden' in n.attrs;
+const wrapMd = (mark, s) => {
+  const t = s.trim();
+  return t ? s.match(/^\s*/)[0] + mark + t + mark + s.match(/\s*$/)[0] : s;
+};
+
+function inlineMd(node) {
+  let out = '';
+  for (const c of node.children) {
+    if (typeof c === 'string') out += c;
+    else if (!unseen(c)) out += inlineEl(c);
+  }
+  return out;
+}
+function inlineEl(n) {
+  switch (n.tag) {
+    case 'br': return BR;
+    case 'img': return n.attrs.alt ? `![${tidy(n.attrs.alt)}](${absUrl(n.attrs.src || '')})` : '';
+    case 'strong': case 'b': return wrapMd('**', inlineMd(n));
+    case 'em': case 'i': case 'cite': return wrapMd('*', inlineMd(n));
+    case 'code': return '`' + inlineMd(n) + '`';
+    case 'a': {
+      const href = n.attrs.href || '';
+      // An icon-only link keeps its label, unless it only scrolls down the page
+      const text = tidy(inlineMd(n)) || (href.startsWith('#') ? '' : tidy(n.attrs['aria-label'] || ''));
+      if (!text) return '';
+      return !href || href.startsWith('#') ? text : `[${text}](${absUrl(href)})`;
+    }
+    default: return BLOCK.has(n.tag) ? ` ${inlineMd(n)} ` : inlineMd(n);
+  }
+}
+
+function blocksMd(node) {
+  const out = [];
+  let run = '';
+  const flush = () => { const t = tidy(run); if (t) out.push(t); run = ''; };
+  for (const c of node.children) {
+    if (typeof c === 'string') run += c;
+    else if (unseen(c)) continue;
+    else if (BLOCK.has(c.tag)) { flush(); out.push(...blockMd(c)); }
+    else run += inlineEl(c);
+  }
+  flush();
+  return out;
+}
+function blockMd(n) {
+  if (/^h[1-6]$/.test(n.tag)) {
+    // A heading split into words for animation keeps its text in aria-label
+    const text = tidy(n.attrs['aria-label'] || inlineMd(n)).replace(/\n/g, ' ');
+    return text ? ['#'.repeat(+n.tag[1]) + ' ' + text] : [];
+  }
+  if (n.tag === 'hr') return ['---'];
+  if (n.tag === 'summary' || n.tag === 'dt') {
+    const text = tidy(inlineMd(n));
+    return text ? [`**${text}**`] : [];
+  }
+  if (n.tag === 'blockquote') {
+    const inner = blocksMd(n).join('\n\n');
+    return inner ? [inner.split('\n').map((l) => '> ' + l).join('\n')] : [];
+  }
+  if (n.tag === 'ul' || n.tag === 'ol') {
+    const items = [];
+    for (const li of n.children) {
+      if (typeof li === 'string' || li.tag !== 'li' || unseen(li)) continue;
+      const parts = blocksMd(li);
+      if (!parts.length) continue;
+      const mark = n.tag === 'ol' ? `${items.length + 1}. ` : '- ';
+      items.push(mark + parts.join('\n\n').split('\n').join('\n' + ' '.repeat(mark.length)));
+    }
+    return items.length ? [items.join('\n')] : [];
+  }
+  if (n.tag === 'table') {
+    const rows = [];
+    (function walk(x) {
+      for (const c of x.children) {
+        if (typeof c === 'string' || unseen(c)) continue;
+        if (c.tag !== 'tr') { walk(c); continue; }
+        rows.push(c.children
+          .filter((d) => typeof d !== 'string' && (d.tag === 'td' || d.tag === 'th'))
+          .map((d) => tidy(inlineMd(d)).replace(/\n/g, ' ').replace(/\|/g, '\\|')));
+      }
+    })(n);
+    if (!rows.length) return [];
+    const width = Math.max(...rows.map((r) => r.length));
+    const line = (r) => '| ' + [...r, ...Array(width - r.length).fill('')].join(' | ') + ' |';
+    return [[line(rows[0]), line(Array(width).fill('---')), ...rows.slice(1).map(line)].join('\n')];
+  }
+  return blocksMd(n);
+}
+
+const MD_FOOT = [
+  'Santhi School of Yoga & Vedanta Studies, House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India.',
+  'WhatsApp and phone: +91 7907714144 (https://wa.me/917907714144). Email: santhiyogacochin@gmail.com.',
+  `The whole site in one file: ${SITE}/llms.txt`,
+].join('\n');
+let mdCount = 0;
+for (const p of built) {
+  if (p.key === 'none') continue;
+  const main = (p.html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/) || [])[1];
+  if (!main) { warn(`${p.file}: no <main> to make a Markdown copy from`); continue; }
+  mdPage = urlOf(p);
+  const body = blocksMd(parseHtml(main.replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, ''))).join('\n\n');
+  const md = `---\ntitle: ${JSON.stringify(p.title)}\ndescription: ${JSON.stringify(p.desc)}\nurl: ${mdPage}\n---\n\n${body}\n\n---\n\n${MD_FOOT}\n`;
+  write(p.file.replace(/\.html$/, '.md'), md.replace(/[ \t]+$/gm, '').replace(/\n{3,}/g, '\n\n'));
+  mdCount++;
+}
+console.log(`wrote ${mdCount} Markdown copies`);
+
+/* ---------- Agent skills index ----------
+   Each folder in .well-known/agent-skills/ holds a SKILL.md: instructions an
+   AI agent can load to help someone plan yoga at the school. The index lists
+   them with the SHA-256 of each file, which agents check against what they
+   download, so it is rewritten on every build rather than kept by hand.
+   (Agent Skills Discovery RFC v0.2.0.) The file is hashed as it is served,
+   with LF line endings, whatever the editor saved. */
+const SKILLS_DIR = '.well-known/agent-skills';
+const skills = [];
+for (const entry of fs.readdirSync(path.join(ROOT, SKILLS_DIR), { withFileTypes: true })) {
+  const file = `${SKILLS_DIR}/${entry.name}/SKILL.md`;
+  if (!entry.isDirectory() || !fs.existsSync(path.join(ROOT, file))) continue;
+  const text = read(file).replace(/\r\n/g, '\n');
+  write(file, text);
+  const front = (text.match(/^---\n([\s\S]*?)\n---/) || [])[1] || '';
+  const name = (front.match(/^name:\s*(.+)$/m) || [])[1] || '';
+  const description = (front.match(/^description:\s*(.+)$/m) || [])[1] || '';
+  if (name !== entry.name) warn(`${file}: its name should be ${entry.name}, the folder's name`);
+  if (!description || description.length > 1024) warn(`${file}: needs a description of up to 1024 characters`);
+  skills.push({ name: entry.name, type: 'skill-md', description, url: '/' + file, digest: 'sha256:' + crypto.createHash('sha256').update(text).digest('hex') });
+}
+write(`${SKILLS_DIR}/index.json`, JSON.stringify({ $schema: 'https://schemas.agentskills.io/discovery/0.2.0/schema.json', skills }, null, 2) + '\n');
+console.log(`wrote ${SKILLS_DIR}/index.json (${skills.length} skill${skills.length === 1 ? '' : 's'})`);
 
 if (!WISE_URL) console.warn('note: WISE_URL is empty in tools/build.js, so the reserve page asks for payment details on WhatsApp instead of opening Wise');
 if (errors) { console.error(errors + ' problem(s)'); process.exit(1); }

@@ -1,5 +1,33 @@
 # Everything public here is welcome to be read, by search engines and AI assistants alike.
+#
+# Content-Signal says what the school's pages may be used for (contentsignals.org):
+#   search    building a search index and linking to the pages
+#   ai-input  quoting them in an AI assistant's answer
+#   ai-train  training AI models
+# All three are yes: the more assistants know about the school, the better.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+Disallow: /partials/
+Disallow: /tools/
+Disallow: /content/
+
+# The AI crawlers by name, so none of them has to guess from the rules above.
+# A crawler named here reads only this group, so the same rules are repeated.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
+User-agent: Amazonbot
+User-agent: CCBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /partials/
 Disallow: /tools/
@@ -7,5 +35,7 @@ Disallow: /content/
 
 # A plain-text summary of the school and every page, for AI assistants:
 # https://santhiyogaindia.com/llms.txt
+# Every page also comes as Markdown: add index.md to its address, or ask for text/markdown.
+# A read-only MCP server for AI agents: https://santhiyogaindia.com/mcp
 
 Sitemap: https://santhiyogaindia.com/sitemap.xml

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
+  "name": "com.santhiyogaindia/school",
+  "version": "1.0.0",
+  "title": "Santhi School of Yoga & Vedanta Studies",
+  "description": "Read-only facts, pages and booking help for a Hatha Yoga school in Fort Kochi, Kerala.",
+  "websiteUrl": "https://santhiyogaindia.com/",
+  "icons": [
+    { "src": "https://santhiyogaindia.com/assets/brand/santhi-emblem-192.png", "mimeType": "image/png", "sizes": ["192x192"] }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://santhiyogaindia.com/mcp",
+      "supportedProtocolVersions": ["2026-07-28", "2025-11-25", "2025-06-18", "2025-03-26", "2024-11-05"]
+    }
+  ],
+  "protocolVersion": "2025-11-25",
+  "serverInfo": {
+    "name": "santhiyogaindia",
+    "title": "Santhi School of Yoga & Vedanta Studies",
+    "version": "1.0.0"
+  },
+  "documentationUrl": "https://santhiyogaindia.com/llms.txt",
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://santhiyogaindia.com/mcp"
+  },
+  "capabilities": {
+    "tools": { "listChanged": false },
+    "resources": { "subscribe": false, "listChanged": false }
+  },
+  "authentication": {
+    "required": false,
+    "schemes": []
+  },
+  "instructions": "Start with get_school_facts for current times, prices and dates. search_site and get_page read the rest of the site. draft_booking_message writes a WhatsApp enquiry that the person sends themselves.",
+  "tools": ["dynamic"],
+  "resources": ["dynamic"]
+}

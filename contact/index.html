@@ -23,12 +23,14 @@
   <meta name="theme-color" content="#FBF6EC">
   <link rel="icon" type="image/png" sizes="48x48" href="../assets/brand/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/brand/apple-touch-icon.png">
+  <link rel="alternate" type="text/markdown" href="index.md">
+  <link rel="describedby" type="text/plain" href="/llms.txt">
   <link rel="preload" href="../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/css/site.min.css?v=b68f405f">
   <!-- If the script never arrives, everything it would have revealed shows anyway after four seconds -->
   <script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('show-all')},4000);</script>
-  <script defer src="../assets/js/site.min.js?v=95ed1f1d"></script>
+  <script defer src="../assets/js/site.min.js?v=5f5c3226"></script>
   <!-- Google Analytics 4, loaded on the first scroll, tap or key, or 7s after the page loads:
        its 170 KB of script would otherwise compete with the page while it settles -->
   <script>
@@ -190,15 +192,15 @@
             enquiry filled in. To use Formspree or similar, set data-endpoint below to
             the form URL and the script will POST the form as JSON instead.
           -->
-          <form class="form-card" id="enquiry-form" data-endpoint="" novalidate aria-labelledby="form-title">
+          <form class="form-card" id="enquiry-form" data-endpoint="" novalidate aria-labelledby="form-title" toolname="send_enquiry" tooldescription="Write an enquiry to Santhi School of Yoga &amp; Vedanta Studies. Submitting opens the visitor's email app with the enquiry written out; nothing is sent until they press send there.">
             <h2 class="h3" id="form-title">Send an enquiry</h2>
             <p class="muted small mt-s">Fields marked <span aria-hidden="true" style="color:var(--clay)">*</span> are required.</p>
             <div class="form-grid">
-              <div><label class="field-label" for="f-name">Name <span aria-hidden="true">*</span></label><input class="field" id="f-name" name="name" type="text" autocomplete="name" required></div>
-              <div><label class="field-label" for="f-email">Email <span aria-hidden="true">*</span></label><input class="field" id="f-email" name="email" type="email" autocomplete="email" required></div>
-              <div><label class="field-label" for="f-phone">WhatsApp / phone</label><input class="field" id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="Include country code"></div>
+              <div><label class="field-label" for="f-name">Name <span aria-hidden="true">*</span></label><input class="field" id="f-name" name="name" type="text" autocomplete="name" required toolparamdescription="The name of the person enquiring"></div>
+              <div><label class="field-label" for="f-email">Email <span aria-hidden="true">*</span></label><input class="field" id="f-email" name="email" type="email" autocomplete="email" required toolparamdescription="Their email address, for the reply"></div>
+              <div><label class="field-label" for="f-phone">WhatsApp / phone</label><input class="field" id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="Include country code" toolparamdescription="Their WhatsApp or phone number with country code (optional)"></div>
               <div><label class="field-label" for="f-interest">Interested in <span aria-hidden="true">*</span></label>
-                <select class="field" id="f-interest" name="interest" required>
+                <select class="field" id="f-interest" name="interest" required toolparamdescription="What they are interested in">
                   <option value="" selected disabled>Choose an option</option>
                   <option>Daily Yoga Classes</option>
                   <option>Private Yoga</option>
@@ -208,8 +210,8 @@
                   <option>Online Yoga</option>
                 </select>
               </div>
-              <div class="full"><label class="field-label" for="f-dates">Preferred dates</label><input class="field" id="f-dates" name="dates" type="text" placeholder="For example: January 2027 training, or 12–15 March"></div>
-              <div class="full"><label class="field-label" for="f-message">Message</label><textarea class="field" id="f-message" name="message" rows="5" placeholder="Tell us a little about your practice and what you are looking for"></textarea></div>
+              <div class="full"><label class="field-label" for="f-dates">Preferred dates</label><input class="field" id="f-dates" name="dates" type="text" toolparamdescription="When they would like to come (optional)" placeholder="For example: January 2027 training, or 12–15 March"></div>
+              <div class="full"><label class="field-label" for="f-message">Message</label><textarea class="field" id="f-message" name="message" rows="5" toolparamdescription="Their message: their practice and what they are looking for (optional)" placeholder="Tell us a little about your practice and what you are looking for"></textarea></div>
             </div>
             <div class="form-foot">
               <p class="muted small">Sending opens your email app with the enquiry ready to go.</p>

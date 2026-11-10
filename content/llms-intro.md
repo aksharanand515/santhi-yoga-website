@@ -10,8 +10,8 @@
 - Official website: https://santhiyogaindia.com/ is the school's only current website. Its earlier website was santhiyoga.in; where the two disagree on class times or prices, the facts on santhiyogaindia.com are current.
 - Daily classes: every day, no day off, 7:30–9:30 am and 3:30–5:30 pm. Some mornings the class is held at Secret Garden, an open garden nearby, from 8:00–9:30 am; message the evening before a morning class.
 - Class order: opening savasana (relaxation), pranayama, Surya Namaskar, asanas for all levels, deep final savasana.
-- Drop-in class: ₹500 at present — a limited-time offer on the usual ₹600. From November 2026 the class is ₹700. No booking needed. Mats provided. No packages or memberships; students who practise for more than a week get 30% off classes.
-- Private session: ₹1,500 (₹2,000 from November 2026).
+- Drop-in class: ₹700. No booking needed. Mats provided. No packages or memberships; students who practise for more than a week get 30% off classes.
+- Private session: ₹2,000.
 - Also offered: a separate meditation class (timing depends on availability), workshops in pranayama, mudras, alignment and Kundalini-focused practices, retreats in Kerala, online group and private classes, and a 28-day 200-hour yoga teacher training (€899 all-inclusive; 2027 batches in January, February, April and June).
 - Seven-day residential retreats in Fort Kochi and Munnar run under the school’s retreat project, Samya Retreats (https://samyaretreats.com/). The 2027 dates are 13–19 March, 4–10 September, 10–16 October and 4–10 December, chosen so they do not overlap the teacher training months.
 - Teacher: Master Aksharanand A S. Trained in the Sivananda tradition; holds an Advanced Teacher Training Certificate. Over fifteen years teaching in Fort Kochi, more than 5,000 group classes, more than 70 international teacher training batches.
