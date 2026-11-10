@@ -72,6 +72,32 @@
     window.matchMedia('(min-width: 1040px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
   }
 
+  /* ---------- Header: one pool of light glides between the pages ----------
+     Rather than each link lighting up on its own, a single soft pill slides
+     to whichever page the pointer rests on, and fades when it leaves. */
+  (function () {
+    var nav = $('.site-header .nav');
+    if (!nav || !finePointer) return;
+    var glide = document.createElement('span');
+    glide.className = 'nav-glide'; glide.setAttribute('aria-hidden', 'true');
+    nav.appendChild(glide);
+    $$('.nav-link', nav).forEach(function (link) {
+      link.addEventListener('pointerenter', function () {
+        var n = nav.getBoundingClientRect(), r = link.getBoundingClientRect();
+        // arriving from outside, it appears where it is needed instead of sliding in from the last link
+        var arriving = !nav.classList.contains('is-gliding');
+        if (arriving) glide.classList.add('is-placing');
+        glide.style.setProperty('--gx', (r.left - n.left).toFixed(1) + 'px');
+        glide.style.setProperty('--gy', (r.top - n.top).toFixed(1) + 'px');
+        glide.style.setProperty('--gw', r.width.toFixed(1) + 'px');
+        glide.style.setProperty('--gh', r.height.toFixed(1) + 'px');
+        if (arriving) { void glide.offsetWidth; glide.classList.remove('is-placing'); }
+        nav.classList.add('is-gliding');
+      });
+    });
+    nav.addEventListener('pointerleave', function () { nav.classList.remove('is-gliding'); });
+  })();
+
   /* ---------- Page to page ----------
      Browsers with cross-document view transitions animate between pages in
      CSS alone. Elsewhere a veil of warm light fills the screen before the
@@ -96,27 +122,54 @@
     window.addEventListener('pageshow', function () { root.classList.remove('is-leaving'); });
   })();
 
-  /* ---------- Lamp light ----------
+  /* ---------- Lamp light and the brass ring ----------
      A soft pool of warm light follows a fine pointer across the page, the
-     way a brass lamp carried through the pavilion would. */
+     way a brass lamp carried through the pavilion would, and a hairline
+     ring of brass keeps a breath behind the pointer itself. The ring warms
+     over anything that can be pressed, opens into a small lens over
+     photographs that open, and steps aside for buttons and fields, which
+     carry their own light. */
   (function () {
     if (reduceMotion || !finePointer) return;
     var lamp = document.createElement('div');
     lamp.className = 'lamp'; lamp.setAttribute('aria-hidden', 'true');
+    var ring = document.createElement('div');
+    ring.className = 'cursor'; ring.setAttribute('aria-hidden', 'true');
+    ring.innerHTML = '<span class="cursor-ring"></span><span class="cursor-lens"></span>';
+    var lens = ring.lastChild;
     document.body.appendChild(lamp);
-    var x = -999, y = -999, tx = x, ty = y, raf = 0;
+    document.body.appendChild(ring);
+    var x = -999, y = -999, rx = x, ry = y, tx = x, ty = y, raf = 0;
     function tick() {
       x += (tx - x) * 0.12; y += (ty - y) * 0.12;
+      rx += (tx - rx) * 0.24; ry += (ty - ry) * 0.24;
       lamp.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+      ring.style.transform = 'translate3d(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px,0)';
+      // the ring is quicker than the lamp, so it has always arrived by the time the lamp has
       raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.5 ? requestAnimationFrame(tick) : 0;
     }
     window.addEventListener('pointermove', function (e) {
       tx = e.clientX; ty = e.clientY;
-      if (x === -999) { x = tx; y = ty; }
+      if (x === -999) { x = rx = tx; y = ry = ty; }
       lamp.classList.add('is-on');
+      ring.classList.add('is-on');
       if (!raf) raf = requestAnimationFrame(tick);
     }, { passive: true });
-    document.documentElement.addEventListener('pointerleave', function () { lamp.classList.remove('is-on'); });
+    document.documentElement.addEventListener('pointerleave', function () { lamp.classList.remove('is-on'); ring.classList.remove('is-on'); });
+    document.addEventListener('pointerover', function (e) {
+      var el = e.target;
+      if (!el.closest) return;
+      // a dialog (the gallery's lightbox) sits above everything, the ring included
+      var aside = el.closest('input, textarea, select, iframe, dialog, .btn, .cta, .icon-btn, .float-wa, .menu-toggle, .hero-ttc');
+      var media = !aside && el.closest('[data-cursor], .tile-btn, a.frame');
+      var press = !aside && !media && el.closest('a[href], button, summary, label');
+      ring.classList.toggle('is-aside', !!aside);
+      ring.classList.toggle('is-lens', !!media);
+      ring.classList.toggle('is-press', !!press);
+      if (media) lens.textContent = media.getAttribute('data-cursor') || (media.tagName === 'A' ? 'Read' : 'View');
+    }, { passive: true });
+    window.addEventListener('pointerdown', function () { ring.classList.add('is-down'); }, { passive: true });
+    window.addEventListener('pointerup', function () { ring.classList.remove('is-down'); }, { passive: true });
   })();
 
   /* ---------- Scroll reveals ----------
@@ -129,7 +182,9 @@
     var kinds = [
       { sel: '[data-reveal]', wait: 'rv-wait', play: 'rv-in', ms: 1100 },
       { sel: '[data-split]', wait: 'sp-wait', play: 'sp-in', ms: 1200 },
-      { sel: '[data-clip]', wait: 'cl-wait', play: 'cl-in', ms: 2000 }
+      { sel: '[data-clip]', wait: 'cl-wait', play: 'cl-in', ms: 2000 },
+      // the school's name at the foot of every page is written in, left to right
+      { sel: '.footer-word', wait: 'ink-wait', play: 'ink-in', ms: 2600 }
     ];
     var io = new IntersectionObserver(function (entries) {
       var batch = 0;
@@ -153,6 +208,25 @@
         el.classList.add(k.wait);
         io.observe(el);
       });
+    });
+  }
+
+  /* Photographs develop rather than pop: one still loading is held back until
+     it arrives, then fades up in its frame. A photo that hasn't arrived isn't
+     drawn anyway, so holding it back costs nothing, and no position is read.
+     The frames carry a sand ground, so nothing is ever an empty hole. */
+  function initPhotos() {
+    if (reduceMotion) return;
+    $$('img[loading="lazy"]').forEach(function (img) {
+      if (img.complete || img.closest('.svc-preview, .lightbox')) return;
+      img.classList.add('img-wait');
+      function arrive() {
+        img.classList.remove('img-wait');
+        img.classList.add('img-in');
+        setTimeout(function () { img.classList.remove('img-in'); }, 1300);
+      }
+      img.addEventListener('load', arrive, { once: true });
+      img.addEventListener('error', arrive, { once: true });
     });
   }
 
@@ -259,23 +333,29 @@
     });
   }
 
+  // Sets each word of an element's text in its own span, leaving the spaces and any markup as they were
+  function wrapWords(el, className) {
+    var words = [];
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function (w) {
+            if (!w) return;
+            if (/^\s+$/.test(w)) { frag.appendChild(document.createTextNode(w)); return; }
+            var s = document.createElement('span'); s.className = className; s.textContent = w; words.push(s); frag.appendChild(s);
+          });
+          n.parentNode.replaceChild(frag, n);
+        } else if (n.nodeType === 1) walk(n);
+      });
+    })(el);
+    return words;
+  }
+
   // Words that fill with light as they are read: each word warms from haze to ink
   function initLightText() {
     $$('[data-light]').forEach(function (el) {
-      var words = [];
-      (function walk(node) {
-        Array.prototype.slice.call(node.childNodes).forEach(function (n) {
-          if (n.nodeType === 3) {
-            var frag = document.createDocumentFragment();
-            n.textContent.split(/(\s+)/).forEach(function (w) {
-              if (!w) return;
-              if (/^\s+$/.test(w)) { frag.appendChild(document.createTextNode(w)); return; }
-              var s = document.createElement('span'); s.className = 'lw'; s.textContent = w; words.push(s); frag.appendChild(s);
-            });
-            n.parentNode.replaceChild(frag, n);
-          } else if (n.nodeType === 1) walk(n);
-        });
-      })(el);
+      var words = wrapWords(el, 'lw');
       gsap.fromTo(words, { opacity: 0.16 }, { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: el, start: 'top 82%', end: 'bottom 45%', scrub: 0.6 } });
     });
   }
@@ -358,6 +438,7 @@
 
   function initMotion() {
     initReveals();
+    initPhotos();
     if (!reduceMotion) initTilt();
     if (reduceMotion) return;
     if (window.gsap && window.ScrollTrigger) return startGsap(false);
@@ -833,11 +914,23 @@
 
   /* ---------- Testimonials ---------- */
   $$('[data-quotes]').forEach(function (box) {
-    var slides = $$('.quote', box), idx = 0, count = $('.quote-count', box), live = $('.quote-stage', box);
+    var slides = $$('.quote', box), idx = 0, count = $('.quote-count', box), live = $('.quote-stage', box), turned = false;
+    // A new quote arrives word by word, like someone saying it. Its words are
+    // set in spans the first time it is turned to, not while the page loads.
+    function speak(s) {
+      var p = $('blockquote p', s);
+      if (p && !s.hasAttribute('data-spoken')) {
+        s.setAttribute('data-spoken', '');
+        wrapWords(p, 'qw').forEach(function (w, i) { w.style.setProperty('--i', Math.min(i, 60)); });
+      }
+      s.classList.remove('is-turning'); void s.offsetWidth; s.classList.add('is-turning');
+    }
     function go(n) {
       idx = (n + slides.length) % slides.length;
       slides.forEach(function (s, i) { s.classList.toggle('is-active', i === idx); s.setAttribute('aria-hidden', i === idx ? 'false' : 'true'); });
       if (count) count.textContent = (idx + 1) + ' / ' + slides.length;
+      if (turned && !reduceMotion) speak(slides[idx]);
+      turned = true;
     }
     var prev = $('[data-prev]', box), next = $('[data-next]', box);
     if (prev) prev.addEventListener('click', function () { go(idx - 1); });
@@ -1549,9 +1642,26 @@
       window.gtag('event', name, params || {});
     }
 
+    /* Someone arriving from an ad (?utm_campaign=… or a Google gclid) keeps
+       that name for the visit, and plain WhatsApp links end their message with
+       it, e.g. "(ref: meta-ttc-jan)". Most enquiries arrive on WhatsApp, where
+       Analytics can't see them, so this is how Achu knows which ad a chat came
+       from. The booking and reserve forms write their own message, so they're left alone. */
+    var adRef = '';
+    try {
+      var q = new URLSearchParams(location.search);
+      adRef = q.get('utm_campaign') || (q.get('gclid') ? 'google-ad' : '');
+      if (adRef) sessionStorage.setItem('santhi-ad', adRef.slice(0, 40));
+      adRef = sessionStorage.getItem('santhi-ad') || '';
+    } catch (err) { /* storage blocked: the ref is simply left off */ }
+
     document.addEventListener('click', function (e) {
       var link = e.target.closest ? e.target.closest('a[href]') : null;
       if (!link) return;
+      if (adRef && link.hostname === 'wa.me' && link.id !== 'wa-send' && link.id !== 'rv-confirm') {
+        var u = new URL(link.href), text = u.searchParams.get('text') || 'Namaste, I would like to know more about the teacher training.';
+        if (text.indexOf('(ref: ') < 0) { u.searchParams.set('text', text + '\n\n(ref: ' + adRef + ')'); link.href = u.toString(); }
+      }
       // The reserve page reports its own confirmation links as reserve_confirm
       if (link.id === 'rv-confirm' || link.id === 'rv-mail') return;
       var href = link.getAttribute('href') || '';

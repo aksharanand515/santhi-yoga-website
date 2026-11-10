@@ -24,6 +24,20 @@ const write = (p, s) => fs.writeFileSync(path.join(ROOT, p), s);
 
 // Google Analytics 4 Measurement ID, e.g. 'G-ABC123XYZ'. Leave empty for no analytics.
 const GA_ID = 'G-K9QP1XG6J8';
+// Google Ads tag ID (account 718-929-1280), configured on the same gtag.js as GA4 so
+// Ads sees its own tag on the site. Leave empty to drop it.
+const ADS_ID = 'AW-18536684543';
+
+// Meta Pixel ID from Events Manager, e.g. '1234567890123456'. Leave empty for no pixel.
+// Once set, every GA4 event the site already sends is copied to the pixel as the
+// matching Meta standard event (see FB_EVENTS), so Meta ads can optimise for
+// WhatsApp enquiries and deposits rather than cheap clicks.
+const META_PIXEL_ID = '';
+const FB_EVENTS = {
+  whatsapp_click: 'Contact', booking_send: 'Contact', phone_click: 'Contact', email_click: 'Contact',
+  contact_form_send: 'Lead', reserve_confirm: 'Lead', newsletter_signup: 'Subscribe',
+  reserve_select_batch: 'InitiateCheckout',
+};
 
 // Where the reserve page's Wise button goes: Achu's own Wise payment link, which
 // opens with him already set as the recipient, so the payer types no bank details.
@@ -148,18 +162,31 @@ function sprite(ids) {
 
 /* ---------- Partials ---------- */
 const partials = { consent: read('partials/consent.html'), head: read('partials/head.html'), header: read('partials/header.html'), footer: read('partials/footer.html'), booking: read('partials/booking.html') };
+/* With a pixel, gtag() also hands each event to fbq() under its Meta name, and
+   the pixel's own script waits for the same first interaction as Analytics. */
+const pixel = META_PIXEL_ID ? {
+  init: `
+    !function (f, b, e, v, n) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; }(window, document);
+    fbq('init', '${META_PIXEL_ID}'); fbq('track', 'PageView');
+    if (/\\/teacher-training\\//.test(location.pathname)) fbq('track', 'ViewContent', { content_name: '200-hour TTC' });
+    var FB = ${JSON.stringify(FB_EVENTS)};`,
+  forward: ` if (arguments[0] === 'event' && FB[arguments[1]]) { var p = arguments[2] || {}; fbq('track', FB[arguments[1]], p.value ? { value: p.value, currency: p.currency } : {}); }`,
+  load: `
+        var f = document.createElement('script'); f.async = true; f.src = 'https://connect.facebook.net/en_US/fbevents.js'; document.head.appendChild(f);`,
+} : { init: '', forward: '', load: '' };
 const analytics = GA_ID ? `
-  <!-- Google Analytics 4, loaded on the first scroll, tap or key, or 7s after the page loads:
+  <!-- Google Analytics 4${META_PIXEL_ID ? ' and the Meta Pixel' : ''}, loaded on the first scroll, tap or key, or 7s after the page loads:
        its 170 KB of script would otherwise compete with the page while it settles -->
-  <script>
-    window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date()); gtag('config', '${GA_ID}');
+  <script>${pixel.init}
+    window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments);${pixel.forward} }
+    gtag('js', new Date()); gtag('config', '${GA_ID}');${ADS_ID ? ` gtag('config', '${ADS_ID}');` : ''}
     (function () {
       var go = ['scroll', 'pointerdown', 'keydown', 'touchstart'], done = false;
       function load() {
         if (done) return; done = true;
         go.forEach(function (e) { removeEventListener(e, load, true); });
-        var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_ID}'; document.head.appendChild(s);
+        var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_ID}'; document.head.appendChild(s);${pixel.load}
       }
       go.forEach(function (e) { addEventListener(e, load, { capture: true, passive: true, once: true }); });
       addEventListener('load', function () { setTimeout(load, 7000); });
