@@ -39,6 +39,68 @@
   addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
 
+  /* ---------- Hero: the photographs in the doorway change, and the page leans to the pointer ---------- */
+  (function () {
+    var hero = $('[data-hero]'); if (!hero) return;
+    var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var box = $('[data-hero-slides]', hero), slides = $$('.hero-slide', box), cap = $('.hero-cap', hero);
+    var num = $('[data-hero-n]', hero), label = $('[data-hero-cap]', hero);
+    var i = 0, timer = 0, seen = true;
+
+    // Later photographs carry only a name, so nothing competes with the first one while the page loads
+    function load(slide) {
+      var im = $('img', slide), name = im.getAttribute('data-img');
+      if (!name) return im;
+      var base = 'assets/img/' + name + '-';
+      im.removeAttribute('data-img');
+      im.srcset = base + '480.webp 480w, ' + base + '800.webp 800w, ' + base + '1200.webp 1200w';
+      im.src = base + '800.webp';
+      return im;
+    }
+    function queue() {
+      clearTimeout(timer);
+      timer = setTimeout(function () { if (seen && !d.hidden) show((i + 1) % slides.length); else queue(); }, 6500);
+    }
+    function show(n) {
+      var next = slides[n], im = load(next);
+      function go() {
+        slides.forEach(function (s) { s.classList.remove('is-prev'); });
+        slides[i].classList.replace('is-on', 'is-prev');
+        next.classList.add('is-on');
+        i = n;
+        num.textContent = '0' + (n + 1);
+        label.textContent = next.getAttribute('data-cap');
+        cap.classList.remove('run'); void cap.offsetWidth; cap.classList.add('run');
+        load(slides[(n + 1) % slides.length]);
+        queue();
+      }
+      if (im.complete && im.naturalWidth) go();
+      else { im.addEventListener('load', go, { once: true }); im.addEventListener('error', queue, { once: true }); }
+    }
+    if (!calm && slides.length > 1) {
+      var start = function () { box.classList.add('is-live'); cap.classList.add('run'); load(slides[1]); queue(); };
+      if (d.readyState === 'complete') start(); else addEventListener('load', start);
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) { seen = e[0].isIntersecting; hero.classList.toggle('is-off', !seen); }).observe(hero);
+    }
+
+    if (calm || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+    function frame() {
+      cx += (tx - cx) * 0.06; cy += (ty - cy) * 0.06;
+      hero.style.setProperty('--px', cx.toFixed(3));
+      hero.style.setProperty('--py', cy.toFixed(3));
+      raf = Math.abs(tx - cx) + Math.abs(ty - cy) > 0.002 ? requestAnimationFrame(frame) : 0;
+    }
+    function aim(x, y) { tx = x; ty = y; if (!raf) raf = requestAnimationFrame(frame); }
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      aim((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1);
+    });
+    hero.addEventListener('pointerleave', function () { aim(0, 0); });
+  })();
+
   /* ---------- Menu ---------- */
   var burger = $('#burger'), menu = $('#menu');
   function setMenu(open) {
