@@ -1,68 +1,46 @@
   <a class="skip" href="#main">Skip to main content</a>
+  <div class="bar" aria-hidden="true"></div>
 
-  <!-- The light every page is lit by: a low sun, haze, motes of gold and a fine grain -->
-  <div class="atmos" aria-hidden="true">
-    <div class="atmos-sun"></div>
-    <div class="atmos-haze"></div>
-    <span class="atmos-mote" style="--x:12%;--y:28%;--s:5px;--d:19s;--tx:40px;--ty:-70px"></span>
-    <span class="atmos-mote" style="--x:78%;--y:18%;--s:7px;--d:23s;--dl:-6s;--tx:-50px;--ty:-40px"></span>
-    <span class="atmos-mote" style="--x:64%;--y:62%;--s:4px;--d:17s;--dl:-3s;--tx:30px;--ty:-90px"></span>
-    <span class="atmos-mote" style="--x:30%;--y:74%;--s:6px;--d:26s;--dl:-11s;--tx:-30px;--ty:-60px"></span>
-    <span class="atmos-mote" style="--x:90%;--y:48%;--s:5px;--d:21s;--dl:-8s;--tx:-40px;--ty:-80px"></span>
-    <span class="atmos-mote" style="--x:46%;--y:12%;--s:4px;--d:24s;--dl:-14s;--tx:20px;--ty:50px"></span>
-    <div class="atmos-grain"></div>
-  </div>
-  <div class="progress" aria-hidden="true"></div>
 
-  <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="{{home}}" aria-label="Santhi School of Yoga &amp; Vedanta Studies, home">
-        <img src="{{base}}assets/brand/santhi-emblem-46.webp" srcset="{{base}}assets/brand/santhi-emblem-46.webp 1x, {{base}}assets/brand/santhi-emblem-92.webp 2x" width="46" height="46" alt="Santhi School of Yoga &amp; Vedanta Studies logo">
-        <span>
-          <span class="brand-name">Santhi School of Yoga</span>
-          <span class="brand-sub">&amp; Vedanta Studies</span>
-        </span>
+  <header class="hd" id="hd">
+    <div class="wrap hd-in">
+      <a class="brand" href="{{home}}">
+        <img src="{{base}}assets/brand/santhi-emblem-46.webp" srcset="{{base}}assets/brand/santhi-emblem-46.webp 1x, {{base}}assets/brand/santhi-emblem-92.webp 2x" width="46" height="46" alt="">
+        <span class="brand-t"><b>Santhi</b><small>School of Yoga &amp; Vedanta Studies</small></span>
       </a>
-
       <nav class="nav" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a class="nav-link" href="{{home}}"{{cur:home}}>Home</a></li>
-          <li><a class="nav-link" href="{{base}}about/"{{cur:about}}>About</a></li>
-          <li><a class="nav-link" href="{{base}}services/"{{cur:services}}>Services</a></li>
-          <li><a class="nav-link" href="{{base}}teacher-training/"{{cur:ttc}}>Teacher Training</a></li>
-          <li><a class="nav-link" href="{{base}}blog/"{{cur:blog}}>Journal</a></li>
-          <li><a class="nav-link" href="{{base}}gallery/"{{cur:gallery}}>Gallery</a></li>
-          <li><a class="nav-link" href="{{base}}contact/"{{cur:contact}}>Contact</a></li>
-        </ul>
+        <a href="{{base}}teacher-training/"{{cur:ttc}}>Teacher Training</a>
+        <a href="{{base}}services/"{{cur:services}}>Classes &amp; Retreats</a>
+        <a href="{{base}}about/"{{cur:about}}>The School</a>
+        <a href="{{base}}blog/"{{cur:blog}}>Journal</a>
+        <a href="{{base}}gallery/"{{cur:gallery}}>Gallery</a>
+        <a href="{{base}}contact/"{{cur:contact}}>Visit</a>
       </nav>
-
-      <div class="header-actions">
-        <a class="btn btn--primary btn--sm header-cta" href="{{base}}book/" data-magnetic>Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="menu" aria-expanded="false">
-          <span class="sr-only">Open menu</span>
-          <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
-        </button>
+      <div class="hd-act">
+        <p class="now" data-now hidden><span class="now-dot"></span><span data-now-text></span></p>
+        <a class="btn btn--sm hd-cta" href="{{book}}">Book now <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <button class="burger" id="burger" type="button" aria-controls="menu" aria-expanded="false"><span class="sr">Open menu</span><i></i><i></i></button>
       </div>
     </div>
   </header>
 
-  <div class="menu" id="menu" data-lenis-prevent>
-    <nav aria-label="Menu">
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="wrap" aria-label="Menu">
       <ul class="menu-list">
-        <li><a href="{{home}}"{{cur:home}}>Home</a></li>
-        <li><a href="{{base}}about/"{{cur:about}}>About <small>The school &amp; the teacher</small></a></li>
-        <li><a href="{{base}}services/"{{cur:services}}>Services <small>Classes · retreats · online</small></a></li>
-        <li><a href="{{base}}teacher-training/"{{cur:ttc}}>Teacher Training <small>2027 · €899</small></a></li>
-        <li><a href="{{base}}blog/"{{cur:blog}}>Journal <small>Practice · philosophy · Kerala</small></a></li>
-        <li><a href="{{base}}gallery/"{{cur:gallery}}>Gallery</a></li>
-        <li><a href="{{base}}contact/"{{cur:contact}}>Contact</a></li>
+        <li><a href="{{home}}"{{cur:home}}><i>01</i>Home</a></li>
+        <li><a href="{{base}}teacher-training/"{{cur:ttc}}><i>02</i>Teacher Training <small>2027 · €899</small></a></li>
+        <li><a href="{{base}}services/"{{cur:services}}><i>03</i>Services <small>Classes · retreats · online</small></a></li>
+        <li><a href="{{base}}about/"{{cur:about}}><i>04</i>About <small>The school &amp; the teacher</small></a></li>
+        <li><a href="{{base}}blog/"{{cur:blog}}><i>05</i>Journal <small>Practice · philosophy · Kerala</small></a></li>
+        <li><a href="{{base}}gallery/"{{cur:gallery}}><i>06</i>Gallery</a></li>
+        <li><a href="{{base}}contact/"{{cur:contact}}><i>07</i>Contact</a></li>
       </ul>
-    </nav>
-    <div class="menu-foot">
-      <div class="btn-row">
-        <a class="btn btn--primary" href="{{base}}book/">Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn--ghost" href="https://wa.me/917907714144" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg> WhatsApp</a>
+      <div class="menu-foot">
+        <div class="row">
+          <a class="btn" href="{{book}}" data-close>Book now <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--line" href="https://wa.me/917907714144" target="_blank" rel="noopener"><svg class="ic"><use href="#i-chat"/></svg> WhatsApp</a>
+        </div>
+        <p class="fine">House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</p>
       </div>
-      <p class="muted small">House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</p>
-    </div>
+    </nav>
   </div>

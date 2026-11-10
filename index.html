@@ -23,19 +23,17 @@
   <meta property="og:image:height" content="960">
   <meta property="og:image:alt" content="Teacher training graduation at Santhi School of Yoga &amp; Vedanta Studies in Fort Kochi: students in white with marigold garlands behind lit brass oil lamps">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/santhi-yoga-pavilion-class-fort-kochi-480.webp 480w, assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp 800w, assets/img/santhi-yoga-pavilion-class-fort-kochi-1200.webp 1200w" imagesizes="(min-width: 900px) 28vw, 62vw" fetchpriority="high">
   <!-- build:head -->
-  <meta name="theme-color" content="#FCF6EE">
+  <meta name="theme-color" content="#FBF6EC">
   <link rel="icon" type="image/png" sizes="48x48" href="assets/brand/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png">
-  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.min.css?v=8a490af4">
-  <script>document.documentElement.classList.add('js');</script>
-  <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved.
-       Journal articles leave these out: site.js fetches them itself after the page is up, and only for a mouse. -->
-  <meta name="motion" content="after-load">
-  <script defer src="assets/js/site.min.js?v=c4968efb"></script>
+  <link rel="stylesheet" href="assets/css/site.min.css?v=b68f405f">
+  <!-- If the script never arrives, everything it would have revealed shows anyway after four seconds -->
+  <script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('show-all')},4000);</script>
+  <script defer src="assets/js/site.min.js?v=95ed1f1d"></script>
   <!-- Google Analytics 4, loaded on the first scroll, tap or key, or 7s after the page loads:
        its 170 KB of script would otherwise compete with the page while it settles -->
   <script>
@@ -241,467 +239,409 @@
   <!-- Icons: Solar by 480 Design (CC BY 4.0) via Iconify -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
     <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"/></symbol>
-    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 12H4M10 18L4 12L10 6"/></symbol>
-    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M18 15V6H9"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.5L10.5 14.5L15.5 9.5"/></g></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M13.5 2C13.5 2 15.8335 2.21213 18.8033 5.18198C21.7731 8.15183 21.9853 10.4853 21.9853 10.4853"/><path d="M14.207 5.53564C14.207 5.53564 15.197 5.81849 16.6819 7.30341C18.1668 8.78834 18.4497 9.77829 18.4497 9.77829"/><path d="M17.6763 20.9631C18.1917 20.9122 18.6399 20.6343 19.0011 20.254L20.4217 18.7584C21.3806 17.7489 21.1102 16.0182 19.8833 15.312L17.9728 14.2123C17.1672 13.7486 16.1858 13.8848 15.5562 14.5477L15.1007 15.0272C15.1007 15.0272 14.0181 16.167 11.0631 13.0559C8.10812 9.94484 9.1907 8.80507 9.1907 8.80507L9.47752 8.50311C10.1841 7.75924 10.2507 6.56497 9.63424 5.6931L8.37326 3.90961C7.61028 2.8305 6.13596 2.68795 5.26145 3.60864L3.69185 5.26114C3.25823 5.71766 2.96765 6.30945 3.00289 6.96594C3.09304 8.64546 3.81072 12.259 7.81536 16.4752C12.0621 20.9462 16.0468 21.1239 17.6763 20.9631Z"/></g></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z"/><path stroke-linecap="round" d="M6 8L8.1589 9.79908C9.99553 11.3296 10.9139 12.0949 12 12.0949C13.0861 12.0949 14.0045 11.3296 15.8411 9.79908L18 8"/></g></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10.1433C4 5.64588 7.58172 2 12 2C16.4183 2 20 5.64588 20 10.1433C20 14.6055 17.4467 19.8124 13.4629 21.6744C12.5343 22.1085 11.4657 22.1085 10.5371 21.6744C6.55332 19.8124 4 14.6055 4 10.1433Z"/><circle cx="12" cy="10" r="3"/></g></symbol>
     <symbol id="i-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 12H8.009M11.991 12H12M15.991 12H16"/></g></symbol>
-    <symbol id="i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12Z"/><path stroke-linecap="round" d="M7 4V2.5"/><path stroke-linecap="round" d="M17 4V2.5"/><path stroke-linecap="round" d="M2.5 9H21.5"/><path stroke-linecap="round" stroke-linejoin="round" d="M17 13H17.0001"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 13H12.0001"/><path stroke-linecap="round" stroke-linejoin="round" d="M7 13H7.0001"/><path stroke-linecap="round" stroke-linejoin="round" d="M17 17.0234H17.0001"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 17.0234H12.0001"/><path stroke-linecap="round" stroke-linejoin="round" d="M7 17.0234H7.0001"/></g></symbol>
-    <symbol id="i-send" viewBox="0 0 24 24"><g fill="none"><path stroke="currentColor" stroke-width="1.5" d="m18.636 15.67l1.716-5.15c1.5-4.498 2.25-6.747 1.062-7.934s-3.436-.438-7.935 1.062L8.33 5.364C4.7 6.574 2.885 7.18 2.37 8.067a2.72 2.72 0 0 0 0 2.73c.515.888 2.33 1.493 5.96 2.704c.584.194.875.291 1.119.454c.236.158.439.361.597.597c.163.244.26.535.454 1.118c1.21 3.63 1.816 5.446 2.703 5.962a2.72 2.72 0 0 0 2.731 0c.887-.516 1.492-2.331 2.703-5.962Z"/><path fill="currentColor" d="M16.212 8.848a.75.75 0 0 0-1.055-1.066zm-5.55 5.488l5.55-5.488l-1.055-1.066l-5.55 5.488z"/></g></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"/></symbol>
-    <symbol id="i-plus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15"/></g></symbol>
-    <symbol id="i-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M7.03.084c-1.277.06-2.149.264-2.91.563a5.9 5.9 0 0 0-2.124 1.388a5.9 5.9 0 0 0-1.38 2.127C.321 4.926.12 5.8.064 7.076s-.069 1.688-.063 4.947s.021 3.667.083 4.947c.061 1.277.264 2.149.563 2.911c.308.789.72 1.457 1.388 2.123a5.9 5.9 0 0 0 2.129 1.38c.763.295 1.636.496 2.913.552c1.278.056 1.689.069 4.947.063s3.668-.021 4.947-.082c1.28-.06 2.147-.265 2.91-.563a5.9 5.9 0 0 0 2.123-1.388a5.9 5.9 0 0 0 1.38-2.129c.295-.763.496-1.636.551-2.912c.056-1.28.07-1.69.063-4.948c-.006-3.258-.02-3.667-.081-4.947c-.06-1.28-.264-2.148-.564-2.911a5.9 5.9 0 0 0-1.387-2.123a5.9 5.9 0 0 0-2.128-1.38c-.764-.294-1.636-.496-2.914-.55C15.647.009 15.236-.006 11.977 0S8.31.021 7.03.084m.14 21.693c-1.17-.05-1.805-.245-2.228-.408a3.7 3.7 0 0 1-1.382-.895a3.7 3.7 0 0 1-.9-1.378c-.165-.423-.363-1.058-.417-2.228c-.06-1.264-.072-1.644-.08-4.848c-.006-3.204.006-3.583.061-4.848c.05-1.169.246-1.805.408-2.228c.216-.561.477-.96.895-1.382a3.7 3.7 0 0 1 1.379-.9c.423-.165 1.057-.361 2.227-.417c1.265-.06 1.644-.072 4.848-.08c3.203-.006 3.583.006 4.85.062c1.168.05 1.804.244 2.227.408c.56.216.96.475 1.382.895s.681.817.9 1.378c.165.422.362 1.056.417 2.227c.06 1.265.074 1.645.08 4.848c.005 3.203-.006 3.583-.061 4.848c-.051 1.17-.245 1.805-.408 2.23c-.216.56-.477.96-.896 1.38a3.7 3.7 0 0 1-1.378.9c-.422.165-1.058.362-2.226.418c-1.266.06-1.645.072-4.85.079s-3.582-.006-4.848-.06m9.783-16.192a1.44 1.44 0 1 0 1.437-1.442a1.44 1.44 0 0 0-1.437 1.442M5.839 12.012a6.161 6.161 0 1 0 12.323-.024a6.162 6.162 0 0 0-12.323.024M8 12.008A4 4 0 1 1 12.008 16A4 4 0 0 1 8 12.008"/></symbol>
   </svg>
   <!-- /build:sprite -->
 
   <!-- build:header -->
   <a class="skip" href="#main">Skip to main content</a>
+  <div class="bar" aria-hidden="true"></div>
 
-  <!-- The light every page is lit by: a low sun, haze, motes of gold and a fine grain -->
-  <div class="atmos" aria-hidden="true">
-    <div class="atmos-sun"></div>
-    <div class="atmos-haze"></div>
-    <span class="atmos-mote" style="--x:12%;--y:28%;--s:5px;--d:19s;--tx:40px;--ty:-70px"></span>
-    <span class="atmos-mote" style="--x:78%;--y:18%;--s:7px;--d:23s;--dl:-6s;--tx:-50px;--ty:-40px"></span>
-    <span class="atmos-mote" style="--x:64%;--y:62%;--s:4px;--d:17s;--dl:-3s;--tx:30px;--ty:-90px"></span>
-    <span class="atmos-mote" style="--x:30%;--y:74%;--s:6px;--d:26s;--dl:-11s;--tx:-30px;--ty:-60px"></span>
-    <span class="atmos-mote" style="--x:90%;--y:48%;--s:5px;--d:21s;--dl:-8s;--tx:-40px;--ty:-80px"></span>
-    <span class="atmos-mote" style="--x:46%;--y:12%;--s:4px;--d:24s;--dl:-14s;--tx:20px;--ty:50px"></span>
-    <div class="atmos-grain"></div>
-  </div>
-  <div class="progress" aria-hidden="true"></div>
 
-  <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="./" aria-label="Santhi School of Yoga &amp; Vedanta Studies, home">
-        <img src="assets/brand/santhi-emblem-46.webp" srcset="assets/brand/santhi-emblem-46.webp 1x, assets/brand/santhi-emblem-92.webp 2x" width="46" height="46" alt="Santhi School of Yoga &amp; Vedanta Studies logo">
-        <span>
-          <span class="brand-name">Santhi School of Yoga</span>
-          <span class="brand-sub">&amp; Vedanta Studies</span>
-        </span>
+  <header class="hd" id="hd">
+    <div class="wrap hd-in">
+      <a class="brand" href="./">
+        <img src="assets/brand/santhi-emblem-46.webp" srcset="assets/brand/santhi-emblem-46.webp 1x, assets/brand/santhi-emblem-92.webp 2x" width="46" height="46" alt="">
+        <span class="brand-t"><b>Santhi</b><small>School of Yoga &amp; Vedanta Studies</small></span>
       </a>
-
       <nav class="nav" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a class="nav-link" href="./" aria-current="page">Home</a></li>
-          <li><a class="nav-link" href="about/">About</a></li>
-          <li><a class="nav-link" href="services/">Services</a></li>
-          <li><a class="nav-link" href="teacher-training/">Teacher Training</a></li>
-          <li><a class="nav-link" href="blog/">Journal</a></li>
-          <li><a class="nav-link" href="gallery/">Gallery</a></li>
-          <li><a class="nav-link" href="contact/">Contact</a></li>
-        </ul>
+        <a href="teacher-training/">Teacher Training</a>
+        <a href="services/">Classes &amp; Retreats</a>
+        <a href="about/">The School</a>
+        <a href="blog/">Journal</a>
+        <a href="gallery/">Gallery</a>
+        <a href="contact/">Visit</a>
       </nav>
-
-      <div class="header-actions">
-        <a class="btn btn--primary btn--sm header-cta" href="book/" data-magnetic>Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="menu" aria-expanded="false">
-          <span class="sr-only">Open menu</span>
-          <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
-        </button>
+      <div class="hd-act">
+        <p class="now" data-now hidden><span class="now-dot"></span><span data-now-text></span></p>
+        <a class="btn btn--sm hd-cta" href="#book">Book now <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <button class="burger" id="burger" type="button" aria-controls="menu" aria-expanded="false"><span class="sr">Open menu</span><i></i><i></i></button>
       </div>
     </div>
   </header>
 
-  <div class="menu" id="menu" data-lenis-prevent>
-    <nav aria-label="Menu">
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="wrap" aria-label="Menu">
       <ul class="menu-list">
-        <li><a href="./" aria-current="page">Home</a></li>
-        <li><a href="about/">About <small>The school &amp; the teacher</small></a></li>
-        <li><a href="services/">Services <small>Classes · retreats · online</small></a></li>
-        <li><a href="teacher-training/">Teacher Training <small>2027 · €899</small></a></li>
-        <li><a href="blog/">Journal <small>Practice · philosophy · Kerala</small></a></li>
-        <li><a href="gallery/">Gallery</a></li>
-        <li><a href="contact/">Contact</a></li>
+        <li><a href="./" aria-current="page"><i>01</i>Home</a></li>
+        <li><a href="teacher-training/"><i>02</i>Teacher Training <small>2027 · €899</small></a></li>
+        <li><a href="services/"><i>03</i>Services <small>Classes · retreats · online</small></a></li>
+        <li><a href="about/"><i>04</i>About <small>The school &amp; the teacher</small></a></li>
+        <li><a href="blog/"><i>05</i>Journal <small>Practice · philosophy · Kerala</small></a></li>
+        <li><a href="gallery/"><i>06</i>Gallery</a></li>
+        <li><a href="contact/"><i>07</i>Contact</a></li>
       </ul>
-    </nav>
-    <div class="menu-foot">
-      <div class="btn-row">
-        <a class="btn btn--primary" href="book/">Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn--ghost" href="https://wa.me/917907714144" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg> WhatsApp</a>
+      <div class="menu-foot">
+        <div class="row">
+          <a class="btn" href="#book" data-close>Book now <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--line" href="https://wa.me/917907714144" target="_blank" rel="noopener"><svg class="ic"><use href="#i-chat"/></svg> WhatsApp</a>
+        </div>
+        <p class="fine">House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</p>
       </div>
-      <p class="muted small">House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</p>
-    </div>
+    </nav>
   </div>
   <!-- /build:header -->
 
   <main id="main">
-    <section id="top" class="hero" aria-labelledby="hero-title">
-      <!-- A Kerala pavilion at sunset. The photograph shows at once; after the first paint
-           site.js adds a WebGL canvas that lays it over its depth map (tools/hero-art), so
-           the curtains stir, the sea glitters, the light breathes and the scene turns a
-           little with the pointer, and a second canvas of gold dust. -->
-      <div class="hero-art" aria-hidden="true" data-maps="assets/img/hero-pavilion-maps.webp" data-sun="0.653 0.470">
-        <div class="hero-stage">
-          <img class="hero-plate" src="assets/img/hero-pavilion-960.webp" srcset="assets/img/hero-pavilion-960.webp 960w, assets/img/hero-pavilion-1440.webp 1440w, assets/img/hero-pavilion-1920.webp 1920w, assets/img/hero-pavilion-2560.webp 2560w" sizes="(max-aspect-ratio: 1/1) 125svh, max(103vw, 183vh)" width="2560" height="1441" fetchpriority="high" decoding="async" alt="">
-        </div>
-        <div class="hero-veil"></div>
-      </div>
 
-      <div class="hero-inner">
-        <div class="hero-content">
+    <!-- Hero: type first, then the pavilion through a Kerala doorway. No script is needed to see it. -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <span class="mal" lang="ml" aria-hidden="true">ശാന്തി</span>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
           <h1 id="hero-title">
-            <span class="hero-kicker" data-hero="eyebrow">200-Hour Yoga Teacher Training · Fort&nbsp;Kochi,&nbsp;India</span>
-            <span class="hero-title">
-              <span class="hero-line"><span>Return to the </span></span>
-              <span class="hero-line"><span>essence of <em>Yoga.</em></span></span>
-            </span>
+            <span class="eyebrow hero-kicker">200-Hour Yoga Teacher Training · Fort&nbsp;Kochi,&nbsp;India</span>
+            <span class="hero-title"><span class="ln"><span>Return to the </span></span><span class="ln"><span>essence of <em>Yoga.</em></span></span></span>
           </h1>
-          <p class="hero-sub" data-hero="copy"><span>Authentic Hatha Yoga <i aria-hidden="true">/</i> Meditation <i aria-hidden="true">/</i> Vedanta</span> <span>28 days in Kerala <i aria-hidden="true">/</i> Four batches in 2027</span></p>
-          <div class="hero-actions" data-hero="actions">
-            <a href="teacher-training/" class="cta cta--primary" data-magnetic>
-              <span class="cta-label" data-roll>Explore Training</span>
-              <span class="cta-icon" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg><svg class="ic"><use href="#i-arrow"/></svg></span>
-            </a>
-            <a href="#book" class="text-link"><span class="text-link-text">Book a class</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <p class="hero-sub"><span>Authentic Hatha Yoga <i>/</i> Meditation <i>/</i> Vedanta</span> <span>28 days in Kerala <i>/</i> Four batches in 2027</span></p>
+          <div class="row hero-cta">
+            <a class="btn btn--lg" href="teacher-training/">Explore Training <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a class="link" href="#book">Book a class</a>
           </div>
         </div>
-        <ol class="hero-triad" data-hero="triad" aria-label="The practice">
-          <li>Asana</li>
-          <li>Pranayama</li>
-          <li>Dhyana</li>
-        </ol>
+
+        <figure class="hero-fig">
+          <div class="arch hero-arch"><img src="assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp" srcset="assets/img/santhi-yoga-pavilion-class-fort-kochi-480.webp 480w, assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp 800w, assets/img/santhi-yoga-pavilion-class-fort-kochi-1200.webp 1200w" sizes="(min-width: 900px) 28vw, 62vw" width="800" height="1067" alt="Students practising arm balances in the open-air pavilion at Santhi School of Yoga, Fort Kochi" decoding="async" fetchpriority="high"></div>
+          <div class="hero-inset"><img src="assets/img/savasana-rest-yoga-pavilion-800.webp" srcset="assets/img/savasana-rest-yoga-pavilion-240.webp 240w, assets/img/savasana-rest-yoga-pavilion-480.webp 480w, assets/img/savasana-rest-yoga-pavilion-800.webp 800w, assets/img/savasana-rest-yoga-pavilion-1200.webp 1200w" sizes="(min-width: 900px) 13vw, 30vw" width="800" height="1067" alt="Students resting in savasana in the pavilion" loading="lazy" decoding="async"></div>
+          <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
+            <defs><path id="seal-arc" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+            <text><textPath href="#seal-arc" textLength="282">SANTHI MEANS PEACE · FORT KOCHI · KERALA ·</textPath></text>
+            <text class="seal-mal" x="60" y="68" text-anchor="middle" lang="ml">ശാന്തി</text>
+          </svg>
+          <ol class="triad" aria-label="The practice"><li>Asana</li><li>Pranayama</li><li>Dhyana</li></ol>
+        </figure>
       </div>
 
-      <div class="hero-foot" data-hero="foot">
-        <p class="hero-rating"><span class="hero-stars" aria-hidden="true"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><span><b>4.9</b>/5 · Daily classes 7:30 am &amp; 3:30 pm</span></p>
-        <a href="#teacher" class="hero-scroll" aria-label="Scroll to explore Santhi School of Yoga &amp; Vedanta Studies"><span class="hero-scroll-mouse" aria-hidden="true"></span></a>
-        <a href="teacher-training/" class="hero-ttc">
-          <span class="hero-ttc-text"><small>Teacher Training 2027</small><b>1–28 Jan · €899 all-inclusive</b></span>
-          <span class="hero-ttc-go" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
-        </a>
+      <div class="wrap hero-foot">
+        <p class="rating"><span class="stars" aria-hidden="true"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><span><b>4.9</b>/5 · Daily classes 7:30 am &amp; 3:30 pm</span></p>
+        <a class="hero-ttc" href="teacher-training/"><span><small>Teacher Training 2027</small><b>1–28 Jan · €899 all-inclusive</b></span><span class="rnd"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
       </div>
     </section>
 
     <!-- Practices, drifting past -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <div class="marquee-group">
-          <span class="marquee-item">Hatha Yoga</span><span class="marquee-item">Pranayama</span><span class="marquee-item">Meditation</span><span class="marquee-item">Vedanta</span><span class="marquee-item">Fort Kochi</span><span class="marquee-item">Kerala</span>
-        </div>
-        <div class="marquee-group" aria-hidden="true">
-          <span class="marquee-item">Hatha Yoga</span><span class="marquee-item">Pranayama</span><span class="marquee-item">Meditation</span><span class="marquee-item">Vedanta</span><span class="marquee-item">Fort Kochi</span><span class="marquee-item">Kerala</span>
-        </div>
+        <span>Hatha Yoga</span><span>Pranayama</span><span>Meditation</span><span>Vedanta</span><span>Fort Kochi</span><span>Kerala</span>
+        <span>Hatha Yoga</span><span>Pranayama</span><span>Meditation</span><span>Vedanta</span><span>Fort Kochi</span><span>Kerala</span>
       </div>
     </div>
 
-    <!-- What Santhi means: the words fill with light as they are read, and
-         three photographs float past at their own depths -->
-    <section class="section manifesto" aria-labelledby="manifesto-title">
-      <div class="manifesto-float" aria-hidden="true">
-        <figure class="mf mf--a frame arch" data-speed="0.9"><img src="assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp" srcset="assets/img/santhi-yoga-pavilion-class-fort-kochi-480.webp 480w, assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp 800w, assets/img/santhi-yoga-pavilion-class-fort-kochi-1200.webp 1200w" sizes="200px" width="720" height="960" loading="lazy" decoding="async" alt=""></figure>
-        <figure class="mf mf--b frame" data-speed="-0.6"><img src="assets/img/chinese-fishing-nets-fort-kochi-800.webp" srcset="assets/img/chinese-fishing-nets-fort-kochi-480.webp 480w, assets/img/chinese-fishing-nets-fort-kochi-800.webp 800w, assets/img/chinese-fishing-nets-fort-kochi-1200.webp 1200w" sizes="170px" width="720" height="960" loading="lazy" decoding="async" alt=""></figure>
-        <figure class="mf mf--c frame arch" data-speed="1.4"><img src="assets/img/savasana-rest-yoga-pavilion-800.webp" srcset="assets/img/savasana-rest-yoga-pavilion-240.webp 240w, assets/img/savasana-rest-yoga-pavilion-480.webp 480w, assets/img/savasana-rest-yoga-pavilion-800.webp 800w, assets/img/savasana-rest-yoga-pavilion-1200.webp 1200w" sizes="150px" width="720" height="960" loading="lazy" decoding="async" alt=""></figure>
-        <span class="mf-ring" data-speed="0.4"></span>
+    <!-- What Santhi means: the words take ink as they are read -->
+    <section class="sec manifesto" aria-labelledby="manifesto-title">
+      <div class="wrap manifesto-in">
+        <p class="eyebrow" data-r><span lang="ml">ശാന്തി</span> · Santhi</p>
+        <h2 class="manifesto-title" id="manifesto-title" data-r>Santhi means <em>peace</em>.</h2>
+        <p class="manifesto-text"><span class="ink">For more than fifteen years, in a quiet lane of Fort Kochi, we have taught yoga the slow way: postures held rather than hurried, corrections given by hand, rest woven through every class, and the philosophy behind the practice taught in plain words.</span></p>
+        <p class="sign" data-r><span>Master Aksharanand A S</span> Founder &amp; teacher</p>
       </div>
-      <div class="container manifesto-inner">
-        <p class="kicker" data-reveal>ശാന്തി · Santhi</p>
-        <h2 class="manifesto-title" id="manifesto-title" data-reveal>Santhi means <em>peace</em>.</h2>
-        <p class="manifesto-text" data-light>For more than fifteen years, in a quiet lane of Fort Kochi, we have taught yoga the slow way: postures held rather than hurried, corrections given by hand, rest woven through every class, and the philosophy behind the practice taught in plain words.</p>
-        <p class="manifesto-sign" data-reveal><span>Master Aksharanand A S</span> Founder &amp; teacher</p>
-      </div>
+      <figure class="float float--a arch" aria-hidden="true"><img src="assets/img/yoga-pavilion-garden-fort-kochi-800.webp" srcset="assets/img/yoga-pavilion-garden-fort-kochi-480.webp 480w, assets/img/yoga-pavilion-garden-fort-kochi-800.webp 800w, assets/img/yoga-pavilion-garden-fort-kochi-1200.webp 1200w" sizes="18vw" width="800" height="1732" alt="" loading="lazy" decoding="async"></figure>
+      <figure class="float float--b" aria-hidden="true"><img src="assets/img/chinese-fishing-nets-fort-kochi-800.webp" srcset="assets/img/chinese-fishing-nets-fort-kochi-480.webp 480w, assets/img/chinese-fishing-nets-fort-kochi-800.webp 800w, assets/img/chinese-fishing-nets-fort-kochi-1200.webp 1200w" sizes="14vw" width="800" height="1067" alt="" loading="lazy" decoding="async"></figure>
     </section>
 
     <!-- Teacher -->
-    <section class="section teacher" id="teacher" aria-labelledby="teacher-title">
-      <span class="mal-mark" aria-hidden="true">ശാന്തി</span>
-      <div class="container grid-2 grid-2--wide-right">
-        <figure class="teacher-portrait" data-reveal>
-          <span class="portrait-sun" aria-hidden="true" data-speed="0.5"></span>
-          <div class="frame arch">
-            <img src="assets/img/master-aksharanand-hands-on-backbend-assist-648.webp" srcset="assets/img/master-aksharanand-hands-on-backbend-assist-480.webp 480w, assets/img/master-aksharanand-hands-on-backbend-assist-648.webp 648w" sizes="(min-width: 960px) 440px, 90vw" width="648" height="810" loading="lazy" decoding="async" alt="Master Aksharanand A S guiding a student into a deep backbend in the garden pavilion">
-          </div>
-          <figcaption class="teacher-note glass glass-strong" data-speed="-0.35">
-            <p>Known to his students simply as Achu</p>
-            <span>Master Aksharanand A S</span>
-          </figcaption>
+    <section class="sec" id="teacher" aria-labelledby="teacher-title">
+      <div class="wrap split">
+        <figure class="portrait" data-r="img">
+          <div class="arch px"><img src="assets/img/master-aksharanand-hands-on-backbend-assist-648.webp" srcset="assets/img/master-aksharanand-hands-on-backbend-assist-480.webp 480w, assets/img/master-aksharanand-hands-on-backbend-assist-648.webp 648w" sizes="(min-width: 900px) 38vw, 90vw" width="648" height="810" alt="Master Aksharanand A S guiding a student into a deep backbend in the garden pavilion" loading="lazy" decoding="async"></div>
+          <figcaption class="note"><p>Known to his students simply as Achu</p><span>Master Aksharanand A S</span></figcaption>
         </figure>
-        <div>
-          <p class="kicker" data-reveal>Your teacher</p>
-          <h2 class="h2 mt-s" id="teacher-title" data-split aria-label="Traditional Hatha Yoga, taught with patience and care"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:0">Traditional</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:1">Hatha</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:2">Yoga,</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:3">taught</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:4">with</span></span> <em aria-hidden="true"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:5">patience</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:6">and</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:7">care</span></span></em></h2>
-          <p class="lede mt-m" data-reveal>Master Aksharanand A S trained in the Sivananda tradition and teaches Hatha Yoga, Pranayama, Meditation and Vedanta Philosophy at Santhi School of Yoga &amp; Vedanta Studies in Fort Kochi.</p>
-          <p class="body mt-s" data-reveal>Practice here is a way of understanding the body, the breath and the mind, not exercise alone. Whether you join a single morning class while travelling through Kerala or spend 28 days in teacher training, you are guided personally.</p>
-          <dl class="stats" data-reveal>
-            <div class="stat"><dt>Group yoga classes taught</dt><dd><span data-count="5000" data-comma="1">5,000</span><sup>+</sup></dd></div>
-            <div class="stat"><dt>International TTC batches led</dt><dd><span data-count="70">70</span><sup>+</sup></dd></div>
-            <div class="stat"><dt>Yoga &amp; meditation retreats</dt><dd><span data-count="20">20</span><sup>+</sup></dd></div>
-            <div class="stat"><dt>Student rating</dt><dd><span data-count="4.9" data-decimals="1">4.9</span><sup>/5</sup></dd></div>
+        <div class="split-copy">
+          <p class="eyebrow" data-r><span>01</span>Your teacher</p>
+          <h2 class="h2" id="teacher-title" data-r>Traditional Hatha Yoga, taught with <em>patience and care</em></h2>
+          <p class="lede" data-r>Master Aksharanand A S trained in the Sivananda tradition and teaches Hatha Yoga, Pranayama, Meditation and Vedanta Philosophy at Santhi School of Yoga &amp; Vedanta Studies in Fort Kochi.</p>
+          <p class="body" data-r>Practice here is a way of understanding the body, the breath and the mind, not exercise alone. Whether you join a single morning class while travelling through Kerala or spend 28 days in teacher training, you are guided personally.</p>
+          <dl class="stats" data-r>
+            <div><dt>Group yoga classes taught</dt><dd><span data-count-to="5000">5,000</span><sup>+</sup></dd></div>
+            <div><dt>International TTC batches led</dt><dd><span data-count-to="70">70</span><sup>+</sup></dd></div>
+            <div><dt>Yoga &amp; meditation retreats</dt><dd><span data-count-to="20">20</span><sup>+</sup></dd></div>
+            <div><dt>Student rating</dt><dd><span>4.9</span><sup>/5</sup></dd></div>
           </dl>
-          <div class="btn-row mt-l" data-reveal>
-            <a class="btn btn--primary" href="services/">Explore classes <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn--ghost" href="contact/">Plan your visit</a>
+          <div class="row" data-r>
+            <a class="btn" href="services/">Explore classes <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--line" href="contact/">Plan your visit</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- The practice hall: a window that opens to fill the screen -->
-    <section class="hall" aria-labelledby="hall-title">
-      <div class="hall-stage">
-        <figure class="hall-window">
-          <img src="assets/img/hero-meditation-hall-960.webp" srcset="assets/img/hero-meditation-hall-960.webp 960w, assets/img/hero-meditation-hall-1440.webp 1440w, assets/img/hero-meditation-hall-1672.webp 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="Meditating alone in a sunlit practice hall with a terracotta floor, a thatched roof and tall windows onto the garden">
-        </figure>
-        <div class="container hall-inner">
-          <div class="hall-copy glass">
-            <p class="kicker">Daily classes</p>
-            <h2 class="h2 mt-s" id="hall-title">Two hours, <em>twice a day</em></h2>
-            <p class="body mt-s">Traditional Hatha Yoga every day of the week: relaxation and breath, sun salutations, postures held with real rest between them, and deep relaxation to close. All levels share the same room, and no booking is needed.</p>
-            <dl class="hall-times">
-              <div><dt>Morning</dt><dd>7:30<small>am</small></dd></div>
-              <div><dt>Afternoon</dt><dd>3:30<small>pm</small></dd></div>
-              <div><dt>A class</dt><dd>₹500</dd></div>
-            </dl>
-            <p class="mt-m"><a class="link-arrow" href="services/#daily-classes">About the daily classes <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-          </div>
+    <!-- Daily classes: the timetable, set like a ticket -->
+    <section class="sec sec--sand daily" aria-labelledby="hall-title">
+      <div class="wrap daily-grid">
+        <div class="daily-copy">
+          <p class="eyebrow" data-r><span>02</span>Daily classes</p>
+          <h2 class="h2" id="hall-title" data-r>Two hours, <em>twice a day</em></h2>
+          <p class="body" data-r>Traditional Hatha Yoga every day of the week: relaxation and breath, sun salutations, postures held with real rest between them, and deep relaxation to close. All levels share the same room, and no booking is needed.</p>
+          <p data-r><a class="link" href="services/#daily-classes">About the daily classes</a></p>
+        </div>
+        <div class="ticket" data-r>
+          <p class="ticket-live" data-live hidden><span class="now-dot"></span><span data-live-text></span></p>
+          <dl class="times">
+            <div><dt>Morning</dt><dd>7:30<small>am</small></dd></div>
+            <div><dt>Afternoon</dt><dd>3:30<small>pm</small></dd></div>
+            <div><dt>A class</dt><dd>₹500</dd></div>
+          </dl>
+          <div class="ticket-img px"><img src="assets/img/savasana-rest-yoga-pavilion-800.webp" srcset="assets/img/savasana-rest-yoga-pavilion-240.webp 240w, assets/img/savasana-rest-yoga-pavilion-480.webp 480w, assets/img/savasana-rest-yoga-pavilion-800.webp 800w, assets/img/savasana-rest-yoga-pavilion-1200.webp 1200w" sizes="(min-width: 900px) 40vw, 90vw" width="800" height="1067" alt="Students resting in savasana in the garden pavilion between postures" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </section>
 
-    <!-- Ways to practise -->
-    <section class="section section--sand" id="practise" aria-labelledby="practise-title">
-      <div class="container">
-        <div class="section-head">
+    <!-- Ways to practise: an index, each line opening its own photograph -->
+    <section class="sec" id="practise" aria-labelledby="practise-title">
+      <div class="wrap">
+        <div class="sec-head">
           <div>
-            <p class="kicker" data-reveal>Ways to practise</p>
-            <h2 class="h2 mt-s" id="practise-title" data-split aria-label="Yoga classes for every stage of your path"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:0">Yoga</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:1">classes</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:2">for</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:3">every</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:4">stage</span></span> <em aria-hidden="true"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:5">of</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:6">your</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:7">path</span></span></em></h2>
+            <p class="eyebrow" data-r><span>03</span>Ways to practise</p>
+            <h2 class="h2" id="practise-title" data-r>Yoga classes for every stage <em>of your path</em></h2>
           </div>
-          <p class="body" data-reveal>From a single drop-in class to a month-long teacher training, every offering is rooted in the same traditional practice and personal guidance.</p>
+          <p class="body" data-r>From a single drop-in class to a month-long teacher training, every offering is rooted in the same traditional practice and personal guidance.</p>
         </div>
-
-        <div class="svc-index mt-xl">
-          <ul class="svc-list">
-            <li><a class="svc-row" href="services/#daily-classes" data-caption="Class in the garden pavilion">
-              <span class="svc-thumb" aria-hidden="true"><img src="assets/img/headstand-guidance-yoga-class-kerala-800.webp" srcset="assets/img/headstand-guidance-yoga-class-kerala-240.webp 240w, assets/img/headstand-guidance-yoga-class-kerala-480.webp 480w, assets/img/headstand-guidance-yoga-class-kerala-800.webp 800w, assets/img/headstand-guidance-yoga-class-kerala-1080.webp 1080w" sizes="72px" width="720" height="900" loading="lazy" decoding="async" alt="Teacher guiding a student into headstand during a class"></span>
-              <h3>Daily walk-in classes</h3><p>Two-hour Hatha yoga, mornings and afternoons, all levels.</p>
-              <span class="svc-go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a></li>
-            <li><a class="svc-row" href="services/#private" data-caption="One-to-one guidance">
-              <span class="svc-thumb" aria-hidden="true"><img src="assets/img/hands-on-yoga-adjustment-fort-kochi-800.webp" srcset="assets/img/hands-on-yoga-adjustment-fort-kochi-240.webp 240w, assets/img/hands-on-yoga-adjustment-fort-kochi-480.webp 480w, assets/img/hands-on-yoga-adjustment-fort-kochi-800.webp 800w, assets/img/hands-on-yoga-adjustment-fort-kochi-1024.webp 1024w" sizes="72px" width="720" height="1080" loading="lazy" decoding="async" alt="Teacher giving a hands-on adjustment in a seated twist"></span>
-              <h3>Private sessions</h3><p>Alignment, mobility, strength and breath, at your pace.</p>
-              <span class="svc-go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a></li>
-            <li><a class="svc-row" href="teacher-training/" data-caption="Traditional ceremony">
-              <span class="svc-thumb" aria-hidden="true"><img src="assets/img/traditional-ceremony-yoga-teacher-training-800.webp" srcset="assets/img/traditional-ceremony-yoga-teacher-training-240.webp 240w, assets/img/traditional-ceremony-yoga-teacher-training-480.webp 480w, assets/img/traditional-ceremony-yoga-teacher-training-800.webp 800w, assets/img/traditional-ceremony-yoga-teacher-training-1200.webp 1200w" sizes="72px" width="720" height="540" loading="lazy" decoding="async" alt="Teacher training students at a traditional ceremony"></span>
-              <h3>200-hour teacher training</h3><p>28 days in Fort Kochi, €899 all-inclusive.</p>
-              <span class="svc-go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a></li>
-            <li><a class="svc-row" href="services/#retreats" data-caption="Retreat day in the hills">
-              <span class="svc-thumb" aria-hidden="true"><img src="assets/img/yoga-retreat-group-kerala-hills-800.webp" srcset="assets/img/yoga-retreat-group-kerala-hills-240.webp 240w, assets/img/yoga-retreat-group-kerala-hills-480.webp 480w, assets/img/yoga-retreat-group-kerala-hills-800.webp 800w, assets/img/yoga-retreat-group-kerala-hills-1200.webp 1200w" sizes="72px" width="720" height="960" loading="lazy" decoding="async" alt="Retreat group on a rock above the Kerala hills"></span>
-              <h3>Yoga retreats</h3><p>Practice, culture, nature and rest in Kerala.</p>
-              <span class="svc-go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a></li>
-            <li><a class="svc-row" href="services/#workshops" data-caption="Deepening the practice">
-              <span class="svc-thumb" aria-hidden="true"><img src="assets/img/hands-on-backbend-adjustment-garden-pavilion-800.webp" srcset="assets/img/hands-on-backbend-adjustment-garden-pavilion-240.webp 240w, assets/img/hands-on-backbend-adjustment-garden-pavilion-480.webp 480w, assets/img/hands-on-backbend-adjustment-garden-pavilion-800.webp 800w, assets/img/hands-on-backbend-adjustment-garden-pavilion-1200.webp 1200w, assets/img/hands-on-backbend-adjustment-garden-pavilion-1600.webp 1600w" sizes="72px" width="900" height="863" loading="lazy" decoding="async" alt="Teacher guiding a deep backbend in the garden pavilion"></span>
-              <h3>Workshops</h3><p>Pranayama, mudras, alignment and traditional practices.</p>
-              <span class="svc-go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a></li>
-            <li><a class="svc-row" href="services/#online" data-caption="Rest at the end of practice">
-              <span class="svc-thumb" aria-hidden="true"><img src="assets/img/savasana-rest-yoga-pavilion-800.webp" srcset="assets/img/savasana-rest-yoga-pavilion-240.webp 240w, assets/img/savasana-rest-yoga-pavilion-480.webp 480w, assets/img/savasana-rest-yoga-pavilion-800.webp 800w, assets/img/savasana-rest-yoga-pavilion-1200.webp 1200w" sizes="72px" width="720" height="960" loading="lazy" decoding="async" alt="Students resting in savasana in the pavilion"></span>
-              <h3>Online classes</h3><p>Group and private sessions, wherever you are.</p>
-              <span class="svc-go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></a></li>
-          </ul>
-
-          <figure class="svc-preview frame" aria-hidden="true">
-            <img src="assets/img/headstand-guidance-yoga-class-kerala-800.webp" srcset="assets/img/headstand-guidance-yoga-class-kerala-240.webp 240w, assets/img/headstand-guidance-yoga-class-kerala-480.webp 480w, assets/img/headstand-guidance-yoga-class-kerala-800.webp 800w, assets/img/headstand-guidance-yoga-class-kerala-1080.webp 1080w" sizes="(min-width: 1240px) 440px, 36vw" width="1080" height="1350" loading="lazy" decoding="async" alt="Teacher guiding a student into headstand during a class">
-            <img src="assets/img/hands-on-yoga-adjustment-fort-kochi-800.webp" srcset="assets/img/hands-on-yoga-adjustment-fort-kochi-240.webp 240w, assets/img/hands-on-yoga-adjustment-fort-kochi-480.webp 480w, assets/img/hands-on-yoga-adjustment-fort-kochi-800.webp 800w, assets/img/hands-on-yoga-adjustment-fort-kochi-1024.webp 1024w" sizes="(min-width: 1240px) 440px, 36vw" width="1024" height="1536" loading="lazy" decoding="async" alt="Teacher giving a hands-on adjustment in a seated twist">
-            <img src="assets/img/traditional-ceremony-yoga-teacher-training-800.webp" srcset="assets/img/traditional-ceremony-yoga-teacher-training-240.webp 240w, assets/img/traditional-ceremony-yoga-teacher-training-480.webp 480w, assets/img/traditional-ceremony-yoga-teacher-training-800.webp 800w, assets/img/traditional-ceremony-yoga-teacher-training-1200.webp 1200w" sizes="(min-width: 1240px) 440px, 36vw" width="1280" height="960" loading="lazy" decoding="async" alt="Teacher training students at a traditional ceremony">
-            <img src="assets/img/yoga-retreat-group-kerala-hills-800.webp" srcset="assets/img/yoga-retreat-group-kerala-hills-240.webp 240w, assets/img/yoga-retreat-group-kerala-hills-480.webp 480w, assets/img/yoga-retreat-group-kerala-hills-800.webp 800w, assets/img/yoga-retreat-group-kerala-hills-1200.webp 1200w" sizes="(min-width: 1240px) 440px, 36vw" width="1200" height="1600" loading="lazy" decoding="async" alt="Retreat group on a rock above the Kerala hills">
-            <img src="assets/img/hands-on-backbend-adjustment-garden-pavilion-800.webp" srcset="assets/img/hands-on-backbend-adjustment-garden-pavilion-240.webp 240w, assets/img/hands-on-backbend-adjustment-garden-pavilion-480.webp 480w, assets/img/hands-on-backbend-adjustment-garden-pavilion-800.webp 800w, assets/img/hands-on-backbend-adjustment-garden-pavilion-1200.webp 1200w, assets/img/hands-on-backbend-adjustment-garden-pavilion-1600.webp 1600w" sizes="(min-width: 1240px) 440px, 36vw" width="1600" height="1535" loading="lazy" decoding="async" alt="Teacher guiding a deep backbend in the garden pavilion">
-            <img src="assets/img/savasana-rest-yoga-pavilion-800.webp" srcset="assets/img/savasana-rest-yoga-pavilion-240.webp 240w, assets/img/savasana-rest-yoga-pavilion-480.webp 480w, assets/img/savasana-rest-yoga-pavilion-800.webp 800w, assets/img/savasana-rest-yoga-pavilion-1200.webp 1200w" sizes="(min-width: 1240px) 440px, 36vw" width="1280" height="1707" loading="lazy" decoding="async" alt="Students resting in savasana in the pavilion">
-            <figcaption class="glass glass-strong">Class in the garden pavilion</figcaption>
-          </figure>
-        </div>
+        <ul class="index" data-index>
+          <li data-r><a href="services/#daily-classes"><i>01</i><span class="index-t"><h3>Daily walk-in classes</h3><p>Two-hour Hatha yoga, mornings and afternoons, all levels.</p></span><span class="thumb"><img src="assets/img/headstand-guidance-yoga-class-kerala-800.webp" srcset="assets/img/headstand-guidance-yoga-class-kerala-240.webp 240w, assets/img/headstand-guidance-yoga-class-kerala-480.webp 480w, assets/img/headstand-guidance-yoga-class-kerala-800.webp 800w, assets/img/headstand-guidance-yoga-class-kerala-1080.webp 1080w" sizes="(min-width: 900px) 22vw, 22vw" width="800" height="1000" alt="Teacher guiding a student into headstand during a class" loading="lazy" decoding="async"></span><svg class="ic"><use href="#i-arrow"/></svg></a></li>
+          <li data-r><a href="services/#private"><i>02</i><span class="index-t"><h3>Private sessions</h3><p>Alignment, mobility, strength and breath, at your pace.</p></span><span class="thumb"><img src="assets/img/hands-on-yoga-adjustment-fort-kochi-800.webp" srcset="assets/img/hands-on-yoga-adjustment-fort-kochi-240.webp 240w, assets/img/hands-on-yoga-adjustment-fort-kochi-480.webp 480w, assets/img/hands-on-yoga-adjustment-fort-kochi-800.webp 800w, assets/img/hands-on-yoga-adjustment-fort-kochi-1024.webp 1024w" sizes="(min-width: 900px) 22vw, 22vw" width="800" height="1200" alt="Teacher giving a hands-on adjustment in a seated twist" loading="lazy" decoding="async"></span><svg class="ic"><use href="#i-arrow"/></svg></a></li>
+          <li data-r><a href="teacher-training/"><i>03</i><span class="index-t"><h3>200-hour teacher training</h3><p>28 days in Fort Kochi, €899 all-inclusive.</p></span><span class="thumb"><img src="assets/img/traditional-ceremony-yoga-teacher-training-800.webp" srcset="assets/img/traditional-ceremony-yoga-teacher-training-240.webp 240w, assets/img/traditional-ceremony-yoga-teacher-training-480.webp 480w, assets/img/traditional-ceremony-yoga-teacher-training-800.webp 800w, assets/img/traditional-ceremony-yoga-teacher-training-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 22vw" width="800" height="600" alt="Teacher training students at a traditional ceremony" loading="lazy" decoding="async"></span><svg class="ic"><use href="#i-arrow"/></svg></a></li>
+          <li data-r><a href="services/#retreats"><i>04</i><span class="index-t"><h3>Yoga retreats</h3><p>Practice, culture, nature and rest in Kerala.</p></span><span class="thumb"><img src="assets/img/yoga-retreat-group-kerala-hills-800.webp" srcset="assets/img/yoga-retreat-group-kerala-hills-240.webp 240w, assets/img/yoga-retreat-group-kerala-hills-480.webp 480w, assets/img/yoga-retreat-group-kerala-hills-800.webp 800w, assets/img/yoga-retreat-group-kerala-hills-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 22vw" width="800" height="1067" alt="Retreat group on a rock above the Kerala hills" loading="lazy" decoding="async"></span><svg class="ic"><use href="#i-arrow"/></svg></a></li>
+          <li data-r><a href="services/#workshops"><i>05</i><span class="index-t"><h3>Workshops</h3><p>Pranayama, mudras, alignment and traditional practices.</p></span><span class="thumb"><img src="assets/img/hands-on-backbend-adjustment-garden-pavilion-800.webp" srcset="assets/img/hands-on-backbend-adjustment-garden-pavilion-240.webp 240w, assets/img/hands-on-backbend-adjustment-garden-pavilion-480.webp 480w, assets/img/hands-on-backbend-adjustment-garden-pavilion-800.webp 800w, assets/img/hands-on-backbend-adjustment-garden-pavilion-1200.webp 1200w, assets/img/hands-on-backbend-adjustment-garden-pavilion-1600.webp 1600w" sizes="(min-width: 900px) 22vw, 22vw" width="800" height="768" alt="Teacher guiding a deep backbend in the garden pavilion" loading="lazy" decoding="async"></span><svg class="ic"><use href="#i-arrow"/></svg></a></li>
+          <li data-r><a href="services/#online"><i>06</i><span class="index-t"><h3>Online classes</h3><p>Group and private sessions, wherever you are.</p></span><span class="thumb"><img src="assets/img/savasana-rest-yoga-pavilion-800.webp" srcset="assets/img/savasana-rest-yoga-pavilion-240.webp 240w, assets/img/savasana-rest-yoga-pavilion-480.webp 480w, assets/img/savasana-rest-yoga-pavilion-800.webp 800w, assets/img/savasana-rest-yoga-pavilion-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 22vw" width="800" height="1067" alt="Students resting in savasana in the pavilion" loading="lazy" decoding="async"></span><svg class="ic"><use href="#i-arrow"/></svg></a></li>
+        </ul>
       </div>
     </section>
 
     <!-- Teacher training -->
-    <section class="section ttc-feature" aria-labelledby="ttc-title">
-      <div class="container grid-2">
-        <figure class="frame rounded" data-clip>
-          <img src="assets/img/traditional-ceremony-yoga-teacher-training-800.webp" srcset="assets/img/traditional-ceremony-yoga-teacher-training-240.webp 240w, assets/img/traditional-ceremony-yoga-teacher-training-480.webp 480w, assets/img/traditional-ceremony-yoga-teacher-training-800.webp 800w, assets/img/traditional-ceremony-yoga-teacher-training-1200.webp 1200w" sizes="(min-width: 960px) 600px, 92vw" width="1280" height="960" loading="lazy" decoding="async" alt="Students dressed in white with flower garlands at a traditional ceremony with brass oil lamps">
-        </figure>
-        <div>
-          <p class="kicker" data-reveal>Teacher Training 2027</p>
-          <h2 class="h2 mt-s" id="ttc-title" data-split aria-label="200-hour Yoga Teacher Training in Fort Kochi"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:0">200-hour</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:1">Yoga</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:2">Teacher</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:3">Training</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:4">in</span></span> <em aria-hidden="true"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:5">Fort</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:6">Kochi</span></span></em></h2>
-          <p class="lede mt-m" data-reveal>28 days of traditional yoga, study, practice and Kerala living, guided by Master Aksharanand A S.</p>
-          <div class="price" data-reveal><strong>€899</strong><span><b>All-inclusive</b>Certification, accommodation, three sattvic meals a day and cultural excursions</span></div>
-          <ul class="date-pills" data-reveal aria-label="2027 batches">
-            <li>1–28 Jan</li><li>1–28 Feb</li><li>1–28 Apr</li><li>1–28 Jun</li>
-          </ul>
-          <div class="btn-row mt-l" data-reveal>
-            <a class="btn btn--primary" href="teacher-training/">See the 200-hour teacher training in Kerala <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn--ghost" href="reserve/">Reserve for €90</a>
+    <section class="sec sec--mist feature" aria-labelledby="ttc-title">
+      <div class="wrap">
+        <figure class="feature-img" data-r="img"><div class="px"><img src="assets/img/traditional-ceremony-yoga-teacher-training-800.webp" srcset="assets/img/traditional-ceremony-yoga-teacher-training-240.webp 240w, assets/img/traditional-ceremony-yoga-teacher-training-480.webp 480w, assets/img/traditional-ceremony-yoga-teacher-training-800.webp 800w, assets/img/traditional-ceremony-yoga-teacher-training-1200.webp 1200w" sizes="(min-width: 1320px) 1240px, 92vw" width="800" height="600" alt="Students dressed in white with flower garlands at a traditional ceremony with brass oil lamps" loading="lazy" decoding="async"></div></figure>
+        <div class="feature-grid">
+          <div>
+            <p class="eyebrow" data-r><span>04</span>Teacher Training 2027</p>
+            <h2 class="h2" id="ttc-title" data-r>200-hour Yoga Teacher Training in <em>Fort Kochi</em></h2>
+          </div>
+          <div>
+            <p class="lede" data-r>28 days of traditional yoga, study, practice and Kerala living, guided by Master Aksharanand A S.</p>
+            <div class="price" data-r><strong>€899</strong><span><b>All-inclusive</b>Certification, accommodation, three sattvic meals a day and cultural excursions</span></div>
+            <ul class="pills" data-r aria-label="2027 batches">
+              <li>1–28 Jan</li><li>1–28 Feb</li><li>1–28 Apr</li><li>1–28 Jun</li>
+            </ul>
+            <div class="row" data-r>
+              <a class="btn" href="teacher-training/">See the 200-hour teacher training in Kerala <svg class="ic"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn--line" href="reserve/">Reserve for €90</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Photo journey -->
-    <section class="section section--paper journey" aria-labelledby="journey-title">
-      <div class="container journey-head">
-        <div>
-          <p class="kicker" data-reveal>Life at Santhi</p>
-          <h2 class="h2 mt-s" id="journey-title" data-split aria-label="Practice, place and everyday Kerala"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:0">Practice,</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:1">place</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:2">and</span></span> <em aria-hidden="true"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:3">everyday</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:4">Kerala</span></span></em></h2>
+    <!-- Life at Santhi -->
+    <section class="sec reel-sec" aria-labelledby="journey-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow" data-r><span>05</span>Life at Santhi</p>
+            <h2 class="h2" id="journey-title" data-r>Practice, place and <em>everyday Kerala</em></h2>
+          </div>
+          <p class="body" data-r>Scroll or swipe through a day at the school</p>
         </div>
-        <p class="journey-hint" data-reveal><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg> Scroll or swipe through a day at the school</p>
+      <!-- The gallery: filter by subject, swipe or scroll sideways, tap a photograph to open it full screen -->
+      <div class="chips" role="group" aria-label="Filter the photographs" data-chips>
+        <button class="chip on" type="button" data-cat="all" aria-pressed="true">Everything</button>
+        <button class="chip" type="button" data-cat="practice" aria-pressed="false">Practice</button>
+        <button class="chip" type="button" data-cat="community" aria-pressed="false">Community</button>
+        <button class="chip" type="button" data-cat="kerala" aria-pressed="false">Kerala</button>
+        <button class="chip" type="button" data-cat="retreats" aria-pressed="false">Retreats</button>
       </div>
-      <div class="journey-track">
-        <figure class="journey-card"><div class="frame"><img src="assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp" srcset="assets/img/santhi-yoga-pavilion-class-fort-kochi-480.webp 480w, assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp 800w, assets/img/santhi-yoga-pavilion-class-fort-kochi-1200.webp 1200w" sizes="(min-width: 1040px) 380px, 70vw" width="720" height="960" loading="lazy" decoding="async" alt="Students practising arm balances in the open-air pavilion"></div><figcaption><b>The pavilion</b><span>Practice</span></figcaption></figure>
-        <figure class="journey-card"><div class="frame"><img src="assets/img/hands-on-yoga-adjustment-fort-kochi-800.webp" srcset="assets/img/hands-on-yoga-adjustment-fort-kochi-240.webp 240w, assets/img/hands-on-yoga-adjustment-fort-kochi-480.webp 480w, assets/img/hands-on-yoga-adjustment-fort-kochi-800.webp 800w, assets/img/hands-on-yoga-adjustment-fort-kochi-1024.webp 1024w" sizes="(min-width: 1040px) 380px, 70vw" width="720" height="1080" loading="lazy" decoding="async" alt="The teacher giving a hands-on adjustment in a seated twist"></div><figcaption><b>Hands-on guidance</b><span>Classes</span></figcaption></figure>
-        <figure class="journey-card"><div class="frame"><img src="assets/img/yoga-student-mealtime-kerala-800.webp" srcset="assets/img/yoga-student-mealtime-kerala-480.webp 480w, assets/img/yoga-student-mealtime-kerala-800.webp 800w, assets/img/yoga-student-mealtime-kerala-1200.webp 1200w" sizes="(min-width: 1040px) 380px, 70vw" width="720" height="1275" loading="lazy" decoding="async" alt="A student laughing at the table during a shared vegetarian meal"></div><figcaption><b>Shared meals</b><span>Community</span></figcaption></figure>
-        <figure class="journey-card"><div class="frame"><img src="assets/img/cultural-excursion-yoga-students-kerala-800.webp" srcset="assets/img/cultural-excursion-yoga-students-kerala-480.webp 480w, assets/img/cultural-excursion-yoga-students-kerala-800.webp 800w, assets/img/cultural-excursion-yoga-students-kerala-1200.webp 1200w" sizes="(min-width: 1040px) 380px, 70vw" width="720" height="960" loading="lazy" decoding="async" alt="Students posing with traditional swords and shields after a cultural performance"></div><figcaption><b>Cultural excursions</b><span>Kerala</span></figcaption></figure>
-        <figure class="journey-card"><div class="frame"><img src="assets/img/chinese-fishing-nets-fort-kochi-800.webp" srcset="assets/img/chinese-fishing-nets-fort-kochi-480.webp 480w, assets/img/chinese-fishing-nets-fort-kochi-800.webp 800w, assets/img/chinese-fishing-nets-fort-kochi-1200.webp 1200w" sizes="(min-width: 1040px) 380px, 70vw" width="720" height="960" loading="lazy" decoding="async" alt="Chinese fishing nets on the Fort Kochi shoreline with coconut palms"></div><figcaption><b>Fort Kochi</b><span>Our neighbourhood</span></figcaption></figure>
-        <figure class="journey-card"><div class="frame"><img src="assets/img/yoga-retreat-hilltop-group-800.webp" srcset="assets/img/yoga-retreat-hilltop-group-480.webp 480w, assets/img/yoga-retreat-hilltop-group-800.webp 800w, assets/img/yoga-retreat-hilltop-group-1200.webp 1200w" sizes="(min-width: 1040px) 380px, 70vw" width="720" height="960" loading="lazy" decoding="async" alt="Retreat group doing playful yoga poses on a rocky hilltop"></div><figcaption><b>Retreat days</b><span>Retreats</span></figcaption></figure>
-        <figure class="journey-card"><div class="frame"><img src="assets/img/waterfall-retreat-excursion-kerala-800.webp" srcset="assets/img/waterfall-retreat-excursion-kerala-480.webp 480w, assets/img/waterfall-retreat-excursion-kerala-800.webp 800w, assets/img/waterfall-retreat-excursion-kerala-1024.webp 1024w" sizes="(min-width: 1040px) 380px, 70vw" width="720" height="1080" loading="lazy" decoding="async" alt="Students cooling off beneath a waterfall on a retreat day trip"></div><figcaption><b>Nature</b><span>Retreats</span></figcaption></figure>
-        <a class="journey-end" href="gallery/">
-          <span class="h3">See every photo</span>
-          <span class="btn btn--gold btn--sm">Open the gallery <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-        </a>
-      </div>
+    </div>
+    <div class="reel" data-reel tabindex="0" aria-label="Photographs of life at Santhi">
+      <a class="reel-card" href="assets/img/santhi-yoga-pavilion-class-fort-kochi-1200.webp" data-lb data-cat="practice"><span class="ph arch"><img src="assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp" srcset="assets/img/santhi-yoga-pavilion-class-fort-kochi-480.webp 480w, assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp 800w, assets/img/santhi-yoga-pavilion-class-fort-kochi-1200.webp 1200w" sizes="(min-width: 800px) 24vw, 62vw" width="800" height="1067" alt="Students practising arm balances in the open-air pavilion" loading="lazy" decoding="async"></span><span class="cap"><b>The pavilion</b><i>Practice</i></span></a>
+      <a class="reel-card" href="assets/img/hands-on-yoga-adjustment-fort-kochi-1024.webp" data-lb data-cat="practice"><span class="ph"><img src="assets/img/hands-on-yoga-adjustment-fort-kochi-800.webp" srcset="assets/img/hands-on-yoga-adjustment-fort-kochi-240.webp 240w, assets/img/hands-on-yoga-adjustment-fort-kochi-480.webp 480w, assets/img/hands-on-yoga-adjustment-fort-kochi-800.webp 800w, assets/img/hands-on-yoga-adjustment-fort-kochi-1024.webp 1024w" sizes="(min-width: 800px) 24vw, 62vw" width="800" height="1200" alt="The teacher giving a hands-on adjustment in a seated twist" loading="lazy" decoding="async"></span><span class="cap"><b>Hands-on guidance</b><i>Classes</i></span></a>
+      <a class="reel-card" href="assets/img/yoga-student-mealtime-kerala-1200.webp" data-lb data-cat="community"><span class="ph"><img src="assets/img/yoga-student-mealtime-kerala-800.webp" srcset="assets/img/yoga-student-mealtime-kerala-480.webp 480w, assets/img/yoga-student-mealtime-kerala-800.webp 800w, assets/img/yoga-student-mealtime-kerala-1200.webp 1200w" sizes="(min-width: 800px) 24vw, 62vw" width="800" height="1416" alt="A student laughing at the table during a shared vegetarian meal" loading="lazy" decoding="async"></span><span class="cap"><b>Shared meals</b><i>Community</i></span></a>
+      <a class="reel-card" href="assets/img/cultural-excursion-yoga-students-kerala-1200.webp" data-lb data-cat="kerala"><span class="ph arch"><img src="assets/img/cultural-excursion-yoga-students-kerala-800.webp" srcset="assets/img/cultural-excursion-yoga-students-kerala-480.webp 480w, assets/img/cultural-excursion-yoga-students-kerala-800.webp 800w, assets/img/cultural-excursion-yoga-students-kerala-1200.webp 1200w" sizes="(min-width: 800px) 24vw, 62vw" width="800" height="1067" alt="Students posing with traditional swords and shields after a cultural performance" loading="lazy" decoding="async"></span><span class="cap"><b>Cultural excursions</b><i>Kerala</i></span></a>
+      <a class="reel-card" href="assets/img/chinese-fishing-nets-fort-kochi-1200.webp" data-lb data-cat="kerala"><span class="ph"><img src="assets/img/chinese-fishing-nets-fort-kochi-800.webp" srcset="assets/img/chinese-fishing-nets-fort-kochi-480.webp 480w, assets/img/chinese-fishing-nets-fort-kochi-800.webp 800w, assets/img/chinese-fishing-nets-fort-kochi-1200.webp 1200w" sizes="(min-width: 800px) 24vw, 62vw" width="800" height="1067" alt="Chinese fishing nets on the Fort Kochi shoreline with coconut palms" loading="lazy" decoding="async"></span><span class="cap"><b>Fort Kochi</b><i>Our neighbourhood</i></span></a>
+      <a class="reel-card" href="assets/img/headstand-guidance-yoga-class-kerala-1080.webp" data-lb data-cat="practice"><span class="ph"><img src="assets/img/headstand-guidance-yoga-class-kerala-800.webp" srcset="assets/img/headstand-guidance-yoga-class-kerala-240.webp 240w, assets/img/headstand-guidance-yoga-class-kerala-480.webp 480w, assets/img/headstand-guidance-yoga-class-kerala-800.webp 800w, assets/img/headstand-guidance-yoga-class-kerala-1080.webp 1080w" sizes="(min-width: 800px) 24vw, 62vw" width="800" height="1000" alt="Teacher guiding a student into headstand during a class" loading="lazy" decoding="async"></span><span class="cap"><b>Headstand, guided</b><i>Classes</i></span></a>
+      <a class="reel-card" href="assets/img/yoga-retreat-hilltop-group-1200.webp" data-lb data-cat="retreats"><span class="ph arch"><img src="assets/img/yoga-retreat-hilltop-group-800.webp" srcset="assets/img/yoga-retreat-hilltop-group-480.webp 480w, assets/img/yoga-retreat-hilltop-group-800.webp 800w, assets/img/yoga-retreat-hilltop-group-1200.webp 1200w" sizes="(min-width: 800px) 24vw, 62vw" width="800" height="1067" alt="Retreat group doing playful yoga poses on a rocky hilltop" loading="lazy" decoding="async"></span><span class="cap"><b>Retreat days</b><i>Retreats</i></span></a>
+      <a class="reel-card" href="assets/img/shared-vegetarian-meal-yoga-students-1200.webp" data-lb data-cat="community"><span class="ph"><img src="assets/img/shared-vegetarian-meal-yoga-students-800.webp" srcset="assets/img/shared-vegetarian-meal-yoga-students-480.webp 480w, assets/img/shared-vegetarian-meal-yoga-students-800.webp 800w, assets/img/shared-vegetarian-meal-yoga-students-1200.webp 1200w" sizes="(min-width: 800px) 24vw, 62vw" width="800" height="1423" alt="Students sharing a vegetarian meal around a long wooden table" loading="lazy" decoding="async"></span><span class="cap"><b>The long table</b><i>Community</i></span></a>
+      <a class="reel-card" href="assets/img/waterfall-retreat-excursion-kerala-1024.webp" data-lb data-cat="retreats"><span class="ph"><img src="assets/img/waterfall-retreat-excursion-kerala-800.webp" srcset="assets/img/waterfall-retreat-excursion-kerala-480.webp 480w, assets/img/waterfall-retreat-excursion-kerala-800.webp 800w, assets/img/waterfall-retreat-excursion-kerala-1024.webp 1024w" sizes="(min-width: 800px) 24vw, 62vw" width="800" height="1200" alt="Students cooling off beneath a waterfall on a retreat day trip" loading="lazy" decoding="async"></span><span class="cap"><b>Nature</b><i>Retreats</i></span></a>
+      <a class="reel-card" href="assets/img/savasana-rest-yoga-pavilion-1200.webp" data-lb data-cat="practice"><span class="ph arch"><img src="assets/img/savasana-rest-yoga-pavilion-800.webp" srcset="assets/img/savasana-rest-yoga-pavilion-240.webp 240w, assets/img/savasana-rest-yoga-pavilion-480.webp 480w, assets/img/savasana-rest-yoga-pavilion-800.webp 800w, assets/img/savasana-rest-yoga-pavilion-1200.webp 1200w" sizes="(min-width: 800px) 24vw, 62vw" width="800" height="1067" alt="Students resting in savasana in the pavilion" loading="lazy" decoding="async"></span><span class="cap"><b>Rest</b><i>Practice</i></span></a>
+      <a class="reel-end" href="gallery/"><span class="h3">See every photo</span><span class="btn btn--line btn--sm">Open the gallery <svg class="ic"><use href="#i-arrow"/></svg></span></a>
+    </div>
     </section>
 
-    <!-- Student voices -->
-    <section class="section" aria-labelledby="voices-title">
-      <div class="container quotes" data-quotes>
-        <div>
-          <p class="kicker" data-reveal>Student voices</p>
-          <h2 class="h2 mt-s" id="voices-title" data-split aria-label="Words from our students"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:0">Words</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:1">from</span></span> <em aria-hidden="true"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:2">our</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:3">students</span></span></em></h2>
-          <p class="body mt-m" data-reveal>Reviews from travellers who joined classes with Achu in Fort Kochi.</p>
-          <div class="quote-controls" data-reveal>
-            <button class="icon-btn" type="button" data-prev aria-label="Previous review"><svg class="ic" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
-            <button class="icon-btn" type="button" data-next aria-label="Next review"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-            <span class="quote-count" aria-live="polite">1 / 3</span>
+    <!-- Student voices: real Google reviews, one at a time -->
+    <section class="sec sec--mist stories-sec" aria-labelledby="voices-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow" data-r>Student voices</p>
+            <h2 class="h2" id="voices-title" data-r>Words from <em>our students</em></h2>
+          </div>
+          <div data-r>
+            <p class="body">Reviews from travellers who joined classes with Achu in Fort Kochi.</p>
+            <p class="rating"><span class="stars" aria-hidden="true"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span> <b>4.9</b>/5 from students</p>
           </div>
         </div>
-        <div class="quote-stage" data-reveal aria-roledescription="carousel" aria-label="Student reviews">
-          <figure class="quote is-active">
+        <div class="stories" data-stories aria-roledescription="carousel" aria-label="Student reviews" tabindex="0">
+          <figure class="story">
             <blockquote><p>This was the most amazing yoga class ever. Achu had a great class progression and got to know each student so that he was best able to help each of us. I’ve never been more satisfied and calm after leaving a yoga class. I can’t recommend this place and Achu enough!!</p></blockquote>
-            <figcaption>Kira Fried <span>· Yoga class student</span></figcaption>
+            <figcaption><b>Kira Fried</b> <span>Yoga class student</span></figcaption>
           </figure>
-          <figure class="quote" aria-hidden="true">
+          <figure class="story">
             <blockquote><p>What an incredible class!!! Achu was an amazing instructor - he took the time to correct every pose and really looked after us. The vibe was fun and relaxed, just what we wanted to start our day! Thank you Achu.</p></blockquote>
-            <figcaption>Jack Bather <span>· Yoga class student</span></figcaption>
+            <figcaption><b>Jack Bather</b> <span>Yoga class student</span></figcaption>
           </figure>
-          <figure class="quote" aria-hidden="true">
+          <figure class="story">
             <blockquote><p>Incredible yoga experience with a wonderful teacher. If you are in Kochi, this is THE yoga class to go to. Don’t be intimidated by the two hours — there is a good amount of shavasana throughout the class. The teacher and the hands-on assists are amazing. I can’t wait to go back one day :)</p></blockquote>
-            <figcaption>Laura <span>· Yoga class student</span></figcaption>
+            <figcaption><b>Laura</b> <span>Yoga class student</span></figcaption>
           </figure>
+        </div>
+        <div class="stories-ctl">
+          <button class="rnd" type="button" data-prev aria-label="Previous review"><svg class="ic flip"><use href="#i-arrow"/></svg></button>
+          <button class="rnd" type="button" data-next aria-label="Next review"><svg class="ic"><use href="#i-arrow"/></svg></button>
+          <span class="count" data-count aria-live="polite">1 / 3</span>
         </div>
       </div>
     </section>
 
     <!-- The questions a traveller asks before walking in, answered plainly here and
          repeated word for word in the FAQPage data in the head -->
-    <section class="section section--paper" id="faq" aria-labelledby="faq-title">
-      <div class="container grid-2" style="align-items:start">
-        <div>
-          <p class="kicker" data-reveal>Before your first class</p>
-          <h2 class="h2 mt-s" id="faq-title" data-split aria-label="Drop-in yoga in Fort Kochi, simply answered"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:0">Drop-in</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:1">yoga</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:2">in</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:3">Fort</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:4">Kochi,</span></span> <em aria-hidden="true"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:5">simply</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:6">answered</span></span></em></h2>
-          <p class="body mt-m" data-reveal>When the classes are, what they cost, and whether you need to book: the things people ask before they walk in for the first time.</p>
-          <p class="mt-m" data-reveal><a class="link-arrow" href="blog/santhi-yoga-fort-kochi-questions/">The full fact sheet <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    <section class="sec" id="faq" aria-labelledby="faq-title">
+      <div class="wrap split split--top">
+        <div class="sticky">
+          <p class="eyebrow" data-r><span>06</span>Before your first class</p>
+          <h2 class="h2" id="faq-title" data-r>Drop-in yoga in Fort Kochi, <em>simply answered</em></h2>
+          <p class="body" data-r>When the classes are, what they cost, and whether you need to book: the things people ask before they walk in for the first time.</p>
+          <p data-r><a class="link" href="blog/santhi-yoga-fort-kochi-questions/">The full fact sheet</a></p>
         </div>
-        <div class="disclosure" data-reveal>
-          <details>
-            <summary>Where can I do yoga in Fort Kochi? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+        <div class="faq" data-r>
+          <details name="faq">
+            <summary>Where can I do yoga in Fort Kochi?</summary>
             <div class="panel"><p>At Santhi School of Yoga &amp; Vedanta Studies in Chirattapalam, Fort Kochi: a traditional Hatha yoga school with two-hour classes every day of the week. Anywhere in Fort Kochi itself is within walking distance.</p></div>
           </details>
-          <details>
-            <summary>What time are the drop-in yoga classes? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <details name="faq">
+            <summary>What time are the drop-in yoga classes?</summary>
             <div class="panel"><p>Every day, with no day off: 7:30–9:30 am and 3:30–5:30 pm. Some mornings the class moves to Secret Garden, an open garden nearby, from 8:00–9:30 am, so message us on WhatsApp the evening before a morning class.</p></div>
           </details>
-          <details>
-            <summary>How much is a yoga class in Fort Kochi? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-            <div class="panel"><p>A two-hour drop-in class is ₹500 (a limited-time offer; normally ₹600, and ₹700 from November 2026). Practise with us for more than a week and classes are 30% off. A private session is ₹1,500, rising to ₹2,000 in November 2026. <a class="link-arrow" href="blog/yoga-class-fees-kochi/">Yoga class fees in Kochi <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p></div>
+          <details name="faq">
+            <summary>How much is a yoga class in Fort Kochi?</summary>
+            <div class="panel"><p>A two-hour drop-in class is ₹500 (a limited-time offer; normally ₹600, and ₹700 from November 2026). Practise with us for more than a week and classes are 30% off. A private session is ₹1,500, rising to ₹2,000 in November 2026. <a class="link" href="blog/yoga-class-fees-kochi/">Yoga class fees in Kochi</a></p></div>
           </details>
-          <details>
-            <summary>Do I need to book a class? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <details name="faq">
+            <summary>Do I need to book a class?</summary>
             <div class="panel"><p>No. Daily classes are walk-in, with no booking, membership or package. Mats are provided; wear clothes you can bend in and bring water.</p></div>
           </details>
-          <details>
-            <summary>Can complete beginners join? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-            <div class="panel"><p>Yes. Every class is open to all levels and taught in English, with easier versions of each posture and hands-on guidance. Tell the teacher if you are new or have an injury. <a class="link-arrow" href="blog/first-yoga-class-beginners-guide/">Your first class <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p></div>
+          <details name="faq">
+            <summary>Can complete beginners join?</summary>
+            <div class="panel"><p>Yes. Every class is open to all levels and taught in English, with easier versions of each posture and hands-on guidance. Tell the teacher if you are new or have an injury. <a class="link" href="blog/first-yoga-class-beginners-guide/">Your first class</a></p></div>
           </details>
-          <details>
-            <summary>Is there a yoga teacher training in Fort Kochi? <svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
-            <div class="panel"><p>Yes. The school runs a 28-day, 200-hour yoga teacher training in Fort Kochi for €899, all-inclusive of accommodation, meals and excursions, with 2027 batches in January, February, April and June. <a class="link-arrow" href="teacher-training/">Yoga teacher training in Kerala: 2027 dates <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p></div>
+          <details name="faq">
+            <summary>Is there a yoga teacher training in Fort Kochi?</summary>
+            <div class="panel"><p>Yes. The school runs a 28-day, 200-hour yoga teacher training in Fort Kochi for €899, all-inclusive of accommodation, meals and excursions, with 2027 batches in January, February, April and June. <a class="link" href="teacher-training/">Yoga teacher training in Kerala: 2027 dates</a></p></div>
           </details>
         </div>
       </div>
     </section>
 
     <!-- Visit -->
-    <section class="section section--sand" aria-labelledby="visit-title">
-      <div class="container grid-2 grid-2--wide-left">
-        <div>
-          <p class="kicker" data-reveal>Visit us</p>
-          <h2 class="h2 mt-s" id="visit-title" data-split aria-label="Find us in Chirattapalam, Fort Kochi"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:0">Find</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:1">us</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:2">in</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:3">Chirattapalam,</span></span> <em aria-hidden="true"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:4">Fort</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:5">Kochi</span></span></em></h2>
-          <p class="body mt-m" data-reveal>The school sits in Chirattapalam, a quiet residential lane in Fort Kochi — the historic seaside quarter of Kochi (Cochin), Kerala. Message us for today’s class times, or ask about private sessions and training dates.</p>
-          <ul class="contact-list" data-reveal>
-            <li><span class="ic-badge"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span><span><small>Address</small>House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</span></li>
-            <li><span class="ic-badge"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span><span><small>Phone / WhatsApp</small><a href="tel:+917907714144">+91 7907714144</a></span></li>
+    <section class="sec sec--sand" aria-labelledby="visit-title">
+      <div class="wrap split">
+        <div class="split-copy">
+          <p class="eyebrow" data-r><span>07</span>Visit us</p>
+          <h2 class="h2" id="visit-title" data-r>Find us in Chirattapalam, <em>Fort Kochi</em></h2>
+          <p class="body" data-r>The school sits in Chirattapalam, a quiet residential lane in Fort Kochi — the historic seaside quarter of Kochi (Cochin), Kerala. Message us for today’s class times, or ask about private sessions and training dates.</p>
+          <ul class="facts" data-r>
+            <li><small>Address</small>House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</li>
+            <li><small>Phone / WhatsApp</small><a href="tel:+917907714144">+91 7907714144</a></li>
           </ul>
-          <div class="btn-row mt-l" data-reveal>
-            <a class="btn btn--primary" href="contact/">Contact &amp; directions <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn--ghost" href="https://wa.me/917907714144" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg> WhatsApp</a>
+          <div class="row" data-r>
+            <a class="btn" href="contact/">Contact &amp; directions <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--line" href="https://wa.me/917907714144" target="_blank" rel="noopener"><svg class="ic"><use href="#i-chat"/></svg> WhatsApp</a>
+            <a class="link" href="https://maps.app.goo.gl/BbwKnL9gK1QzCh8i7" target="_blank" rel="noopener">Open in Google Maps</a>
           </div>
         </div>
-        <figure class="frame arch" data-clip style="aspect-ratio:4/5;max-width:460px;justify-self:center;width:100%">
-          <img src="assets/img/chinese-fishing-nets-fort-kochi-800.webp" srcset="assets/img/chinese-fishing-nets-fort-kochi-480.webp 480w, assets/img/chinese-fishing-nets-fort-kochi-800.webp 800w, assets/img/chinese-fishing-nets-fort-kochi-1200.webp 1200w" sizes="(min-width: 960px) 460px, 90vw" width="1280" height="1707" loading="lazy" decoding="async" alt="Chinese fishing nets on the Fort Kochi shoreline under a clear blue sky">
-        </figure>
+        <figure class="portrait portrait--r" data-r="img"><div class="arch px"><img src="assets/img/chinese-fishing-nets-fort-kochi-800.webp" srcset="assets/img/chinese-fishing-nets-fort-kochi-480.webp 480w, assets/img/chinese-fishing-nets-fort-kochi-800.webp 800w, assets/img/chinese-fishing-nets-fort-kochi-1200.webp 1200w" sizes="(min-width: 900px) 38vw, 90vw" width="800" height="1067" alt="Chinese fishing nets on the Fort Kochi shoreline under a clear blue sky" loading="lazy" decoding="async"></div></figure>
       </div>
     </section>
-    <!-- Booking: a letter to fill in -->
-    <section class="section book-section" id="book" aria-labelledby="book-title">
-      <span class="mal-mark" aria-hidden="true">ശാന്തി</span>
-      <div class="container">
+
+    <!-- Booking -->
+    <section class="sec book" id="book" aria-labelledby="book-title">
+      <span class="mal" lang="ml" aria-hidden="true">ശാന്തി</span>
+      <div class="wrap book-grid">
         <div class="book-head">
-          <p class="kicker" data-reveal>Book your class</p>
-          <h2 class="h2 mt-s" id="book-title" data-split aria-label="Come and practise with us in Fort Kochi"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:0">Come</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:1">and</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:2">practise</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:3">with</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:4">us</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:5">in</span></span> <em aria-hidden="true"><span class="split-w" aria-hidden="true"><span class="split-i" style="--i:6">Fort</span></span> <span class="split-w" aria-hidden="true"><span class="split-i" style="--i:7">Kochi</span></span></em></h2>
-          <p class="body mt-m" data-reveal>Fill in the blanks and your letter is written. Send it on WhatsApp or by email, and Achu replies personally, usually the same day.</p>
+          <p class="eyebrow" data-r><span>08</span>Book your class</p>
+          <h2 class="h2" id="book-title" data-r>Come and practise with us in <em>Fort Kochi</em></h2>
+          <p class="body" data-r>Fill in the blanks and your letter is written. Send it on WhatsApp or by email, and Achu replies personally, usually the same day.</p>
         </div>
         <!-- build:booking -->
-      <!-- Booking as a letter: the blanks are the form, the letter is the message.
-           site.js fills the choices in and writes the WhatsApp and email links. -->
-      <form class="letter" id="booking-form" novalidate>
-        <div class="letter-paper">
-          <span class="letter-mark" aria-hidden="true">ശാന്തി</span>
-          <p class="letter-hello">Namaste Achu,</p>
-          <p class="letter-text" id="letter-text">
-            <span class="lt">My name is</span>
-            <label class="blank blank--name"><input id="lb-name" name="name" type="text" size="1" aria-label="Your name" autocomplete="name" autocapitalize="words" spellcheck="false" enterkeyhint="done" placeholder="your name" required><span class="blank-mirror" aria-hidden="true">your name</span></label><span class="lt">, and I would love to join</span>
-            <span class="blank blank--pick" data-pick="offering"><button class="blank-btn" type="button" aria-haspopup="listbox" aria-expanded="false"><span class="sr-only">What would you like to join: </span><span class="blank-value">a daily Hatha Yoga class</span></button></span>
-            <span data-when="dates"><span class="lt" data-when-word>on</span> <span class="blank blank--pick blank--date" data-pick="date"><button class="blank-btn" type="button" id="b-when" aria-haspopup="dialog" aria-expanded="false"><span class="sr-only">When: </span><span class="blank-value" id="b-when-text">a date of your choice</span><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg></button>
-              <span class="pop cal" id="cal" role="dialog" aria-label="Choose your dates" hidden>
-                <span class="cal-head">
-                  <button class="icon-btn" type="button" data-cal-prev aria-label="Previous month"><svg class="ic" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
-                  <span class="cal-title" id="cal-title" aria-live="polite"></span>
-                  <button class="icon-btn" type="button" data-cal-next aria-label="Next month"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-                </span>
-                <span class="cal-week" aria-hidden="true"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></span>
-                <span class="cal-grid" id="cal-grid"></span>
-                <span class="cal-foot">
-                  <span class="cal-hint">Tap the day you arrive, and a second day if you are staying a while.</span>
-                  <span class="cal-actions">
-                    <button class="cal-btn" type="button" data-cal-clear>Clear</button>
-                    <button class="cal-btn cal-btn--done" type="button" data-cal-done>Done</button>
-                  </span>
-                </span>
-              </span></span></span>
-            <span data-when="batch" hidden><span class="lt">in the</span> <span class="blank blank--pick" data-pick="batch"><button class="blank-btn" type="button" aria-haspopup="listbox" aria-expanded="false"><span class="sr-only">Which batch: </span><span class="blank-value">January 2027</span></button></span> <span class="lt">batch</span></span>
-            <span class="lt">for</span> <span class="blank blank--pick" data-pick="people"><button class="blank-btn" type="button" aria-haspopup="listbox" aria-expanded="false"><span class="sr-only">How many of you: </span><span class="blank-value">one person</span></button></span><span class="lt">.</span>
-            <span class="lt letter-ask" data-ask>Could you let me know the class times and anything I should bring?</span>
-          </p>
-          <label class="letter-note"><span class="sr-only">Anything else Achu should know (optional)</span><textarea id="lb-note" name="note" rows="1" placeholder="Add a note, if you like: an injury, where you are staying, a question…"></textarea></label>
-          <p class="letter-sign"><span>With thanks,</span> <span class="letter-signature" data-signature aria-hidden="true"></span></p>
-          <span class="letter-seal" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></span>
-        </div>
-        <div class="letter-send">
-          <a class="cta cta--primary" id="wa-send" href="https://wa.me/917907714144" target="_blank" rel="noopener" data-magnetic>
-            <span class="cta-label" data-roll>Send on WhatsApp</span>
-            <span class="cta-icon" aria-hidden="true"><svg class="ic"><use href="#i-send"/></svg><svg class="ic"><use href="#i-send"/></svg></span>
-          </a>
-          <a class="text-link" id="mail-send" href="mailto:santhiyogacochin@gmail.com"><span class="text-link-text">or send it by email</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-        <p class="form-status" id="booking-status" role="status" aria-live="polite"></p>
-        <p class="letter-fine">Nothing is sent from this page. WhatsApp or your email opens with this letter written out, and you press send.</p>
-      </form>
+  <!-- The booking journey: three short steps that write a letter, sent on WhatsApp or by email.
+       Without JavaScript every step shows at once and the plain links below still work. -->
+  <form class="jr" id="journey" data-preset="class" novalidate>
+    <ol class="jr-steps" aria-hidden="true">
+      <li class="on"><span>1</span>The practice</li>
+      <li><span>2</span>The dates</li>
+      <li><span>3</span>About you</li>
+    </ol>
+
+    <fieldset class="jr-step" data-step="1">
+      <legend>What would you love to join?</legend>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="what" value="a daily Hatha Yoga class" data-kind="date" data-ask="Could you let me know the class times and anything I should bring?"><span><b>A daily class</b><small>Two-hour Hatha yoga, walk in</small></span></label>
+        <label class="opt"><input type="radio" name="what" value="the 200-hour teacher training" data-kind="batch" data-ask="Could you tell me if there is still a place, and how I reserve it?"><span><b>Teacher training</b><small>200 hours · 28 days · €899</small></span></label>
+        <label class="opt"><input type="radio" name="what" value="a private session" data-kind="date" data-ask="Could you let me know which times are free?"><span><b>A private session</b><small>One to one, at your pace</small></span></label>
+        <label class="opt"><input type="radio" name="what" value="a yoga retreat" data-kind="date" data-ask="Could you tell me about the retreats around then?"><span><b>A retreat</b><small>Practice, nature and rest</small></span></label>
+        <label class="opt"><input type="radio" name="what" value="a workshop" data-kind="date" data-ask="Could you tell me which workshops are running around then?"><span><b>A workshop</b><small>Pranayama, mudras, alignment</small></span></label>
+        <label class="opt"><input type="radio" name="what" value="an online class" data-kind="date" data-ask="Could you let me know the times and how to join?"><span><b>An online class</b><small>Wherever you are</small></span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="jr-step" data-step="2">
+      <legend data-when-title>When would you like to come?</legend>
+      <div class="opts opts--4" data-when="batch">
+        <label class="opt"><input type="radio" name="batch" value="January" checked><span><b>January 2027</b><small>1–28 January</small></span></label>
+        <label class="opt"><input type="radio" name="batch" value="February"><span><b>February 2027</b><small>1–28 February</small></span></label>
+        <label class="opt"><input type="radio" name="batch" value="April"><span><b>April 2027</b><small>1–28 April</small></span></label>
+        <label class="opt"><input type="radio" name="batch" value="June"><span><b>June 2027</b><small>1–28 June</small></span></label>
+      </div>
+      <div class="fields" data-when="date">
+        <label class="jf"><span>The day you arrive</span><input type="date" name="date"></label>
+      </div>
+      <div class="fields">
+        <label class="jf"><span>How many of you</span>
+          <select name="people"><option value="one person">One person</option><option value="two people">Two people</option><option value="three people">Three people</option><option value="four people">Four people</option><option value="a small group">A small group</option></select>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="jr-step" data-step="3">
+      <legend>And who shall Achu write back to?</legend>
+      <div class="fields fields--2">
+        <label class="jf"><span>Your name</span><input type="text" name="name" autocomplete="name" autocapitalize="words" maxlength="60" required></label>
+        <label class="jf"><span>Where you are writing from <i>(optional)</i></span><input type="text" name="country" autocomplete="country-name" maxlength="60"></label>
+      </div>
+      <label class="jf"><span>A note, if you like: an injury, where you are staying, a question… <i>(optional)</i></span><textarea name="note" rows="2" maxlength="600"></textarea></label>
+      <div class="jr-letter" aria-live="polite">
+        <p class="jr-letter-h">Your letter</p>
+        <p data-letter>Namaste Achu,</p>
+      </div>
+    </fieldset>
+
+    <div class="jr-nav">
+      <button class="link" type="button" data-back hidden>Back</button>
+      <button class="btn" type="button" data-next>Continue <svg class="ic"><use href="#i-arrow"/></svg></button>
+      <a class="btn" id="wa-send" href="https://wa.me/917907714144" target="_blank" rel="noopener" data-send>Send on WhatsApp <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="link" id="mail-send" href="mailto:santhiyogacochin@gmail.com" data-send>or send it by email</a>
+      <a class="link" href="reserve/" data-reserve hidden>or reserve now with a €90 deposit</a>
+    </div>
+    <p class="status" id="jr-status" role="status" aria-live="polite"></p>
+    <p class="fine">Nothing is sent from this page. WhatsApp or your email opens with this letter written out, and you press send.</p>
+  </form>
   <!-- /build:booking -->
       </div>
     </section>
@@ -710,75 +650,53 @@
   <!-- build:footer -->
 
 
-  <!-- Newsletter: sign-ups go to the Google Sheet in tools/newsletter once data-endpoint holds its /exec URL;
-       until then the form opens a prefilled email. The moon is redrawn at tonight's phase by site.js. -->
+  <!-- The Pournami letter: sign-ups post to data-endpoint once it holds the Apps Script /exec URL
+       (tools/newsletter); until then the form opens a prefilled email. lux.js draws tonight's moon. -->
   <section class="nl" id="letters" aria-labelledby="nl-title">
-    <div class="container nl-grid">
-      <div class="nl-sky" data-reveal>
-        <div class="nl-moon" aria-hidden="true">
-          <svg class="nl-ring" viewBox="0 0 200 200"><defs><path id="nl-ring-path" d="M100,100 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0"/></defs><text><textPath href="#nl-ring-path" textLength="538" lengthAdjust="spacing">One letter each full moon · from Fort Kochi · Kerala ·</textPath></text></svg>
-          <svg class="nl-orb" viewBox="0 0 120 120">
-            <defs>
-              <radialGradient id="nl-glow" cx="38%" cy="34%" r="78%"><stop offset="0" stop-color="#FFFCF2"/><stop offset=".55" stop-color="#F8E6BD"/><stop offset="1" stop-color="#E4C384"/></radialGradient>
-              <clipPath id="nl-clip"><path id="nl-lit-path" d="M60,6 A54,54 0 0,1 60,114 A54,54 0 0,1 60,6Z"/></clipPath>
-            </defs>
-            <circle class="nl-dark" cx="60" cy="60" r="54"/>
-            <g clip-path="url(#nl-clip)">
-              <circle cx="60" cy="60" r="54" fill="url(#nl-glow)"/>
-              <g class="nl-maria"><ellipse cx="44" cy="40" rx="15" ry="11"/><ellipse cx="70" cy="42" rx="9" ry="8"/><ellipse cx="78" cy="58" rx="10" ry="9"/><ellipse cx="94" cy="50" rx="5" ry="6"/><ellipse cx="32" cy="66" rx="13" ry="19"/><ellipse cx="62" cy="82" rx="8" ry="6"/><circle cx="56" cy="100" r="2.6"/></g>
-            </g>
-          </svg>
-        </div>
-        <p class="nl-moon-note" data-moon-note>One letter each <b>full moon</b></p>
+    <div class="wrap nl-grid">
+      <div class="nl-moon" data-r>
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <defs><clipPath id="nl-clip"><path id="nl-lit" d="M60,6 A54,54 0 0,1 60,114 A54,54 0 0,1 60,6Z"/></clipPath></defs>
+          <circle class="nl-dark" cx="60" cy="60" r="54"/>
+          <g clip-path="url(#nl-clip)"><circle class="nl-light" cx="60" cy="60" r="54"/><g class="nl-maria"><ellipse cx="44" cy="40" rx="15" ry="11"/><ellipse cx="70" cy="42" rx="9" ry="8"/><ellipse cx="78" cy="58" rx="10" ry="9"/><ellipse cx="32" cy="66" rx="13" ry="19"/><ellipse cx="62" cy="82" rx="8" ry="6"/></g></g>
+          <circle class="nl-ring" cx="60" cy="60" r="58.500"/>
+        </svg>
+        <p class="nl-note" data-moon-note>One letter each <b>full moon</b></p>
       </div>
-
-      <div class="nl-letter" data-reveal>
-        <div class="nl-sheet">
-          <div class="nl-stamp" aria-hidden="true"><div class="nl-stamp-in"><span class="nl-stamp-val">₹5</span><span class="nl-stamp-mal">ശാന്തി</span><span class="nl-stamp-place">Fort Kochi</span></div></div>
-          <svg class="nl-postmark" viewBox="0 0 230 120" aria-hidden="true">
-            <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2,36 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,50 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,64 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,78 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,92 q12,-7 24,0 t24,0 t24,0 t24,0"/></g>
-            <g transform="translate(170 62)">
-              <circle r="52" fill="none" stroke="currentColor" stroke-width="2.6"/><circle r="31" fill="none" stroke="currentColor" stroke-width="1.3"/>
-              <path id="nl-pm-arc" d="M-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0" fill="none"/>
-              <text class="nl-pm-ring"><textPath href="#nl-pm-arc" textLength="262" lengthAdjust="spacing">FORT KOCHI · KERALA · POSTED ·</textPath></text>
-              <text class="nl-pm-date" y="4" text-anchor="middle">FULL MOON</text>
-            </g>
-          </svg>
-
-          <p class="kicker">The Pournami letter</p>
-          <h2 class="h2 nl-title" id="nl-title">Letters from <em>Fort Kochi</em></h2>
-          <p class="nl-lede">Once a month, as the moon comes full over the fishing nets, we write from the shala: one practice to try at home, a few lines from the old texts, how the season feels in Kerala, and the dates of the next training and retreat.</p>
-
-          <form class="nl-form" id="nl-form" data-endpoint="" novalidate>
-            <p class="nl-salute">Dear Santhi,</p>
-            <p class="nl-line">please write to me. My name is <span class="nl-blank"><label class="sr-only" for="nl-name">Your first name (optional)</label><input id="nl-name" name="name" type="text" autocomplete="given-name" maxlength="60" placeholder="your name"></span>, and my letters can find me at <span class="nl-blank nl-blank--wide"><label class="sr-only" for="nl-email">Your email address</label><input id="nl-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="120" placeholder="you@example.com" required></span>.</p>
-            <div class="nl-hp" aria-hidden="true"><label for="nl-web">Leave this empty</label><input id="nl-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-            <div class="nl-foot">
-              <button class="nl-seal" type="submit"><span class="nl-wax" aria-hidden="true">ശ</span><span class="nl-seal-label">Seal &amp; send</span></button>
-              <p class="nl-small">One letter a month, one click to stop. Your address stays with us and is never shared. <a href="privacy/">Privacy</a></p>
-            </div>
-            <p class="form-status nl-status" id="nl-status" role="status" aria-live="polite"></p>
-          </form>
-        </div>
+      <div class="nl-copy">
+        <p class="eyebrow" data-r>The Pournami letter</p>
+        <h2 class="h2" id="nl-title" data-r>Letters from <em>Fort Kochi</em></h2>
+        <p class="lede" data-r>Once a month, as the moon comes full over the fishing nets, we write from the shala: one practice to try at home, a few lines from the old texts, how the season feels in Kerala, and the dates of the next training and retreat.</p>
+        <form class="nl-form" id="nl-form" data-endpoint="" novalidate data-r>
+          <p class="nl-line">Dear Santhi, please write to me. My name is
+            <label class="sr" for="nl-name">Your first name (optional)</label><input id="nl-name" name="name" type="text" autocomplete="given-name" maxlength="60" placeholder="your name">,
+            and my letters can find me at
+            <label class="sr" for="nl-email">Your email address</label><input id="nl-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" placeholder="your email address" required>.</p>
+          <div class="nl-hp" aria-hidden="true"><label for="nl-web">Leave this empty</label><input id="nl-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          <div class="nl-foot">
+            <button class="btn" type="submit"><span data-nl-label>Seal &amp; send</span> <svg class="ic"><use href="#i-arrow"/></svg></button>
+            <p class="fine">One letter a month, one click to stop. Your address stays with us and is never shared. <a href="privacy/">Privacy</a></p>
+          </div>
+          <p class="status" id="nl-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </div>
   </section>
 
-  <footer class="site-footer">
-    <div class="kasavu-rule" aria-hidden="true"></div>
-    <span class="mal-mark" aria-hidden="true">ശാന്തി</span>
-    <div class="container">
-      <div class="footer-main">
-        <div>
-          <img class="footer-logo" src="assets/brand/santhi-school-of-yoga-logo-232.webp" width="232" height="232" loading="lazy" decoding="async" alt="Santhi School of Yoga &amp; Vedanta Studies logo: a seated yoga figure with raised hands in front of a lotus">
-          <p class="footer-title">Santhi School of Yoga &amp; Vedanta Studies</p>
-          <p class="muted small">Fort Kochi, Kerala</p>
-          <p class="body small" style="margin-top:1.25rem">A traditional yoga school and studio in Fort Kochi offering Hatha Yoga classes, private sessions, workshops, retreats, online classes and a 28-day 200-hour Yoga Teacher Training in Kerala.</p>
-          <p class="body small" style="margin-top:1rem">Seven-day yoga retreats in Fort Kochi and Munnar run through our retreat project, <a href="https://samyaretreats.com/" target="_blank" rel="noopener">Samya Retreats</a>.</p>
+  <footer class="ft">
+    <div class="kasavu" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="ft-main">
+        <div class="ft-about">
+          <img src="assets/brand/santhi-school-of-yoga-logo-232.webp" width="116" height="116" loading="lazy" decoding="async" alt="Santhi School of Yoga &amp; Vedanta Studies logo: a seated yoga figure with raised hands in front of a lotus">
+          <p class="ft-title">Santhi School of Yoga &amp; Vedanta Studies</p>
+          <p class="fine">Fort Kochi, Kerala</p>
+          <p>A traditional yoga school and studio in Fort Kochi offering Hatha Yoga classes, private sessions, workshops, retreats, online classes and a 28-day 200-hour Yoga Teacher Training in Kerala.</p>
+          <p>Seven-day yoga retreats in Fort Kochi and Munnar run through our retreat project, <a href="https://samyaretreats.com/" target="_blank" rel="noopener">Samya Retreats</a>.</p>
         </div>
         <nav aria-label="Footer">
-          <p class="footer-h">Explore</p>
-          <ul class="footer-links">
+          <p class="ft-h">Explore</p>
+          <ul>
             <li><a href="./" aria-current="page">Home</a></li>
             <li><a href="about/">About</a></li>
             <li><a href="services/">Services</a></li>
@@ -790,20 +708,21 @@
           </ul>
         </nav>
         <div>
-          <p class="footer-h">Visit or get in touch</p>
+          <p class="ft-h">Visit or get in touch</p>
           <address>
-            <ul class="footer-links footer-contact">
-              <li><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span>House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</span></li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+917907714144">Phone: +91 7907714144</a></li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:santhiyogacochin@gmail.com">santhiyogacochin@gmail.com</a></li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg><a href="https://wa.me/917907714144" target="_blank" rel="noopener">WhatsApp us</a></li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-instagram"/></svg><a href="https://www.instagram.com/santhiyogacochin/" target="_blank" rel="noopener me">Practice videos on Instagram</a></li>
+            <ul>
+              <li>House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</li>
+              <li><a href="tel:+917907714144">Phone: +91 7907714144</a></li>
+              <li><a href="mailto:santhiyogacochin@gmail.com">santhiyogacochin@gmail.com</a></li>
+              <li><a href="https://wa.me/917907714144" target="_blank" rel="noopener">WhatsApp us</a></li>
+              <li><a href="https://maps.app.goo.gl/BbwKnL9gK1QzCh8i7" target="_blank" rel="noopener">Find us on Google Maps</a></li>
+              <li><a href="https://www.instagram.com/santhiyogacochin/" target="_blank" rel="noopener me">Practice videos on Instagram</a></li>
             </ul>
           </address>
         </div>
       </div>
-      <p class="footer-word" aria-hidden="true">Santhi</p>
-      <div class="footer-base">
+      <p class="ft-word" aria-hidden="true"><span lang="ml">ശാന്തി</span> Santhi</p>
+      <div class="ft-base">
         <p>© 2026 Santhi School of Yoga &amp; Vedanta Studies. All rights reserved.</p>
         <p><a href="terms/">Terms</a> · <a href="privacy/">Privacy</a> · <a href="refund-policy/">Refunds &amp; cancellations</a> · <a href="shipping-policy/">Delivery</a></p>
         <p>Fort Kochi photo by <a href="https://www.pexels.com/photo/the-chinese-fishing-nets-at-fort-kochi-in-kerala-india-12593493/" target="_blank" rel="noopener">Mohammed Nasim on Pexels</a> · Icons: <a href="https://www.figma.com/community/file/1166831539721848736" target="_blank" rel="noopener">Solar by 480 Design</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
@@ -811,9 +730,11 @@
     </div>
   </footer>
 
-  <a class="float-wa glass glass-strong" id="float-wa" data-show="false" href="https://wa.me/917907714144" target="_blank" rel="noopener" aria-label="Chat with Santhi School of Yoga &amp; Vedanta Studies on WhatsApp (opens in a new tab)">
-    <span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg></span> WhatsApp
-  </a>
+  <!-- Phones: the two things a visitor most often wants, always within reach of a thumb -->
+  <div class="dock" id="dock" data-show="false">
+    <a class="dock-wa" href="https://wa.me/917907714144" target="_blank" rel="noopener" aria-label="Chat with Santhi School of Yoga &amp; Vedanta Studies on WhatsApp (opens in a new tab)"><svg class="ic"><use href="#i-chat"/></svg> WhatsApp</a>
+    <a class="dock-go" href="teacher-training/"><span><small>Teacher Training 2027</small>€899 all-inclusive</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
   <!-- /build:footer -->
 </body>
 </html>

@@ -5,11 +5,11 @@
    page between <!-- build:NAME --> ... <!-- /build:NAME --> markers, and
    prepares each page so it is fast and reads the same with or without
    JavaScript:
-     • headings marked data-split are split into words here, not in the browser
      • photos get WebP srcsets from the files in assets/img (name-<width>.webp)
      • only the icons a page uses are inlined
-     • assets/css/site.css and assets/js/site.js are minified to *.min.* with
-       a cache-busting version
+     • the lux sources in assets/lux (lux.css + legacy.css, lux.js + pages.js) are
+       joined and minified to assets/css/site.min.css and assets/js/site.min.js,
+       with a cache-busting version
    Pages stay plain HTML that any host can serve as-is. Safe to run repeatedly.
 
    Usage: node tools/build.js
@@ -115,8 +115,11 @@ function minifyJs(js) {
     .trim() + '\n';
 }
 const hash = (s) => crypto.createHash('sha1').update(s).digest('hex').slice(0, 8);
-const css = minifyCss(read('assets/css/site.css'));
-const js = minifyJs(read('assets/js/site.js'));
+// lux.css is the design system; legacy.css holds the components carried over for
+// the pages whose layout was kept. lux.js is the new behaviour; pages.js the
+// carried-over page logic (contact form, gallery page, reserve page, tracking).
+const css = minifyCss(read('assets/lux/lux.css') + '\n' + read('assets/lux/legacy.css'));
+const js = minifyJs(read('assets/lux/lux.js') + '\n' + read('assets/lux/pages.js'));
 write('assets/css/site.min.css', css);
 write('assets/js/site.min.js', js);
 const versions = { css: hash(css), js: hash(js) };
@@ -193,8 +196,19 @@ const analytics = GA_ID ? `
     })();
   </script>` : '';
 
+/* The phone dock's second button: the reserve page from the pages about the
+   training, the training page from everywhere else. */
+const dock = (page) => (page.key === 'ttc' || page.key === 'reserve'
+  ? '<a class="dock-go" href="{{base}}reserve/"><span><small>€899 all-inclusive</small>Reserve · €90</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>'
+  : '<a class="dock-go" href="{{base}}teacher-training/"><span><small>Teacher Training 2027</small>€899 all-inclusive</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>');
+// Pages that carry the booking journey scroll to it; the rest go to the book page
+const HAS_BOOKING = ['home', 'ttc', 'book'];
+
 function render(tpl, page) {
   let out = tpl
+    .replace(/\{\{dock\}\}/g, dock(page))
+    .replace(/\{\{book\}\}/g, HAS_BOOKING.includes(page.key) ? '#book' : '{{base}}book/')
+    .replace(/\{\{preset\}\}/g, page.key === 'ttc' ? 'ttc' : 'class')
     .replace(/\{\{base\}\}/g, page.base)
     .replace(/\{\{home\}\}/g, page.base || './')
     .replace(/\{\{v:(css|js)\}\}/g, (_, k) => versions[k])
@@ -232,6 +246,7 @@ function unsplit(open, inner) {
 function splitHeadings(html) {
   return html.replace(/(<(h[1-6])\b[^>]*\bdata-split\b[^>]*>)([\s\S]*?)(<\/\2>)/g, (m, openTag, tag, innerHtml, close) => {
     const [open, inner] = unsplit(openTag, innerHtml);
+    if (true) return open + inner + close; // lux animates the heading as a whole: only undo any old split
     const label = inner.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().replace(/"/g, '&quot;');
     let i = 0;
     const body = inner.split(/(<[^>]+>)/).map((part) => {

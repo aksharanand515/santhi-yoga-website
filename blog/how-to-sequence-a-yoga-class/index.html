@@ -159,17 +159,15 @@
   }
   </script>
   <!-- build:head -->
-  <meta name="theme-color" content="#FCF6EE">
+  <meta name="theme-color" content="#FBF6EC">
   <link rel="icon" type="image/png" sizes="48x48" href="../../assets/brand/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../../assets/brand/apple-touch-icon.png">
-  <link rel="preload" href="../../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../../assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../../assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/site.min.css?v=8a490af4">
-  <script>document.documentElement.classList.add('js');</script>
-  <!-- GSAP 3.12.2 (GreenSock standard licence) and Lenis 1.1.13 (MIT), hosted here so no third-party server is involved.
-       Journal articles leave these out: site.js fetches them itself after the page is up, and only for a mouse. -->
-  <script defer src="../../assets/js/site.min.js?v=c4968efb"></script>
+  <link rel="stylesheet" href="../../assets/css/site.min.css?v=b68f405f">
+  <!-- If the script never arrives, everything it would have revealed shows anyway after four seconds -->
+  <script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('show-all')},4000);</script>
+  <script defer src="../../assets/js/site.min.js?v=95ed1f1d"></script>
   <!-- Google Analytics 4, loaded on the first scroll, tap or key, or 7s after the page loads:
        its 170 KB of script would otherwise compete with the page while it settles -->
   <script>
@@ -193,82 +191,56 @@
   <!-- Icons: Solar by 480 Design (CC BY 4.0) via Iconify -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
     <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M13.5 2C13.5 2 15.8335 2.21213 18.8033 5.18198C21.7731 8.15183 21.9853 10.4853 21.9853 10.4853"/><path d="M14.207 5.53564C14.207 5.53564 15.197 5.81849 16.6819 7.30341C18.1668 8.78834 18.4497 9.77829 18.4497 9.77829"/><path d="M17.6763 20.9631C18.1917 20.9122 18.6399 20.6343 19.0011 20.254L20.4217 18.7584C21.3806 17.7489 21.1102 16.0182 19.8833 15.312L17.9728 14.2123C17.1672 13.7486 16.1858 13.8848 15.5562 14.5477L15.1007 15.0272C15.1007 15.0272 14.0181 16.167 11.0631 13.0559C8.10812 9.94484 9.1907 8.80507 9.1907 8.80507L9.47752 8.50311C10.1841 7.75924 10.2507 6.56497 9.63424 5.6931L8.37326 3.90961C7.61028 2.8305 6.13596 2.68795 5.26145 3.60864L3.69185 5.26114C3.25823 5.71766 2.96765 6.30945 3.00289 6.96594C3.09304 8.64546 3.81072 12.259 7.81536 16.4752C12.0621 20.9462 16.0468 21.1239 17.6763 20.9631Z"/></g></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z"/><path stroke-linecap="round" d="M6 8L8.1589 9.79908C9.99553 11.3296 10.9139 12.0949 12 12.0949C13.0861 12.0949 14.0045 11.3296 15.8411 9.79908L18 8"/></g></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10.1433C4 5.64588 7.58172 2 12 2C16.4183 2 20 5.64588 20 10.1433C20 14.6055 17.4467 19.8124 13.4629 21.6744C12.5343 22.1085 11.4657 22.1085 10.5371 21.6744C6.55332 19.8124 4 14.6055 4 10.1433Z"/><circle cx="12" cy="10" r="3"/></g></symbol>
     <symbol id="i-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 12H8.009M11.991 12H12M15.991 12H16"/></g></symbol>
-    <symbol id="i-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M7.03.084c-1.277.06-2.149.264-2.91.563a5.9 5.9 0 0 0-2.124 1.388a5.9 5.9 0 0 0-1.38 2.127C.321 4.926.12 5.8.064 7.076s-.069 1.688-.063 4.947s.021 3.667.083 4.947c.061 1.277.264 2.149.563 2.911c.308.789.72 1.457 1.388 2.123a5.9 5.9 0 0 0 2.129 1.38c.763.295 1.636.496 2.913.552c1.278.056 1.689.069 4.947.063s3.668-.021 4.947-.082c1.28-.06 2.147-.265 2.91-.563a5.9 5.9 0 0 0 2.123-1.388a5.9 5.9 0 0 0 1.38-2.129c.295-.763.496-1.636.551-2.912c.056-1.28.07-1.69.063-4.948c-.006-3.258-.02-3.667-.081-4.947c-.06-1.28-.264-2.148-.564-2.911a5.9 5.9 0 0 0-1.387-2.123a5.9 5.9 0 0 0-2.128-1.38c-.764-.294-1.636-.496-2.914-.55C15.647.009 15.236-.006 11.977 0S8.31.021 7.03.084m.14 21.693c-1.17-.05-1.805-.245-2.228-.408a3.7 3.7 0 0 1-1.382-.895a3.7 3.7 0 0 1-.9-1.378c-.165-.423-.363-1.058-.417-2.228c-.06-1.264-.072-1.644-.08-4.848c-.006-3.204.006-3.583.061-4.848c.05-1.169.246-1.805.408-2.228c.216-.561.477-.96.895-1.382a3.7 3.7 0 0 1 1.379-.9c.423-.165 1.057-.361 2.227-.417c1.265-.06 1.644-.072 4.848-.08c3.203-.006 3.583.006 4.85.062c1.168.05 1.804.244 2.227.408c.56.216.96.475 1.382.895s.681.817.9 1.378c.165.422.362 1.056.417 2.227c.06 1.265.074 1.645.08 4.848c.005 3.203-.006 3.583-.061 4.848c-.051 1.17-.245 1.805-.408 2.23c-.216.56-.477.96-.896 1.38a3.7 3.7 0 0 1-1.378.9c-.422.165-1.058.362-2.226.418c-1.266.06-1.645.072-4.85.079s-3.582-.006-4.848-.06m9.783-16.192a1.44 1.44 0 1 0 1.437-1.442a1.44 1.44 0 0 0-1.437 1.442M5.839 12.012a6.161 6.161 0 1 0 12.323-.024a6.162 6.162 0 0 0-12.323.024M8 12.008A4 4 0 1 1 12.008 16A4 4 0 0 1 8 12.008"/></symbol>
   </svg>
   <!-- /build:sprite -->
 
   <!-- build:header -->
   <a class="skip" href="#main">Skip to main content</a>
+  <div class="bar" aria-hidden="true"></div>
 
-  <!-- The light every page is lit by: a low sun, haze, motes of gold and a fine grain -->
-  <div class="atmos" aria-hidden="true">
-    <div class="atmos-sun"></div>
-    <div class="atmos-haze"></div>
-    <span class="atmos-mote" style="--x:12%;--y:28%;--s:5px;--d:19s;--tx:40px;--ty:-70px"></span>
-    <span class="atmos-mote" style="--x:78%;--y:18%;--s:7px;--d:23s;--dl:-6s;--tx:-50px;--ty:-40px"></span>
-    <span class="atmos-mote" style="--x:64%;--y:62%;--s:4px;--d:17s;--dl:-3s;--tx:30px;--ty:-90px"></span>
-    <span class="atmos-mote" style="--x:30%;--y:74%;--s:6px;--d:26s;--dl:-11s;--tx:-30px;--ty:-60px"></span>
-    <span class="atmos-mote" style="--x:90%;--y:48%;--s:5px;--d:21s;--dl:-8s;--tx:-40px;--ty:-80px"></span>
-    <span class="atmos-mote" style="--x:46%;--y:12%;--s:4px;--d:24s;--dl:-14s;--tx:20px;--ty:50px"></span>
-    <div class="atmos-grain"></div>
-  </div>
-  <div class="progress" aria-hidden="true"></div>
 
-  <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="../../" aria-label="Santhi School of Yoga &amp; Vedanta Studies, home">
-        <img src="../../assets/brand/santhi-emblem-46.webp" srcset="../../assets/brand/santhi-emblem-46.webp 1x, ../../assets/brand/santhi-emblem-92.webp 2x" width="46" height="46" alt="Santhi School of Yoga &amp; Vedanta Studies logo">
-        <span>
-          <span class="brand-name">Santhi School of Yoga</span>
-          <span class="brand-sub">&amp; Vedanta Studies</span>
-        </span>
+  <header class="hd" id="hd">
+    <div class="wrap hd-in">
+      <a class="brand" href="../../">
+        <img src="../../assets/brand/santhi-emblem-46.webp" srcset="../../assets/brand/santhi-emblem-46.webp 1x, ../../assets/brand/santhi-emblem-92.webp 2x" width="46" height="46" alt="">
+        <span class="brand-t"><b>Santhi</b><small>School of Yoga &amp; Vedanta Studies</small></span>
       </a>
-
       <nav class="nav" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a class="nav-link" href="../../">Home</a></li>
-          <li><a class="nav-link" href="../../about/">About</a></li>
-          <li><a class="nav-link" href="../../services/">Services</a></li>
-          <li><a class="nav-link" href="../../teacher-training/">Teacher Training</a></li>
-          <li><a class="nav-link" href="../../blog/" aria-current="page">Journal</a></li>
-          <li><a class="nav-link" href="../../gallery/">Gallery</a></li>
-          <li><a class="nav-link" href="../../contact/">Contact</a></li>
-        </ul>
+        <a href="../../teacher-training/">Teacher Training</a>
+        <a href="../../services/">Classes &amp; Retreats</a>
+        <a href="../../about/">The School</a>
+        <a href="../../blog/" aria-current="page">Journal</a>
+        <a href="../../gallery/">Gallery</a>
+        <a href="../../contact/">Visit</a>
       </nav>
-
-      <div class="header-actions">
-        <a class="btn btn--primary btn--sm header-cta" href="../../book/" data-magnetic>Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="menu" aria-expanded="false">
-          <span class="sr-only">Open menu</span>
-          <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
-        </button>
+      <div class="hd-act">
+        <p class="now" data-now hidden><span class="now-dot"></span><span data-now-text></span></p>
+        <a class="btn btn--sm hd-cta" href="../../book/">Book now <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <button class="burger" id="burger" type="button" aria-controls="menu" aria-expanded="false"><span class="sr">Open menu</span><i></i><i></i></button>
       </div>
     </div>
   </header>
 
-  <div class="menu" id="menu" data-lenis-prevent>
-    <nav aria-label="Menu">
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="wrap" aria-label="Menu">
       <ul class="menu-list">
-        <li><a href="../../">Home</a></li>
-        <li><a href="../../about/">About <small>The school &amp; the teacher</small></a></li>
-        <li><a href="../../services/">Services <small>Classes · retreats · online</small></a></li>
-        <li><a href="../../teacher-training/">Teacher Training <small>2027 · €899</small></a></li>
-        <li><a href="../../blog/" aria-current="page">Journal <small>Practice · philosophy · Kerala</small></a></li>
-        <li><a href="../../gallery/">Gallery</a></li>
-        <li><a href="../../contact/">Contact</a></li>
+        <li><a href="../../"><i>01</i>Home</a></li>
+        <li><a href="../../teacher-training/"><i>02</i>Teacher Training <small>2027 · €899</small></a></li>
+        <li><a href="../../services/"><i>03</i>Services <small>Classes · retreats · online</small></a></li>
+        <li><a href="../../about/"><i>04</i>About <small>The school &amp; the teacher</small></a></li>
+        <li><a href="../../blog/" aria-current="page"><i>05</i>Journal <small>Practice · philosophy · Kerala</small></a></li>
+        <li><a href="../../gallery/"><i>06</i>Gallery</a></li>
+        <li><a href="../../contact/"><i>07</i>Contact</a></li>
       </ul>
-    </nav>
-    <div class="menu-foot">
-      <div class="btn-row">
-        <a class="btn btn--primary" href="../../book/">Book now <svg class="ic ic-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn--ghost" href="https://wa.me/917907714144" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg> WhatsApp</a>
+      <div class="menu-foot">
+        <div class="row">
+          <a class="btn" href="../../book/" data-close>Book now <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--line" href="https://wa.me/917907714144" target="_blank" rel="noopener"><svg class="ic"><use href="#i-chat"/></svg> WhatsApp</a>
+        </div>
+        <p class="fine">House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</p>
       </div>
-      <p class="muted small">House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</p>
-    </div>
+    </nav>
   </div>
   <!-- /build:header -->
 
@@ -560,75 +532,53 @@
   <!-- build:footer -->
 
 
-  <!-- Newsletter: sign-ups go to the Google Sheet in tools/newsletter once data-endpoint holds its /exec URL;
-       until then the form opens a prefilled email. The moon is redrawn at tonight's phase by site.js. -->
+  <!-- The Pournami letter: sign-ups post to data-endpoint once it holds the Apps Script /exec URL
+       (tools/newsletter); until then the form opens a prefilled email. lux.js draws tonight's moon. -->
   <section class="nl" id="letters" aria-labelledby="nl-title">
-    <div class="container nl-grid">
-      <div class="nl-sky" data-reveal>
-        <div class="nl-moon" aria-hidden="true">
-          <svg class="nl-ring" viewBox="0 0 200 200"><defs><path id="nl-ring-path" d="M100,100 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0"/></defs><text><textPath href="#nl-ring-path" textLength="538" lengthAdjust="spacing">One letter each full moon · from Fort Kochi · Kerala ·</textPath></text></svg>
-          <svg class="nl-orb" viewBox="0 0 120 120">
-            <defs>
-              <radialGradient id="nl-glow" cx="38%" cy="34%" r="78%"><stop offset="0" stop-color="#FFFCF2"/><stop offset=".55" stop-color="#F8E6BD"/><stop offset="1" stop-color="#E4C384"/></radialGradient>
-              <clipPath id="nl-clip"><path id="nl-lit-path" d="M60,6 A54,54 0 0,1 60,114 A54,54 0 0,1 60,6Z"/></clipPath>
-            </defs>
-            <circle class="nl-dark" cx="60" cy="60" r="54"/>
-            <g clip-path="url(#nl-clip)">
-              <circle cx="60" cy="60" r="54" fill="url(#nl-glow)"/>
-              <g class="nl-maria"><ellipse cx="44" cy="40" rx="15" ry="11"/><ellipse cx="70" cy="42" rx="9" ry="8"/><ellipse cx="78" cy="58" rx="10" ry="9"/><ellipse cx="94" cy="50" rx="5" ry="6"/><ellipse cx="32" cy="66" rx="13" ry="19"/><ellipse cx="62" cy="82" rx="8" ry="6"/><circle cx="56" cy="100" r="2.6"/></g>
-            </g>
-          </svg>
-        </div>
-        <p class="nl-moon-note" data-moon-note>One letter each <b>full moon</b></p>
+    <div class="wrap nl-grid">
+      <div class="nl-moon" data-r>
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <defs><clipPath id="nl-clip"><path id="nl-lit" d="M60,6 A54,54 0 0,1 60,114 A54,54 0 0,1 60,6Z"/></clipPath></defs>
+          <circle class="nl-dark" cx="60" cy="60" r="54"/>
+          <g clip-path="url(#nl-clip)"><circle class="nl-light" cx="60" cy="60" r="54"/><g class="nl-maria"><ellipse cx="44" cy="40" rx="15" ry="11"/><ellipse cx="70" cy="42" rx="9" ry="8"/><ellipse cx="78" cy="58" rx="10" ry="9"/><ellipse cx="32" cy="66" rx="13" ry="19"/><ellipse cx="62" cy="82" rx="8" ry="6"/></g></g>
+          <circle class="nl-ring" cx="60" cy="60" r="58.500"/>
+        </svg>
+        <p class="nl-note" data-moon-note>One letter each <b>full moon</b></p>
       </div>
-
-      <div class="nl-letter" data-reveal>
-        <div class="nl-sheet">
-          <div class="nl-stamp" aria-hidden="true"><div class="nl-stamp-in"><span class="nl-stamp-val">₹5</span><span class="nl-stamp-mal">ശാന്തി</span><span class="nl-stamp-place">Fort Kochi</span></div></div>
-          <svg class="nl-postmark" viewBox="0 0 230 120" aria-hidden="true">
-            <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M2,36 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,50 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,64 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,78 q12,-7 24,0 t24,0 t24,0 t24,0"/><path d="M2,92 q12,-7 24,0 t24,0 t24,0 t24,0"/></g>
-            <g transform="translate(170 62)">
-              <circle r="52" fill="none" stroke="currentColor" stroke-width="2.6"/><circle r="31" fill="none" stroke="currentColor" stroke-width="1.3"/>
-              <path id="nl-pm-arc" d="M-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0" fill="none"/>
-              <text class="nl-pm-ring"><textPath href="#nl-pm-arc" textLength="262" lengthAdjust="spacing">FORT KOCHI · KERALA · POSTED ·</textPath></text>
-              <text class="nl-pm-date" y="4" text-anchor="middle">FULL MOON</text>
-            </g>
-          </svg>
-
-          <p class="kicker">The Pournami letter</p>
-          <h2 class="h2 nl-title" id="nl-title">Letters from <em>Fort Kochi</em></h2>
-          <p class="nl-lede">Once a month, as the moon comes full over the fishing nets, we write from the shala: one practice to try at home, a few lines from the old texts, how the season feels in Kerala, and the dates of the next training and retreat.</p>
-
-          <form class="nl-form" id="nl-form" data-endpoint="" novalidate>
-            <p class="nl-salute">Dear Santhi,</p>
-            <p class="nl-line">please write to me. My name is <span class="nl-blank"><label class="sr-only" for="nl-name">Your first name (optional)</label><input id="nl-name" name="name" type="text" autocomplete="given-name" maxlength="60" placeholder="your name"></span>, and my letters can find me at <span class="nl-blank nl-blank--wide"><label class="sr-only" for="nl-email">Your email address</label><input id="nl-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="120" placeholder="you@example.com" required></span>.</p>
-            <div class="nl-hp" aria-hidden="true"><label for="nl-web">Leave this empty</label><input id="nl-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-            <div class="nl-foot">
-              <button class="nl-seal" type="submit"><span class="nl-wax" aria-hidden="true">ശ</span><span class="nl-seal-label">Seal &amp; send</span></button>
-              <p class="nl-small">One letter a month, one click to stop. Your address stays with us and is never shared. <a href="../../privacy/">Privacy</a></p>
-            </div>
-            <p class="form-status nl-status" id="nl-status" role="status" aria-live="polite"></p>
-          </form>
-        </div>
+      <div class="nl-copy">
+        <p class="eyebrow" data-r>The Pournami letter</p>
+        <h2 class="h2" id="nl-title" data-r>Letters from <em>Fort Kochi</em></h2>
+        <p class="lede" data-r>Once a month, as the moon comes full over the fishing nets, we write from the shala: one practice to try at home, a few lines from the old texts, how the season feels in Kerala, and the dates of the next training and retreat.</p>
+        <form class="nl-form" id="nl-form" data-endpoint="" novalidate data-r>
+          <p class="nl-line">Dear Santhi, please write to me. My name is
+            <label class="sr" for="nl-name">Your first name (optional)</label><input id="nl-name" name="name" type="text" autocomplete="given-name" maxlength="60" placeholder="your name">,
+            and my letters can find me at
+            <label class="sr" for="nl-email">Your email address</label><input id="nl-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" placeholder="your email address" required>.</p>
+          <div class="nl-hp" aria-hidden="true"><label for="nl-web">Leave this empty</label><input id="nl-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          <div class="nl-foot">
+            <button class="btn" type="submit"><span data-nl-label>Seal &amp; send</span> <svg class="ic"><use href="#i-arrow"/></svg></button>
+            <p class="fine">One letter a month, one click to stop. Your address stays with us and is never shared. <a href="../../privacy/">Privacy</a></p>
+          </div>
+          <p class="status" id="nl-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </div>
   </section>
 
-  <footer class="site-footer">
-    <div class="kasavu-rule" aria-hidden="true"></div>
-    <span class="mal-mark" aria-hidden="true">ശാന്തി</span>
-    <div class="container">
-      <div class="footer-main">
-        <div>
-          <img class="footer-logo" src="../../assets/brand/santhi-school-of-yoga-logo-232.webp" width="232" height="232" loading="lazy" decoding="async" alt="Santhi School of Yoga &amp; Vedanta Studies logo: a seated yoga figure with raised hands in front of a lotus">
-          <p class="footer-title">Santhi School of Yoga &amp; Vedanta Studies</p>
-          <p class="muted small">Fort Kochi, Kerala</p>
-          <p class="body small" style="margin-top:1.25rem">A traditional yoga school and studio in Fort Kochi offering Hatha Yoga classes, private sessions, workshops, retreats, online classes and a 28-day 200-hour Yoga Teacher Training in Kerala.</p>
-          <p class="body small" style="margin-top:1rem">Seven-day yoga retreats in Fort Kochi and Munnar run through our retreat project, <a href="https://samyaretreats.com/" target="_blank" rel="noopener">Samya Retreats</a>.</p>
+  <footer class="ft">
+    <div class="kasavu" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="ft-main">
+        <div class="ft-about">
+          <img src="../../assets/brand/santhi-school-of-yoga-logo-232.webp" width="116" height="116" loading="lazy" decoding="async" alt="Santhi School of Yoga &amp; Vedanta Studies logo: a seated yoga figure with raised hands in front of a lotus">
+          <p class="ft-title">Santhi School of Yoga &amp; Vedanta Studies</p>
+          <p class="fine">Fort Kochi, Kerala</p>
+          <p>A traditional yoga school and studio in Fort Kochi offering Hatha Yoga classes, private sessions, workshops, retreats, online classes and a 28-day 200-hour Yoga Teacher Training in Kerala.</p>
+          <p>Seven-day yoga retreats in Fort Kochi and Munnar run through our retreat project, <a href="https://samyaretreats.com/" target="_blank" rel="noopener">Samya Retreats</a>.</p>
         </div>
         <nav aria-label="Footer">
-          <p class="footer-h">Explore</p>
-          <ul class="footer-links">
+          <p class="ft-h">Explore</p>
+          <ul>
             <li><a href="../../">Home</a></li>
             <li><a href="../../about/">About</a></li>
             <li><a href="../../services/">Services</a></li>
@@ -640,20 +590,21 @@
           </ul>
         </nav>
         <div>
-          <p class="footer-h">Visit or get in touch</p>
+          <p class="ft-h">Visit or get in touch</p>
           <address>
-            <ul class="footer-links footer-contact">
-              <li><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span>House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</span></li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+917907714144">Phone: +91 7907714144</a></li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:santhiyogacochin@gmail.com">santhiyogacochin@gmail.com</a></li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg><a href="https://wa.me/917907714144" target="_blank" rel="noopener">WhatsApp us</a></li>
-              <li><svg class="ic" aria-hidden="true"><use href="#i-instagram"/></svg><a href="https://www.instagram.com/santhiyogacochin/" target="_blank" rel="noopener me">Practice videos on Instagram</a></li>
+            <ul>
+              <li>House No 1/1790, Chirattapalam Road, Fort Kochi, Kochi, Kerala 682001, India</li>
+              <li><a href="tel:+917907714144">Phone: +91 7907714144</a></li>
+              <li><a href="mailto:santhiyogacochin@gmail.com">santhiyogacochin@gmail.com</a></li>
+              <li><a href="https://wa.me/917907714144" target="_blank" rel="noopener">WhatsApp us</a></li>
+              <li><a href="https://maps.app.goo.gl/BbwKnL9gK1QzCh8i7" target="_blank" rel="noopener">Find us on Google Maps</a></li>
+              <li><a href="https://www.instagram.com/santhiyogacochin/" target="_blank" rel="noopener me">Practice videos on Instagram</a></li>
             </ul>
           </address>
         </div>
       </div>
-      <p class="footer-word" aria-hidden="true">Santhi</p>
-      <div class="footer-base">
+      <p class="ft-word" aria-hidden="true"><span lang="ml">ശാന്തി</span> Santhi</p>
+      <div class="ft-base">
         <p>© 2026 Santhi School of Yoga &amp; Vedanta Studies. All rights reserved.</p>
         <p><a href="../../terms/">Terms</a> · <a href="../../privacy/">Privacy</a> · <a href="../../refund-policy/">Refunds &amp; cancellations</a> · <a href="../../shipping-policy/">Delivery</a></p>
         <p>Fort Kochi photo by <a href="https://www.pexels.com/photo/the-chinese-fishing-nets-at-fort-kochi-in-kerala-india-12593493/" target="_blank" rel="noopener">Mohammed Nasim on Pexels</a> · Icons: <a href="https://www.figma.com/community/file/1166831539721848736" target="_blank" rel="noopener">Solar by 480 Design</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
@@ -661,9 +612,11 @@
     </div>
   </footer>
 
-  <a class="float-wa glass glass-strong" id="float-wa" data-show="false" href="https://wa.me/917907714144" target="_blank" rel="noopener" aria-label="Chat with Santhi School of Yoga &amp; Vedanta Studies on WhatsApp (opens in a new tab)">
-    <span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg></span> WhatsApp
-  </a>
+  <!-- Phones: the two things a visitor most often wants, always within reach of a thumb -->
+  <div class="dock" id="dock" data-show="false">
+    <a class="dock-wa" href="https://wa.me/917907714144" target="_blank" rel="noopener" aria-label="Chat with Santhi School of Yoga &amp; Vedanta Studies on WhatsApp (opens in a new tab)"><svg class="ic"><use href="#i-chat"/></svg> WhatsApp</a>
+    <a class="dock-go" href="../../teacher-training/"><span><small>Teacher Training 2027</small>€899 all-inclusive</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
   <!-- /build:footer -->
 </body>
 </html>
