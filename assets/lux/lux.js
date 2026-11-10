@@ -103,13 +103,28 @@
       track('gallery_filter', { category: cat });
     });
   });
-  // a mouse wheel moves the reel sideways while there is somewhere left to go
+  // The wheel always scrolls the page. With a mouse, the reel is dragged sideways
+  // (touch and trackpads already scroll it), and a drag never opens a photograph.
   $$('[data-reel]').forEach(function (reel) {
-    reel.addEventListener('wheel', function (e) {
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.ctrlKey) return;
-      var max = reel.scrollWidth - reel.clientWidth, x = reel.scrollLeft;
-      if ((e.deltaY > 0 && x < max - 1) || (e.deltaY < 0 && x > 0)) { e.preventDefault(); reel.scrollLeft += e.deltaY; }
-    }, { passive: false });
+    var x0 = 0, left0 = 0, down = false, moved = false;
+    reel.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      down = true; moved = false; x0 = e.clientX; left0 = reel.scrollLeft;
+    });
+    addEventListener('pointermove', function (e) {
+      if (!down) return;
+      var dx = e.clientX - x0;
+      if (!moved && Math.abs(dx) < 6) return;
+      if (!moved) { moved = true; reel.classList.add('is-drag'); }
+      reel.scrollLeft = left0 - dx;
+    });
+    addEventListener('pointerup', function () {
+      if (!down) return;
+      down = false;
+      if (moved) setTimeout(function () { reel.classList.remove('is-drag'); moved = false; }, 0);
+    });
+    reel.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    reel.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
   });
   (function () {
     var lb, img, cap, num, set = [], at = 0, opener;

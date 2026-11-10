@@ -319,7 +319,10 @@ p.tag { margin-top: 1.5rem; }
 .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
 .chip { font: 500 .8rem/1 var(--sans); padding: .7rem 1.1rem; border-radius: 3rem; border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); transition: background .3s, color .3s; }
 .chip.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.reel { display: flex; align-items: flex-start; gap: clamp(1rem, 2.4vw, 2.25rem); overflow-x: auto; padding: .5rem var(--gut) 2rem; scroll-snap-type: x proximity; scroll-padding-inline: var(--gut); scrollbar-width: thin; scrollbar-color: var(--brass) transparent; overscroll-behavior-x: contain; }
+.reel { display: flex; align-items: flex-start; gap: clamp(1rem, 2.4vw, 2.25rem); overflow-x: auto; overflow-y: hidden; padding: .5rem var(--gut) 2rem; scroll-snap-type: x proximity; scroll-padding-inline: var(--gut); scrollbar-width: thin; scrollbar-color: var(--brass) transparent; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
+@media (hover: hover) and (pointer: fine) { .reel { cursor: grab; } }
+.reel.is-drag { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+.reel.is-drag a { pointer-events: none; }
 .reel-card { flex: none; width: clamp(14rem, 62vw, 21rem); scroll-snap-align: start; text-decoration: none; transition: opacity .5s var(--ease), width .6s var(--ease), margin .6s var(--ease); }
 .reel-card:nth-child(even) { margin-top: clamp(2rem, 5vw, 5rem); }
 .reel-card:nth-child(3n) { width: clamp(12rem, 50vw, 17rem); }
