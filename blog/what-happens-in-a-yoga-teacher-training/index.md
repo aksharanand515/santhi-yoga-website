@@ -107,6 +107,10 @@ It is rare, because teachers see you every day for a month and correct problems 
 
 Four subjects: technique and practice, teaching methodology, anatomy and physiology, and philosophy and ethics. Practice is the largest part; teaching methodology is what turns a practitioner into a teacher.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [walk-in Hatha yoga classes in Fort Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

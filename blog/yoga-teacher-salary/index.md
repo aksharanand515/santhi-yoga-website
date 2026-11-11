@@ -176,6 +176,10 @@ Not always. Many studios in the US, UK and Europe ask for RYT 200, while private
 
 Typically two to three years of steady teaching. The first year is usually spent gaining experience, covering classes and finding a first private client or two.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [walk-in Hatha yoga classes in Fort Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

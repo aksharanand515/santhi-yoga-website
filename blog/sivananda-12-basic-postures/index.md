@@ -114,6 +114,10 @@ Yes. Every posture has an easier preparation — dolphin instead of headstand, l
 
 Usually ninety minutes to two hours, including the opening relaxation, pranayama, sun salutations, the twelve postures with short rests between them, and a long final relaxation.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

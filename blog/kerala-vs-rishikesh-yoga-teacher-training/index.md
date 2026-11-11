@@ -169,6 +169,10 @@ Kerala, usually. Cochin International takes direct international flights and For
 
 Yes, considerably. If registering as an RYT 200 matters to you, Rishikesh offers far more options — though registered schools exist in Kerala too.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [drop-in yoga classes in Fort Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

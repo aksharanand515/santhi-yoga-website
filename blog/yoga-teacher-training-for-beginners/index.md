@@ -148,6 +148,10 @@ No. Flexibility depends partly on genetics and is not what a training tests. Con
 
 Yes. Many trainees come to deepen their own practice and study the philosophy. A training is one of the few structured ways to give a whole month to yoga.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [yoga classes in Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

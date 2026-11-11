@@ -82,6 +82,10 @@ The rainbow colour scheme is mostly a twentieth-century Western addition. Tradit
 
 No. The system is a map for attention. You can practise asana, pranayama and meditation perfectly well without holding any view about it.
 
+Practise with us in Fort Kochi
+
+Come and practise with us in person: our [drop-in yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

@@ -78,6 +78,10 @@ If you do not mind rain, yes. The countryside is at its greenest, the heat break
 
 Light cotton you can bend in, and more of it than you think — clothes dry slowly. Sandals rather than trainers, because lanes flood briefly after heavy rain.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

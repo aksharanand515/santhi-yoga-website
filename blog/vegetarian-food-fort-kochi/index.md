@@ -111,6 +111,10 @@ Very little. Tea and a banana before a morning class, with the main breakfast af
 
 Much of it is, because coconut oil and coconut milk replace butter and cream. Check for ghee, curd and yoghurt-based dishes such as pachadi, and ask for coconut oil if you avoid dairy.
 
+Practise with us in Fort Kochi
+
+While you are in Fort Kochi, come and practise: our [drop-in yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed. Staying a month? Our [200-hour yoga TTC in Fort Kochi, Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

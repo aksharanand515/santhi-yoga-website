@@ -96,6 +96,10 @@ No. Classes in Fort Kochi are walk-in: come to the pavilion in Chirattapalam for
 
 Very little. Practise on an empty or nearly empty stomach, leaving two to three hours after a proper meal. Morning classes are easiest before breakfast.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [200-hour yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

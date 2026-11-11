@@ -134,6 +134,10 @@ Ask, because it varies. Shorter studio classes are often postures alone. Our two
 
 If you are in Fort Kochi anyway, daily drop-in classes cost far less and let you judge the teaching before committing. A retreat makes sense when you want accommodation, food and practice arranged as one week — ours run through our retreat project, [Samya Retreats](https://samyaretreats.com/), in Fort Kochi and Munnar.
 
+Practise with us in Fort Kochi
+
+Want to take the practice further? Our [200-hour yoga teacher training in India](https://santhiyogaindia.com/teacher-training/) is a 28-day course at the same school, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

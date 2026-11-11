@@ -148,6 +148,10 @@ Yes. In 2015 the California Court of Appeal ruled that a school yoga programme i
 
 In its classical form, yes: the Yoga Sutras and Hatha texts aim at spiritual freedom. Many people today practise it without any spiritual aim, for health, calm and focus, and both approaches are legitimate.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [200-hour yoga teacher training in India](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

@@ -92,6 +92,10 @@ Yes, particularly between December and February, when rooms and classes in north
 
 Goa is the gentler introduction: more English spoken in tourist areas, an established travellers’ circuit and easy company. Kerala is calmer and more traditional, and Fort Kochi is small and easy to walk.
 
+Practise with us in Fort Kochi
+
+While you are in Fort Kochi, come and practise: our [yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed. Staying a month? Our [200-hour yoga teacher training in India](https://santhiyogaindia.com/teacher-training/) runs for 28 days, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

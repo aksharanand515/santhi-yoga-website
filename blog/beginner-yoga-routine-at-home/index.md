@@ -161,6 +161,10 @@ Bend your knees in forward bends and reach only as far as is comfortable. Flexib
 
 Gentle daily practice is fine for most people. If you feel sore or tired, keep the breathing and relaxation and make the postures lighter.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [yoga teacher training in Fort Kochi](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

@@ -92,6 +92,10 @@ Residential 200-hour courses commonly range from roughly €700 to several thous
 
 Most schools, including ours, ask for some regular practice first rather than a particular level of flexibility. Six months of classes is a reasonable minimum; the course is far more rewarding if you arrive with a practice rather than starting one.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [walk-in Hatha yoga classes in Fort Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

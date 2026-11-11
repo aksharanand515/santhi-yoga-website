@@ -118,6 +118,10 @@ At Santhi, a drop-in class is ₹700, with 30% off for students practising more 
 
 Yes, by the standards of most international yoga destinations. The town is small enough to walk, local food costs a fraction of café prices, and monthly room rates are well below nightly ones.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [28-day yoga teacher training course in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

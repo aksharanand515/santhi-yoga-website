@@ -204,6 +204,10 @@ No. Yoga can be a useful addition, and the research supports that role, but it s
 
 Generally yes, and balance and mobility are among its best-supported benefits after 60. Injury rates are higher over 65, so choose a slower class, tell the teacher about any conditions, and leave headstand and deep forward bends until you have guidance.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [28-day yoga teacher training course in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

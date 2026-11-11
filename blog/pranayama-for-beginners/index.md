@@ -148,6 +148,10 @@ Early morning on an empty stomach is traditional. Calming practices such as bhra
 
 Sheetali, breathing in through a rolled tongue, and sheetkari, breathing in through closed teeth, both cool the body. They are useful in hot weather and best avoided when it is cold or you have a cold.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [200-hour yoga teacher training in India](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

@@ -84,6 +84,10 @@ It helps to read the short synopsis most venues provide, and many shows begin wi
 
 Green (pacha) marks noble heroes; green with red knife marks (kathi) marks arrogant villains; red, white or black beards (thadi) mark fierce, superhuman or forest characters; black (kari) marks demonesses; and a soft radiant tone (minukku) marks women and sages.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [28-day yoga teacher training course in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

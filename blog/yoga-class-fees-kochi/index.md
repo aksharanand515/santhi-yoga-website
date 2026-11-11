@@ -144,6 +144,10 @@ They are usually longer or packaged as an experience, taught in tourist areas wh
 
 A two-hour drop-in class is ₹700, with 30% off if you practise with us for more than a week. A private session is ₹2,000. There is no need to book; message us for online class rates.
 
+Practise with us in Fort Kochi
+
+Want to take the practice further? Our [28-day yoga teacher training course in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course at the same school, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

@@ -124,6 +124,10 @@ About a twenty-minute walk or a five-minute auto-rickshaw ride. The school is in
 
 Light clothes that cover the shoulders and knees, and sandals. It is a family seafront rather than a sunbathing beach, and swimwear on its own will draw attention.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [yoga teacher training in Fort Kochi](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

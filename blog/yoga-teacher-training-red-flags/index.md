@@ -96,6 +96,10 @@ Yes. If every student passes regardless of attendance, safety and teaching abili
 
 Ask for it in writing. A clear all-inclusive price usually covers tuition, accommodation, all meals, manuals and the certificate, and states what is excluded, such as flights, visa and personal excursions.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [daily yoga classes in Fort Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

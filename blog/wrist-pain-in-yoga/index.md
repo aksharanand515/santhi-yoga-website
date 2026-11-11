@@ -87,6 +87,10 @@ Yoga does not typically cause it, and gentle practice is often recommended along
 
 Gradually and often, rather than heavily. Short holds in tabletop, moving weight forward and back over the hands, finger and knuckle presses, and simply spending more time on the hands in small doses will build tolerance over weeks.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [walk-in Hatha yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, and our [200-hour yoga teacher training in India](https://santhiyogaindia.com/teacher-training/) is a 28-day course with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

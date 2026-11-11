@@ -151,6 +151,10 @@ Yoga and Ayurveda describe it as a sattvic time, when the mind is clear and calm
 
 Move your bedtime and wake time fifteen minutes earlier each week, keep the same times every day, eat dinner early and light, and dim screens before bed. Expect three to four weeks before it feels natural.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [200-hour yoga TTC in Fort Kochi, Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

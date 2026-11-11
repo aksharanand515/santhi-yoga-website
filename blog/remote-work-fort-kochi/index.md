@@ -113,6 +113,10 @@ India Standard Time, UTC +5:30, with no daylight saving. It overlaps well with t
 
 Yes. At Santhi School of Yoga there are no packages or memberships, but students who practise for more than a week get 30% off classes.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [28-day yoga teacher training course in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

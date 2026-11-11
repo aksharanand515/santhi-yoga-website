@@ -92,6 +92,10 @@ No. It is a religious text within Hinduism and is also read worldwide as philoso
 
 Eknath Easwaran’s is the most approachable in English. Swami Sivananda’s is the standard in schools of that lineage and includes commentary. Start with a readable translation rather than a scholarly one; you can always go deeper later.
 
+Practise with us in Fort Kochi
+
+Come and practise with us in person: our [daily yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

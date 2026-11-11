@@ -105,6 +105,10 @@ November to March is the most comfortable. April and May are hot, and June to Se
 
 Neither is better overall. Kerala is warmer, greener and quieter, with strong Ayurveda and Hatha traditions; Rishikesh has more schools and a Himalayan setting.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [yoga classes in Fort Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

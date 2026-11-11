@@ -1,6 +1,6 @@
 ---
-title: "200 Hour Yoga Teacher Training (TTC) in Kerala | Fort Kochi"
-description: "28-day 200-hour yoga teacher training in Fort Kochi, Kerala, with Santhi Yoga and Praana Yoga Studio. €899 all-inclusive: stay, sattvic meals, certificate."
+title: "200 Hour Yoga Teacher Training in Kerala, India | Fort Kochi"
+description: "28-day, 200-hour yoga teacher training in Fort Kochi, Kerala, India, with Santhi Yoga and Praana Yoga Studio. €899 all-inclusive. 2027 batches from 1 January."
 url: https://santhiyogaindia.com/teacher-training/
 ---
 
@@ -10,7 +10,7 @@ url: https://santhiyogaindia.com/teacher-training/
 
 [Reserve your place · €90](https://santhiyogaindia.com/reserve/) See 2027 dates
 
-![Students dressed in white with flower garlands at a traditional ceremony with brass oil lamps](https://santhiyogaindia.com/assets/img/traditional-ceremony-yoga-teacher-training-800.webp)
+![Teacher training graduation at Santhi School of Yoga in Fort Kochi, Kerala: students in white with flower garlands behind lit brass oil lamps](https://santhiyogaindia.com/assets/img/traditional-ceremony-yoga-teacher-training-800.webp)
 
 **€899**All-inclusive · 28 days
 

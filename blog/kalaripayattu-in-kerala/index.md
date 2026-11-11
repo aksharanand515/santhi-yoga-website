@@ -122,6 +122,10 @@ Yes. Several schools around Kochi run short courses for visitors, from one sessi
 
 They share real ground: recognisable stretches, breath coordinated with movement, the marma points, an Ayurvedic massage tradition, and a one-to-one relationship with a teacher. But kalaripayattu is a fighting art, and the claim that it is the ancestor of yoga or of Asian martial arts generally is folklore rather than history.
 
+Practise with us in Fort Kochi
+
+While you are in Fort Kochi, come and practise: our [yoga classes in Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

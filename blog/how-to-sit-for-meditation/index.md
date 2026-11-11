@@ -129,6 +129,10 @@ By opening the hips, not by forcing the legs. Lotus needs a great deal of extern
 
 Five minutes daily, for a fortnight. Then ten for a month, then let it find its own length. Sitting stops being the obstacle at around week three, which is about when most people would otherwise have given up.
 
+Practise with us in Fort Kochi
+
+Come and practise with us in person: our [drop-in yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

@@ -86,6 +86,10 @@ No. Flexibility is the result of practice, not a requirement for it. Beginners, 
 
 No. A good stretch is a broad, dull sensation in the muscle that eases as you breathe. Sharp, pinching or joint pain means stop. Pain that lasts more than a day after practice is worth showing to a physiotherapist or doctor.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [walk-in Hatha yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, and our [28-day yoga teacher training course in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

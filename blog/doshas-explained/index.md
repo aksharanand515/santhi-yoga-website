@@ -118,6 +118,10 @@ Your constitution from birth, prakriti, is considered fixed. Your current state,
 
 Its dietary and lifestyle guidance is generally sensible. Be more careful with herbal preparations and supplements: some interact with medication and a few have been found to contain heavy metals. Speak to your doctor first if you take medicine, are pregnant or have a diagnosed condition.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [yoga classes in Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, and our [200-hour yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

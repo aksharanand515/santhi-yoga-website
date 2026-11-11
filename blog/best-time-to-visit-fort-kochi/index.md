@@ -100,6 +100,10 @@ The hour before sunset, roughly 5 to 6:30 pm, when the light is soft and the fis
 
 In the last week of December, ending at midnight on 31 December with the burning of the Pappanji effigy.
 
+Practise with us in Fort Kochi
+
+While you are in Fort Kochi, come and practise: our [yoga classes in Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

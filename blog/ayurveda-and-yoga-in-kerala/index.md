@@ -82,6 +82,10 @@ Ask whether a BAMS-qualified doctor is on site, expect a consultation before any
 
 No. We are a yoga school: Hatha Yoga classes, private sessions, workshops, retreats and a 200-hour teacher training. Students on the training are served Ayurvedic tea, but we do not provide treatments, prescriptions or diagnosis.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [200-hour yoga teacher training in India](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

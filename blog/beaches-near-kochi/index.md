@@ -103,6 +103,10 @@ Usually, from October to May on calm days, at the lifeguard station. Do not swim
 
 Take the ferry from Fort Kochi to Vypin, then one of the frequent buses north along Vypin island to Cherai, or an auto-rickshaw from the jetty.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [200-hour yoga TTC in Fort Kochi, Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

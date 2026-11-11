@@ -129,6 +129,10 @@ You will feel looser within one session, but that is the nervous system settling
 
 Low lunge is the most direct, provided you tuck the pelvis slightly under rather than arching the lower back — that single adjustment is the difference between feeling it and feeling nothing. Add held warrior poses and bridges for the strength side.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [28-day yoga teacher training course in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

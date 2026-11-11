@@ -95,6 +95,10 @@ At least two nights. The drive up takes most of a day, and one night leaves litt
 
 It is much cooler than the coast, at around 1,600 metres. Days are mild and nights can be cold from December to February, so bring a fleece or jumper whatever the season.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

@@ -89,6 +89,10 @@ The sound is found with the mouth open, as a way of learning it, but the practic
 
 It is gentle compared with most pranayama, but anyone with a throat condition, uncontrolled high blood pressure or a heart condition should learn it in person and stop if it creates strain. It should never make you breathless.
 
+Practise with us in Fort Kochi
+
+Come and practise with us in person: our [daily yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

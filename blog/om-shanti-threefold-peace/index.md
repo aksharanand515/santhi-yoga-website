@@ -72,6 +72,10 @@ No. Chanting is offered, never required. Many students simply sit quietly and li
 
 Yes. Santhi is a common Malayalam spelling of the same Sanskrit word, which is where the school’s name comes from.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [yoga classes in Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, and our [28-day yoga teacher training course in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

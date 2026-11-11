@@ -198,6 +198,10 @@ November to February for weather. The next Kochi-Muziris Biennale opens in Decem
 
 Yes — the historic core is compact. Mattancherry is a short auto-rickshaw ride away. Walk in the early morning or late afternoon.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [200-hour yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

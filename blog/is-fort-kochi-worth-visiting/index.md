@@ -104,6 +104,10 @@ Parts are, especially Jew Town’s souvenir shops and the waterfront at sunset. 
 
 Mattancherry Palace and the Paradesi Synagogue. The Synagogue is also closed on Saturdays and Jewish holidays, so plan Mattancherry for Sunday to Thursday.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

@@ -81,6 +81,10 @@ Warm all year, between roughly 23°C at night and 32°C in the day, with humidit
 
 Four batches in 2027, each 28 days: 1–28 January, 1–28 February, 1–28 April and 1–28 June, at €899 all-inclusive.
 
+Practise with us in Fort Kochi
+
+While you are in Fort Kochi, come and practise: our [yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

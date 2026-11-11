@@ -76,6 +76,10 @@ Yes. Ashtanga, the eight limbs — yama, niyama, asana, pranayama, pratyahara, d
 
 Choose any respected translation that includes commentary, and read a few lines at a time rather than straight through. Reading it alongside a teacher or another student is worth more than picking the perfect edition.
 
+Practise with us in Fort Kochi
+
+Come and practise with us in person: our [yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

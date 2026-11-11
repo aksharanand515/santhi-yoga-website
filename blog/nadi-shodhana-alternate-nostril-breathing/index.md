@@ -105,6 +105,10 @@ Before meditation, or in the evening before bed. Unlike stimulating practices su
 
 Almost nobody needs to avoid the simple version, but leave out breath retention if you are pregnant or have high blood pressure, heart disease, glaucoma or epilepsy. Stop if you feel dizzy, and do not force a blocked nostril.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [200-hour yoga teacher training in India](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

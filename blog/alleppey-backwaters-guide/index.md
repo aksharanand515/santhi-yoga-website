@@ -91,6 +91,10 @@ A small canopied boat hired by the hour. Unlike houseboats it can enter the narr
 
 About two hours by road, which makes it an easy last stop before flying out of Kochi.
 
+Practise with us in Fort Kochi
+
+While you are in Fort Kochi, come and practise: our [drop-in yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed. Staying a month? Our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

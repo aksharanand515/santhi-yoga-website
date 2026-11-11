@@ -171,6 +171,10 @@ Traditionally the monsoon, especially the Malayalam month of Karkidakam, roughly
 
 No. Shirodhara, the pouring of warm oil over the forehead, is a Kerala external therapy often used in preparation or rejuvenation. Panchakarma refers to the five main procedures, which shirodhara is not one of.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

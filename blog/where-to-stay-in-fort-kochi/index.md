@@ -102,6 +102,10 @@ Generally yes, and they are often the best value — a few rooms in a family hou
 
 The residential lanes of Fort Kochi, around Chirattapalam and inland from the waterfront. Anywhere in Fort Kochi proper is a walk from a 7:30 class. Ernakulam is too far for a daily practice.
 
+Practise with us in Fort Kochi
+
+While you are in Fort Kochi, come and practise: our [drop-in yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed. Staying a month? Our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

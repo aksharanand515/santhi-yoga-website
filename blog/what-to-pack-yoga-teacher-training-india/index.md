@@ -101,6 +101,10 @@ India uses 230V with type C, D and M sockets. A universal travel adapter covers 
 
 Fort Kochi is relaxed, but it is a working town rather than a resort. Clothes that cover shoulders and knees are comfortable and respectful, particularly at temples, and a shawl is useful for both meditation and visits.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [daily yoga classes in Fort Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

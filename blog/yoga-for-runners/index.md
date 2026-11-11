@@ -129,6 +129,10 @@ Two sessions a week alongside your running is realistic and enough, plus fifteen
 
 That pattern — a deep localised ache at the sitting bone, worse sitting on hard chairs and worse when you stretch it — suggests proximal hamstring tendinopathy, which is common in runners. Stretching makes it worse. It needs loading and patience under a physiotherapist.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [200-hour yoga TTC in Fort Kochi, Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

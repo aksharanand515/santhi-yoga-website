@@ -79,6 +79,10 @@ No. Falling asleep simply means you needed sleep, and it happens to most beginne
 
 Even once a week is worthwhile. Many people practise in the evening two or three times a week, and some use a short session on any day that has been demanding.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [daily yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, and our [yoga teacher training in Fort Kochi](https://santhiyogaindia.com/teacher-training/) is a 28-day course with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

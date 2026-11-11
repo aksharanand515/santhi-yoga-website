@@ -98,6 +98,10 @@ Your certificate is issued by the school that trained you. Registration is a pai
 
 Yes, if the teaching is good. Judge the lead teacher, the group size, the lineage, the syllabus in hours and past graduates. Only avoid an unregistered school if you specifically need RYT status for insurance or a job.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [yoga classes in Fort Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

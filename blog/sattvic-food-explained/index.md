@@ -100,6 +100,10 @@ Not necessarily. Traditional sattvic cooking includes milk, curd and ghee, which
 
 Three sattvic vegetarian meals a day and Ayurvedic tea, all included in the €899 fee: Kerala cooking with rice, coconut, seasonal vegetables, lentils and gentle spicing, without onion, garlic or heavy chilli.
 
+Practise with us in Fort Kochi
+
+Come and practise with us in person: our [drop-in yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

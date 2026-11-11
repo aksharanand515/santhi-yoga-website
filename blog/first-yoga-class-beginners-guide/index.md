@@ -155,6 +155,10 @@ Yes. Our classes in Fort Kochi are mixed-level, taught in English, and welcome c
 
 Always, before the class starts. Mention injuries, recent surgery, high blood pressure, pregnancy or dizziness. It lets the teacher offer safer versions of postures without singling you out.
 
+Practise with us in Fort Kochi
+
+Want to take the practice further? Our [200-hour yoga TTC in Fort Kochi, Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course at the same school, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

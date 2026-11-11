@@ -145,6 +145,10 @@ Sivananda classes hold postures and rest between them in a largely fixed sequenc
 
 No. Santhi School of Yoga & Vedanta Studies is an independent school. Our teacher, Master Aksharanand A S, trained in the Sivananda tradition and holds its Advanced Teacher Training Certificate, and that training shapes how he teaches.
 
+Practise with us in Fort Kochi
+
+Want to take the practice further? Our [200-hour yoga teacher training in India](https://santhiyogaindia.com/teacher-training/) is a 28-day course at the same school, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

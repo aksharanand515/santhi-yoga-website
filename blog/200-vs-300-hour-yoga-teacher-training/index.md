@@ -82,6 +82,10 @@ It is enough to begin teaching a careful beginners’ class, and it is the stand
 
 No. Santhi School of Yoga & Vedanta Studies is not a Yoga Alliance Registered Yoga School. Graduates receive the school’s own 200-hour certificate and cannot register as RYT 200. If that credential matters where you plan to teach, choose a registered school.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [daily yoga classes in Fort Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

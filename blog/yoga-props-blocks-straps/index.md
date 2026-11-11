@@ -129,6 +129,10 @@ No. A prop does not make a pose easier; it makes the pose possible in its correc
 
 No. Mats and what you need are provided. If you have a shoulder, knee or back that needs particular support, mention it before class and the teacher will set you up.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [28-day yoga teacher training course in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

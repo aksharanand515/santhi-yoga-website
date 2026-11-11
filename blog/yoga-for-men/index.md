@@ -145,6 +145,10 @@ It can build real strength and mobility, but it does not load muscles as heavily
 
 Shorts or tracksuit bottoms you can move freely in, and a fitted T-shirt that does not fall over your face in forward bends. Practise barefoot.
 
+Practise with us in Fort Kochi
+
+Want to take the practice further? Our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course at the same school, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

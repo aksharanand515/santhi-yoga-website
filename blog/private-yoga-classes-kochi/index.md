@@ -138,6 +138,10 @@ Many private tutors in Kochi offer home visits, often at a higher rate to cover 
 
 Send us a message on WhatsApp or email with what you are looking for and when you are available. We will reply personally with available times. A session is ₹2,000.
 
+Practise with us in Fort Kochi
+
+Want to take the practice further? Our [200-hour yoga TTC in Fort Kochi, Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course at the same school, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

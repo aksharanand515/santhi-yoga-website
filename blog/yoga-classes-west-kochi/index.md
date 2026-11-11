@@ -122,6 +122,10 @@ Yes. Complete beginners and experienced practitioners practise together, and the
 
 No. There are no packages or memberships; you pay per class. Students who practise for more than a week get 30% off classes.
 
+Practise with us in Fort Kochi
+
+Want to take the practice further? Our [200-hour yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course at the same school, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

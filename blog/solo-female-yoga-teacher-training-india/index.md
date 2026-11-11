@@ -160,6 +160,10 @@ Kerala is generally considered one of India’s more comfortable states for wome
 
 In towns, temples and markets, cover shoulders and knees with loose clothing. Yoga clothes are fine inside the school, and a light scarf is useful for temples and sun.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [walk-in Hatha yoga classes in Fort Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

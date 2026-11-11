@@ -120,6 +120,10 @@ Supported child’s pose, slow cat and cow, supported bound angle over a bolster
 
 It helps, if you are comfortable doing so — mainly so nobody adjusts you deeper into a pose on a day you would rather be left alone. Here it changes nothing about what you are allowed to do; it simply means the teacher knows.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [yoga teacher training in Fort Kochi](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

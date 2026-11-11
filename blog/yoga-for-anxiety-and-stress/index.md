@@ -98,6 +98,10 @@ No. Yoga is not a treatment for an anxiety disorder and a yoga teacher is not a 
 
 Lengthening the exhale. Breathe in for four and out for six or eight, without straining, for ten rounds. Avoid forceful practices like kapalabhati, which are stimulating by design.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

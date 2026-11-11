@@ -93,6 +93,10 @@ Usually one or two guided practices a day, vegetarian food, accommodation includ
 
 For most retreats, no. Beginners are welcome on ours, and the practice is adapted around the people in the room. Tell the school about injuries or limitations when you enquire.
 
+Practise with us in Fort Kochi
+
+While you are in Fort Kochi, come and practise: our [drop-in yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed. Staying a month? Our [200-hour yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

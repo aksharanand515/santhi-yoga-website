@@ -159,6 +159,10 @@ Yes, if you feel like it. Many traditional teachers suggest a gentler practice a
 
 Message the teacher before you arrive. Traditional classes often begin with quiet breathing, so walking in unannounced during the opening disturbs the room. Aim to arrive five to ten minutes early.
 
+Practise with us in Fort Kochi
+
+Want to take the practice further? Our [28-day yoga teacher training course in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course at the same school, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

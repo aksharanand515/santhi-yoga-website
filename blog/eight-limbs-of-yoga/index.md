@@ -135,6 +135,10 @@ No. Most people begin with postures and breathing. The other limbs tend to becom
 
 Samadhi is the eighth limb: complete absorption, in which the mind is fully still and the sense of a separate observer falls away. It is described as the culmination of concentration and meditation.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

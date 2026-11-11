@@ -94,6 +94,10 @@ For most people, yes — and it is more effective than two long classes a week. 
 
 Most people notice better sleep and less tension within one to two weeks of near-daily practice. Visible changes in flexibility and strength usually take six to eight weeks, and they hold much better with frequent short practice than with occasional long sessions.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [drop-in yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, and our [200-hour yoga teacher training in India](https://santhiyogaindia.com/teacher-training/) is a 28-day course with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

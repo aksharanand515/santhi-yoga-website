@@ -90,6 +90,10 @@ Fish pose, matsyasana. Shoulderstand and plough bend the neck forward; fish lift
 
 Legs up the wall gives most of the calming effect with no load on the neck. Half shoulderstand, with the legs angled back over the face, is a good step towards the full posture.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [yoga teacher training in Fort Kochi](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

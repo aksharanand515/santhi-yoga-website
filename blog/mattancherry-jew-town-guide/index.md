@@ -108,6 +108,10 @@ No. Photography is not allowed inside the synagogue, and visitors remove their s
 
 The Portuguese built it around 1555 and gave it to the Raja of Kochi. The Dutch renovated it in the 1660s, and the name Dutch Palace has stayed ever since.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [yoga teacher training in Fort Kochi](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

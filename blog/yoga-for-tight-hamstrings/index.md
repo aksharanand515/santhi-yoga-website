@@ -106,6 +106,10 @@ You will feel looser within one session, but that is the nervous system relaxing
 
 If you feel a sharp, localised ache at the sitting bone, or burning and tingling down the back of the leg, stop. Those suggest tendon irritation or nerve tension, and both get worse with more stretching. See a physiotherapist.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [yoga teacher training in Fort Kochi](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

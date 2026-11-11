@@ -83,6 +83,10 @@ For healthy eyes, practised briefly with a steady flame at arm’s length, it is
 
 Yes. A black dot on white paper, a small symbol, or a fixed point on a wall all work and avoid the questions a flame raises. The flame is traditional because it is steady and self-illuminating, not because it is required.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, and our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

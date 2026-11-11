@@ -111,6 +111,10 @@ Usually not easily. Police normally restrict vehicles into Fort Kochi from the e
 
 Yes. Santhi School of Yoga holds classes every day of the year, at 7:30 am and 3:30 pm. Message the school the evening before a morning class to confirm where it will be held.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [yoga teacher training in Fort Kochi](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

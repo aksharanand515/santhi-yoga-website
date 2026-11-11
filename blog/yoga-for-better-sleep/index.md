@@ -95,6 +95,10 @@ Many people find it the most useful practice for broken sleep, because it can be
 
 Most people notice a change within one to two weeks of practising most evenings. If your sleep has been badly disrupted for months, or you wake unrefreshed despite enough hours, see a doctor — sleep apnoea and thyroid issues are common and treatable.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [drop-in yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, and our [yoga teacher training in Fort Kochi](https://santhiyogaindia.com/teacher-training/) is a 28-day course with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

@@ -117,6 +117,10 @@ Yes. Take an early government ferry to land by about 7:10, or a taxi at around 6
 
 Yes. Both operate in Kochi, including app-booked auto-rickshaws, and Fort Kochi is a common destination. Local autos are also easy to find; agree the fare before setting off.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [200-hour yoga teacher training in India](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

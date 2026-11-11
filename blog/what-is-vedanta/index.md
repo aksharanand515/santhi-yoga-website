@@ -129,6 +129,10 @@ Both are among the six classical schools of Indian philosophy. Yoga emphasises p
 
 Yes. At Santhi School of Yoga & Vedanta Studies, Master Aksharanand A S teaches Vedanta philosophy alongside Hatha Yoga, and yoga philosophy is part of the 28-day teacher training.
 
+Practise with us in Fort Kochi
+
+Come and practise with us in person: our [yoga classes in Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

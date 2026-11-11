@@ -94,6 +94,10 @@ A one-time US$50 application fee and US$65 a year in membership dues, according 
 
 In most countries no law requires one. Studios, gyms and insurers set their own requirements, so ask the places where you plan to teach.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [yoga classes in Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

@@ -113,6 +113,10 @@ Usually a crew of four to six fishermen, who use their own weight and a set of r
 
 Yes. Stalls next to the nets sell the day’s catch, and small restaurants nearby will cook what you buy for a fee. Agree both prices before anything is weighed or cooked.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [yoga teacher training in Fort Kochi](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

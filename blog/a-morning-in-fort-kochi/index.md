@@ -85,6 +85,10 @@ Easily. The morning class finishes at 9:30, which leaves the whole cool part of 
 
 At least three nights. A day is enough to see the fishing nets and the main lanes, but the town is better at a slow pace, and a week lets you build a daily practice into it.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [200-hour yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

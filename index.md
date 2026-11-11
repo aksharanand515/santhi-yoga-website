@@ -1,5 +1,5 @@
 ---
-title: "Yoga Classes Kochi | Santhi School of Yoga & Vedanta Studies"
+title: "Yoga Classes in Fort Kochi, Kerala | Santhi School of Yoga"
 description: "Walk-in yoga classes in Fort Kochi every day at 7:30 am and 3:30 pm: two-hour Hatha yoga, all levels, no booking. Plus 200-hour teacher training in Kerala."
 url: https://santhiyogaindia.com/
 ---

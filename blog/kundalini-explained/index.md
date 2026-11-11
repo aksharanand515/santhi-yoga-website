@@ -97,6 +97,10 @@ Traditional sources speak of years of steady practice under a teacher, and descr
 
 Kerala schools mostly teach classical Hatha Yoga, where kundalini is studied as part of philosophy and pranayama. For the Kundalini Yoga style, Rishikesh has more dedicated schools.
 
+Practise with us in Fort Kochi
+
+Come and practise with us in person: our [yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

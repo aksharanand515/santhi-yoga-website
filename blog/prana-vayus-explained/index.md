@@ -91,6 +91,10 @@ All of them, but different practices emphasise different ones. Inhalation-focuse
 
 The vayus are a traditional model of experience, not a physiological description, and they are not measurable in the way blood pressure is. They remain useful as a vocabulary for what breathing practices feel like and where attention is directed.
 
+Practise with us in Fort Kochi
+
+Come and practise with us in person: our [daily yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

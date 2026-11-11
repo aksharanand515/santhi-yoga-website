@@ -122,6 +122,10 @@ No. Mattancherry Palace is closed on Fridays. The Paradesi Synagogue is closed o
 
 Yes, for many people. The town is green, quiet and cheaper, rain tends to come in bursts, and there is plenty to do indoors. It is also the traditional season for Ayurvedic treatment.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [yoga teacher training in Fort Kochi](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

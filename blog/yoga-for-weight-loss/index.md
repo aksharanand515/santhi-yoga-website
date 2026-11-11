@@ -90,6 +90,10 @@ Most days, for twenty minutes or more, rather than two long sessions. Add sun sa
 
 It feels harder mostly because of the heat rather than the work, and the immediate drop on the scales afterwards is water you will replace by drinking. It is not notably better than any other vigorous style for fat loss.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [200-hour yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

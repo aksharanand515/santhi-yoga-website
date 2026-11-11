@@ -200,6 +200,10 @@ A milder pose that moves the body in roughly the opposite direction after a stro
 
 Building a class around one demanding pose. You list what the pose needs, choose a preparatory pose for each need, order them from simple to complex, place the peak about two-thirds through, and plan a gradual way down afterwards.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [daily yoga classes in Fort Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

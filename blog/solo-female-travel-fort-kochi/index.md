@@ -114,6 +114,10 @@ The waterfront, Princess Street and the main roads stay busy into the evening an
 
 A daily yoga class is the most reliable way, since the same small group meets every day. Cooking classes, Kathakali performances, hostels and art cafés are also easy places to meet people.
 
+Practise with us in Fort Kochi
+
+Staying a month? Our [200-hour yoga TTC in Fort Kochi, Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days at the school in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

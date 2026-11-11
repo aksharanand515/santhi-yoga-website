@@ -136,6 +136,10 @@ Send us a message on WhatsApp or email with your location, experience and any he
 
 Yes. Our online classes follow the same traditional approach as our classes in Fort Kochi, so you can continue the practice you started with us from home.
 
+Practise with us in Fort Kochi
+
+Want to take the practice further? Our [200-hour yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course at the same school, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

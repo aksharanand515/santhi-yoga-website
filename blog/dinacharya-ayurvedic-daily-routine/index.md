@@ -139,6 +139,10 @@ Yes, modestly: it measurably reduces the volatile sulphur compounds responsible 
 
 Because digestive fire, agni, is held to be strongest in the middle of the day, in the pitta hours between roughly 10am and 2pm. Eating the main meal then and keeping supper light and early is the instruction, and research on meal timing broadly points the same way.
 
+Practise with us in Fort Kochi
+
+Come and practise with us in person: our [walk-in Hatha yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

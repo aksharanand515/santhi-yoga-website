@@ -276,6 +276,10 @@ No stated batch size, a separate certificate fee revealed late, no named daily t
 
 Three to four months for peak season. Quieter months often have places much later. Pressure to decide quickly for a course months away is a warning sign, not a reason to hurry.
 
+Practise with us in Fort Kochi
+
+Not ready for a month yet? Start with our [yoga classes in Kochi](https://santhiyogaindia.com/services/): two hours, every day at 7:30 am and 3:30 pm, with no booking needed.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

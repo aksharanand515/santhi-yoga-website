@@ -83,6 +83,10 @@ Lotus itself is not harmful, but forcing it is a common cause of knee injury in 
 
 Keep the kneecap tracking in line with the second toe, do not let the knee drift inward, and avoid bending past the ankle in lunges and warrior. In straight-leg postures, keep a soft micro-bend rather than locking the joint back.
 
+Practise with us in Fort Kochi
+
+If you would like to go further than an article can take you, our [200-hour yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) is a 28-day course in Fort Kochi, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S

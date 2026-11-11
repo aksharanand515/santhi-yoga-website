@@ -76,6 +76,10 @@ Yes. Public ferries cross regularly from Ernakulam boat jetty to Fort Kochi in a
 
 Take a taxi — the pre-paid counter in arrivals or a ride-hailing app. Ferries do not run at night and buses are infrequent. Tell your guesthouse your arrival time so someone is expecting you.
 
+Practise with us in Fort Kochi
+
+While you are in Fort Kochi, come and practise: our [walk-in Hatha yoga classes in Fort Kochi](https://santhiyogaindia.com/services/) run every day at 7:30 am and 3:30 pm, with no booking needed. Staying a month? Our [yoga teacher training in Kerala](https://santhiyogaindia.com/teacher-training/) runs for 28 days, with four batches in 2027.
+
 ![Master Aksharanand A S, founder and teacher at Santhi School of Yoga and Vedanta Studies](https://santhiyogaindia.com/assets/img/master-aksharanand-a-s-800.webp)
 
 Master Aksharanand A S
