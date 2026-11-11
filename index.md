@@ -6,19 +6,13 @@ url: https://santhiyogaindia.com/
 
 # 200-Hour Yoga Teacher Training · Fort Kochi, India Return to the essence of *Yoga.*
 
-![Students practising arm balances in the open-air pavilion at Santhi School of Yoga, Fort Kochi](https://santhiyogaindia.com/assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp)
-
-![Students lying in a circle on a hilltop in the Kerala hills on a retreat excursion](https://santhiyogaindia.com/assets/img/yoga-retreat-hilltop-group-800.webp)
-
-![Teacher training graduates in white with marigold garlands behind lit brass oil lamps](https://santhiyogaindia.com/assets/img/traditional-ceremony-yoga-teacher-training-800.webp)
-
 Authentic Hatha Yoga */* Meditation */* Vedanta 28 days in Kerala */* Four batches in 2027
 
 [Explore Training](https://santhiyogaindia.com/teacher-training/) Book a class
 
-**4.9**/5 · Daily classes 7:30 am & 3:30 pm
-
 [Teacher Training 2027**1–28 Jan · €899 all-inclusive**](https://santhiyogaindia.com/teacher-training/)
+
+**4.9**/5 · Daily classes 7:30 am & 3:30 pm
 
 ശാന്തി · Santhi
 

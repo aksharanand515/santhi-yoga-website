@@ -32,10 +32,10 @@
   <link rel="describedby" type="text/plain" href="/llms.txt">
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.min.css?v=8fb7ac97">
+  <link rel="stylesheet" href="assets/css/site.min.css?v=2ebd17e5">
   <!-- If the script never arrives, everything it would have revealed shows anyway after four seconds -->
   <script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('show-all')},4000);</script>
-  <script defer src="assets/js/site.min.js?v=6b609ffa"></script>
+  <script defer src="assets/js/site.min.js?v=30bb7d1f"></script>
   <!-- Google Analytics 4, loaded on the first scroll, tap or key, or 7s after the page loads:
        its 170 KB of script would otherwise compete with the page while it settles -->
   <script>
@@ -297,43 +297,22 @@
 
   <main id="main">
 
-    <!-- Hero: one Kerala doorway. The title runs behind it in ink and through it in ivory,
-         and the photographs change inside it. It is complete without script. -->
-    <section class="hero" id="top" aria-labelledby="hero-title" data-hero>
-      <span class="mal" lang="ml" aria-hidden="true">ശാന്തി</span>
-      <div class="wrap hero-stage">
-        <div class="hero-scene">
-          <svg class="hero-halo" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="99"/><circle cx="100" cy="100" r="86"/></svg>
-
-          <h1 class="hero-h" id="hero-title">
-            <span class="eyebrow hero-kicker">200-Hour Yoga Teacher Training · Fort&nbsp;Kochi,&nbsp;India</span>
-            <span class="hero-title"><span class="ln"><span>Return to the </span></span><span class="ln"><span>essence of <em>Yoga.</em></span></span></span>
-          </h1>
-
-          <div class="hero-window">
-            <div class="hero-slides" data-hero-slides>
-              <div class="hero-slide is-on" data-cap="The pavilion · Fort Kochi"><img src="assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp" srcset="assets/img/santhi-yoga-pavilion-class-fort-kochi-480.webp 480w, assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp 800w, assets/img/santhi-yoga-pavilion-class-fort-kochi-1200.webp 1200w" sizes="(min-width: 900px) 32vw, 86vw" width="800" height="1067" alt="Students practising arm balances in the open-air pavilion at Santhi School of Yoga, Fort Kochi" decoding="async" fetchpriority="high"></div>
-              <div class="hero-slide" data-cap="Hands-on teaching"><img data-img="yoga-pavilion-garden-fort-kochi" sizes="(min-width: 900px) 32vw, 86vw" width="800" height="1732" alt="" decoding="async" style="object-position: 50% 52%"></div>
-              <div class="hero-slide" data-cap="Savasana · the last ten minutes"><img data-img="savasana-rest-yoga-pavilion" sizes="(min-width: 900px) 32vw, 86vw" width="800" height="1067" alt="" decoding="async"></div>
-              <div class="hero-slide" data-cap="The fishing nets · Fort Kochi"><img data-img="chinese-fishing-nets-fort-kochi" sizes="(min-width: 900px) 32vw, 86vw" width="800" height="1067" alt="" decoding="async" style="object-position: 50% 60%"></div>
-            </div>
-            <div class="hero-h" aria-hidden="true">
-              <span class="eyebrow hero-kicker">200-Hour Yoga Teacher Training · Fort&nbsp;Kochi,&nbsp;India</span>
-              <span class="hero-title"><span class="ln"><span>Return to the </span></span><span class="ln"><span>essence of <em>Yoga.</em></span></span></span>
-            </div>
-            <p class="hero-cap" aria-hidden="true"><b data-hero-n>01</b><i></i><span data-hero-cap>The pavilion · Fort Kochi</span></p>
-          </div>
-
-          <figure class="hero-card hero-card--a"><div class="hero-card-in"><img src="assets/img/yoga-retreat-hilltop-group-800.webp" srcset="assets/img/yoga-retreat-hilltop-group-480.webp 480w, assets/img/yoga-retreat-hilltop-group-800.webp 800w, assets/img/yoga-retreat-hilltop-group-1200.webp 1200w" sizes="(min-width: 900px) 13vw, 26vw" width="480" height="640" alt="Students lying in a circle on a hilltop in the Kerala hills on a retreat excursion" loading="lazy" decoding="async"></div></figure>
-          <figure class="hero-card hero-card--b"><div class="hero-card-in"><img src="assets/img/traditional-ceremony-yoga-teacher-training-800.webp" srcset="assets/img/traditional-ceremony-yoga-teacher-training-240.webp 240w, assets/img/traditional-ceremony-yoga-teacher-training-480.webp 480w, assets/img/traditional-ceremony-yoga-teacher-training-800.webp 800w, assets/img/traditional-ceremony-yoga-teacher-training-1200.webp 1200w" sizes="(min-width: 900px) 17vw, 1px" width="480" height="360" alt="Teacher training graduates in white with marigold garlands behind lit brass oil lamps" loading="lazy" decoding="async"></div></figure>
-
-          <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
-            <defs><path id="seal-arc" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
-            <text><textPath href="#seal-arc" textLength="282">SANTHI MEANS PEACE · FORT KOCHI · KERALA ·</textPath></text>
-            <text class="seal-mal" x="60" y="68" text-anchor="middle" lang="ml">ശാന്തി</text>
-          </svg>
-          <p class="hero-breath" aria-hidden="true"><i></i><span>Breathe in</span><span>Breathe out</span></p>
+    <!-- Hero: one photograph fills the whole screen and the words sit on it.
+         The photographs change; the first is complete without script. -->
+    <section class="hero hero--full" id="top" aria-labelledby="hero-title" data-hero>
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-slides" data-hero-slides>
+          <div class="hero-slide is-on" data-cap="The pavilion · Fort Kochi"><picture><source media="(min-aspect-ratio: 1/1)" srcset="assets/img/santhi-yoga-pavilion-class-fort-kochi-wide-1200.webp 1200w, assets/img/santhi-yoga-pavilion-class-fort-kochi-wide-1600.webp 1600w, assets/img/santhi-yoga-pavilion-class-fort-kochi-wide-2400.webp 2400w" sizes="100vw" width="2400" height="1600"><img src="assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp" srcset="assets/img/santhi-yoga-pavilion-class-fort-kochi-480.webp 480w, assets/img/santhi-yoga-pavilion-class-fort-kochi-800.webp 800w, assets/img/santhi-yoga-pavilion-class-fort-kochi-1200.webp 1200w" sizes="100vw" width="800" height="1067" alt="" decoding="async" fetchpriority="high" style="--pos: 50% 62%; --pos-wide: 50% 46%"></picture></div>
+          <div class="hero-slide" data-cap="Hands-on teaching · every class"><img data-img="hands-on-teaching-pavilion-fort-kochi" data-wide="1200,1600,2400" sizes="100vw" width="800" height="1067" alt="" decoding="async" style="--pos: 42% 50%; --pos-wide: 50% 30%"></div>
+          <div class="hero-slide" data-cap="Savasana · the last ten minutes"><img data-img="savasana-rest-yoga-pavilion" data-wide="1200,1600,2400" sizes="100vw" width="800" height="1067" alt="" decoding="async" style="--pos: 62% 50%; --pos-wide: 50% 42%"></div>
         </div>
+      </div>
+
+      <div class="wrap hero-in">
+        <h1 class="hero-h" id="hero-title">
+          <span class="eyebrow hero-kicker">200-Hour Yoga Teacher Training · Fort&nbsp;Kochi,&nbsp;India</span>
+          <span class="hero-title"><span class="ln"><span>Return to the </span></span><span class="ln"><span>essence of <em>Yoga.</em></span></span></span>
+        </h1>
 
         <div class="hero-copy">
           <p class="hero-sub"><span>Authentic Hatha Yoga <i>/</i> Meditation <i>/</i> Vedanta</span> <span>28 days in Kerala <i>/</i> Four batches in 2027</span></p>
@@ -342,11 +321,13 @@
             <a class="link" href="#book">Book a class</a>
           </div>
         </div>
-      </div>
 
-      <div class="wrap hero-foot">
-        <p class="rating"><span class="stars" aria-hidden="true"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><span><b>4.9</b>/5 · Daily classes 7:30 am &amp; 3:30 pm</span></p>
         <a class="hero-ttc" href="teacher-training/"><span><small>Teacher Training 2027</small><b>1–28 Jan · €899 all-inclusive</b></span><span class="rnd"><svg class="ic"><use href="#i-arrow"/></svg></span></a>
+
+        <div class="hero-foot">
+          <p class="rating"><span class="stars" aria-hidden="true"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><span><b>4.9</b>/5 · Daily classes 7:30 am &amp; 3:30 pm</span></p>
+          <p class="hero-cap" aria-hidden="true"><b data-hero-n>01</b><i></i><span data-hero-cap>The pavilion · Fort Kochi</span></p>
+        </div>
       </div>
     </section>
 
